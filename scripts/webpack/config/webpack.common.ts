@@ -1,4 +1,5 @@
 // Core
+import { ProvidePlugin } from 'webpack';
 import merge from 'webpack-merge';
 
 // Constants
@@ -31,7 +32,24 @@ export const getCommonConfig = () => {
             },
             resolve: {
                 extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
+                fallback:   {
+                    stream: require.resolve('stream-browserify'),
+                    zlib:   require.resolve('browserify-zlib'),
+                    util:   require.resolve('util/'),
+                    assert: require.resolve('assert/'),
+                    buffer: require.resolve('buffer'),
+                },
             },
+        },
+        {
+            plugins: [
+                new ProvidePlugin({
+                    Buffer: [ 'buffer', 'Buffer' ],
+                }),
+                new ProvidePlugin({
+                    process: 'process/browser',
+                }),
+            ],
         },
         modules.loadTypeScript(),
         modules.defineEnvVariables(),

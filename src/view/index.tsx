@@ -1,42 +1,47 @@
 // Core
-import React, { FC, useEffect, useCallback } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import React/* , { FC } */ from 'react';
+import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+
+// import styled/* , { ThemeProvider } */ from 'styled-components';
 
 // Routes
-import { Routes } from './routes';
+// import { Routes } from './routes';
 
 // Hooks
-import { useTogglesRedux } from '../bus/client/toggles';
+// import { useTogglesRedux } from '../bus/client/toggles';
 
 // Assets
-import { GlobalStyles, defaultTheme } from '../assets';
+// import { GlobalStyles, defaultTheme } from '../assets';
 
-// Styles
-export const AppContainer = styled.div`
-    height: 100vh;
-    width: 100vw;
-`;
+// Create styles
+const styles = StyleSheet.create({
+    page: {
+        backgroundColor: '#fff',
+        height:          '100%',
+    },
+    section: {
+        backgroundColor: '#fff',
+    },
+    nameee: {
+        fontSize: '36px',
+    },
+});
 
-export const App: FC = () => {
-    const { setToggleAction: setTogglerAction } = useTogglesRedux();
+type fielsType = {
+    name: string
+}
+// Create Document Component
+export const MyDocument = ({ name }: fielsType) => (
+    <Document>
+        <Page
+            style = { styles.page }>
+            <View style = { styles.section }>
+                <Text style = { styles.nameee }>{name} </Text>
+            </View>
+            <View style = { styles.section }>
+                <Text>Section #2</Text>
+            </View>
+        </Page>
+    </Document>
+);
 
-    const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
-        type:  'isOnline',
-        value: navigator.onLine,
-    }), [ setTogglerAction ]);
-
-    useEffect(() => {
-        setOnlineStatusHanlder();
-        window.addEventListener('online', setOnlineStatusHanlder);
-        window.addEventListener('offline', setOnlineStatusHanlder);
-    }, []);
-
-    return (
-        <ThemeProvider theme = { defaultTheme }>
-            <GlobalStyles />
-            <AppContainer>
-                <Routes />
-            </AppContainer>
-        </ThemeProvider>
-    );
-};
