@@ -12,14 +12,14 @@ export const Private: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Pages.Root /> }
-                path = { book.ROOT }
+                element = { <Pages.Cv /> }
+                path = { book.CV }
             />
             <Route
                 element = {
                     <Navigate
                         replace
-                        to = { book.ROOT }
+                        to = { book.CV }
                     />
                 }
                 path = '*'

@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // Reducers
 import toggles from '../../bus/client/toggles';
+import fields from '../../bus/client/fields';
 // import __entityName__ from '../../bus/__entityName__/slice';
 
 // Middleware
@@ -17,7 +18,7 @@ import {
 export const store = configureStore({
     reducer: {
         toggles,
-        // __entityName__,
+        fields,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',

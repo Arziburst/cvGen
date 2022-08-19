@@ -9,12 +9,12 @@ import { Private } from './Private';
 import { useTogglesRedux } from '../../bus/client/toggles';
 
 export const Routes: FC = () => {
-    const { togglesRedux: { isLoggedIn }} = useTogglesRedux();
+    const { togglesRedux: { isReadyCV }} = useTogglesRedux();
 
     return (
         <Suspense fallback = { <div>Spinner</div> }>
             {
-                isLoggedIn
+                isReadyCV
                     ? <Private />
                     : <Public />
             }

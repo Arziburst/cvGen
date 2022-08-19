@@ -1,46 +1,20 @@
 // Core
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { PDFViewer } from '@react-pdf/renderer';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-// View
-import { MyDocument } from './view';
+// Init
+import { store } from './init';
 
+import { App } from './view';
 
-import styled from 'styled-components';
-import { GlobalStyles } from './assets';
-import { Testinputs } from './view/components/Testinputs';
+const Root = () => (
+    <Provider store = { store }>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+);
 
-// Style
-const AppContainer = styled.section`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-`;
-
-const App = () => {
-    const [ name, setName ] = useState('');
-
-    const handleSetName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.persist();
-        setTimeout(() => {
-            setName(event.target.value);
-        }, 500);
-    };
-
-    return (
-        <AppContainer>
-            <GlobalStyles />
-            <Testinputs setName = { (event) => handleSetName(event) }/>
-            <PDFViewer
-                height = '100%'
-                showToolbar = { false }
-                width = '50%'>
-                <MyDocument name = { name }/>
-            </PDFViewer>
-        </AppContainer>
-    );
-};
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Root />, document.getElementById('app'));
