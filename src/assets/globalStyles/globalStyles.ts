@@ -33,7 +33,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body,
-    input {
+    input,
+    textarea {
         font-family: 'NotoSans400', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
     }
 `;

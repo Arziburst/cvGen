@@ -25,7 +25,6 @@
     "dependencies": {
         "@react-pdf/renderer": "^2.3.0",
         "@reduxjs/toolkit": "^1.8.4",
-        "@types/lodash": "^4.14.184",
         "lodash": "^4.17.21",
         "react": "^16.8.6",
         "react-dom": "^16.8.0",
@@ -39,6 +38,7 @@
         "@soda/friendly-errors-webpack-plugin": "^1.8.1",
         "@squoosh/lib": "^0.4.0",
         "@types/app-root-path": "^1.2.4",
+        "@types/lodash": "^4.14.184",
         "@types/mini-css-extract-plugin": "^2.5.1",
         "@types/node": "^18.7.3",
         "@types/react": "^16.8.6",

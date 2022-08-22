@@ -11,9 +11,8 @@ export const Container = styled.section`
 `;
 
 export const Column = styled.div`
-   padding: 20px 30px;
-   
    &:nth-child(1) {
+        padding: 20px 30px;
         background-color: #decabf;
    }
 

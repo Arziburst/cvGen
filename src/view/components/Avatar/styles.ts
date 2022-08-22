@@ -7,6 +7,7 @@ type propsType = {
 }
 
 export const Container = styled.section`
+  position: relative;
   width: 100%;
   height: 150px;
   border-radius: 50%;
@@ -26,5 +27,13 @@ export const UserAvatar = styled.img<propsType>`
     width: 80%;
     height: 80%;
   `}
+`;
+
+export const InputFile = styled.input`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 `;
 

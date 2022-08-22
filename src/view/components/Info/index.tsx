@@ -2,7 +2,7 @@
 import React, { ChangeEvent, FC } from 'react';
 
 // Elements
-import { TextInput } from '../../elements';
+import { AppInput, AppTextarea } from '../../elements';
 // Styles
 import * as S from './styles';
 
@@ -10,21 +10,35 @@ import * as S from './styles';
 type voidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
 
 type PropTypes = {
-    name: string;
     handleChangeName: voidFunc;
-    // position: string
-    // overview: string
+    handleChangePosition: voidFunc;
+    handleChangeOverview: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Info: FC<PropTypes> = ({ name, handleChangeName }) => {
+export const Info: FC<PropTypes> = ({
+    handleChangeName, handleChangePosition,
+    handleChangeOverview,
+}) => {
     return (
         <S.Container>
             <S.InputNameBox>
-                <TextInput
-                    defaultValue = { name }
+                <AppInput
                     handleChangeFunc = { handleChangeName }
+                    placeholder = 'Your Name'
                 />
             </S.InputNameBox>
+            <S.InputPositionBox>
+                <AppInput
+                    handleChangeFunc = { handleChangePosition }
+                    placeholder = 'Position'
+                />
+            </S.InputPositionBox>
+            <S.InputOverviewBox>
+                <AppTextarea
+                    handleChangeFunc = { handleChangeOverview }
+                    placeholder = 'Overview'
+                />
+            </S.InputOverviewBox>
         </S.Container>
     );
 };

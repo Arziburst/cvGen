@@ -7,7 +7,7 @@ import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
     avatar:   '',
-    name:     'Your name',
+    name:     '',
     position: '',
     overview: '',
 };

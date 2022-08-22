@@ -2,12 +2,14 @@ import React, { ChangeEvent, FC } from 'react';
 import styled from 'styled-components';
 
 // Styled
-export const Input = styled.input`
+export const Textarea = styled.textarea`
   border: 1px solid transparent;
   background-color: transparent;
   padding-right: 10px;
   display: block;
   width: 100%;
+  resize: none;
+  color: #cad1dd;
 
   &:focus,
   &:hover {
@@ -15,7 +17,7 @@ export const Input = styled.input`
     outline-color: #e8e5e4;
   }
 
-   &::placeholder {
+  &::placeholder {
     font-size: inherit;
     color: inherit;
   }
@@ -23,15 +25,14 @@ export const Input = styled.input`
 
 // Types
 type propsType = {
-    handleChangeFunc: (event: ChangeEvent<HTMLInputElement>) => void;
+    handleChangeFunc: (event: ChangeEvent<HTMLTextAreaElement>) => void
     placeholder: string;
 }
 
-export const AppInput: FC<propsType> = ({ handleChangeFunc, placeholder }) => {
+export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder }) => {
     return (
-        <Input
+        <Textarea
             placeholder = { placeholder }
-            type = 'text'
             onChange = { handleChangeFunc }
         />
     );

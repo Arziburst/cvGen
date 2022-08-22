@@ -42,7 +42,7 @@ export const useCustomHooks = () => {
         debounceChangePosition(event.target.value);
     };
 
-    const handleChangeOverview = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeOverview = (event: ChangeEvent<HTMLTextAreaElement>) => {
         debounceChangeOverview(event.target.value);
     };
 
