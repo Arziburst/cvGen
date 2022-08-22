@@ -1,10 +1,10 @@
 // Core
-import React/* , { FC } */ from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import React from 'react';
+import { Document, Page, StyleSheet, Image, PDFViewer } from '@react-pdf/renderer';
 import { Header } from '../../components/Header';
-import { Experience } from '../../components/Experience';
-import { Skills } from '../../components/Skills';
-// Create styles
+import { useFieldsRedux } from '../../../bus/client/fields';
+
+// Styles
 const styles = StyleSheet.create({
     page: {
         backgroundColor: '#fff',
@@ -20,37 +20,25 @@ const styles = StyleSheet.create({
 });
 
 
-const skills = [
-    {
-        name:   'Programing Language',
-        skills: [ 'HTML5', 'CSS3', 'SASS', 'JS(ES6+/ESNext)' ],
-    },
-];
+export const MyDocument = () => {
+    const { fieldsRedux: { name, avatar, position, overview }} = useFieldsRedux();
 
-type fielsType = {
-    name: string
-    position: string
-    overview: string
-}
-
-// Create Document Component
-export const MyDocument = ({ name, position, overview }: fielsType) => (
-    <Document>
-        <Page style = { styles.page }>
-            <Header
-                name = { name }
-                overview = { overview }
-                position = { position }
-            />
-            <Skills
-                skillsList = { skills }
-                title = 'Skills'
-            />
-            <Experience />
-            <View style = { styles.section }>
-                <Text>Section #2</Text>
-            </View>
-        </Page>
-    </Document>
-);
+    return (
+        <PDFViewer
+            showToolbar = { false }
+            style = {{ width: '100%', height: '100vh' }}>
+            <Document>
+                <Page
+                    style = { styles.page }>
+                    <Header
+                        name = { name }
+                        overview = { overview }
+                        position = { position }
+                    />
+                    <Image src = { avatar } />
+                </Page>
+            </Document>
+        </PDFViewer>
+    );
+};
 

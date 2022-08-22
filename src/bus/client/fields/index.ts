@@ -6,12 +6,15 @@ import { useDispatch } from '../../../tools/hooks';
 import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
-    name: '',
+    avatar:   '',
+    name:     'Your name',
+    position: '',
+    overview: '',
 };
 
 // Types
 export type fieldsKeys = keyof typeof initialState;
-type Options = { type: fieldsKeys, value: string };
+type Options = { type: fieldsKeys, value: string};
 
 // Slice
 export const fieldsSlice = createSlice({
@@ -34,12 +37,11 @@ export const useFieldsRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        fieldsRedux:           useSelector(({ fields }) => fields),
-        setFieldsAction:       (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
-        resetfieldssToInitial: () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
+        fieldsRedux:          useSelector(({ fields }) => fields),
+        setFieldsAction:      (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
+        resetFieldsToInitial: () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
     };
 };
 
 // Used ./src/tools/helpers/makeRequest
 export const fieldsCreatorAction = fieldsActions.fieldsCreatorAction;
-

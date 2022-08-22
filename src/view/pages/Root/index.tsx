@@ -1,38 +1,71 @@
 // Core
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { FC } from 'react';
+
+// Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
 
-// Components
-import { ErrorBoundary } from '../../components';
+// Hooks
+import { useCustomHooks } from './hooks';
 
-// Elements
-// import { HelloBurst } from '../../elements';
+// Components
+import { ErrorBoundary, Avatar } from '../../components';
 
 // Styles
-import { Container } from './styles';
+import * as S from './styles';
+import { Info } from '../../components/Info';
 
 const Root: FC = () => {
-    const [ name, setname ] = useState('');
     const { setToggleAction } = useTogglesRedux();
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setname(event.target.value);
-    };
 
-    console.log(name);
-
+    const {
+        handleChangeImg, handleChangeName,
+        handleChangePosition, handleChangeOverview,
+        avatar, name,
+        position, overview,
+    } = useCustomHooks();
 
     return (
-        <Container>
-            <input
-                type = 'text'
-                onChange = { handleChange }
-            />
-            <button onClick = { () => {
-                setToggleAction({ type: 'isReadyCV', value: true });
-            } }>
+        <S.Container>
+            <S.Column>
+                <Avatar avatarUrl = { avatar }/>
+            </S.Column>
+            <S.Column>
+                <Info
+                    handleChangeName = { handleChangeName }
+                    name = { name }
+                />
+                <label>
+                    <span style = {{ display: 'block' }}>Position</span>
+                    <input
+                        defaultValue = { position }
+                        type = 'text'
+                        onChange = { handleChangePosition }
+                    />
+                </label>
+                <label>
+                    <span style = {{ display: 'block' }}>Overview</span>
+                    <input
+                        defaultValue = { overview }
+                        type = 'text'
+                        onChange = { handleChangeOverview }
+                    />
+                </label>
+                <label>
+                    <span style = {{ display: 'block' }}>Avatar</span>
+                    <input
+                        type = 'file'
+                        onChange = { handleChangeImg }
+                    />
+                </label>
+            </S.Column>
+            <button
+                style = {{ position: 'absolute', left: '15px', right: '15px', width: '80px', height: '100px' }}
+                onClick = { () => {
+                    setToggleAction({ type: 'isReadyCV', value: true });
+                } }>
                 Gen cv
             </button>
-        </Container>
+        </S.Container>
     );
 };
 

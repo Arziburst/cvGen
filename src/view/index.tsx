@@ -9,7 +9,6 @@ export const AppContainer = styled.div`
     width: 100vw;
 `;
 
-// Create Document Component
 export const App: FC = () => (
     <ThemeProvider theme = { defaultTheme }>
         <GlobalStyles />

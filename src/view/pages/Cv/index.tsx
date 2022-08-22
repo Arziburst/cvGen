@@ -1,34 +1,34 @@
 // Core
-import { PDFViewer } from '@react-pdf/renderer';
 import React, { FC } from 'react';
 
 // Bus
-// import {} from '../../../bus/'
+import { useTogglesRedux } from '../../../bus/client/toggles';
 
 // Components
 import { ErrorBoundary } from '../../components';
 import { MyDocument } from '../../containers/Document';
-// import
-// // Styles
-// import * as S from './styles';
+
+// Style
+import * as S from './styles';
 
 // Types
 type PropTypes = {
     /* type props here */
 }
 
-// import { My } from '@react-pdf/renderer';
-
 
 const Cv: FC<PropTypes> = () => {
+    const { setToggleAction } = useTogglesRedux();
+
     return (
-        <PDFViewer>
-            <MyDocument
-                name = 'qw'
-                overview = 'qw'
-                position = 'qw'
-            />
-        </PDFViewer>
+        <S.Container>
+            <MyDocument />
+            <button onClick = { () => {
+                setToggleAction({ type: 'isReadyCV', value: false });
+            } }>
+                Back
+            </button>
+        </S.Container>
     );
 };
 
@@ -37,3 +37,4 @@ export default () => (
         <Cv />
     </ErrorBoundary>
 );
+
