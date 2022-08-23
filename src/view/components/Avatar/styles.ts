@@ -7,9 +7,12 @@ type propsType = {
 }
 
 export const Container = styled.section`
+  padding: 20px 30px;
+`;
+
+export const Wrapper = styled.section`
   position: relative;
-  width: 100%;
-  height: 150px;
+  height: 160px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #f0efed;
@@ -20,7 +23,8 @@ export const Container = styled.section`
 
 export const UserAvatar = styled.img<propsType>`
   ${({ isAvatar }) => isAvatar ? `
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
   ` : `

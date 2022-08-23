@@ -6,10 +6,11 @@ import { useDispatch } from '../../../tools/hooks';
 import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
-    avatar:   '',
-    name:     '',
-    position: '',
-    overview: '',
+    avatar:    '',
+    firstName: '',
+    lastName:  '',
+    position:  '',
+    overview:  '',
 };
 
 // Types

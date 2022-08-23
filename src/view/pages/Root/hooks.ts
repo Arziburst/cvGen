@@ -8,10 +8,14 @@ import { ChangeEvent } from 'react';
 import { useFieldsRedux } from '../../../bus/client/fields';
 
 export const useCustomHooks = () => {
-    const { setFieldsAction, fieldsRedux: { avatar, name, position, overview }} = useFieldsRedux();
+    const { setFieldsAction, fieldsRedux: { avatar, firstName, lastName, position, overview }} = useFieldsRedux();
 
-    const debounceChangeText = debounce((text: string) => {
-        setFieldsAction({ type: 'name', value: text });
+    const debounceChangeFirstname = debounce((text: string) => {
+        setFieldsAction({ type: 'firstName', value: text });
+    }, 300);
+
+    const debounceChangeLastname = debounce((text: string) => {
+        setFieldsAction({ type: 'lastName', value: text });
     }, 300);
 
     const debounceChangeImg = debounce((img: string) => {
@@ -34,8 +38,12 @@ export const useCustomHooks = () => {
         }
     };
 
-    const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeText(event.target.value);
+    const handleChangeFirstname = (event: ChangeEvent<HTMLInputElement>) => {
+        debounceChangeFirstname(event.target.value);
+    };
+
+    const handleChangeLastname = (event: ChangeEvent<HTMLInputElement>) => {
+        debounceChangeLastname(event.target.value);
     };
 
     const handleChangePosition = (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,11 +56,13 @@ export const useCustomHooks = () => {
 
     return {
         handleChangeImg,
-        handleChangeName,
+        handleChangeFirstname,
+        handleChangeLastname,
         handleChangePosition,
         handleChangeOverview,
         avatar,
-        name,
+        firstName,
+        lastName,
         position,
         overview,
     };

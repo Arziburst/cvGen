@@ -23,9 +23,11 @@ const Cv: FC<PropTypes> = () => {
     return (
         <S.Container>
             <MyDocument />
-            <button onClick = { () => {
-                setToggleAction({ type: 'isReadyCV', value: false });
-            } }>
+            <button
+                style = {{ position: 'fixed', left: '15px', top: '15px', width: '100px', height: '100px' }}
+                onClick = { () => {
+                    setToggleAction({ type: 'isReadyCV', value: false });
+                } }>
                 Back
             </button>
         </S.Container>

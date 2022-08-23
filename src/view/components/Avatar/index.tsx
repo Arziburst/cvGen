@@ -16,15 +16,17 @@ type PropTypes = {
 export const Avatar: FC<PropTypes> = ({ avatarUrl, handleChangeImg }) => {
     return (
         <S.Container>
-            <S.UserAvatar
-                alt = 'user avatar'
-                isAvatar = { !!avatarUrl }
-                src = { avatarUrl ? avatarUrl : userIcon }
-            />
-            <S.InputFile
-                type = 'file'
-                onChange = { handleChangeImg }
-            />
+            <S.Wrapper>
+                <S.UserAvatar
+                    alt = 'user avatar'
+                    isAvatar = { !!avatarUrl }
+                    src = { avatarUrl ? avatarUrl : userIcon }
+                />
+                <S.InputFile
+                    type = 'file'
+                    onChange = { handleChangeImg }
+                />
+            </S.Wrapper>
         </S.Container>
     );
 };

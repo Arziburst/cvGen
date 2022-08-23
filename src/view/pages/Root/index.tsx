@@ -18,26 +18,42 @@ const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
     const {
-        handleChangeImg, handleChangeName,
+        handleChangeImg, handleChangeFirstname,
+        handleChangeLastname,
         handleChangePosition, handleChangeOverview,
-        avatar,
+        avatar, position, overview, firstName, lastName,
     } = useCustomHooks();
 
     return (
         <S.Container>
-            <S.Column>
-                <Avatar
-                    avatarUrl = { avatar }
-                    handleChangeImg = { handleChangeImg }
-                />
-            </S.Column>
-            <S.Column>
-                <Info
-                    handleChangeName = { handleChangeName }
-                    handleChangeOverview = { handleChangeOverview }
-                    handleChangePosition = { handleChangePosition }
-                />
-            </S.Column>
+            <S.Wrapper>
+                <S.Column>
+                    <Avatar
+                        avatarUrl = { avatar }
+                        handleChangeImg = { handleChangeImg }
+                    />
+                </S.Column>
+                <S.Column>
+                    <Info
+                        firstName = { firstName }
+                        handleChangeFirstname = { handleChangeFirstname }
+                        handleChangeLastname = { handleChangeLastname }
+                        handleChangeOverview = { handleChangeOverview }
+                        handleChangePosition = { handleChangePosition }
+                        lastName = { lastName }
+                        overview = { overview }
+                        position = { position }
+                    />
+                </S.Column>
+            </S.Wrapper>
+            <S.Wrapper>
+                <S.SecondColumn>
+                    {/* Content */}
+                </S.SecondColumn>
+                <S.SecondColumn>
+                    {/* Content */}
+                </S.SecondColumn>
+            </S.Wrapper>
             <button
                 style = {{ position: 'absolute', left: '15px', right: '15px', width: '80px', height: '100px' }}
                 onClick = { () => {

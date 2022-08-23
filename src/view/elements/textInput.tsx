@@ -25,11 +25,13 @@ export const Input = styled.input`
 type propsType = {
     handleChangeFunc: (event: ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
+    defaultValue: string;
 }
 
-export const AppInput: FC<propsType> = ({ handleChangeFunc, placeholder }) => {
+export const AppInput: FC<propsType> = ({ handleChangeFunc, placeholder, defaultValue }) => {
     return (
         <Input
+            defaultValue = { defaultValue }
             placeholder = { placeholder }
             type = 'text'
             onChange = { handleChangeFunc }
