@@ -7,7 +7,7 @@ import { AppInput, AppTextarea } from '../../elements';
 import * as S from './styles';
 
 // Types
-type voidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
+export type voidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
 
 type PropTypes = {
     firstName: string;

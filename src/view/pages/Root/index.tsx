@@ -8,11 +8,10 @@ import { useTogglesRedux } from '../../../bus/client/toggles';
 import { useCustomHooks } from './hooks';
 
 // Components
-import { ErrorBoundary, Avatar } from '../../components';
+import { ErrorBoundary, Avatar, Info } from '../../components';
 
 // Styles
 import * as S from './styles';
-import { Info } from '../../components/Info';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -48,7 +47,11 @@ const Root: FC = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <S.SecondColumn>
-                    {/* Content */}
+                    {/* <Contacts
+                        contacts = { contacts }
+                        inputChangeFunc = { handleChangeLink }
+                        removeItemFunc = { handleRemoveLink }
+                    /> */}
                 </S.SecondColumn>
                 <S.SecondColumn>
                     {/* Content */}
