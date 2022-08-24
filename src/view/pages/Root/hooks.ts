@@ -5,19 +5,16 @@ import { debounce } from 'lodash';
 import { ChangeEvent } from 'react';
 
 // Bus
-import { useFieldsRedux } from '../../../bus/client/fields';
+import { languagesItem, socialItem, useFieldsRedux } from '../../../bus/client/fields';
 
 export const useCustomHooks = () => {
-    const { setFieldsAction,
-        fieldsRedux: { avatar, firstName, lastName, position, overview },
+    const { setFieldsAction, setContactField, setLanguageField, removeLanguageField, createLanguageField,
+        removeContactField,
+        fieldsRedux: { avatar, name, position, overview, contacts, languages },
     } = useFieldsRedux();
 
-    const debounceChangeFirstname = debounce((text: string) => {
-        setFieldsAction({ type: 'firstName', value: text });
-    }, 300);
-
-    const debounceChangeLastname = debounce((text: string) => {
-        setFieldsAction({ type: 'lastName', value: text });
+    const debounceChangeName = debounce((text: string) => {
+        setFieldsAction({ type: 'name', value: text });
     }, 300);
 
     const debounceChangeImg = debounce((img: string) => {
@@ -32,6 +29,26 @@ export const useCustomHooks = () => {
         setFieldsAction({ type: 'overview', value: overview });
     }, 300);
 
+    const debounceChangeField = debounce((item: socialItem) => {
+        setContactField({ type: 'contacts', value: item });
+    }, 300);
+
+    const debounceChangeLanguageField = debounce((item: languagesItem) => {
+        setLanguageField({ type: 'languages', value: item });
+    }, 300);
+
+    const debounceRemoveLanguageField = debounce((id: string) => {
+        removeLanguageField({ type: 'languages', value: id });
+    }, 100);
+
+    const debounceCreateLanguageField = debounce((id: string) => {
+        createLanguageField({ type: 'languages', value: id });
+    }, 100);
+
+    const debounceRemoveContactField = debounce((id: string) => {
+        removeContactField({ type: 'contacts', value: id });
+    }, 100);
+
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
 
@@ -40,12 +57,8 @@ export const useCustomHooks = () => {
         }
     };
 
-    const handleChangeFirstname = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeFirstname(event.target.value);
-    };
-
-    const handleChangeLastname = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeLastname(event.target.value);
+    const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+        debounceChangeName(event.target.value);
     };
 
     const handleChangePosition = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,15 +69,40 @@ export const useCustomHooks = () => {
         debounceChangeOverview(event.target.value);
     };
 
+    const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: socialItem) => {
+        debounceChangeField({ ...social, url: event.target.value });
+    };
+
+    const handleChangeLanguageField = (event: ChangeEvent<HTMLInputElement>, language: languagesItem) => {
+        debounceChangeLanguageField({ ...language, language: event.target.value });
+    };
+
+    const handleRemoveLanguageField = (id: string) => {
+        debounceRemoveLanguageField(id);
+    };
+
+    const handleCreateLanguageField = (id: string) => {
+        debounceCreateLanguageField(id);
+    };
+
+    const handleRemoveContactField = (id: string) => {
+        debounceRemoveContactField(id);
+    };
+
     return {
         handleChangeImg,
-        handleChangeFirstname,
-        handleChangeLastname,
+        handleChangeName,
         handleChangePosition,
         handleChangeOverview,
+        handleChangeContactField,
+        handleChangeLanguageField,
+        handleRemoveLanguageField,
+        handleCreateLanguageField,
+        handleRemoveContactField,
+        name,
+        languages,
+        contacts,
         avatar,
-        firstName,
-        lastName,
         position,
         overview,
     };

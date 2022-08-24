@@ -4,25 +4,22 @@ import React, { ChangeEvent, FC } from 'react';
 // Styles
 import * as S from './styles';
 
+// Assets
+import deleteIcon from '../../../assets/images/delete-icon.svg';
+
 // Elements
 import { Title } from '../../elements';
-import { useFieldsRedux } from '../../../bus/client/fields';
-import { debounce } from 'lodash';
+
+// Types
 import { socialItem } from '../../../bus/client/fields';
+
 type PropTypes = {
+    contacts: Array<socialItem>;
+    handleChangeContactUrl: (event: ChangeEvent<HTMLInputElement>, elem: socialItem) => void;
+    handleRemoveContact: (id: string) => void;
 }
 
-export const Contacts: FC<PropTypes> = () => {
-    const { fieldsRedux: { contacts }, setContactField } = useFieldsRedux();
-
-    const debounceChangeField = debounce((item: socialItem) => {
-        setContactField({ type: 'contacts', value: item });
-    }, 300);
-
-    const handleChangeFirstname = (event: ChangeEvent<HTMLInputElement>, elem: socialItem) => {
-        debounceChangeField({ ...elem, url: event.target.value });
-    };
-
+export const Contacts: FC<PropTypes> = ({ contacts, handleChangeContactUrl, handleRemoveContact }) => {
     return (
         <S.Container>
             <Title text = 'Contacts'/>
@@ -33,8 +30,13 @@ export const Contacts: FC<PropTypes> = () => {
                             defaultValue = { elem.url }
                             placeholder = { elem.placeholder }
                             type = 'text'
-                            onChange = { (event) => handleChangeFirstname(event, elem) }
+                            onChange = { (event) => handleChangeContactUrl(event, elem) }
                         />
+                        <S.RemoveBtn onClick = { () => handleRemoveContact(elem.id) }>
+                            <img
+                                src = { deleteIcon }
+                            />
+                        </S.RemoveBtn>
                     </S.Item>
                 ))}
             </ul>

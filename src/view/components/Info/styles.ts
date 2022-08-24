@@ -9,9 +9,10 @@ export const Container = styled.section`
 export const InputNameBox = styled.div`
   input {
     font-family: 'NotoSans800', sans-serif;
-    font-size: 36px;
+    font-size: 30px;
     color: #e8e5e4;
     margin-bottom: 5px;
+    background-color: #384052;
   }
 `;
 
@@ -20,13 +21,15 @@ export const InputPositionBox = styled.div`
     color: #b0b1bb;
     text-transform: uppercase;
     margin-bottom: 10px;
+    background-color: #384052;
   }
 `;
 
 export const InputOverviewBox = styled.div`
-  input {
+  textarea {
     font-size: 14px;
     color: #c7c9d3;
     margin-bottom: 10px;
+    background-color: #384052;
   }
 `;

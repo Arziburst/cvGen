@@ -12,16 +12,20 @@ import { ErrorBoundary, Avatar, Info, Contacts } from '../../components';
 
 // Styles
 import * as S from './styles';
+import { Languages } from '../../components/Languages';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
     const {
-        handleChangeImg, handleChangeFirstname,
-        handleChangeLastname, handleChangePosition,
-        handleChangeOverview,
+        handleChangeImg, handleChangeName,
+        handleChangePosition, handleCreateLanguageField,
+        handleChangeOverview, handleChangeContactField,
+        handleRemoveLanguageField, handleChangeLanguageField,
+        handleRemoveContactField,
         avatar, position, overview,
-        firstName, lastName,
+        contacts, languages,
+        name,
     } = useCustomHooks();
 
     return (
@@ -35,12 +39,10 @@ const Root: FC = () => {
                 </S.Column>
                 <S.Column>
                     <Info
-                        firstName = { firstName }
-                        handleChangeFirstname = { handleChangeFirstname }
-                        handleChangeLastname = { handleChangeLastname }
+                        handleChangeName = { handleChangeName }
                         handleChangeOverview = { handleChangeOverview }
                         handleChangePosition = { handleChangePosition }
-                        lastName = { lastName }
+                        name = { name }
                         overview = { overview }
                         position = { position }
                     />
@@ -48,7 +50,17 @@ const Root: FC = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <S.SecondColumn>
-                    <Contacts />
+                    <Contacts
+                        contacts = { contacts }
+                        handleChangeContactUrl = { handleChangeContactField }
+                        handleRemoveContact = { handleRemoveContactField }
+                    />
+                    <Languages
+                        handleChangeLanguage = { handleChangeLanguageField }
+                        handleCreateLanguageField = { handleCreateLanguageField }
+                        handleRemoveLanguageField = { handleRemoveLanguageField }
+                        languages = { languages }
+                    />
                 </S.SecondColumn>
                 <S.SecondColumn>
                     {/* Content */}

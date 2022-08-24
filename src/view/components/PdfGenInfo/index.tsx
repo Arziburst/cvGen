@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight:   800,
-        fontSize:     '36px',
+        fontSize:     '30px',
         color:        '#e8e5e4',
         marginBottom: '5px',
     },
@@ -27,20 +27,16 @@ const styles = StyleSheet.create({
 
 // Types
 type PropTypes = {
-    firstName: string;
-    lastName: string;
+    name: string;
     position: string;
     overview: string;
 }
 
-export const PdfGenInfo = ({ firstName, lastName, position, overview }: PropTypes) => {
+export const PdfGenInfo = ({ name, position, overview }: PropTypes) => {
     return (
         <View style = { styles.section }>
             <Text style = { styles.name }>
-                {firstName}
-            </Text>
-            <Text style = { styles.name }>
-                {lastName}
+                {name}
             </Text>
             <Text style = { styles.position }>
                 {position}

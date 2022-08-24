@@ -6,8 +6,9 @@ import mailIcon from '../../../assets/images/mail-icon.svg';
 import phoneIcon from '../../../assets/images/phone-icon.svg';
 import homeIcon from '../../../assets/images/home-icon.svg';
 import linkedinicon from '../../../assets/images/linkedin-icon.svg';
-
+import githubIcon from '../../../assets/images/github-icon.svg';
 export const Container = styled.section`
+  padding-bottom: 30px;
 `;
 
 export const Item = styled.li`
@@ -15,7 +16,7 @@ export const Item = styled.li`
   display: flex;
   justify-content: space-between;
   padding-left: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 
   &::before {
     content: '';
@@ -52,6 +53,12 @@ export const Item = styled.li`
       background-image: url(${linkedinicon});
     }
   }
+
+   &:nth-child(5) {
+    &::before {
+      background-image: url(${githubIcon});
+    }
+  }
 `;
 
 export const SocialInput = styled.input`
@@ -64,6 +71,7 @@ export const SocialInput = styled.input`
   font-family: 'NotoSans500';
   font-weight: 500;
   color: #4c576b;
+  background-color: #cbb8ad;
 
   &:focus,
   &:hover {
@@ -74,5 +82,26 @@ export const SocialInput = styled.input`
    &::placeholder {
     font-size: inherit;
     color: inherit;
+  }
+`;
+
+export const RemoveBtn = styled.button`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  
+  &:hover {
+    background-color: #a69b97;
+  }
+
+  img {
+    height: 15px;
+    width: 15px;
   }
 `;

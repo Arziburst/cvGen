@@ -10,36 +10,26 @@ import * as S from './styles';
 export type voidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
 
 type PropTypes = {
-    firstName: string;
-    lastName: string;
+    name: string;
     position: string;
     overview: string;
-    handleChangeFirstname: voidFunc;
-    handleChangeLastname: voidFunc;
+    handleChangeName: voidFunc;
     handleChangePosition: voidFunc;
     handleChangeOverview: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const Info: FC<PropTypes> = ({
-    firstName, position, overview,
-    lastName,
-    handleChangeFirstname, handleChangeLastname,
+    position, overview, name,
+    handleChangeName,
     handleChangePosition, handleChangeOverview,
 }) => {
     return (
         <S.Container>
             <S.InputNameBox>
                 <AppInput
-                    defaultValue = { firstName }
-                    handleChangeFunc = { handleChangeFirstname }
-                    placeholder = 'First Name'
-                />
-            </S.InputNameBox>
-            <S.InputNameBox>
-                <AppInput
-                    defaultValue = { lastName }
-                    handleChangeFunc = { handleChangeLastname }
-                    placeholder = 'Last Name'
+                    defaultValue = { name }
+                    handleChangeFunc = { handleChangeName }
+                    placeholder = 'Name'
                 />
             </S.InputNameBox>
             <S.InputPositionBox>

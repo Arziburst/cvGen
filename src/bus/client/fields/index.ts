@@ -1,3 +1,6 @@
+//Init
+import { uniqueId } from 'lodash';
+
 // Core
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch } from '../../../tools/hooks';
@@ -6,12 +9,11 @@ import { useDispatch } from '../../../tools/hooks';
 import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
-    avatar:    '',
-    firstName: '',
-    lastName:  '',
-    position:  '',
-    overview:  '',
-    contacts:  [
+    avatar:   '',
+    name:     '',
+    position: '',
+    overview: '',
+    contacts: [
         {
             id:          'mail',
             url:         '',
@@ -32,6 +34,24 @@ const initialState = {
             url:         '',
             placeholder: 'Linkedin.com/in/yourname',
         },
+
+        {
+            id:          'github',
+            url:         '',
+            placeholder: 'github.com/YourName',
+        },
+    ],
+    languages: [
+        {
+            id:          uniqueId(),
+            language:    '',
+            placeholder: 'Language...',
+        },
+        {
+            id:          uniqueId(),
+            language:    '',
+            placeholder: 'Language...',
+        },
     ],
 };
 
@@ -45,7 +65,14 @@ export type socialItem = {
     placeholder: string;
 }
 
+export type languagesItem = {
+    id: string;
+    language: string;
+    placeholder: string;
+}
+
 type OptionsContactsField = { type: fieldsKeys, value: socialItem };
+type OptionsLanguageField = { type: fieldsKeys, value: languagesItem };
 
 // Slice
 export const fieldsSlice = createSlice({
@@ -69,6 +96,37 @@ export const fieldsSlice = createSlice({
                 return elem;
             }),
         }),
+        setLanguageField: (state, action: PayloadAction<OptionsLanguageField>) => ({
+            ...state,
+            languages: state.languages.map((language) => {
+                if (language.id === action.payload.value.id) {
+                    return {
+                        ...language,
+                        language: action.payload.value.language,
+                    };
+                }
+
+                return language;
+            }),
+        }),
+
+        removeLanguageField: (state, action: PayloadAction<Options>) => ({
+            ...state,
+            languages: state.languages.filter((language) => language.id !== action.payload.value),
+        }),
+
+        removeContactField: (state, action: PayloadAction<Options>) => ({
+            ...state,
+            contacts: state.contacts.filter((contact) => contact.id !== action.payload.value),
+        }),
+
+        createLanguageField: (state, action: PayloadAction<Options>) => ({
+            ...state,
+            languages: [
+                ...state.languages,
+                { id: action.payload.value, language: '', placeholder: 'Language...' },
+            ],
+        }),
         resetfieldsToInitialAction: () => initialState,
     },
 });
@@ -84,6 +142,10 @@ export const useFieldsRedux = () => {
         fieldsRedux:          useSelector(({ fields }) => fields),
         setFieldsAction:      (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
         setContactField:      (options: OptionsContactsField) => void dispatch(fieldsActions.setContactsField(options)),
+        setLanguageField:     (options: OptionsLanguageField) => void dispatch(fieldsActions.setLanguageField(options)),
+        removeLanguageField:  (options: Options) => void dispatch(fieldsActions.removeLanguageField(options)),
+        removeContactField:   (options: Options) => void dispatch(fieldsActions.removeContactField(options)),
+        createLanguageField:  (options: Options) => void dispatch(fieldsActions.createLanguageField(options)),
         resetFieldsToInitial: () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
     };
 };

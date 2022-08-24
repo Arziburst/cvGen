@@ -52,7 +52,7 @@ Font.register(
 );
 
 export const MyDocument = () => {
-    const { fieldsRedux: { avatar, firstName, lastName, overview, position }} = useFieldsRedux();
+    const { fieldsRedux: { avatar, name, overview, position }} = useFieldsRedux();
 
     return (
         <PDFViewer
@@ -67,8 +67,7 @@ export const MyDocument = () => {
                         </View>
                         <View style = { styles.wrapperSecondColumn }>
                             <PdfGenInfo
-                                firstName = { firstName }
-                                lastName = { lastName }
+                                name = { name }
                                 overview = { overview }
                                 position = { position }
                             />
