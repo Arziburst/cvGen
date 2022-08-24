@@ -37,9 +37,15 @@ const initialState = {
 
 // Types
 export type fieldsKeys = keyof typeof initialState;
-type Options = { type: fieldsKeys, value: string | object };
-type inputFields = {id: string; url: string}
-type OptionsField = { type: fieldsKeys, value: inputFields };
+type Options = { type: fieldsKeys, value: string };
+
+export type socialItem = {
+    id: string;
+    url: string;
+    placeholder: string;
+}
+
+type OptionsContactsField = { type: fieldsKeys, value: socialItem };
 
 // Slice
 export const fieldsSlice = createSlice({
@@ -50,28 +56,20 @@ export const fieldsSlice = createSlice({
             ...state,
             [ action.payload.type ]: action.payload.value,
         }),
-        resetfieldsToInitialAction: () => initialState,
-        removeContactsItem:         (state, action: PayloadAction<Options>) => {
-            return {
-                ...state,
-                contacts: state.contacts.filter((elem) => action.payload.value !== elem.id),
-            };
-        },
-        changeContactField: (state, action: PayloadAction<OptionsField>) => {
-            return {
-                ...state,
-                contacts: state.contacts.map((elem) => {
-                    if (elem.id === action.payload.value.id) {
-                        return {
-                            ...elem,
-                            url: action.payload.value.url,
-                        };
-                    }
+        setContactsField: (state, action: PayloadAction<OptionsContactsField>) => ({
+            ...state,
+            contacts: state.contacts.map((elem) => {
+                if (elem.id === action.payload.value.id) {
+                    return {
+                        ...elem,
+                        url: action.payload.value.url,
+                    };
+                }
 
-                    return elem;
-                }),
-            };
-        },
+                return elem;
+            }),
+        }),
+        resetfieldsToInitialAction: () => initialState,
     },
 });
 
@@ -85,8 +83,7 @@ export const useFieldsRedux = () => {
     return {
         fieldsRedux:          useSelector(({ fields }) => fields),
         setFieldsAction:      (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
-        removeContactsItem:   (id: string) => void dispatch(fieldsActions.removeContactsItem({ type: 'contacts', value: id })),
-        changeContactsField:  (obj: inputFields) => void dispatch(fieldsActions.changeContactField({ type: 'contacts', value: obj })),
+        setContactField:      (options: OptionsContactsField) => void dispatch(fieldsActions.setContactsField(options)),
         resetFieldsToInitial: () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
     };
 };

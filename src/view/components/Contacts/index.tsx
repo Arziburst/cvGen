@@ -1,39 +1,43 @@
 // Core
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 
 // Styles
 import * as S from './styles';
 
 // Elements
 import { Title } from '../../elements';
-
-type ContactLink = {
-    id: string;
-    url: string;
-    placeholder: string;
-}
-
+import { useFieldsRedux } from '../../../bus/client/fields';
+import { debounce } from 'lodash';
+import { socialItem } from '../../../bus/client/fields';
 type PropTypes = {
-    contacts: Array<ContactLink>;
-    removeItemFunc: (id: string) => void;
 }
 
-export const Contacts: FC<PropTypes> = ({ contacts, removeItemFunc }) => {
+export const Contacts: FC<PropTypes> = () => {
+    const { fieldsRedux: { contacts }, setContactField } = useFieldsRedux();
+
+    const debounceChangeField = debounce((item: socialItem) => {
+        setContactField({ type: 'contacts', value: item });
+    }, 300);
+
+    const handleChangeFirstname = (event: ChangeEvent<HTMLInputElement>, elem: socialItem) => {
+        debounceChangeField({ ...elem, url: event.target.value });
+    };
+
     return (
         <S.Container>
             <Title text = 'Contacts'/>
-            <S.List>
-                {contacts.map((item) => (
-                    <S.Item key = { item.id }>
-                        {/* <AppInput
-                            defaultValue = { item.url }
-                            handleChangeFunc = { inputChangeFunc }
-                            placeholder = { item.placeholder }
-                        /> */}
-                        <S.RemoveBtn onClick = { () => removeItemFunc(item.id) } />
+            <ul>
+                {contacts.map((elem) => (
+                    <S.Item key = { elem.id }>
+                        <S.SocialInput
+                            defaultValue = { elem.url }
+                            placeholder = { elem.placeholder }
+                            type = 'text'
+                            onChange = { (event) => handleChangeFirstname(event, elem) }
+                        />
                     </S.Item>
                 ))}
-            </S.List>
+            </ul>
         </S.Container>
     );
 };

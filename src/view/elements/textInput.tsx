@@ -21,7 +21,6 @@ export const Input = styled.input`
   }
 `;
 
-// Types
 type propsType = {
     handleChangeFunc: (event: ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;

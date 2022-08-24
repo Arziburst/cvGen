@@ -8,7 +8,7 @@ import { useTogglesRedux } from '../../../bus/client/toggles';
 import { useCustomHooks } from './hooks';
 
 // Components
-import { ErrorBoundary, Avatar, Info } from '../../components';
+import { ErrorBoundary, Avatar, Info, Contacts } from '../../components';
 
 // Styles
 import * as S from './styles';
@@ -18,9 +18,10 @@ const Root: FC = () => {
 
     const {
         handleChangeImg, handleChangeFirstname,
-        handleChangeLastname,
-        handleChangePosition, handleChangeOverview,
-        avatar, position, overview, firstName, lastName,
+        handleChangeLastname, handleChangePosition,
+        handleChangeOverview,
+        avatar, position, overview,
+        firstName, lastName,
     } = useCustomHooks();
 
     return (
@@ -47,11 +48,7 @@ const Root: FC = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <S.SecondColumn>
-                    {/* <Contacts
-                        contacts = { contacts }
-                        inputChangeFunc = { handleChangeLink }
-                        removeItemFunc = { handleRemoveLink }
-                    /> */}
+                    <Contacts />
                 </S.SecondColumn>
                 <S.SecondColumn>
                     {/* Content */}
