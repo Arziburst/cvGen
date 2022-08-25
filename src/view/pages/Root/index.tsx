@@ -13,6 +13,7 @@ import { ErrorBoundary, Avatar, Info, Contacts } from '../../components';
 // Styles
 import * as S from './styles';
 import { Languages } from '../../components/Languages';
+import { Experience } from '../../components/Experience';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -22,11 +23,14 @@ const Root: FC = () => {
         handleChangePosition, handleCreateLanguageField,
         handleChangeOverview, handleChangeContactField,
         handleRemoveLanguageField, handleChangeLanguageField,
-        handleRemoveContactField,
+        handleRemoveContactField, handleChangeExperienceDate,
+        handleChangeExperienceLocation, handleChangeExperiencePosition,
+        handleChangeDescriptionList,
         avatar, position, overview,
         contacts, languages,
-        name,
+        name, experience,
     } = useCustomHooks();
+    console.log(experience);
 
     return (
         <S.Container>
@@ -63,7 +67,13 @@ const Root: FC = () => {
                     />
                 </S.SecondColumn>
                 <S.SecondColumn>
-                    {/* Content */}
+                    <Experience
+                        experience = { experience }
+                        handleChangeDate = { handleChangeExperienceDate }
+                        handleChangeLocation = { handleChangeExperienceLocation }
+                        handleChangePosition = { handleChangeExperiencePosition }
+                        handleDescription = { handleChangeDescriptionList }
+                    />
                 </S.SecondColumn>
             </S.Wrapper>
             <button

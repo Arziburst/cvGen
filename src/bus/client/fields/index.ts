@@ -58,6 +58,21 @@ const initialState = {
             placeholder: 'Language...',
         },
     ],
+
+    experience: [
+        {
+            id:              uniqueId(),
+            position:        '',
+            location:        '',
+            date:            '',
+            descriptionList: [
+                {
+                    id:          uniqueId(),
+                    description: '',
+                },
+            ],
+        },
+    ],
 };
 
 // Types
@@ -76,8 +91,22 @@ export type languagesItem = {
     placeholder: string;
 }
 
+export type descriptionList = {
+    id: string;
+    description: string;
+}
+
+export type experienceItem = {
+    id: string;
+    position: string;
+    location: string;
+    date: string;
+    descriptionList: Array<descriptionList>;
+}
+
 type OptionsContactsField = { type: fieldsKeys, value: contactItem };
 type OptionsLanguageField = { type: fieldsKeys, value: languagesItem };
+type OptionsExperienceField = { type: fieldsKeys, value: experienceItem };
 
 // Slice
 export const fieldsSlice = createSlice({
@@ -99,6 +128,19 @@ export const fieldsSlice = createSlice({
                 }
 
                 return elem;
+            }),
+        }),
+        setExperienceField: (state, action: PayloadAction<OptionsExperienceField>) => ({
+            ...state,
+            experience: state.experience.map((experience) => {
+                if (experience.id === action.payload.value.id) {
+                    return {
+                        ...experience,
+                        ...action.payload.value,
+                    };
+                }
+
+                return experience;
             }),
         }),
         setLanguageField: (state, action: PayloadAction<OptionsLanguageField>) => ({
@@ -148,6 +190,8 @@ export const useFieldsRedux = () => {
         setFieldsAction:      (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
         setContactField:      (options: OptionsContactsField) => void dispatch(fieldsActions.setContactsField(options)),
         setLanguageField:     (options: OptionsLanguageField) => void dispatch(fieldsActions.setLanguageField(options)),
+        // eslint-disable-next-line max-len
+        setExperienceField:   (options: OptionsExperienceField) => void dispatch(fieldsActions.setExperienceField(options)),
         removeLanguageField:  (options: Options) => void dispatch(fieldsActions.removeLanguageField(options)),
         removeContactField:   (options: Options) => void dispatch(fieldsActions.removeContactField(options)),
         createLanguageField:  (options: Options) => void dispatch(fieldsActions.createLanguageField(options)),

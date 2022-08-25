@@ -15,7 +15,7 @@ export const BlockTitle = styled.h3`
    position: absolute;
    height: 20px;
    width: 20px;
-   left: -29px;
+   left: -30px;
    top: 2px;
    background-color: #4c576b;
   }

@@ -7,7 +7,7 @@ import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
     isOnline:  navigator.onLine,
-    isReadyCV: true,
+    isReadyCV: false,
 };
 
 // Types
