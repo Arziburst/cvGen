@@ -28,8 +28,8 @@ export const UserAvatar = styled.img<propsType>`
     border-radius: 50%;
     object-fit: cover;
   ` : `
-    width: 80%;
-    height: 80%;
+    width:  60%;
+    height: 60%;
   `}
 `;
 

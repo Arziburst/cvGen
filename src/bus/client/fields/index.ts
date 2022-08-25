@@ -16,17 +16,17 @@ const initialState = {
     contacts: [
         {
             id:          'mail',
-            url:         '',
+            url:         'dimaponomarenko@gmail.com',
             placeholder: 'youremail@gmail.com',
         },
         {
             id:          'phone',
-            url:         '',
+            url:         '+380993523741',
             placeholder: '+380 88 88 88 888',
         },
         {
             id:          'adress',
-            url:         '',
+            url:         'zaporizhia',
             placeholder: 'Ukraine, Zaporizhia. Charivna street 50',
         },
         {
@@ -59,7 +59,7 @@ const initialState = {
 export type fieldsKeys = keyof typeof initialState;
 type Options = { type: fieldsKeys, value: string };
 
-export type socialItem = {
+export type contactItem = {
     id: string;
     url: string;
     placeholder: string;
@@ -71,7 +71,7 @@ export type languagesItem = {
     placeholder: string;
 }
 
-type OptionsContactsField = { type: fieldsKeys, value: socialItem };
+type OptionsContactsField = { type: fieldsKeys, value: contactItem };
 type OptionsLanguageField = { type: fieldsKeys, value: languagesItem };
 
 // Slice

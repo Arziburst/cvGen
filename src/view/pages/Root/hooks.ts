@@ -5,7 +5,7 @@ import { debounce } from 'lodash';
 import { ChangeEvent } from 'react';
 
 // Bus
-import { languagesItem, socialItem, useFieldsRedux } from '../../../bus/client/fields';
+import { languagesItem, contactItem, useFieldsRedux } from '../../../bus/client/fields';
 
 export const useCustomHooks = () => {
     const { setFieldsAction, setContactField, setLanguageField, removeLanguageField, createLanguageField,
@@ -29,7 +29,7 @@ export const useCustomHooks = () => {
         setFieldsAction({ type: 'overview', value: overview });
     }, 300);
 
-    const debounceChangeField = debounce((item: socialItem) => {
+    const debounceChangeField = debounce((item: contactItem) => {
         setContactField({ type: 'contacts', value: item });
     }, 300);
 
@@ -69,7 +69,7 @@ export const useCustomHooks = () => {
         debounceChangeOverview(event.target.value);
     };
 
-    const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: socialItem) => {
+    const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: contactItem) => {
         debounceChangeField({ ...social, url: event.target.value });
     };
 

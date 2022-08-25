@@ -8,6 +8,7 @@ import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
 import { PdfGenAvatar } from '../../components/PdfGenAvatar';
 import { PdfGenInfo } from '../../components/PdfGenInfo';
+import { PdfGenContacts } from '../../components/PdfGenContacts';
 
 // Styles
 const styles = StyleSheet.create({
@@ -52,7 +53,7 @@ Font.register(
 );
 
 export const MyDocument = () => {
-    const { fieldsRedux: { avatar, name, overview, position }} = useFieldsRedux();
+    const { fieldsRedux: { avatar, name, overview, position, contacts }} = useFieldsRedux();
 
     return (
         <PDFViewer
@@ -75,7 +76,7 @@ export const MyDocument = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            {/* // Content */}
+                            <PdfGenContacts contacts = { contacts }/>
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             {/* // Content */}

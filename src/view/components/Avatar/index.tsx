@@ -2,7 +2,7 @@
 import React, { ChangeEvent, FC } from 'react';
 
 // Assets
-import userIcon from '../../../assets/images/user-icon.svg';
+import addUserIcon from '../../../assets/images/add-user-icon.svg';
 
 // Styles
 import * as S from './styles';
@@ -20,7 +20,7 @@ export const Avatar: FC<PropTypes> = ({ avatarUrl, handleChangeImg }) => {
                 <S.UserAvatar
                     alt = 'user avatar'
                     isAvatar = { !!avatarUrl }
-                    src = { avatarUrl ? avatarUrl : userIcon }
+                    src = { avatarUrl ? avatarUrl : addUserIcon }
                 />
                 <S.InputFile
                     type = 'file'

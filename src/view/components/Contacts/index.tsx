@@ -11,11 +11,11 @@ import deleteIcon from '../../../assets/images/delete-icon.svg';
 import { Title } from '../../elements';
 
 // Types
-import { socialItem } from '../../../bus/client/fields';
+import { contactItem } from '../../../bus/client/fields';
 
 type PropTypes = {
-    contacts: Array<socialItem>;
-    handleChangeContactUrl: (event: ChangeEvent<HTMLInputElement>, elem: socialItem) => void;
+    contacts: Array<contactItem>;
+    handleChangeContactUrl: (event: ChangeEvent<HTMLInputElement>, elem: contactItem) => void;
     handleRemoveContact: (id: string) => void;
 }
 
