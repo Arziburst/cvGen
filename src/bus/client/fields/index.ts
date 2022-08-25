@@ -26,18 +26,18 @@ const initialState = {
         },
         {
             id:          'adress',
-            url:         'zaporizhia',
+            url:         'street Valkovskaya, 19, Kyiv, 02000',
             placeholder: 'Ukraine, Zaporizhia. Charivna street 50',
         },
         {
-            id:          'linkedin',
-            url:         '',
+            id:          'Linkedin',
+            url:         'https://www.linkedin.com/in/dimaponomart683/',
             placeholder: 'Linkedin.com/in/yourname',
         },
 
         {
-            id:          'github',
-            url:         '',
+            id:          'Github',
+            url:         'https://github.com/VitalyiKudo/fast-ip-admin',
             placeholder: 'github.com/YourName',
         },
     ],

@@ -12,7 +12,8 @@ export const Container = styled.section`
 
 export const Wrapper = styled.section`
   position: relative;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   background-color: #f0efed;

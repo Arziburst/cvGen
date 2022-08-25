@@ -4,7 +4,10 @@ import { View, StyleSheet, Text, Image, Link } from '@react-pdf/renderer';
 
 // Assets
 import phoneIcon from '../../../assets/images/phone-icon.png';
-
+import homeIcon from '../../../assets/images/home-icon.png';
+import mailIcon from '../../../assets/images/mail-icon.png';
+import linkedinIcon from '../../../assets/images/linkedin-icon.png';
+import githubIcon from '../../../assets/images/github-icon.png';
 
 // Styles
 const styles = StyleSheet.create({
@@ -21,19 +24,26 @@ const styles = StyleSheet.create({
 
     },
     link: {
-        display:       'flex',
-        flexDirection: 'row',
-        alignItems:    'center',
+        flexDirection:  'row',
+        alignItems:     'center',
+        marginBottom:   5,
+        textDecoration: 'none',
     },
     linkText: {
-
+        fontWeight: 500,
+        fontSize:   8,
+        color:      '#4c576b',
+        marginLeft: 4,
     },
     linkImg: {
-        width:     '10px',
-        height:    '10px',
-        objectFit: 'cover',
+        width:     13,
+        height:    10,
+        objectFit: 'contain',
     },
 });
+
+// Elements
+import { PdfGenTitle } from '../../elements/pdfGenTitle';
 
 // Types
 import { contactItem } from '../../../bus/client/fields';
@@ -43,27 +53,51 @@ type PropTypes = {
 }
 
 export const PdfGenContacts = ({ contacts }: PropTypes) => {
-    console.log(contacts);
-
     return (
         <View style = { styles.box }>
-            <Text style = { styles.title }>Contacts</Text>
+            <PdfGenTitle text = 'Contacts'/>
             <ul style = { styles.list }>
-                {contacts?.map(({ id, url }) => (
-                    <li
-                        key = { id }
-                        style = { styles.item }>
-                        <Link
-                            src = { url }
-                            style = { styles.link }>
-                            <Image
-                                src = { phoneIcon }
-                                style = { styles.linkImg }
-                            />
-                            <Text style = { styles.linkText }>{url}</Text>
-                        </Link>
-                    </li>
-                ))}
+                {contacts?.map(({ id, url }) => {
+                    let iconUrl = '';
+
+                    if (id === 'mail') {
+                        iconUrl = mailIcon;
+                    } else if (id === 'phone') {
+                        iconUrl = phoneIcon;
+                    } else if (id === 'adress') {
+                        iconUrl = homeIcon;
+                    } else if (id === 'Linkedin') {
+                        iconUrl = linkedinIcon;
+                    } else if (id === 'Github') {
+                        iconUrl = githubIcon;
+                    }
+
+                    if (url.length === 0) {
+                        return null;
+                    }
+
+                    return (
+                        <li
+                            key = { id }
+                            style = { styles.item }>
+                            <Link
+                                break
+                                src = { url }
+                                style = { styles.link }>
+                                <Image
+                                    src = { iconUrl }
+                                    style = { styles.linkImg }
+                                />
+                                <Text
+                                    break
+                                    wrap
+                                    style = { styles.linkText }>
+                                    {id === 'Linkedin' ? id : url}
+                                </Text>
+                            </Link>
+                        </li>
+                    );
+                })}
             </ul>
         </View>
     );
