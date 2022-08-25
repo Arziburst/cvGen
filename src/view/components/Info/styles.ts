@@ -30,6 +30,7 @@ export const InputOverviewBox = styled.div`
     font-size: 14px;
     color: #c7c9d3;
     margin-bottom: 10px;
+    height: 80px;
     background-color: #384052;
   }
 `;

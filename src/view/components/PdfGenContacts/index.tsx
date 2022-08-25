@@ -12,16 +12,7 @@ import githubIcon from '../../../assets/images/github-icon.png';
 // Styles
 const styles = StyleSheet.create({
     box: {
-
-    },
-    title: {
-
-    },
-    list: {
-
-    },
-    item: {
-
+        paddingBottom: 20,
     },
     link: {
         flexDirection:  'row',
@@ -56,7 +47,7 @@ export const PdfGenContacts = ({ contacts }: PropTypes) => {
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Contacts'/>
-            <ul style = { styles.list }>
+            <ul>
                 {contacts?.map(({ id, url }) => {
                     let iconUrl = '';
 
@@ -77,9 +68,7 @@ export const PdfGenContacts = ({ contacts }: PropTypes) => {
                     }
 
                     return (
-                        <li
-                            key = { id }
-                            style = { styles.item }>
+                        <li key = { id }>
                             <Link
                                 break
                                 src = { url }

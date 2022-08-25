@@ -27,7 +27,7 @@ export const Languages: FC<PropTypes> = ({ languages, handleChangeLanguage, hand
     handleCreateLanguageField }) => {
     return (
         <S.Container>
-            <Title text = 'Language'/>
+            <Title text = 'Languages'/>
             <ul>
                 {
                     languages.map((language) => (

@@ -10,9 +10,9 @@ import { useSelector } from '../../../tools/hooks';
 
 const initialState = {
     avatar:   '',
-    name:     '',
-    position: '',
-    overview: '',
+    name:     'Dmitry Ponomarenko',
+    position: 'Front-end React developer',
+    overview: 'I started out as a creating responsive website and soon started taking on ReactJS, Redux and Typescript. I have a strong background in create responsive layout and user ui. I am proficient in JavaScript, CSS, HTML. I am also skilled at using Git. I’m always working towards updating my skills and keeping up with the industry.This is why I’ve recently started taking Next.js. So, I love the experience.',
     contacts: [
         {
             id:          'mail',
@@ -26,7 +26,7 @@ const initialState = {
         },
         {
             id:          'adress',
-            url:         'street Valkovskaya, 19, Kyiv, 02000',
+            url:         'Ukraine, Zaporizhia. Charivna street',
             placeholder: 'Ukraine, Zaporizhia. Charivna street 50',
         },
         {
@@ -37,19 +37,24 @@ const initialState = {
 
         {
             id:          'Github',
-            url:         'https://github.com/VitalyiKudo/fast-ip-admin',
+            url:         'https://github.com/SeniorDmitriy',
             placeholder: 'github.com/YourName',
         },
     ],
     languages: [
         {
             id:          uniqueId(),
-            language:    '',
+            language:    'Ukrainian',
             placeholder: 'Language...',
         },
         {
             id:          uniqueId(),
-            language:    '',
+            language:    'English',
+            placeholder: 'Language...',
+        },
+        {
+            id:          uniqueId(),
+            language:    'Japanese N5',
             placeholder: 'Language...',
         },
     ],

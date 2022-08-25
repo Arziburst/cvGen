@@ -9,19 +9,18 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight:   800,
-        fontSize:     '30px',
+        fontSize:     30,
         color:        '#e8e5e4',
-        marginBottom: '5px',
+        marginBottom: 3,
     },
     position: {
         textTransform: 'uppercase',
         color:         '#b0b1bb',
-        marginBottom:  '10px',
+        marginBottom:  5,
     },
     overview: {
-        fontSize:     '14px',
-        color:        '#c7c9d3',
-        marginBottom: '10px',
+        fontSize: 10,
+        color:    '#c7c9d3',
     },
 });
 
