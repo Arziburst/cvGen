@@ -8,7 +8,7 @@ import { AppInput, Title } from '../../elements';
 import * as S from './styles';
 
 // Types
-import { experienceItem } from '../../../bus/client/fields';
+import { descriptionList, experienceItem } from '../../../bus/client/fields';
 
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {
@@ -16,7 +16,7 @@ type PropTypes = {
     handleChangePosition: voidFunc;
     handleChangeLocation: voidFunc;
     handleChangeDate: voidFunc;
-    handleDescription: voidFunc;
+    handleDescription: (event: ChangeEvent<HTMLInputElement>, descrItem: descriptionList) => void;
 }
 
 export const Experience: FC<PropTypes> = (props) => {
@@ -56,8 +56,7 @@ export const Experience: FC<PropTypes> = (props) => {
                                 <S.Item key = { description.id }>
                                     <AppInput
                                         defaultValue = { description.description }
-                                        // eslint-disable-next-line max-len
-                                        handleChangeFunc = { (event) => handleDescription(event, { ...experience, ...description }) }
+                                        handleChangeFunc = { (event) => handleDescription(event, { ...description }) }
                                         placeholder = 'Your descr'
                                     />
                                 </S.Item>

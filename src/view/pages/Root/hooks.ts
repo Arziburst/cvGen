@@ -9,7 +9,7 @@ import { languagesItem, contactItem, useFieldsRedux, experienceItem, description
 
 export const useCustomHooks = () => {
     const { setFieldsAction, setContactField, setLanguageField, removeLanguageField, createLanguageField,
-        removeContactField, setExperienceField,
+        removeContactField, setExperienceField, setExperienceDescrField,
         fieldsRedux: { avatar, name, position, overview, contacts, languages, experience },
     } = useFieldsRedux();
 
@@ -49,8 +49,14 @@ export const useCustomHooks = () => {
         removeContactField({ type: 'contacts', value: id });
     }, 100);
 
-    const debounceChangeExperienceField = debounce((experience: experienceItem | experienceItem & descriptionList) => {
+    const debounceChangeExperienceField = debounce((experience: experienceItem) => {
         setExperienceField({ type: 'contacts', value: experience });
+    }, 300);
+
+    const debounceChangeExperienceDescrField = debounce((experience: descriptionList) => {
+        console.log(experience);
+
+        setExperienceDescrField({ type: 'contacts', value: experience });
     }, 300);
 
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
@@ -93,9 +99,9 @@ export const useCustomHooks = () => {
         debounceChangeExperienceField({ ...experience, location: event.target.value });
     };
 
-    const handleChangeDescriptionList = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => {
+    const handleChangeDescriptionList = (event: ChangeEvent<HTMLInputElement>, description: descriptionList) => {
         // eslint-disable-next-line max-len
-        debounceChangeExperienceField({ ...experience, description: event.target.value });
+        debounceChangeExperienceDescrField({ ...description, description: event.target.value });
     };
 
     const handleRemoveLanguageField = (id: string) => {

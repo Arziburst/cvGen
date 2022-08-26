@@ -15,7 +15,7 @@ export const Routes: FC = () => {
         <Suspense fallback = { <div>Spinner</div> }>
             {
                 isReadyCV
-                    ? <Private />
+                    ? <Private /> // TODO Rename route
                     : <Public />
             }
         </Suspense>

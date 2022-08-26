@@ -70,6 +70,14 @@ const initialState = {
                     id:          uniqueId(),
                     description: '',
                 },
+                {
+                    id:          uniqueId(),
+                    description: '',
+                },
+                {
+                    id:          uniqueId(),
+                    description: '',
+                },
             ],
         },
     ],
@@ -107,6 +115,7 @@ export type experienceItem = {
 type OptionsContactsField = { type: fieldsKeys, value: contactItem };
 type OptionsLanguageField = { type: fieldsKeys, value: languagesItem };
 type OptionsExperienceField = { type: fieldsKeys, value: experienceItem };
+type OptionsExperienceDescrField = { type: fieldsKeys, value: descriptionList };
 
 // Slice
 export const fieldsSlice = createSlice({
@@ -141,6 +150,26 @@ export const fieldsSlice = createSlice({
                 }
 
                 return experience;
+            }),
+        }),
+        setExperienceDescrField: (state, action: PayloadAction<OptionsExperienceDescrField>) => ({
+            ...state,
+            experience: state.experience.map((experience) => {
+                return {
+                    ...experience,
+                    descriptionList: [
+                        ...experience.descriptionList.map((descr) => {
+                            if (descr.id === action.payload.value.id) {
+                                return {
+                                    ...descr,
+                                    description: action.payload.value.description,
+                                };
+                            }
+
+                            return descr;
+                        }),
+                    ],
+                };
             }),
         }),
         setLanguageField: (state, action: PayloadAction<OptionsLanguageField>) => ({
@@ -186,18 +215,23 @@ export const useFieldsRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        fieldsRedux:          useSelector(({ fields }) => fields),
-        setFieldsAction:      (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
-        setContactField:      (options: OptionsContactsField) => void dispatch(fieldsActions.setContactsField(options)),
-        setLanguageField:     (options: OptionsLanguageField) => void dispatch(fieldsActions.setLanguageField(options)),
+        fieldsRedux:             useSelector(({ fields }) => fields),
+        setFieldsAction:         (options: Options) => void dispatch(fieldsActions.fieldsCreatorAction(options)),
         // eslint-disable-next-line max-len
-        setExperienceField:   (options: OptionsExperienceField) => void dispatch(fieldsActions.setExperienceField(options)),
-        removeLanguageField:  (options: Options) => void dispatch(fieldsActions.removeLanguageField(options)),
-        removeContactField:   (options: Options) => void dispatch(fieldsActions.removeContactField(options)),
-        createLanguageField:  (options: Options) => void dispatch(fieldsActions.createLanguageField(options)),
-        resetFieldsToInitial: () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
+        setContactField:         (options: OptionsContactsField) => void dispatch(fieldsActions.setContactsField(options)),
+        // eslint-disable-next-line max-len
+        setLanguageField:        (options: OptionsLanguageField) => void dispatch(fieldsActions.setLanguageField(options)),
+        // eslint-disable-next-line max-len
+        setExperienceField:      (options: OptionsExperienceField) => void dispatch(fieldsActions.setExperienceField(options)),
+        removeLanguageField:     (options: Options) => void dispatch(fieldsActions.removeLanguageField(options)),
+        removeContactField:      (options: Options) => void dispatch(fieldsActions.removeContactField(options)),
+        createLanguageField:     (options: Options) => void dispatch(fieldsActions.createLanguageField(options)),
+        // eslint-disable-next-line max-len
+        setExperienceDescrField: (options: OptionsExperienceDescrField) => void dispatch(fieldsActions.setExperienceDescrField(options)),
+        resetFieldsToInitial:    () => void dispatch(fieldsActions.resetfieldsToInitialAction()),
     };
 };
 
 // Used ./src/tools/helpers/makeRequest
 export const fieldsCreatorAction = fieldsActions.fieldsCreatorAction;
+

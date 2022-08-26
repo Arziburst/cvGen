@@ -4,21 +4,22 @@ import { configureStore } from '@reduxjs/toolkit';
 // Reducers
 import toggles from '../../bus/client/toggles';
 import fields from '../../bus/client/fields';
-// import __entityName__ from '../../bus/__entityName__/slice';
+import contactField from '../../bus/client/contactField';
+import languageField from '../../bus/client/languageField';
+import experienceField from '../../bus/client/experienceField';
 
 // Middleware
 import {
     middleware,
-    // sagaMiddleware, /* Uncomment If you use saga middleware */
 } from './middleware';
-
-// Saga
-// import { rootSaga } from './rootSaga'; /* Uncomment If you use saga middleware */
 
 export const store = configureStore({
     reducer: {
         toggles,
         fields,
+        contactField,
+        languageField,
+        experienceField,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
@@ -26,5 +27,3 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>
-
-// sagaMiddleware.run(rootSaga); /* Uncomment If you use saga middleware */

@@ -1,5 +1,5 @@
 // Core
-import React, { FC }/* , { FC } */ from 'react';
+import React, { FC } from 'react';
 import { defaultTheme, GlobalStyles } from '../assets';
 import { Routes } from './routes';
 import styled, { ThemeProvider } from 'styled-components';
