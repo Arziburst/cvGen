@@ -1,5 +1,6 @@
 // Core
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { debounce } from 'lodash';
 import { useDispatch } from '../../../tools/hooks';
 
 // Tools
@@ -34,7 +35,7 @@ const initialState = [
 ];
 
 // Types
-export type contactFieldKeys = keyof typeof initialState;
+export type contactFieldKeys = 'contacts';
 type Options = { type: contactFieldKeys, value: string };
 
 export type contactItem = {
@@ -55,8 +56,7 @@ export const contactFieldSlice = createSlice({
             [ action.payload.type ]: action.payload.value,
         }),
         setContactsField: (state, action: PayloadAction<OptionsContactsField>) => ({
-            ...state,
-            contacts: state.map((elem) => {
+            ...state.map((elem) => {
                 if (elem.id === action.payload.value.id) {
                     return {
                         ...elem,
@@ -67,6 +67,11 @@ export const contactFieldSlice = createSlice({
                 return elem;
             }),
         }),
+
+        removeContactField: (state, action: PayloadAction<Options>) => ({
+            ...state.filter((contact) => contact.id !== action.payload.value),
+        }),
+
         resetContactFieldToInitialAction: () => initialState,
     },
 });
@@ -84,7 +89,14 @@ export const useContactFieldRedux = () => {
             dispatch(contactFieldActions.contactFieldCreatorAction(options));
         },
         setContactField: (options: OptionsContactsField) => {
-            dispatch(contactFieldActions.setContactsField(options));
+            debounce(() => {
+                dispatch(contactFieldActions.setContactsField(options));
+            }, 300);
+        },
+        removeContactField: (options: Options) => {
+            debounce(() => {
+                dispatch(contactFieldActions.removeContactField(options));
+            }, 100);
         },
         resetContactFieldToInitial: () => void dispatch(contactFieldActions.resetContactFieldToInitialAction()),
     };

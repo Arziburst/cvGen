@@ -27,7 +27,7 @@ const Root: FC = () => {
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList,
         avatar, position, overview,
-        contacts, languages,
+        contactFieldRedux, languages,
         name, experience,
     } = useCustomHooks();
     console.log(experience);
@@ -55,7 +55,7 @@ const Root: FC = () => {
             <S.Wrapper>
                 <S.SecondColumn>
                     <Contacts
-                        contacts = { contacts }
+                        contacts = { contactFieldRedux }
                         handleChangeContactUrl = { handleChangeContactField }
                         handleRemoveContact = { handleRemoveContactField }
                     />

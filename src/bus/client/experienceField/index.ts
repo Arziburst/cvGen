@@ -43,6 +43,7 @@ type experienceItem = {
     descriptionList: Array<descriptionList>;
 }
 
+
 type experienceFieldKeys = keyof typeof initialState;
 type Options = { type: experienceFieldKeys, value: string };
 type OptionsExperienceField = { type: experienceFieldKeys, value: experienceItem };
@@ -103,13 +104,16 @@ export const useExperienceFieldRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        experienceFieldRedux:          useSelector(({ experienceField }) => experienceField),
-        // eslint-disable-next-line max-len
-        // setExperienceField:            (options: OptionsExperienceField) => void dispatch(experienceFieldCreatorAction.setExperienceField(options)),
-        // // eslint-disable-next-line max-len
-        // setExperienceDescrField:       (options: OptionsExperienceDescrField) => void dispatch(experienceFieldCreatorAction.setExperienceDescrField(options)),
-        // eslint-disable-next-line max-len
-        resetExperienceFieldToInitial: () => void dispatch(experienceFieldActions.resetExperienceFieldToInitialAction()),
+        experienceFieldRedux: useSelector(({ experienceField }) => experienceField),
+        setExperienceField:   (options: OptionsExperienceField) => {
+            dispatch(experienceFieldActions.setExperienceField(options));
+        },
+        setExperienceDescrField: (options: OptionsExperienceDescrField) => {
+            dispatch(experienceFieldActions.setExperienceDescrField(options));
+        },
+        resetExperienceFieldToInitial: () => {
+            dispatch(experienceFieldActions.resetExperienceFieldToInitialAction());
+        },
     };
 };
 

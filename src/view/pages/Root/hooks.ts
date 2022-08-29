@@ -3,15 +3,18 @@ import { debounce } from 'lodash';
 
 // Core
 import { ChangeEvent } from 'react';
+import { useContactFieldRedux } from '../../../bus/client/contactField';
 
 // Bus
 import { languagesItem, contactItem, useFieldsRedux, experienceItem, descriptionList } from '../../../bus/client/fields';
 
 export const useCustomHooks = () => {
-    const { setFieldsAction, setContactField, setLanguageField, removeLanguageField, createLanguageField,
-        removeContactField, setExperienceField, setExperienceDescrField,
-        fieldsRedux: { avatar, name, position, overview, contacts, languages, experience },
+    const { setFieldsAction, setLanguageField, removeLanguageField, createLanguageField,
+        setExperienceField, setExperienceDescrField,
+        fieldsRedux: { avatar, name, position, overview, languages, experience },
     } = useFieldsRedux();
+
+    const { contactFieldRedux, setContactField, removeContactField } = useContactFieldRedux();
 
     const debounceChangeName = debounce((text: string) => {
         setFieldsAction({ type: 'name', value: text });
@@ -29,10 +32,6 @@ export const useCustomHooks = () => {
         setFieldsAction({ type: 'overview', value: overview });
     }, 300);
 
-    const debounceChangeField = debounce((item: contactItem) => {
-        setContactField({ type: 'contacts', value: item });
-    }, 300);
-
     const debounceChangeLanguageField = debounce((item: languagesItem) => {
         setLanguageField({ type: 'languages', value: item });
     }, 300);
@@ -45,17 +44,11 @@ export const useCustomHooks = () => {
         createLanguageField({ type: 'languages', value: id });
     }, 100);
 
-    const debounceRemoveContactField = debounce((id: string) => {
-        removeContactField({ type: 'contacts', value: id });
-    }, 100);
-
     const debounceChangeExperienceField = debounce((experience: experienceItem) => {
         setExperienceField({ type: 'contacts', value: experience });
     }, 300);
 
     const debounceChangeExperienceDescrField = debounce((experience: descriptionList) => {
-        console.log(experience);
-
         setExperienceDescrField({ type: 'contacts', value: experience });
     }, 300);
 
@@ -80,7 +73,11 @@ export const useCustomHooks = () => {
     };
 
     const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: contactItem) => {
-        debounceChangeField({ ...social, url: event.target.value });
+        setContactField({ type: 'contacts', value: { ...social, url: event.target.value }});
+    };
+
+    const handleRemoveContactField = (id: string) => {
+        removeContactField({ type: 'contacts', value: id });
     };
 
     const handleChangeLanguageField = (event: ChangeEvent<HTMLInputElement>, language: languagesItem) => {
@@ -100,7 +97,6 @@ export const useCustomHooks = () => {
     };
 
     const handleChangeDescriptionList = (event: ChangeEvent<HTMLInputElement>, description: descriptionList) => {
-        // eslint-disable-next-line max-len
         debounceChangeExperienceDescrField({ ...description, description: event.target.value });
     };
 
@@ -110,10 +106,6 @@ export const useCustomHooks = () => {
 
     const handleCreateLanguageField = (id: string) => {
         debounceCreateLanguageField(id);
-    };
-
-    const handleRemoveContactField = (id: string) => {
-        debounceRemoveContactField(id);
     };
 
     return {
@@ -133,7 +125,7 @@ export const useCustomHooks = () => {
         experience,
         name,
         languages,
-        contacts,
+        contactFieldRedux,
         avatar,
         position,
         overview,
