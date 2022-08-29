@@ -55,22 +55,24 @@ export const contactFieldSlice = createSlice({
             ...state,
             [ action.payload.type ]: action.payload.value,
         }),
-        setContactsField: (state, action: PayloadAction<OptionsContactsField>) => ({
-            ...state.map((elem) => {
-                if (elem.id === action.payload.value.id) {
-                    return {
-                        ...elem,
-                        url: action.payload.value.url,
-                    };
-                }
+        setContactsField: (state, action: PayloadAction<OptionsContactsField>) => {
+            return [
+                ...state.map((elem) => {
+                    if (elem.id === action.payload.value.id) {
+                        return {
+                            ...elem,
+                            url: action.payload.value.url,
+                        };
+                    }
 
-                return elem;
-            }),
-        }),
+                    return elem;
+                }),
+            ];
+        },
 
-        removeContactField: (state, action: PayloadAction<Options>) => ({
-            ...state.filter((contact) => contact.id !== action.payload.value),
-        }),
+        removeContactField: (state, action: PayloadAction<Options>) => {
+            return [ ...state.filter((contact) => contact.id !== action.payload.value) ];
+        },
 
         resetContactFieldToInitialAction: () => initialState,
     },
@@ -89,14 +91,20 @@ export const useContactFieldRedux = () => {
             dispatch(contactFieldActions.contactFieldCreatorAction(options));
         },
         setContactField: (options: OptionsContactsField) => {
-            debounce(() => {
-                dispatch(contactFieldActions.setContactsField(options));
-            }, 300);
+            const appDebounce = () => {
+                debounce(() => {
+                    dispatch(contactFieldActions.setContactsField(options));
+                }, 300, { leading: true });
+            };
+
+            appDebounce();
         },
         removeContactField: (options: Options) => {
-            debounce(() => {
+            const appDebounce = (ms = 300) => debounce(() => {
                 dispatch(contactFieldActions.removeContactField(options));
-            }, 100);
+            }, ms, { leading: true });
+
+            appDebounce();
         },
         resetContactFieldToInitial: () => void dispatch(contactFieldActions.resetContactFieldToInitialAction()),
     };

@@ -30,7 +30,6 @@ const Root: FC = () => {
         contactFieldRedux, languages,
         name, experience,
     } = useCustomHooks();
-    console.log(experience);
 
     return (
         <S.Container>
