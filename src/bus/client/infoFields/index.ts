@@ -14,7 +14,7 @@ const initialState = {
 };
 
 // Types
-type fieldsKeys = 'infoFields';
+type fieldsKeys = keyof typeof initialState;
 type Options = { type: fieldsKeys, value: string };
 
 // Slice
@@ -50,19 +50,19 @@ export const useInfoFieldHooksRedux = () => {
     const { infoFieldsRedux, setFieldsAction } = useInfoFieldRedux();
 
     const debounceChangeName = debounce((text: string) => {
-        setFieldsAction({ type: 'infoFields', value: text });
+        setFieldsAction({ type: 'name', value: text });
     }, 300);
 
     const debounceChangeImg = debounce((img: string) => {
-        setFieldsAction({ type: 'infoFields', value: img });
+        setFieldsAction({ type: 'avatar', value: img });
     }, 300);
 
     const debounceChangePosition = debounce((position: string) => {
-        setFieldsAction({ type: 'infoFields', value: position });
+        setFieldsAction({ type: 'position', value: position });
     }, 300);
 
     const debounceChangeOverview = debounce((overview: string) => {
-        setFieldsAction({ type: 'infoFields', value: overview });
+        setFieldsAction({ type: 'overview', value: overview });
     }, 300);
 
 
