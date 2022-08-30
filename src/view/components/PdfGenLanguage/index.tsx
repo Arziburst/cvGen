@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 // Types
-import { languagesItem } from '../../../bus/client/fields';
+import { languagesItem } from '../../../bus/client/types';
 
 type PropTypes = {
     languages: Array<languagesItem>;

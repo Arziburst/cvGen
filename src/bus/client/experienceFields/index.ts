@@ -1,7 +1,10 @@
 // Core
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { uniqueId } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 import { useDispatch } from '../../../tools/hooks';
+
+// Bus
+import { descriptionList, experienceItem } from '../types';
 
 // Tools
 import { useSelector } from '../../../tools/hooks';
@@ -30,21 +33,7 @@ const initialState = [
 ];
 
 // Types
-type descriptionList = {
-    id: string;
-    description: string;
-}
-
-type experienceItem = {
-    id: string;
-    position: string;
-    location: string;
-    date: string;
-    descriptionList: Array<descriptionList>;
-}
-
-
-type experienceFieldKeys = keyof typeof initialState;
+type experienceFieldKeys = 'experienceFields';
 type Options = { type: experienceFieldKeys, value: string };
 type OptionsExperienceField = { type: experienceFieldKeys, value: experienceItem };
 type OptionsExperienceDescrField = { type: experienceFieldKeys, value: descriptionList };
@@ -100,11 +89,11 @@ export const experienceFieldSlice = createSlice({
 const experienceFieldActions = experienceFieldSlice.actions;
 export default experienceFieldSlice.reducer;
 
-export const useExperienceFieldRedux = () => {
+const useExperienceFieldRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        experienceFieldRedux: useSelector(({ experienceField }) => experienceField),
+        experienceFieldRedux: useSelector(({ experienceFields }) => experienceFields),
         setExperienceField:   (options: OptionsExperienceField) => {
             dispatch(experienceFieldActions.setExperienceField(options));
         },
@@ -114,6 +103,25 @@ export const useExperienceFieldRedux = () => {
         resetExperienceFieldToInitial: () => {
             dispatch(experienceFieldActions.resetExperienceFieldToInitialAction());
         },
+    };
+};
+
+
+export const useExperienceHooksRedux = () => {
+    const { experienceFieldRedux, setExperienceField, setExperienceDescrField } = useExperienceFieldRedux();
+
+    const debounceChangeExperienceField = debounce((experience: experienceItem) => {
+        setExperienceField({ type: 'experienceFields', value: experience });
+    }, 300);
+
+    const debounceChangeExperienceDescrField = debounce((experience: descriptionList) => {
+        setExperienceDescrField({ type: 'experienceFields', value: experience });
+    }, 300);
+
+    return {
+        experienceFieldRedux,
+        debounceChangeExperienceField,
+        debounceChangeExperienceDescrField,
     };
 };
 

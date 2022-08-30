@@ -8,18 +8,18 @@ import * as Pages from '../pages';
 // Tools
 import * as book from './book';
 
-export const Public: FC = () => {
+export const Preview: FC = () => {
     return (
         <Routes>
             <Route
-                element = { <Pages.Root /> }
-                path = { book.ROOT }
+                element = { <Pages.Preview /> }
+                path = { book.PREVIEW }
             />
             <Route
                 element = {
                     <Navigate
                         replace
-                        to = { book.ROOT }
+                        to = { book.PREVIEW }
                     />
                 }
                 path = '*'

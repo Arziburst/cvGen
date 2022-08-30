@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 import { PdfGenTitle } from '../../elements/pdfGenTitle';
 
 // Types
-import { contactItem } from '../../../bus/client/fields';
+import { contactItem } from '../../../bus/client/types';
 
 type PropTypes = {
     contacts: Array<contactItem>

@@ -3,6 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { debounce } from 'lodash';
 import { useDispatch } from '../../../tools/hooks';
 
+// Bus
+import { contactItem } from '../types';
+
 // Tools
 import { useSelector } from '../../../tools/hooks';
 
@@ -35,14 +38,8 @@ const initialState = [
 ];
 
 // Types
-export type contactFieldKeys = 'contacts';
+type contactFieldKeys = 'contactsFields';
 type Options = { type: contactFieldKeys, value: string };
-
-export type contactItem = {
-    id: string;
-    url: string;
-    placeholder: string;
-}
 
 type OptionsContactsField = { type: contactFieldKeys, value: contactItem };
 
@@ -55,7 +52,7 @@ export const contactFieldSlice = createSlice({
             ...state,
             [ action.payload.type ]: action.payload.value,
         }),
-        setContactsField: (state, action: PayloadAction<OptionsContactsField>) => {
+        setContactField: (state, action: PayloadAction<OptionsContactsField>) => {
             return [
                 ...state.map((elem) => {
                     if (elem.id === action.payload.value.id) {
@@ -82,32 +79,41 @@ export const contactFieldSlice = createSlice({
 const contactFieldActions = contactFieldSlice.actions;
 export default contactFieldSlice.reducer;
 
-export const useContactFieldRedux = () => {
+const useContactFieldRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        contactFieldRedux:     useSelector(({ contactField }) => contactField),
+        contactFieldRedux:     useSelector(({ contactFields }) => contactFields),
         setContactFieldAction: (options: Options) => {
             dispatch(contactFieldActions.contactFieldCreatorAction(options));
         },
         setContactField: (options: OptionsContactsField) => {
-            const appDebounce = () => {
-                debounce(() => {
-                    dispatch(contactFieldActions.setContactsField(options));
-                }, 300, { leading: true });
-            };
-
-            appDebounce();
+            dispatch(contactFieldActions.setContactField(options));
         },
         removeContactField: (options: Options) => {
-            const appDebounce = (ms = 300) => debounce(() => {
-                dispatch(contactFieldActions.removeContactField(options));
-            }, ms, { leading: true });
-
-            appDebounce();
+            dispatch(contactFieldActions.removeContactField(options));
         },
         resetContactFieldToInitial: () => void dispatch(contactFieldActions.resetContactFieldToInitialAction()),
     };
 };
+
+export const useContactHooksRedux = () => {
+    const { contactFieldRedux, removeContactField, setContactField } = useContactFieldRedux();
+
+    const debounceChangeContactField = debounce((text: contactItem) => {
+        setContactField({ type: 'contactsFields', value: text });
+    }, 300);
+
+    const debounceRemoveContactField = debounce((id: string) => {
+        removeContactField({ type: 'contactsFields', value: id });
+    }, 100);
+
+    return {
+        contactFieldRedux,
+        debounceRemoveContactField,
+        debounceChangeContactField,
+    };
+};
+
 
 export const contactFieldCreatorAction = contactFieldActions.contactFieldCreatorAction;

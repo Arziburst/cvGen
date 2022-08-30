@@ -14,7 +14,7 @@ import deleteIcon from '../../../assets/images/delete-icon.svg';
 import { Title } from '../../elements';
 
 // Types
-import { languagesItem } from '../../../bus/client/fields';
+import { languagesItem } from '../../../bus/client/types';
 
 type PropTypes = {
     languages: Array<languagesItem>

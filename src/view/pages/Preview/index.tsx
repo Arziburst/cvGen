@@ -26,9 +26,8 @@ const Root: FC = () => {
         handleRemoveContactField, handleChangeExperienceDate,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList,
-        avatar, position, overview,
-        contactFieldRedux, languages,
-        name, experience,
+        infoFieldsRedux, contactFieldRedux,
+        languageFieldRedux, experienceFieldRedux,
     } = useCustomHooks();
 
     return (
@@ -36,7 +35,7 @@ const Root: FC = () => {
             <S.Wrapper>
                 <S.Column>
                     <Avatar
-                        avatarUrl = { avatar }
+                        avatarUrl = { infoFieldsRedux.avatar }
                         handleChangeImg = { handleChangeImg }
                     />
                 </S.Column>
@@ -45,9 +44,9 @@ const Root: FC = () => {
                         handleChangeName = { handleChangeName }
                         handleChangeOverview = { handleChangeOverview }
                         handleChangePosition = { handleChangePosition }
-                        name = { name }
-                        overview = { overview }
-                        position = { position }
+                        name = { infoFieldsRedux.name }
+                        overview = { infoFieldsRedux.overview }
+                        position = { infoFieldsRedux.position }
                     />
                 </S.Column>
             </S.Wrapper>
@@ -62,12 +61,12 @@ const Root: FC = () => {
                         handleChangeLanguage = { handleChangeLanguageField }
                         handleCreateLanguageField = { handleCreateLanguageField }
                         handleRemoveLanguageField = { handleRemoveLanguageField }
-                        languages = { languages }
+                        languages = { languageFieldRedux }
                     />
                 </S.SecondColumn>
                 <S.SecondColumn>
                     <Experience
-                        experience = { experience }
+                        experience = { experienceFieldRedux }
                         handleChangeDate = { handleChangeExperienceDate }
                         handleChangeLocation = { handleChangeExperienceLocation }
                         handleChangePosition = { handleChangeExperiencePosition }

@@ -1,2 +1,2 @@
-export const ROOT = '/';
+export const PREVIEW = '/';
 export const CV = '/CV';

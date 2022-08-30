@@ -2,5 +2,5 @@
 import { lazy } from 'react';
 
 // Pages
-export const Root = lazy(() => import(/* webpackChunkName: "Root" */ './Root'));
+export const Preview = lazy(() => import(/* webpackChunkName: "Root" */ './Preview'));
 export const Cv = lazy(() => import(/* webpackChunkName: "Root" */ './Cv'));

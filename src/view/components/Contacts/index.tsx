@@ -11,7 +11,7 @@ import deleteIcon from '../../../assets/images/delete-icon.svg';
 import { Title } from '../../elements';
 
 // Types
-import { contactItem } from '../../../bus/client/fields';
+import { contactItem } from '../../../bus/client/types';
 
 type PropTypes = {
     contacts: Array<contactItem>;

@@ -1,7 +1,7 @@
 // Core
 import React from 'react';
 import { Document, Page, StyleSheet, PDFViewer, View, Font } from '@react-pdf/renderer';
-import { useFieldsRedux } from '../../../bus/client/fields';
+import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
 
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
@@ -10,6 +10,8 @@ import { PdfGenAvatar } from '../../components/PdfGenAvatar';
 import { PdfGenInfo } from '../../components/PdfGenInfo';
 import { PdfGenContacts } from '../../components/PdfGenContacts';
 import { PdfGenLanguage } from '../../components/PdfGenLanguage';
+import { useContactHooksRedux } from '../../../bus/client/contactFields';
+import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -54,7 +56,9 @@ Font.register(
 );
 
 export const MyDocument = () => {
-    const { fieldsRedux: { avatar, name, overview, position, contacts, languages }} = useFieldsRedux();
+    const { infoFieldsRedux } = useInfoFieldHooksRedux();
+    const { contactFieldRedux } = useContactHooksRedux();
+    const { languageFieldRedux } = useLanguageHooksRedux();
 
     return (
         <PDFViewer
@@ -65,20 +69,20 @@ export const MyDocument = () => {
                     style = { styles.page }>
                     <View style = { styles.wrapper }>
                         <View style = { styles.firstColumn }>
-                            <PdfGenAvatar avatar = { avatar } />
+                            <PdfGenAvatar avatar = { infoFieldsRedux.avatar } />
                         </View>
                         <View style = { styles.wrapperSecondColumn }>
                             <PdfGenInfo
-                                name = { name }
-                                overview = { overview }
-                                position = { position }
+                                name = { infoFieldsRedux.name }
+                                overview = { infoFieldsRedux.overview }
+                                position = { infoFieldsRedux.position }
                             />
                         </View>
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            <PdfGenContacts contacts = { contacts }/>
-                            <PdfGenLanguage languages = { languages }/>
+                            <PdfGenContacts contacts = { contactFieldRedux }/>
+                            <PdfGenLanguage languages = { languageFieldRedux }/>
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             {/* // Content */}

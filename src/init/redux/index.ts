@@ -3,10 +3,10 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // Reducers
 import toggles from '../../bus/client/toggles';
-import fields from '../../bus/client/fields';
-import contactField from '../../bus/client/contactField';
-import languageField from '../../bus/client/languageField';
-import experienceField from '../../bus/client/experienceField';
+import infoFields from '../../bus/client/infoFields';
+import contactFields from '../../bus/client/contactFields';
+import languageFields from '../../bus/client/languageFields';
+import experienceFields from '../../bus/client/experienceFields';
 
 // Middleware
 import {
@@ -16,10 +16,10 @@ import {
 export const store = configureStore({
     reducer: {
         toggles,
-        fields,
-        contactField,
-        languageField,
-        experienceField,
+        infoFields,
+        contactFields,
+        languageFields,
+        experienceFields,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',

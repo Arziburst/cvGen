@@ -8,7 +8,7 @@ import * as Pages from '../pages';
 // Tools
 import * as book from './book';
 
-export const Private: FC = () => {
+export const Cv: FC = () => {
     return (
         <Routes>
             <Route

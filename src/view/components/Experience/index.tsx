@@ -8,7 +8,7 @@ import { AppInput, Title } from '../../elements';
 import * as S from './styles';
 
 // Types
-import { descriptionList, experienceItem } from '../../../bus/client/fields';
+import { descriptionList, experienceItem } from '../../../bus/client/types';
 
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {

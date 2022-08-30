@@ -1,56 +1,36 @@
-// Init
-import { debounce } from 'lodash';
-
 // Core
 import { ChangeEvent } from 'react';
-import { useContactFieldRedux } from '../../../bus/client/contactField';
+import { useContactHooksRedux } from '../../../bus/client/contactFields';
+import { useExperienceHooksRedux } from '../../../bus/client/experienceFields';
 
 // Bus
-import { languagesItem, contactItem, useFieldsRedux, experienceItem, descriptionList } from '../../../bus/client/fields';
+import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
+import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
+
+// Types
+import { languagesItem, contactItem, experienceItem, descriptionList } from '../../../bus/client/types';
 
 export const useCustomHooks = () => {
-    const { setFieldsAction, setLanguageField, removeLanguageField, createLanguageField,
-        setExperienceField, setExperienceDescrField,
-        fieldsRedux: { avatar, name, position, overview, languages, experience },
-    } = useFieldsRedux();
+    const {
+        infoFieldsRedux, debounceChangeImg,
+        debounceChangeName, debounceChangeOverview,
+        debounceChangePosition,
+    } = useInfoFieldHooksRedux();
 
-    const { contactFieldRedux, setContactField, removeContactField } = useContactFieldRedux();
+    const {
+        contactFieldRedux, debounceChangeContactField,
+        debounceRemoveContactField,
+    } = useContactHooksRedux();
 
-    const debounceChangeName = debounce((text: string) => {
-        setFieldsAction({ type: 'name', value: text });
-    }, 300);
+    const {
+        experienceFieldRedux, debounceChangeExperienceField,
+        debounceChangeExperienceDescrField,
+    } = useExperienceHooksRedux();
 
-    const debounceChangeImg = debounce((img: string) => {
-        setFieldsAction({ type: 'avatar', value: img });
-    }, 300);
-
-    const debounceChangePosition = debounce((position: string) => {
-        setFieldsAction({ type: 'position', value: position });
-    }, 300);
-
-    const debounceChangeOverview = debounce((overview: string) => {
-        setFieldsAction({ type: 'overview', value: overview });
-    }, 300);
-
-    const debounceChangeLanguageField = debounce((item: languagesItem) => {
-        setLanguageField({ type: 'languages', value: item });
-    }, 300);
-
-    const debounceRemoveLanguageField = debounce((id: string) => {
-        removeLanguageField({ type: 'languages', value: id });
-    }, 100);
-
-    const debounceCreateLanguageField = debounce((id: string) => {
-        createLanguageField({ type: 'languages', value: id });
-    }, 100);
-
-    const debounceChangeExperienceField = debounce((experience: experienceItem) => {
-        setExperienceField({ type: 'contacts', value: experience });
-    }, 300);
-
-    const debounceChangeExperienceDescrField = debounce((experience: descriptionList) => {
-        setExperienceDescrField({ type: 'contacts', value: experience });
-    }, 300);
+    const {
+        languageFieldRedux, debounceChangeLanguageField,
+        debounceCreateLanguageField, debounceRemoveLanguageField,
+    } = useLanguageHooksRedux();
 
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
@@ -73,11 +53,11 @@ export const useCustomHooks = () => {
     };
 
     const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: contactItem) => {
-        setContactField({ type: 'contacts', value: { ...social, url: event.target.value }});
+        debounceChangeContactField({ ...social, url: event.target.value });
     };
 
     const handleRemoveContactField = (id: string) => {
-        removeContactField({ type: 'contacts', value: id });
+        debounceRemoveContactField(id);
     };
 
     const handleChangeLanguageField = (event: ChangeEvent<HTMLInputElement>, language: languagesItem) => {
@@ -122,12 +102,9 @@ export const useCustomHooks = () => {
         handleChangeExperiencePosition,
         handleChangeExperienceLocation,
         handleChangeDescriptionList,
-        experience,
-        name,
-        languages,
+        infoFieldsRedux,
+        experienceFieldRedux,
+        languageFieldRedux,
         contactFieldRedux,
-        avatar,
-        position,
-        overview,
     };
 };
