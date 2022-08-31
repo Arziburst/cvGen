@@ -7,11 +7,8 @@ import React, { ChangeEvent, FC } from 'react';
 // Styles
 import * as S from './styles';
 
-// Assets
-import deleteIcon from '../../../assets/images/delete-icon.svg';
-
 // Elements
-import { Title } from '../../elements';
+import { Title, RemoveBtn, AddBtn } from '../../elements';
 
 // Types
 import { languagesItem } from '../../../bus/client/types';
@@ -38,16 +35,12 @@ export const Languages: FC<PropTypes> = ({ languages, handleChangeLanguage, hand
                                 type = 'text'
                                 onChange = { (event) => handleChangeLanguage(event, language) }
                             />
-                            <S.RemoveBtn onClick = { () => handleRemoveLanguageField(language.id) }>
-                                <img
-                                    src = { deleteIcon }
-                                />
-                            </S.RemoveBtn>
+                            <RemoveBtn handleRemoveFunc = { () => handleRemoveLanguageField(language.id) }/>
                         </S.Item>
                     ))
                 }
             </ul>
-            <S.AddBtn onClick = { () => handleCreateLanguageField(uniqueId()) }>Add</S.AddBtn>
+            <AddBtn handleAddFunc = { () => handleCreateLanguageField(uniqueId()) } />
         </S.Container>
     );
 };

@@ -23,8 +23,8 @@ export const useCustomHooks = () => {
     } = useContactHooksRedux();
 
     const {
-        experienceFieldRedux, debounceChangeExperienceField,
-        debounceChangeExperienceDescrField,
+        experienceFieldRedux, debounceChangeExperienceFieldAction,
+        debounceChangeExperienceDescrField, debounceRemoveExperienceDescrField,
     } = useExperienceHooksRedux();
 
     const {
@@ -65,18 +65,18 @@ export const useCustomHooks = () => {
     };
 
     const handleChangeExperienceDate = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => {
-        debounceChangeExperienceField({ ...experience, date: event.target.value });
+        debounceChangeExperienceFieldAction({ ...experience, date: event.target.value }, 'date');
     };
 
     const handleChangeExperiencePosition = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => {
-        debounceChangeExperienceField({ ...experience, position: event.target.value });
+        debounceChangeExperienceFieldAction({ ...experience, position: event.target.value }, 'position');
     };
 
     const handleChangeExperienceLocation = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => {
-        debounceChangeExperienceField({ ...experience, location: event.target.value });
+        debounceChangeExperienceFieldAction({ ...experience, location: event.target.value }, 'location');
     };
 
-    const handleChangeDescriptionList = (event: ChangeEvent<HTMLInputElement>, description: descriptionList) => {
+    const handleChangeDescriptionList = (event: ChangeEvent<HTMLTextAreaElement>, description: descriptionList) => {
         debounceChangeExperienceDescrField({ ...description, description: event.target.value });
     };
 
@@ -86,6 +86,10 @@ export const useCustomHooks = () => {
 
     const handleCreateLanguageField = (id: string) => {
         debounceCreateLanguageField(id);
+    };
+
+    const handleRemoveExperienceField = (id: string) => {
+        debounceRemoveExperienceDescrField(id);
     };
 
     return {
@@ -102,6 +106,7 @@ export const useCustomHooks = () => {
         handleChangeExperiencePosition,
         handleChangeExperienceLocation,
         handleChangeDescriptionList,
+        handleRemoveExperienceField,
         infoFieldsRedux,
         experienceFieldRedux,
         languageFieldRedux,

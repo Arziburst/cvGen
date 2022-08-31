@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC } from 'react';
 import styled from 'styled-components';
+import { descriptionList } from '../../bus/client/types';
 
 // Styled
 export const Textarea = styled.textarea`
@@ -23,19 +24,22 @@ export const Textarea = styled.textarea`
   }
 `;
 
-// Types
+type handleChangeText = (event: ChangeEvent<HTMLTextAreaElement>) => void;
+type handleChangeObject = (event: ChangeEvent<HTMLTextAreaElement>, changeObj: descriptionList | undefined) => void;
+
 type propsType = {
-    handleChangeFunc: (event: ChangeEvent<HTMLTextAreaElement>) => void
+    handleChangeFunc: handleChangeText | handleChangeObject
     placeholder: string;
     defaultValue: string;
+    changeObj?: descriptionList
 }
 
-export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, defaultValue }) => {
+export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, defaultValue, changeObj }) => {
     return (
         <Textarea
             defaultValue = { defaultValue }
             placeholder = { placeholder }
-            onChange = { handleChangeFunc }
+            onChange = { (event) => handleChangeFunc(event, changeObj) }
         />
     );
 };

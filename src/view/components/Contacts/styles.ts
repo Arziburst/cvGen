@@ -84,24 +84,3 @@ export const SocialInput = styled.input`
     color: inherit;
   }
 `;
-
-export const RemoveBtn = styled.button`
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  
-  &:hover {
-    background-color: #a69b97;
-  }
-
-  img {
-    height: 15px;
-    width: 15px;
-  }
-`;

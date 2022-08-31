@@ -25,7 +25,7 @@ const Root: FC = () => {
         handleRemoveLanguageField, handleChangeLanguageField,
         handleRemoveContactField, handleChangeExperienceDate,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
-        handleChangeDescriptionList,
+        handleChangeDescriptionList, handleRemoveExperienceField,
         infoFieldsRedux, contactFieldRedux,
         languageFieldRedux, experienceFieldRedux,
     } = useCustomHooks();
@@ -71,6 +71,7 @@ const Root: FC = () => {
                         handleChangeLocation = { handleChangeExperienceLocation }
                         handleChangePosition = { handleChangeExperiencePosition }
                         handleDescription = { handleChangeDescriptionList }
+                        removeDescrField = { handleRemoveExperienceField }
                     />
                 </S.SecondColumn>
             </S.Wrapper>

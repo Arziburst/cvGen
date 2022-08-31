@@ -33,30 +33,35 @@ const initialState = [
 ];
 
 // Types
-type experienceFieldKeys = 'experienceFields';
-type Options = { type: experienceFieldKeys, value: string };
-type OptionsExperienceField = { type: experienceFieldKeys, value: experienceItem };
-type OptionsExperienceDescrField = { type: 'experienceDescrField', value: descriptionList };
+type experienceFieldKeys = keyof typeof initialState[0];
+type Options = { type: experienceFieldKeys, value: experienceItem };
+type OptionsSecond = { type: experienceFieldKeys, value: string };
+type OptionsExperienceDescrField = { type: experienceFieldKeys, value: descriptionList };
 
 // Slice
 export const experienceFieldSlice = createSlice({
     name:     'experienceField',
     initialState,
     reducers: {
-        experienceFieldCreatorAction: (state, action: PayloadAction<Options>) => ({
-            ...state,
-            [ action.payload.type ]: action.payload.value,
-        }),
-        setExperienceField: (state, action: PayloadAction<OptionsExperienceField>) => [
+        experienceFieldCreatorAction: (state, action: PayloadAction<Options>) => [
             ...state.map((experience) => {
                 if (experience.id === action.payload.value.id) {
                     return {
                         ...experience,
-                        ...action.payload.value,
+                        [ action.payload.type ]: action.payload.value[ action.payload.type ],
                     };
                 }
 
                 return experience;
+            }),
+        ],
+        removeExperienceField: (state, action: PayloadAction<OptionsSecond>) => [
+            ...state.map((experience) => {
+                return {
+                    ...experience,
+                    // eslint-disable-next-line max-len
+                    descriptionList: experience.descriptionList.filter((descItem) => descItem.id !== action.payload.value),
+                };
             }),
         ],
         setExperienceDescrField: (state, action: PayloadAction<OptionsExperienceDescrField>) => [
@@ -88,12 +93,15 @@ const useExperienceFieldRedux = () => {
     const dispatch = useDispatch();
 
     return {
-        experienceFieldRedux: useSelector(({ experienceFields }) => experienceFields),
-        setExperienceField:   (options: OptionsExperienceField) => {
-            dispatch(experienceFieldActions.setExperienceField(options));
+        experienceFieldRedux:     useSelector(({ experienceFields }) => experienceFields),
+        setExperienceFieldAction: (options: Options) => {
+            dispatch(experienceFieldActions.experienceFieldCreatorAction(options));
         },
         setExperienceDescrField: (options: OptionsExperienceDescrField) => {
             dispatch(experienceFieldActions.setExperienceDescrField(options));
+        },
+        removeExperienceDescrField: (options: OptionsSecond) => {
+            dispatch(experienceFieldActions.removeExperienceField(options));
         },
         // eslint-disable-next-line max-len
         resetExperienceFieldToInitial: () => void dispatch(experienceFieldActions.resetExperienceFieldToInitialAction()),
@@ -101,20 +109,28 @@ const useExperienceFieldRedux = () => {
 };
 
 export const useExperienceHooksRedux = () => {
-    const { experienceFieldRedux, setExperienceField, setExperienceDescrField } = useExperienceFieldRedux();
+    const {
+        experienceFieldRedux, setExperienceDescrField,
+        setExperienceFieldAction, removeExperienceDescrField,
+    } = useExperienceFieldRedux();
 
-    const debounceChangeExperienceField = debounce((experience: experienceItem) => {
-        setExperienceField({ type: 'experienceFields', value: experience });
+    const debounceChangeExperienceFieldAction = debounce((experience: experienceItem, type: Options['type']) => {
+        setExperienceFieldAction({ type, value: experience });
     }, 300);
 
     const debounceChangeExperienceDescrField = debounce((description: descriptionList) => {
-        setExperienceDescrField({ type: 'experienceDescrField', value: description });
+        setExperienceDescrField({ type: 'descriptionList', value: description });
     }, 300);
+
+    const debounceRemoveExperienceDescrField = debounce((id: string) => {
+        removeExperienceDescrField({ type: 'descriptionList', value: id });
+    }, 100);
 
     return {
         experienceFieldRedux,
-        debounceChangeExperienceField,
+        debounceChangeExperienceFieldAction,
         debounceChangeExperienceDescrField,
+        debounceRemoveExperienceDescrField,
     };
 };
 

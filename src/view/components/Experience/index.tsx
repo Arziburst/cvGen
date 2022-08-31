@@ -1,11 +1,11 @@
 // Core
 import React, { ChangeEvent, FC } from 'react';
-import { AppInput, Title } from '../../elements';
-
-// Bus
 
 // Styles
 import * as S from './styles';
+
+// Elements
+import { AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
 
 // Types
 import { descriptionList, experienceItem } from '../../../bus/client/types';
@@ -16,7 +16,8 @@ type PropTypes = {
     handleChangePosition: voidFunc;
     handleChangeLocation: voidFunc;
     handleChangeDate: voidFunc;
-    handleDescription: (event: ChangeEvent<HTMLInputElement>, descrItem: descriptionList) => void;
+    removeDescrField: (id: string) => void;
+    handleDescription: (event: ChangeEvent<HTMLTextAreaElement>, descrItem: descriptionList) => void;
 }
 
 export const Experience: FC<PropTypes> = (props) => {
@@ -26,6 +27,7 @@ export const Experience: FC<PropTypes> = (props) => {
         handleChangeLocation,
         handleChangePosition,
         handleDescription,
+        removeDescrField,
     } = props;
 
     return (
@@ -41,24 +43,29 @@ export const Experience: FC<PropTypes> = (props) => {
                                 placeholder = 'Your position'
                             />
                             <AppInput
-                                defaultValue = { experience.location }
+                                defaultValue = { experience.date }
                                 handleChangeFunc = { (event) => handleChangeDate(event, experience) }
                                 placeholder = 'Sept. 2016 - Present'
                             />
                         </S.Info>
-                        <AppInput
-                            defaultValue = { experience.location }
-                            handleChangeFunc = { (event) => handleChangeLocation(event, experience) }
-                            placeholder = 'Your location'
-                        />
+                        <S.Location>
+                            <AppInput
+                                defaultValue = { experience.location }
+                                handleChangeFunc = { (event) => handleChangeLocation(event, experience) }
+                                placeholder = 'Your location'
+                            />
+                        </S.Location>
                         <S.List>
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
-                                    <AppInput
+                                    <AppTextarea
                                         defaultValue = { description.description }
-                                        handleChangeFunc = { (event) => handleDescription(event, { ...description }) }
+                                        handleChangeFunc = { (event: ChangeEvent<HTMLTextAreaElement>) => {
+                                            handleDescription(event, { ...description });
+                                        } }
                                         placeholder = 'Your descr'
                                     />
+                                    <RemoveBtn handleRemoveFunc = { () => removeDescrField(description.id) } />
                                 </S.Item>
                             ))}
                         </S.List>

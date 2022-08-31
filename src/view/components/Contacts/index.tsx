@@ -4,11 +4,8 @@ import React, { ChangeEvent, FC } from 'react';
 // Styles
 import * as S from './styles';
 
-// Assets
-import deleteIcon from '../../../assets/images/delete-icon.svg';
-
 // Elements
-import { Title } from '../../elements';
+import { Title, RemoveBtn } from '../../elements';
 
 // Types
 import { contactItem } from '../../../bus/client/types';
@@ -32,11 +29,7 @@ export const Contacts: FC<PropTypes> = ({ contacts, handleChangeContactUrl, hand
                             type = 'text'
                             onChange = { (event) => handleChangeContactUrl(event, elem) }
                         />
-                        <S.RemoveBtn onClick = { () => handleRemoveContact(elem.id) }>
-                            <img
-                                src = { deleteIcon }
-                            />
-                        </S.RemoveBtn>
+                        <RemoveBtn handleRemoveFunc = { () => handleRemoveContact(elem.id) }/>
                     </S.Item>
                 ))}
             </ul>
