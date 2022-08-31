@@ -36,6 +36,10 @@ export const Location = styled.div`
 export const List = styled.ul`
 `;
 
+export const BtnBox = styled.div`
+  padding-left: 10px;
+`;
+
 export const Item = styled.li`
   display: flex;
   align-items: center;

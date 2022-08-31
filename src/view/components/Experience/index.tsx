@@ -1,15 +1,15 @@
 // Core
 import React, { ChangeEvent, FC } from 'react';
+import { uniqueId } from 'lodash';
 
 // Styles
 import * as S from './styles';
 
 // Elements
-import { AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
+import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
 
 // Types
 import { descriptionList, experienceItem } from '../../../bus/client/types';
-
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {
     experience: Array<experienceItem>;
@@ -17,6 +17,7 @@ type PropTypes = {
     handleChangeLocation: voidFunc;
     handleChangeDate: voidFunc;
     removeDescrField: (id: string) => void;
+    handleAddDescField: (id: string) => void;
     handleDescription: (event: ChangeEvent<HTMLTextAreaElement>, descrItem: descriptionList) => void;
 }
 
@@ -28,6 +29,7 @@ export const Experience: FC<PropTypes> = (props) => {
         handleChangePosition,
         handleDescription,
         removeDescrField,
+        handleAddDescField,
     } = props;
 
     return (
@@ -68,6 +70,9 @@ export const Experience: FC<PropTypes> = (props) => {
                                     <RemoveBtn handleRemoveFunc = { () => removeDescrField(description.id) } />
                                 </S.Item>
                             ))}
+                            <S.BtnBox>
+                                <AddBtn handleAddFunc = { () => handleAddDescField(uniqueId()) } />
+                            </S.BtnBox>
                         </S.List>
                     </S.Box>
                 ))}

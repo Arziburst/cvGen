@@ -25,6 +25,7 @@ export const useCustomHooks = () => {
     const {
         experienceFieldRedux, debounceChangeExperienceFieldAction,
         debounceChangeExperienceDescrField, debounceRemoveExperienceDescrField,
+        debounceAddExperienceDescrField,
     } = useExperienceHooksRedux();
 
     const {
@@ -92,6 +93,10 @@ export const useCustomHooks = () => {
         debounceRemoveExperienceDescrField(id);
     };
 
+    const handleAddExperienceField = () => {
+        debounceAddExperienceDescrField();
+    };
+
     return {
         handleChangeImg,
         handleChangeName,
@@ -107,6 +112,7 @@ export const useCustomHooks = () => {
         handleChangeExperienceLocation,
         handleChangeDescriptionList,
         handleRemoveExperienceField,
+        handleAddExperienceField,
         infoFieldsRedux,
         experienceFieldRedux,
         languageFieldRedux,
