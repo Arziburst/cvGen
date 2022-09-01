@@ -1,5 +1,5 @@
 // Re-export
 export * from './ErrorBoundary';
-export * from './Avatar';
-export * from './Info';
-export * from './Contacts';
+export * from './PreviewAvatar';
+export * from './PreviewInfo';
+export * from './PreviewContacts';

@@ -18,7 +18,7 @@ type PropTypes = {
     handleChangeOverview: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Info: FC<PropTypes> = ({
+export const PreviewInfo: FC<PropTypes> = ({
     position, overview, name,
     handleChangeName,
     handleChangePosition, handleChangeOverview,

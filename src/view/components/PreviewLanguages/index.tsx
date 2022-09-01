@@ -20,7 +20,7 @@ type PropTypes = {
     handleCreateLanguageField: (id: string) => void;
 }
 
-export const Languages: FC<PropTypes> = ({ languages, handleChangeLanguage, handleRemoveLanguageField,
+export const PreviewLanguages: FC<PropTypes> = ({ languages, handleChangeLanguage, handleRemoveLanguageField,
     handleCreateLanguageField }) => {
     return (
         <S.Container>

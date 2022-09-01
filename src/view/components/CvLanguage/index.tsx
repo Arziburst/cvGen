@@ -34,7 +34,7 @@ type PropTypes = {
     languages: Array<languagesItem>;
 }
 
-export const PdfGenLanguage = ({ languages }: PropTypes) => {
+export const CvLanguage = ({ languages }: PropTypes) => {
     return (
         <View style = { styles.section }>
             <PdfGenTitle text = 'Languages' />

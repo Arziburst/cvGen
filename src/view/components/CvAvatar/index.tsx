@@ -32,7 +32,7 @@ type PropTypes = {
     avatar: string
 }
 
-export const PdfGenAvatar = ({ avatar }: PropTypes) => {
+export const CvAvatar = ({ avatar }: PropTypes) => {
     return (
         <View style = { styles.box }>
             {

@@ -8,12 +8,12 @@ import { useTogglesRedux } from '../../../bus/client/toggles';
 import { useCustomHooks } from './hooks';
 
 // Components
-import { ErrorBoundary, Avatar, Info, Contacts } from '../../components';
+import { ErrorBoundary, PreviewAvatar, PreviewInfo, PreviewContacts } from '../../components';
 
 // Styles
 import * as S from './styles';
-import { Languages } from '../../components/Languages';
-import { Experience } from '../../components/Experience';
+import { PreviewLanguages } from '../../components/PreviewLanguages';
+import { PreviewExperience } from '../../components/PreviewExperience';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -39,13 +39,13 @@ const Root: FC = () => {
         <S.Container>
             <S.Wrapper>
                 <S.Column>
-                    <Avatar
+                    <PreviewAvatar
                         avatarUrl = { infoFieldsRedux.avatar }
                         handleChangeImg = { handleChangeImg }
                     />
                 </S.Column>
                 <S.Column>
-                    <Info
+                    <PreviewInfo
                         handleChangeName = { handleChangeName }
                         handleChangeOverview = { handleChangeOverview }
                         handleChangePosition = { handleChangePosition }
@@ -57,12 +57,12 @@ const Root: FC = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <S.SecondColumn>
-                    <Contacts
+                    <PreviewContacts
                         contacts = { contactFieldRedux }
                         handleChangeContactUrl = { handleChangeContactField }
                         handleRemoveContact = { handleRemoveContactField }
                     />
-                    <Languages
+                    <PreviewLanguages
                         handleChangeLanguage = { handleChangeLanguageField }
                         handleCreateLanguageField = { handleCreateLanguageField }
                         handleRemoveLanguageField = { handleRemoveLanguageField }
@@ -70,7 +70,7 @@ const Root: FC = () => {
                     />
                 </S.SecondColumn>
                 <S.SecondColumn>
-                    <Experience
+                    <PreviewExperience
                         experience = { experienceFieldRedux }
                         handleAddDescField = { handleAddExperienceField }
                         handleAddProject = { handleAddExperienceProjectField }

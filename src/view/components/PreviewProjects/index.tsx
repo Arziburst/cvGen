@@ -25,7 +25,7 @@ type PropTypes = {
     handleAddProject: () => void;
 }
 
-export const Projects: FC<PropTypes> = (props) => {
+export const PreviewProjects: FC<PropTypes> = (props) => {
     const {
         projects,
         handleChangeProjectsName,

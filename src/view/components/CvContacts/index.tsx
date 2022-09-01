@@ -43,7 +43,7 @@ type PropTypes = {
     contacts: Array<contactItem>
 }
 
-export const PdfGenContacts = ({ contacts }: PropTypes) => {
+export const CvContacts = ({ contacts }: PropTypes) => {
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Contacts'/>

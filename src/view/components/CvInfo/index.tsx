@@ -31,7 +31,7 @@ type PropTypes = {
     overview: string;
 }
 
-export const PdfGenInfo = ({ name, position, overview }: PropTypes) => {
+export const CvInfo = ({ name, position, overview }: PropTypes) => {
     return (
         <View style = { styles.section }>
             <Text style = { styles.name }>

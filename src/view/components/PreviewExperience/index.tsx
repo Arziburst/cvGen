@@ -6,7 +6,7 @@ import { uniqueId } from 'lodash';
 import * as S from './styles';
 
 // Components
-import { Projects } from '../Projects';
+import { PreviewProjects } from '../PreviewProjects';
 
 // Elements
 import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
@@ -34,7 +34,7 @@ type PropTypes = {
     handleAddProject: () => void;
 }
 
-export const Experience: FC<PropTypes> = (props) => {
+export const PreviewExperience: FC<PropTypes> = (props) => {
     const {
         experience,
         projects,
@@ -99,7 +99,7 @@ export const Experience: FC<PropTypes> = (props) => {
                         </S.List>
                     </S.Box>
                 ))}
-                <Projects
+                <PreviewProjects
                     handleAddProject = { handleAddProject }
                     handleChangeProjectsCustomer = { handleChangeProjectsCustomer }
                     handleChangeProjectsDuration = { handleChangeProjectsDuration }

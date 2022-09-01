@@ -16,7 +16,7 @@ type PropTypes = {
     handleRemoveContact: (id: string) => void;
 }
 
-export const Contacts: FC<PropTypes> = ({ contacts, handleChangeContactUrl, handleRemoveContact }) => {
+export const PreviewContacts: FC<PropTypes> = ({ contacts, handleChangeContactUrl, handleRemoveContact }) => {
     return (
         <S.Container>
             <Title text = 'Contacts'/>

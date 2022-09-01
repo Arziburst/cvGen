@@ -6,10 +6,10 @@ import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
-import { PdfGenAvatar } from '../../components/PdfGenAvatar';
-import { PdfGenInfo } from '../../components/PdfGenInfo';
-import { PdfGenContacts } from '../../components/PdfGenContacts';
-import { PdfGenLanguage } from '../../components/PdfGenLanguage';
+import { CvAvatar } from '../../components/CvAvatar';
+import { CvInfo } from '../../components/CvInfo';
+import { CvContacts } from '../../components/CvContacts';
+import { CvLanguage } from '../../components/CvLanguage';
 import { useContactHooksRedux } from '../../../bus/client/contactFields';
 import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
 
@@ -69,10 +69,10 @@ export const MyDocument = () => {
                     style = { styles.page }>
                     <View style = { styles.wrapper }>
                         <View style = { styles.firstColumn }>
-                            <PdfGenAvatar avatar = { infoFieldsRedux.avatar } />
+                            <CvAvatar avatar = { infoFieldsRedux.avatar } />
                         </View>
                         <View style = { styles.wrapperSecondColumn }>
-                            <PdfGenInfo
+                            <CvInfo
                                 name = { infoFieldsRedux.name }
                                 overview = { infoFieldsRedux.overview }
                                 position = { infoFieldsRedux.position }
@@ -81,8 +81,8 @@ export const MyDocument = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            <PdfGenContacts contacts = { contactFieldRedux }/>
-                            <PdfGenLanguage languages = { languageFieldRedux }/>
+                            <CvContacts contacts = { contactFieldRedux }/>
+                            <CvLanguage languages = { languageFieldRedux }/>
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             {/* // Content */}

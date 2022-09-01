@@ -13,7 +13,7 @@ type PropTypes = {
     handleChangeImg: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Avatar: FC<PropTypes> = ({ avatarUrl, handleChangeImg }) => {
+export const PreviewAvatar: FC<PropTypes> = ({ avatarUrl, handleChangeImg }) => {
     return (
         <S.Container>
             <S.Wrapper>
