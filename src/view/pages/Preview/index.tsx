@@ -14,6 +14,7 @@ import { ErrorBoundary, PreviewAvatar, PreviewInfo, PreviewContacts } from '../.
 import * as S from './styles';
 import { PreviewLanguages } from '../../components/PreviewLanguages';
 import { PreviewExperience } from '../../components/PreviewExperience';
+import { PreviewEducation } from '../../components/PreviewEducation';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -31,8 +32,11 @@ const Root: FC = () => {
         handleChangeProjectsResponsibilities, handleChangeProjectsRole,
         handleChangeProjectsStack, handleChangeProjectsTeamSize,
         handleRemoveExperienceProjectField, handleAddExperienceProjectField,
+        handleChangeEducationDateField,
+        handleChangeEducationDegreeField, handleChangeEducationDescriptionField,
         infoFieldsRedux, contactFieldRedux,
         languageFieldRedux, experienceFieldRedux,
+        educationFieldRedux,
     } = useCustomHooks();
 
     return (
@@ -70,6 +74,12 @@ const Root: FC = () => {
                     />
                 </S.SecondColumn>
                 <S.SecondColumn>
+                    <PreviewEducation
+                        educations = { educationFieldRedux }
+                        handleChangeDateField = { handleChangeEducationDateField }
+                        handleChangeDegreeField = { handleChangeEducationDegreeField }
+                        handleChangeDescriptionField = { handleChangeEducationDescriptionField }
+                    />
                     <PreviewExperience
                         experience = { experienceFieldRedux }
                         handleAddDescField = { handleAddExperienceField }

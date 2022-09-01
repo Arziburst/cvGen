@@ -12,7 +12,7 @@ import { PreviewProjects } from '../PreviewProjects';
 import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
 
 // Types
-import { descriptionList, experienceItem, inputVoidFunc, project, textareaVoidFunc } from '../../../bus/client/types';
+import { descriptionList, experienceItem, inputProjectVoidFunc, project, textareaProjectVoidFunc } from '../../../bus/client/types';
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {
     experience: Array<experienceItem>;
@@ -23,13 +23,13 @@ type PropTypes = {
     removeDescrField: (id: string) => void;
     handleAddDescField: (id: string) => void;
     handleDescription: (event: ChangeEvent<HTMLTextAreaElement>, descrItem: descriptionList) => void;
-    handleChangeProjectsName: inputVoidFunc;
-    handleChangeProjectsCustomer: inputVoidFunc;
-    handleChangeProjectsDuration: inputVoidFunc;
-    handleChangeProjectsRole: inputVoidFunc;
-    handleChangeProjectsResponsibilities: textareaVoidFunc;
-    handleChangeProjectsTeamSize: inputVoidFunc;
-    handleChangeProjectsStack: inputVoidFunc;
+    handleChangeProjectsName: inputProjectVoidFunc;
+    handleChangeProjectsCustomer: inputProjectVoidFunc;
+    handleChangeProjectsDuration: inputProjectVoidFunc;
+    handleChangeProjectsRole: inputProjectVoidFunc;
+    handleChangeProjectsResponsibilities: textareaProjectVoidFunc;
+    handleChangeProjectsTeamSize: inputProjectVoidFunc;
+    handleChangeProjectsStack: inputProjectVoidFunc;
     handleRemoveProject: (id: string) => void;
     handleAddProject: () => void;
 }

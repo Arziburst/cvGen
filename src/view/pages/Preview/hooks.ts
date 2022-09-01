@@ -6,6 +6,7 @@ import { useExperienceHooksRedux } from '../../../bus/client/experienceFields';
 // Bus
 import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
 import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
+import { useEducationHooksRedux } from '../../../bus/client/educationFields';
 
 // Types
 import { languagesItem, contactItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
@@ -33,6 +34,12 @@ export const useCustomHooks = () => {
         languageFieldRedux, debounceChangeLanguageField,
         debounceCreateLanguageField, debounceRemoveLanguageField,
     } = useLanguageHooksRedux();
+
+    const {
+        educationFieldRedux, debounceChangeDateField,
+        debounceChangeDegreeField, debounceChangeDescriptionField,
+        debounceRemoveEducationField, debounceAddEducationField,
+    } = useEducationHooksRedux();
 
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
@@ -114,6 +121,17 @@ export const useCustomHooks = () => {
         debounceRemoveLanguageField(id);
     };
 
+    const handleChangeEducationDateField = (event: ChangeEvent<HTMLInputElement>) => {
+        debounceChangeDateField(event.target.value);
+    };
+
+    const handleChangeEducationDegreeField = (event: ChangeEvent<HTMLInputElement>) => {
+        debounceChangeDegreeField(event.target.value);
+    };
+    const handleChangeEducationDescriptionField = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        debounceChangeDescriptionField(event.target.value);
+    };
+
     const handleCreateLanguageField = (id: string) => {
         debounceCreateLanguageField(id);
     };
@@ -129,9 +147,16 @@ export const useCustomHooks = () => {
     const handleRemoveExperienceProjectField = (id: string) => {
         debounceRemoveExperienceProjectField(id);
     };
+    const handleRemoveEducationDateField = (id: string) => {
+        debounceRemoveEducationField(id);
+    };
 
     const handleAddExperienceProjectField = () => {
         debounceAddExperienceProjectField();
+    };
+
+    const handleAddEducationField = () => {
+        debounceAddEducationField();
     };
 
     return {
@@ -159,9 +184,15 @@ export const useCustomHooks = () => {
         handleChangeProjectsStack,
         handleRemoveExperienceProjectField,
         handleAddExperienceProjectField,
+        handleChangeEducationDateField,
+        handleChangeEducationDegreeField,
+        handleChangeEducationDescriptionField,
+        handleRemoveEducationDateField,
+        handleAddEducationField,
         infoFieldsRedux,
         experienceFieldRedux,
         languageFieldRedux,
         contactFieldRedux,
+        educationFieldRedux,
     };
 };

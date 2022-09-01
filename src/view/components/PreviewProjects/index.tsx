@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 
 // Bus
-import { inputVoidFunc, textareaVoidFunc } from '../../../bus/client/types';
+import { inputProjectVoidFunc, textareaProjectVoidFunc } from '../../../bus/client/types';
 import { project } from '../../../bus/client/types';
 
 // Styles
@@ -14,13 +14,13 @@ import { AddBtn, AppInput, AppTextarea, RemoveBtn } from '../../elements';
 // Types
 type PropTypes = {
     projects: Array<project>;
-    handleChangeProjectsName: inputVoidFunc;
-    handleChangeProjectsCustomer: inputVoidFunc;
-    handleChangeProjectsDuration: inputVoidFunc;
-    handleChangeProjectsRole: inputVoidFunc;
-    handleChangeProjectsResponsibilities: textareaVoidFunc;
-    handleChangeProjectsTeamSize: inputVoidFunc;
-    handleChangeProjectsStack: inputVoidFunc;
+    handleChangeProjectsName: inputProjectVoidFunc;
+    handleChangeProjectsCustomer: inputProjectVoidFunc;
+    handleChangeProjectsDuration: inputProjectVoidFunc;
+    handleChangeProjectsRole: inputProjectVoidFunc;
+    handleChangeProjectsResponsibilities: textareaProjectVoidFunc;
+    handleChangeProjectsTeamSize: inputProjectVoidFunc;
+    handleChangeProjectsStack: inputProjectVoidFunc;
     handleRemoveProject: (id: string) => void;
     handleAddProject: () => void;
 }

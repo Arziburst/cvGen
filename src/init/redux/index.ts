@@ -7,6 +7,7 @@ import infoFields from '../../bus/client/infoFields';
 import contactFields from '../../bus/client/contactFields';
 import languageFields from '../../bus/client/languageFields';
 import experienceFields from '../../bus/client/experienceFields';
+import educationFields from '../../bus/client/educationFields';
 
 // Middleware
 import {
@@ -20,6 +21,7 @@ export const store = configureStore({
         contactFields,
         languageFields,
         experienceFields,
+        educationFields,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',

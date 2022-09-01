@@ -8,6 +8,13 @@ export type contactItem = {
     placeholder: string;
 }
 
+export type educationItem = {
+    id: string;
+    date: string;
+    degree: string;
+    description: string;
+}
+
 export type descriptionList = {
     id: string;
     description: string;
@@ -39,6 +46,8 @@ export type languagesItem = {
     placeholder: string;
 }
 
-export type inputVoidFunc = (event: ChangeEvent<HTMLInputElement>, project: project) => void;
+export type inputVoidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
+export type inputProjectVoidFunc = (event: ChangeEvent<HTMLInputElement>, project: project) => void;
 
-export type textareaVoidFunc = (event: ChangeEvent<HTMLTextAreaElement>, project: project) => void;
+export type textareaVoidFunc = (event: ChangeEvent<HTMLTextAreaElement>) => void;
+export type textareaProjectVoidFunc = (event: ChangeEvent<HTMLTextAreaElement>, project: project) => void;
