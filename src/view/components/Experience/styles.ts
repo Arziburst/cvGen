@@ -63,4 +63,5 @@ export const Item = styled.li`
 `;
 
 export const Box = styled.div`
+  margin-bottom: 10px;
 `;

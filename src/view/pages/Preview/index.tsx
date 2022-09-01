@@ -26,7 +26,11 @@ const Root: FC = () => {
         handleRemoveContactField, handleChangeExperienceDate,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList, handleRemoveExperienceField,
-        handleAddExperienceField,
+        handleAddExperienceField, handleChangeProjectsCustomer,
+        handleChangeProjectsDuration, handleChangeProjectsName,
+        handleChangeProjectsResponsibilities, handleChangeProjectsRole,
+        handleChangeProjectsStack, handleChangeProjectsTeamSize,
+        handleRemoveExperienceProjectField, handleAddExperienceProjectField,
         infoFieldsRedux, contactFieldRedux,
         languageFieldRedux, experienceFieldRedux,
     } = useCustomHooks();
@@ -69,10 +73,20 @@ const Root: FC = () => {
                     <Experience
                         experience = { experienceFieldRedux }
                         handleAddDescField = { handleAddExperienceField }
+                        handleAddProject = { handleAddExperienceProjectField }
                         handleChangeDate = { handleChangeExperienceDate }
                         handleChangeLocation = { handleChangeExperienceLocation }
                         handleChangePosition = { handleChangeExperiencePosition }
+                        handleChangeProjectsCustomer = { handleChangeProjectsCustomer }
+                        handleChangeProjectsDuration = { handleChangeProjectsDuration }
+                        handleChangeProjectsName = { handleChangeProjectsName }
+                        handleChangeProjectsResponsibilities = { handleChangeProjectsResponsibilities }
+                        handleChangeProjectsRole = { handleChangeProjectsRole }
+                        handleChangeProjectsStack = { handleChangeProjectsStack }
+                        handleChangeProjectsTeamSize = { handleChangeProjectsTeamSize }
                         handleDescription = { handleChangeDescriptionList }
+                        handleRemoveProject = { handleRemoveExperienceProjectField }
+                        projects = { experienceFieldRedux[ 0 ].projects }
                         removeDescrField = { handleRemoveExperienceField }
                     />
                 </S.SecondColumn>

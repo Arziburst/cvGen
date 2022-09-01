@@ -8,7 +8,7 @@ import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
 import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
 
 // Types
-import { languagesItem, contactItem, experienceItem, descriptionList } from '../../../bus/client/types';
+import { languagesItem, contactItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
 
 export const useCustomHooks = () => {
     const {
@@ -25,7 +25,8 @@ export const useCustomHooks = () => {
     const {
         experienceFieldRedux, debounceChangeExperienceFieldAction,
         debounceChangeExperienceDescrField, debounceRemoveExperienceDescrField,
-        debounceAddExperienceDescrField,
+        debounceAddExperienceDescrField, debounceChangeProjectsFieldAction,
+        debounceAddExperienceProjectField, debounceRemoveExperienceProjectField,
     } = useExperienceHooksRedux();
 
     const {
@@ -77,6 +78,34 @@ export const useCustomHooks = () => {
         debounceChangeExperienceFieldAction({ ...experience, location: event.target.value }, 'location');
     };
 
+    const handleChangeProjectsName = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, name: event.target.value });
+    };
+
+    const handleChangeProjectsCustomer = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, customer: event.target.value });
+    };
+
+    const handleChangeProjectsDuration = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, duration: event.target.value });
+    };
+
+    const handleChangeProjectsRole = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, role: event.target.value });
+    };
+
+    const handleChangeProjectsResponsibilities = (event: ChangeEvent<HTMLTextAreaElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, responsibilities: event.target.value });
+    };
+
+    const handleChangeProjectsTeamSize = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, teamSize: event.target.value });
+    };
+
+    const handleChangeProjectsStack = (event: ChangeEvent<HTMLInputElement>, project: project) => {
+        debounceChangeProjectsFieldAction({ ...project, stack: event.target.value });
+    };
+
     const handleChangeDescriptionList = (event: ChangeEvent<HTMLTextAreaElement>, description: descriptionList) => {
         debounceChangeExperienceDescrField({ ...description, description: event.target.value });
     };
@@ -97,6 +126,14 @@ export const useCustomHooks = () => {
         debounceAddExperienceDescrField();
     };
 
+    const handleRemoveExperienceProjectField = (id: string) => {
+        debounceRemoveExperienceProjectField(id);
+    };
+
+    const handleAddExperienceProjectField = () => {
+        debounceAddExperienceProjectField();
+    };
+
     return {
         handleChangeImg,
         handleChangeName,
@@ -113,6 +150,15 @@ export const useCustomHooks = () => {
         handleChangeDescriptionList,
         handleRemoveExperienceField,
         handleAddExperienceField,
+        handleChangeProjectsName,
+        handleChangeProjectsCustomer,
+        handleChangeProjectsDuration,
+        handleChangeProjectsRole,
+        handleChangeProjectsResponsibilities,
+        handleChangeProjectsTeamSize,
+        handleChangeProjectsStack,
+        handleRemoveExperienceProjectField,
+        handleAddExperienceProjectField,
         infoFieldsRedux,
         experienceFieldRedux,
         languageFieldRedux,

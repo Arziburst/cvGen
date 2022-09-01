@@ -5,31 +5,54 @@ import { uniqueId } from 'lodash';
 // Styles
 import * as S from './styles';
 
+// Components
+import { Projects } from '../Projects';
+
 // Elements
 import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
 
 // Types
-import { descriptionList, experienceItem } from '../../../bus/client/types';
+import { descriptionList, experienceItem, inputVoidFunc, project, textareaVoidFunc } from '../../../bus/client/types';
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {
     experience: Array<experienceItem>;
+    projects: Array<project>;
     handleChangePosition: voidFunc;
     handleChangeLocation: voidFunc;
     handleChangeDate: voidFunc;
     removeDescrField: (id: string) => void;
     handleAddDescField: (id: string) => void;
     handleDescription: (event: ChangeEvent<HTMLTextAreaElement>, descrItem: descriptionList) => void;
+    handleChangeProjectsName: inputVoidFunc;
+    handleChangeProjectsCustomer: inputVoidFunc;
+    handleChangeProjectsDuration: inputVoidFunc;
+    handleChangeProjectsRole: inputVoidFunc;
+    handleChangeProjectsResponsibilities: textareaVoidFunc;
+    handleChangeProjectsTeamSize: inputVoidFunc;
+    handleChangeProjectsStack: inputVoidFunc;
+    handleRemoveProject: (id: string) => void;
+    handleAddProject: () => void;
 }
 
 export const Experience: FC<PropTypes> = (props) => {
     const {
         experience,
+        projects,
         handleChangeDate,
         handleChangeLocation,
         handleChangePosition,
         handleDescription,
         removeDescrField,
         handleAddDescField,
+        handleChangeProjectsCustomer,
+        handleChangeProjectsDuration,
+        handleChangeProjectsName,
+        handleChangeProjectsResponsibilities,
+        handleChangeProjectsRole,
+        handleChangeProjectsStack,
+        handleChangeProjectsTeamSize,
+        handleRemoveProject,
+        handleAddProject,
     } = props;
 
     return (
@@ -76,6 +99,18 @@ export const Experience: FC<PropTypes> = (props) => {
                         </S.List>
                     </S.Box>
                 ))}
+                <Projects
+                    handleAddProject = { handleAddProject }
+                    handleChangeProjectsCustomer = { handleChangeProjectsCustomer }
+                    handleChangeProjectsDuration = { handleChangeProjectsDuration }
+                    handleChangeProjectsName = { handleChangeProjectsName }
+                    handleChangeProjectsResponsibilities = { handleChangeProjectsResponsibilities }
+                    handleChangeProjectsRole = { handleChangeProjectsRole }
+                    handleChangeProjectsStack = { handleChangeProjectsStack }
+                    handleChangeProjectsTeamSize = { handleChangeProjectsTeamSize }
+                    handleRemoveProject = { handleRemoveProject }
+                    projects = { projects }
+                />
             </S.Inner>
         </S.Container>
     );

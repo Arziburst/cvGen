@@ -4,7 +4,7 @@ import { debounce, uniqueId } from 'lodash';
 import { useDispatch } from '../../../tools/hooks';
 
 // Bus
-import { descriptionList, experienceItem } from '../types';
+import { descriptionList, experienceItem, project } from '../types';
 
 // Tools
 import { useSelector } from '../../../tools/hooks';
@@ -21,6 +21,18 @@ const initialState = [
                 description: '',
             },
         ],
+        projects: [
+            {
+                id:               uniqueId(),
+                name:             'Ukrainian news site',
+                customer:         'Ukraine',
+                duration:         '7 (January 2020 - Jule 2020)',
+                role:             'Front-end developer',
+                responsibilities: 'Create responsive and adaptive SEO frendly website. It great project wherein i use new adaptive approaches and custom grid container Also use optimization modern format images, fonts, icons.',
+                teamSize:         '5',
+                stack:            'html, css3, sass, jquery, js, gulp, bem methodology',
+            },
+        ],
     },
 ];
 
@@ -28,6 +40,7 @@ const initialState = [
 type experienceFieldKeys = keyof typeof initialState[0];
 type Options = { type: experienceFieldKeys, value: experienceItem };
 type OptionsSecond = { type: experienceFieldKeys, value: string };
+type OptionsProjectsSecond = { type: experienceFieldKeys, value: project };
 type OptionsExperienceField = { type: experienceFieldKeys, value: descriptionList };
 
 // Slice
@@ -56,11 +69,29 @@ export const experienceFieldSlice = createSlice({
                 };
             }),
         ],
+        removeExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => [
+            ...state.map((experience) => {
+                return {
+                    ...experience,
+                    // eslint-disable-next-line max-len
+                    projects: experience.projects.filter((project) => project.id !== action.payload.value),
+                };
+            }),
+        ],
         addExperienceField: (state, action: PayloadAction<OptionsSecond>) => [
             ...state.map((experience) => {
                 return {
                     ...experience,
                     descriptionList: [ ...experience.descriptionList, { id: action.payload.value, description: ''  }],
+                };
+            }),
+        ],
+        addExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => [
+            ...state.map((experience) => {
+                return {
+                    ...experience,
+                    // eslint-disable-next-line max-len
+                    projects: [ ...experience.projects, { id: action.payload.value, customer: '', duration: '', name: '', responsibilities: '', role: '', stack: '', teamSize: '' }],
                 };
             }),
         ],
@@ -77,6 +108,23 @@ export const experienceFieldSlice = createSlice({
                         }
 
                         return descr;
+                    }),
+                };
+            }),
+        ],
+        setExperienceProjectsField: (state, action: PayloadAction<OptionsProjectsSecond>) => [
+            ...state.map((experience) => {
+                return {
+                    ...experience,
+                    projects: experience.projects.map((project) => {
+                        if (project.id === action.payload.value.id) {
+                            return {
+                                ...project,
+                                ...action.payload.value,
+                            };
+                        }
+
+                        return project;
                     }),
                 };
             }),
@@ -100,11 +148,20 @@ const useExperienceFieldRedux = () => {
         setExperienceDescrField: (options: OptionsExperienceField) => {
             dispatch(experienceFieldActions.setExperienceDescrField(options));
         },
+        setExperienceProjectField: (options: OptionsProjectsSecond) => {
+            dispatch(experienceFieldActions.setExperienceProjectsField(options));
+        },
         removeExperienceDescrField: (options: OptionsSecond) => {
             dispatch(experienceFieldActions.removeExperienceField(options));
         },
+        removeExperienceProjectField: (options: OptionsSecond) => {
+            dispatch(experienceFieldActions.removeExperienceProjectField(options));
+        },
         addExperienceDescrField: (options: OptionsSecond) => {
             dispatch(experienceFieldActions.addExperienceField(options));
+        },
+        addExperienceProjectField: (options: OptionsSecond) => {
+            dispatch(experienceFieldActions.addExperienceProjectField(options));
         },
         // eslint-disable-next-line max-len
         resetExperienceFieldToInitial: () => void dispatch(experienceFieldActions.resetExperienceFieldToInitialAction()),
@@ -115,11 +172,16 @@ export const useExperienceHooksRedux = () => {
     const {
         experienceFieldRedux, setExperienceDescrField,
         setExperienceFieldAction, removeExperienceDescrField,
-        addExperienceDescrField,
+        addExperienceDescrField, setExperienceProjectField,
+        removeExperienceProjectField, addExperienceProjectField,
     } = useExperienceFieldRedux();
 
     const debounceChangeExperienceFieldAction = debounce((experience: experienceItem, type: Options['type']) => {
         setExperienceFieldAction({ type, value: experience });
+    }, 300);
+
+    const debounceChangeProjectsFieldAction = debounce((experience: project) => {
+        setExperienceProjectField({ type: 'projects', value: experience });
     }, 300);
 
     const debounceChangeExperienceDescrField = debounce((description: descriptionList) => {
@@ -130,8 +192,16 @@ export const useExperienceHooksRedux = () => {
         removeExperienceDescrField({ type: 'descriptionList', value: id });
     }, 100);
 
+    const debounceRemoveExperienceProjectField = debounce((id: string) => {
+        removeExperienceProjectField({ type: 'projects', value: id });
+    }, 100);
+
     const debounceAddExperienceDescrField = debounce(() => {
         addExperienceDescrField({ type: 'descriptionList', value: uniqueId() });
+    }, 100);
+
+    const debounceAddExperienceProjectField = debounce(() => {
+        addExperienceProjectField({ type: 'projects', value: uniqueId() });
     }, 100);
 
     return {
@@ -140,6 +210,9 @@ export const useExperienceHooksRedux = () => {
         debounceChangeExperienceDescrField,
         debounceRemoveExperienceDescrField,
         debounceAddExperienceDescrField,
+        debounceChangeProjectsFieldAction,
+        debounceRemoveExperienceProjectField,
+        debounceAddExperienceProjectField,
     };
 };
 
