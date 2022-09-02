@@ -10,7 +10,7 @@ import { CvAvatar } from '../../components/CvAvatar';
 import { CvInfo } from '../../components/CvInfo';
 import { CvContacts } from '../../components/CvContacts';
 import { CvLanguage } from '../../components/CvLanguage';
-import { useContactHooksRedux } from '../../../bus/client/contactFields';
+import { useContactField } from '../../../bus/client/contactFields';
 import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
 
 // Styles
@@ -57,7 +57,7 @@ Font.register(
 
 export const MyDocument = () => {
     const { infoFieldsRedux } = useInfoFieldHooksRedux();
-    const { contactFieldRedux } = useContactHooksRedux();
+    const { contactFields } = useContactField();
     const { languageFieldRedux } = useLanguageHooksRedux();
 
     return (
@@ -81,7 +81,7 @@ export const MyDocument = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            <CvContacts contacts = { contactFieldRedux }/>
+                            <CvContacts contacts = { contactFields }/>
                             <CvLanguage languages = { languageFieldRedux }/>
                         </View>
                         <View style = { styles.contentSecondColumn }>

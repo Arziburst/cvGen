@@ -1,6 +1,5 @@
 // Core
 import { ChangeEvent } from 'react';
-import { useContactHooksRedux } from '../../../bus/client/contactFields';
 import { useExperienceHooksRedux } from '../../../bus/client/experienceFields';
 
 // Bus
@@ -9,7 +8,7 @@ import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
 import { useEducationHooksRedux } from '../../../bus/client/educationFields';
 
 // Types
-import { languagesItem, contactItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
+import { languagesItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
 
 export const useCustomHooks = () => {
     const {
@@ -17,11 +16,6 @@ export const useCustomHooks = () => {
         debounceChangeName, debounceChangeOverview,
         debounceChangePosition,
     } = useInfoFieldHooksRedux();
-
-    const {
-        contactFieldRedux, debounceChangeContactField,
-        debounceRemoveContactField,
-    } = useContactHooksRedux();
 
     const {
         experienceFieldRedux, debounceChangeExperienceFieldAction,
@@ -59,14 +53,6 @@ export const useCustomHooks = () => {
 
     const handleChangeOverview = (event: ChangeEvent<HTMLTextAreaElement>) => {
         debounceChangeOverview(event.target.value);
-    };
-
-    const handleChangeContactField = (event: ChangeEvent<HTMLInputElement>, social: contactItem) => {
-        debounceChangeContactField({ ...social, url: event.target.value });
-    };
-
-    const handleRemoveContactField = (id: string) => {
-        debounceRemoveContactField(id);
     };
 
     const handleChangeLanguageField = (event: ChangeEvent<HTMLInputElement>, language: languagesItem) => {
@@ -164,11 +150,9 @@ export const useCustomHooks = () => {
         handleChangeName,
         handleChangePosition,
         handleChangeOverview,
-        handleChangeContactField,
         handleChangeLanguageField,
         handleRemoveLanguageField,
         handleCreateLanguageField,
-        handleRemoveContactField,
         handleChangeExperienceDate,
         handleChangeExperiencePosition,
         handleChangeExperienceLocation,
@@ -192,7 +176,6 @@ export const useCustomHooks = () => {
         infoFieldsRedux,
         experienceFieldRedux,
         languageFieldRedux,
-        contactFieldRedux,
         educationFieldRedux,
     };
 };

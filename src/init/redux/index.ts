@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // Reducers
 import toggles from '../../bus/client/toggles';
 import infoFields from '../../bus/client/infoFields';
-import contactFields from '../../bus/client/contactFields';
+import contactFields from '../../bus/client/contactFields/slice';
 import languageFields from '../../bus/client/languageFields';
 import experienceFields from '../../bus/client/experienceFields';
 import educationFields from '../../bus/client/educationFields';

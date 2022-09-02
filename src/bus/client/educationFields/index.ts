@@ -3,9 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { debounce, uniqueId } from 'lodash';
 import { useDispatch } from '../../../tools/hooks';
 
-// Bus
-// import { educationItem } from '../types';
-
 // Tools
 import { useSelector } from '../../../tools/hooks';
 
@@ -29,27 +26,28 @@ export const educationFieldSlice = createSlice({
     name:     'educationField',
     initialState,
     reducers: {
-        educationFieldCreatorAction: (state, action: PayloadAction<Options>) => ({
-            ...state,
-            [ action.payload.type ]: action.payload.value,
-        }),
+        educationFieldCreatorAction: (state, action: PayloadAction<Options>) => [
+            ...state.map((education) => {
+                return {
+                    ...education,
+                    [ action.payload.type ]: action.payload.value,
+                };
+            }),
+        ],
 
         removeEducationField: (state, action: PayloadAction<Options>) => {
             return [ ...state.filter((education) => education.id !== action.payload.value) ];
         },
 
-        addEducationField: (state, action: PayloadAction<Options>) => {
-            return [
-                ...state.map(() => {
-                    return {
-                        id:          action.payload.value,
-                        date:        '',
-                        degree:      '',
-                        description: '',
-                    };
-                }),
-            ];
-        },
+        addEducationField: (state, action: PayloadAction<Options>) => [
+            ...state,
+            {
+                id:          action.payload.value,
+                date:        '',
+                degree:      '',
+                description: '',
+            },
+        ],
 
         resetEducationFieldToInitialAction: () => initialState,
     },

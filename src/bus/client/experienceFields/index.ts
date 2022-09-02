@@ -48,24 +48,23 @@ export const experienceFieldSlice = createSlice({
     name:     'experienceField',
     initialState,
     reducers: {
-        experienceFieldCreatorAction: (state, action: PayloadAction<Options>) => [
-            ...state.map((experience) => {
-                if (experience.id === action.payload.value.id) {
-                    return {
-                        ...experience,
-                        [ action.payload.type ]: action.payload.value[ action.payload.type ],
-                    };
-                }
+        experienceFieldCreatorAction: (state, action: PayloadAction<Options>) => state.map((experience) => {
+            if (experience.id === action.payload.value.id) {
+                return {
+                    ...experience,
+                    [ action.payload.type ]: action.payload.value[ action.payload.type ],
+                };
+            }
 
-                return experience;
-            }),
-        ],
-        removeExperienceField: (state, action: PayloadAction<OptionsSecond>) => [
+            return experience;
+        }),
+        removeExperienceField: (state, action: PayloadAction<OptionsSecond>) => [ // TODO and same situations
             ...state.map((experience) => {
                 return {
                     ...experience,
-                    // eslint-disable-next-line max-len
-                    descriptionList: experience.descriptionList.filter((descItem) => descItem.id !== action.payload.value),
+                    descriptionList: experience.descriptionList.filter(
+                        (descItem) => descItem.id !== action.payload.value,
+                    ),
                 };
             }),
         ],
@@ -73,7 +72,6 @@ export const experienceFieldSlice = createSlice({
             ...state.map((experience) => {
                 return {
                     ...experience,
-                    // eslint-disable-next-line max-len
                     projects: experience.projects.filter((project) => project.id !== action.payload.value),
                 };
             }),
@@ -82,36 +80,49 @@ export const experienceFieldSlice = createSlice({
             ...state.map((experience) => {
                 return {
                     ...experience,
-                    descriptionList: [ ...experience.descriptionList, { id: action.payload.value, description: ''  }],
+                    descriptionList: [
+                        ...experience.descriptionList,
+                        {
+                            id:          action.payload.value,
+                            description: '',
+                        },
+                    ],
                 };
             }),
         ],
-        addExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => [
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    // eslint-disable-next-line max-len
-                    projects: [ ...experience.projects, { id: action.payload.value, customer: '', duration: '', name: '', responsibilities: '', role: '', stack: '', teamSize: '' }],
-                };
-            }),
-        ],
-        setExperienceDescrField: (state, action: PayloadAction<OptionsExperienceField>) => [
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    descriptionList: experience.descriptionList.map((descr) => {
-                        if (descr.id === action.payload.value.id) {
-                            return {
-                                ...descr,
-                                description: action.payload.value.description,
-                            };
-                        }
+        addExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => state.map((experience) => {
+            return {
+                ...experience,
+                projects: [
+                    ...experience.projects,
+                    {
+                        id:               action.payload.value,
+                        customer:         '',
+                        duration:         '',
+                        name:             '',
+                        responsibilities: '',
+                        role:             '',
+                        stack:            '',
+                        teamSize:         '',
+                    },
+                ],
+            };
+        }),
+        setExperienceDescrField: (state, action: PayloadAction<OptionsExperienceField>) => state.map((experience) => {
+            return {
+                ...experience,
+                descriptionList: experience.descriptionList.map((descr) => {
+                    if (descr.id === action.payload.value.id) {
+                        return {
+                            ...descr,
+                            description: action.payload.value.description,
+                        };
+                    }
 
-                        return descr;
-                    }),
-                };
-            }),
-        ],
+                    return descr;
+                }),
+            };
+        }),
         setExperienceProjectsField: (state, action: PayloadAction<OptionsProjectsSecond>) => [
             ...state.map((experience) => {
                 return {

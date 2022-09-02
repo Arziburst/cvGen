@@ -12,7 +12,14 @@ import { PreviewProjects } from '../PreviewProjects';
 import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../elements';
 
 // Types
-import { descriptionList, experienceItem, inputProjectVoidFunc, project, textareaProjectVoidFunc } from '../../../bus/client/types';
+import {
+    descriptionList,
+    experienceItem,
+    inputProjectVoidFunc,
+    project,
+    textareaProjectVoidFunc,
+} from '../../../bus/client/types';
+
 type voidFunc = (event: ChangeEvent<HTMLInputElement>, experience: experienceItem) => void;
 type PropTypes = {
     experience: Array<experienceItem>;

@@ -22,9 +22,8 @@ const Root: FC = () => {
     const {
         handleChangeImg, handleChangeName,
         handleChangePosition, handleCreateLanguageField,
-        handleChangeOverview, handleChangeContactField,
-        handleRemoveLanguageField, handleChangeLanguageField,
-        handleRemoveContactField, handleChangeExperienceDate,
+        handleChangeOverview, handleRemoveLanguageField, handleChangeLanguageField,
+        handleChangeExperienceDate, handleRemoveEducationDateField,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList, handleRemoveExperienceField,
         handleAddExperienceField, handleChangeProjectsCustomer,
@@ -32,11 +31,10 @@ const Root: FC = () => {
         handleChangeProjectsResponsibilities, handleChangeProjectsRole,
         handleChangeProjectsStack, handleChangeProjectsTeamSize,
         handleRemoveExperienceProjectField, handleAddExperienceProjectField,
-        handleChangeEducationDateField,
-        handleChangeEducationDegreeField, handleChangeEducationDescriptionField,
-        infoFieldsRedux, contactFieldRedux,
+        handleChangeEducationDateField, handleChangeEducationDegreeField,
+        handleChangeEducationDescriptionField, handleAddEducationField,
+        infoFieldsRedux, educationFieldRedux,
         languageFieldRedux, experienceFieldRedux,
-        educationFieldRedux,
     } = useCustomHooks();
 
     return (
@@ -61,11 +59,7 @@ const Root: FC = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <S.SecondColumn>
-                    <PreviewContacts
-                        contacts = { contactFieldRedux }
-                        handleChangeContactUrl = { handleChangeContactField }
-                        handleRemoveContact = { handleRemoveContactField }
-                    />
+                    <PreviewContacts />
                     <PreviewLanguages
                         handleChangeLanguage = { handleChangeLanguageField }
                         handleCreateLanguageField = { handleCreateLanguageField }
@@ -76,9 +70,11 @@ const Root: FC = () => {
                 <S.SecondColumn>
                     <PreviewEducation
                         educations = { educationFieldRedux }
+                        handleAddDescriptionField = { handleAddEducationField }
                         handleChangeDateField = { handleChangeEducationDateField }
                         handleChangeDegreeField = { handleChangeEducationDegreeField }
                         handleChangeDescriptionField = { handleChangeEducationDescriptionField }
+                        handleRemoveDescriptionField = { handleRemoveEducationDateField }
                     />
                     <PreviewExperience
                         experience = { experienceFieldRedux }
