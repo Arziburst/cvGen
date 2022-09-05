@@ -20,9 +20,7 @@ const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
     const {
-        handleChangeImg, handleChangeName,
-        handleChangePosition, handleCreateLanguageField,
-        handleChangeOverview, handleRemoveLanguageField, handleChangeLanguageField,
+        handleCreateLanguageField, handleRemoveLanguageField, handleChangeLanguageField,
         handleChangeExperienceDate, handleRemoveEducationDateField,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList, handleRemoveExperienceField,
@@ -33,28 +31,17 @@ const Root: FC = () => {
         handleRemoveExperienceProjectField, handleAddExperienceProjectField,
         handleChangeEducationDateField, handleChangeEducationDegreeField,
         handleChangeEducationDescriptionField, handleAddEducationField,
-        infoFieldsRedux, educationFieldRedux,
-        languageFieldRedux, experienceFieldRedux,
+        experienceFieldRedux, languageFields, educationFields,
     } = useCustomHooks();
 
     return (
         <S.Container>
             <S.Wrapper>
                 <S.Column>
-                    <PreviewAvatar
-                        avatarUrl = { infoFieldsRedux.avatar }
-                        handleChangeImg = { handleChangeImg }
-                    />
+                    <PreviewAvatar />
                 </S.Column>
                 <S.Column>
-                    <PreviewInfo
-                        handleChangeName = { handleChangeName }
-                        handleChangeOverview = { handleChangeOverview }
-                        handleChangePosition = { handleChangePosition }
-                        name = { infoFieldsRedux.name }
-                        overview = { infoFieldsRedux.overview }
-                        position = { infoFieldsRedux.position }
-                    />
+                    <PreviewInfo />
                 </S.Column>
             </S.Wrapper>
             <S.Wrapper>
@@ -64,12 +51,12 @@ const Root: FC = () => {
                         handleChangeLanguage = { handleChangeLanguageField }
                         handleCreateLanguageField = { handleCreateLanguageField }
                         handleRemoveLanguageField = { handleRemoveLanguageField }
-                        languages = { languageFieldRedux }
+                        languages = { languageFields }
                     />
                 </S.SecondColumn>
                 <S.SecondColumn>
                     <PreviewEducation
-                        educations = { educationFieldRedux }
+                        educations = { educationFields }
                         handleAddDescriptionField = { handleAddEducationField }
                         handleChangeDateField = { handleChangeEducationDateField }
                         handleChangeDegreeField = { handleChangeEducationDegreeField }

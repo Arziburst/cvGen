@@ -3,11 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // Reducers
 import toggles from '../../bus/client/toggles';
-import infoFields from '../../bus/client/infoFields';
+import infoFields from '../../bus/client/infoFields/slice';
 import contactFields from '../../bus/client/contactFields/slice';
-import languageFields from '../../bus/client/languageFields';
+import languageFields from '../../bus/client/languageFields/slice';
 import experienceFields from '../../bus/client/experienceFields';
-import educationFields from '../../bus/client/educationFields';
+import educationFields from '../../bus/client/educationFields/slice';
 
 // Middleware
 import {

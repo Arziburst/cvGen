@@ -1,28 +1,37 @@
 // Core
-import React, { ChangeEvent, FC } from 'react';
+import React, { FC } from 'react';
+
+// Bus
+import { useInfoFields } from '../../../bus/client/infoFields';
 
 // Elements
 import { AppInput, AppTextarea } from '../../elements';
+
 // Styles
 import * as S from './styles';
 
 // Types
-export type voidFunc = (event: ChangeEvent<HTMLInputElement>) => void;
+import { inputVoidFunc, textareaVoidFunc } from '../../../bus/client/types';
 
-type PropTypes = {
-    name: string;
-    position: string;
-    overview: string;
-    handleChangeName: voidFunc;
-    handleChangePosition: voidFunc;
-    handleChangeOverview: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-}
+export const PreviewInfo: FC = () => {
+    const {
+        infoFields: { name, overview, position },
+        debounceChangeName, debounceChangeOverview,
+        debounceChangePosition,
+    } = useInfoFields();
 
-export const PreviewInfo: FC<PropTypes> = ({
-    position, overview, name,
-    handleChangeName,
-    handleChangePosition, handleChangeOverview,
-}) => {
+    const handleChangeName: inputVoidFunc = (event) => {
+        debounceChangeName(event.target.value);
+    };
+
+    const handleChangePosition: inputVoidFunc = (event) => {
+        debounceChangePosition(event.target.value);
+    };
+
+    const handleChangeOverview: textareaVoidFunc = (event) => {
+        debounceChangeOverview(event.target.value);
+    };
+
     return (
         <S.Container>
             <S.InputNameBox>

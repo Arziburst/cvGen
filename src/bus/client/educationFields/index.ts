@@ -1,115 +1,39 @@
 // Core
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { debounce, uniqueId } from 'lodash';
-import { useDispatch } from '../../../tools/hooks';
+import { debounce } from 'lodash';
 
 // Tools
-import { useSelector } from '../../../tools/hooks';
+import { useDispatch, useSelector } from '../../../tools/hooks';
 
-const initialState = [
-    {
-        id:          uniqueId(),
-        date:        '2007 - 2013',
-        degree:      'Degree Name / University, Location',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    },
-];
+// Actions
+import { educationFieldsActions } from './slice';
+
+// Constant
+import { WAIT_TIME } from '../../../init';
 
 // Types
-type educationFieldKeys = keyof typeof initialState[0];
-type Options = { type: educationFieldKeys, value: string };
+import { OptionsValue } from './types';
 
-// type OptionsEducationField = { type: educationFieldKeys, value: educationItem };
-
-// Slice
-export const educationFieldSlice = createSlice({
-    name:     'educationField',
-    initialState,
-    reducers: {
-        educationFieldCreatorAction: (state, action: PayloadAction<Options>) => [
-            ...state.map((education) => {
-                return {
-                    ...education,
-                    [ action.payload.type ]: action.payload.value,
-                };
-            }),
-        ],
-
-        removeEducationField: (state, action: PayloadAction<Options>) => {
-            return [ ...state.filter((education) => education.id !== action.payload.value) ];
-        },
-
-        addEducationField: (state, action: PayloadAction<Options>) => [
-            ...state,
-            {
-                id:          action.payload.value,
-                date:        '',
-                degree:      '',
-                description: '',
-            },
-        ],
-
-        resetEducationFieldToInitialAction: () => initialState,
-    },
-});
-
-// Interfaces
-const educationFieldActions = educationFieldSlice.actions;
-export default educationFieldSlice.reducer;
-
-const useEducationFieldRedux = () => {
+export const useEducationField = () => {
     const dispatch = useDispatch();
+    const educationFields = useSelector(({ educationFields }) => educationFields);
 
-    return {
-        educationFieldRedux:     useSelector(({ educationFields }) => educationFields),
-        setEducationFieldAction: (options: Options) => {
-            dispatch(educationFieldActions.educationFieldCreatorAction(options));
-        },
-        removeEducationField: (options: Options) => {
-            dispatch(educationFieldActions.removeEducationField(options));
-        },
-        addEducationField: (options: Options) => {
-            dispatch(educationFieldActions.addEducationField(options));
-        },
-        resetEducationFieldToInitial: () => void dispatch(educationFieldActions.resetEducationFieldToInitialAction()),
-    };
-};
-
-export const useEducationHooksRedux = () => {
-    const {
-        educationFieldRedux, removeEducationField,
-        setEducationFieldAction, addEducationField,
-    } = useEducationFieldRedux();
-
-    const debounceChangeDateField = debounce((text: string) => {
-        setEducationFieldAction({ type: 'date', value: text });
-    }, 300);
-
-    const debounceChangeDegreeField = debounce((text: string) => {
-        setEducationFieldAction({ type: 'degree', value: text });
-    }, 300);
-
-    const debounceChangeDescriptionField = debounce((text: string) => {
-        setEducationFieldAction({ type: 'description', value: text });
-    }, 300);
+    const debounceChangeEducationField = debounce((date: OptionsValue) => {
+        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'date', value: date }));
+    }, WAIT_TIME);
 
     const debounceRemoveEducationField = debounce((id: string) => {
-        removeEducationField({ type: 'id', value: id });
-    }, 100);
+        dispatch(educationFieldsActions.removeEducationField(id));
+    }, WAIT_TIME);
 
-    const debounceAddEducationField = debounce(() => {
-        addEducationField({ type: 'id', value: uniqueId() });
-    }, 100);
+    const debounceAddEducationField = debounce((id: string) => {
+        dispatch(educationFieldsActions.addEducationField(id));
+    }, WAIT_TIME);
 
     return {
-        educationFieldRedux,
-        debounceChangeDateField,
-        debounceChangeDegreeField,
-        debounceChangeDescriptionField,
+        educationFields,
+        debounceChangeEducationField,
         debounceRemoveEducationField,
         debounceAddEducationField,
     };
 };
 
-
-export const EducationFieldCreatorAction = educationFieldActions.educationFieldCreatorAction;

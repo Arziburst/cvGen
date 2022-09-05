@@ -14,7 +14,7 @@ import { Title, RemoveBtn, AddBtn } from '../../elements';
 import { languagesItem } from '../../../bus/client/types';
 
 type PropTypes = {
-    languages: Array<languagesItem>
+    languages: Array<languagesItem>;
     handleChangeLanguage: (event: ChangeEvent<HTMLInputElement>, elem: languagesItem) => void;
     handleRemoveLanguageField: (id: string) => void;
     handleCreateLanguageField: (id: string) => void;
@@ -35,7 +35,7 @@ export const PreviewLanguages: FC<PropTypes> = ({
                         <S.Item key = { language.id }>
                             <S.LanguageInput
                                 defaultValue = { language.language }
-                                placeholder = { language.placeholder }
+                                placeholder = { '1' }
                                 type = 'text'
                                 onChange = { (event) => handleChangeLanguage(event, language) }
                             />

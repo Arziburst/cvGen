@@ -1,7 +1,7 @@
 // Core
 import React from 'react';
 import { Document, Page, StyleSheet, PDFViewer, View, Font } from '@react-pdf/renderer';
-import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
+import { useInfoFields } from '../../../bus/client/infoFields';
 
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
@@ -11,7 +11,7 @@ import { CvInfo } from '../../components/CvInfo';
 import { CvContacts } from '../../components/CvContacts';
 import { CvLanguage } from '../../components/CvLanguage';
 import { useContactField } from '../../../bus/client/contactFields';
-import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
+import { useLanguageFields } from '../../../bus/client/languageFields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -56,9 +56,9 @@ Font.register(
 );
 
 export const MyDocument = () => {
-    const { infoFieldsRedux } = useInfoFieldHooksRedux();
+    const { infoFields } = useInfoFields();
     const { contactFields } = useContactField();
-    const { languageFieldRedux } = useLanguageHooksRedux();
+    const { languageFields } = useLanguageFields();
 
     return (
         <PDFViewer
@@ -69,20 +69,20 @@ export const MyDocument = () => {
                     style = { styles.page }>
                     <View style = { styles.wrapper }>
                         <View style = { styles.firstColumn }>
-                            <CvAvatar avatar = { infoFieldsRedux.avatar } />
+                            <CvAvatar avatar = { infoFields.avatar } />
                         </View>
                         <View style = { styles.wrapperSecondColumn }>
                             <CvInfo
-                                name = { infoFieldsRedux.name }
-                                overview = { infoFieldsRedux.overview }
-                                position = { infoFieldsRedux.position }
+                                name = { infoFields.name }
+                                overview = { infoFields.overview }
+                                position = { infoFields.position }
                             />
                         </View>
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
                             <CvContacts contacts = { contactFields }/>
-                            <CvLanguage languages = { languageFieldRedux }/>
+                            <CvLanguage languages = { languageFields }/>
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             {/* // Content */}

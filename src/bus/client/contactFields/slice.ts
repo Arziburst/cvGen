@@ -7,31 +7,26 @@ import * as types from './types';
 // Reducers
 import * as reducers from './reducers';
 
-const initialState = [
+export const initialState = [
     {
-        id:          'mail',
-        url:         'dimaponomarenko@gmail.com',
-        placeholder: 'youremail@gmail.com',
+        id:  'mail',
+        url: 'dimaponomarenko@gmail.com',
     },
     {
-        id:          'phone',
-        url:         '+380993523741',
-        placeholder: '+380 88 88 88 888',
+        id:  'phone',
+        url: '+380993523741',
     },
     {
-        id:          'adress',
-        url:         'Ukraine, Zaporizhia. Charivna street',
-        placeholder: 'Ukraine, Zaporizhia. Charivna street 50',
+        id:  'adress',
+        url: 'Ukraine, Zaporizhia. Charivna street',
     },
     {
-        id:          'Linkedin',
-        url:         'https://www.linkedin.com/in/dimaponomart683/',
-        placeholder: 'Linkedin.com/in/yourname',
+        id:  'Linkedin',
+        url: 'https://www.linkedin.com/in/dimaponomart683/',
     },
     {
-        id:          'Github',
-        url:         'https://github.com/SeniorDmitriy',
-        placeholder: 'github.com/YourName',
+        id:  'Github',
+        url: 'https://github.com/SeniorDmitriy',
     },
 ];
 

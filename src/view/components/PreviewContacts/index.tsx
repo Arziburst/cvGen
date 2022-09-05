@@ -24,7 +24,7 @@ export const PreviewContacts: FC = () => {
                     <S.Item key = { elem.id }>
                         <S.SocialInput
                             defaultValue = { elem.url }
-                            placeholder = { elem.placeholder }
+                            placeholder = { '1' }
                             type = 'text'
                             onChange = { (event) => {
                                 debounceChangeContactField({ ...elem, url: event.target.value });

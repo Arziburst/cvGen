@@ -5,7 +5,6 @@ import { ChangeEvent } from 'react';
 export type contactItem = {
     id: string;
     url: string;
-    placeholder: string;
 }
 
 export type educationItem = {
@@ -43,7 +42,6 @@ export type experienceItem = {
 export type languagesItem = {
     id: string;
     language: string;
-    placeholder: string;
 }
 
 export type inputVoidFunc = (event: ChangeEvent<HTMLInputElement>) => void;

@@ -9,8 +9,6 @@ import { contactFieldsActions } from './slice';
 
 // Constant
 import { WAIT_TIME } from '../../../init';
-
-// Types
 import { Contact } from './types';
 
 export const useContactField = () => {
@@ -18,7 +16,7 @@ export const useContactField = () => {
     const contactFields = useSelector(({ contactFields }) => contactFields);
 
     const debounceChangeContactField = debounce((contact: Contact) => {
-        dispatch(contactFieldsActions.setContactField(contact));
+        dispatch(contactFieldsActions.contactFieldCreatorAction({ type: 'url', value: contact }));
     }, WAIT_TIME);
 
     const removeContactField = (id: string) => {

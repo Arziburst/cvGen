@@ -3,19 +3,20 @@ import { ChangeEvent } from 'react';
 import { useExperienceHooksRedux } from '../../../bus/client/experienceFields';
 
 // Bus
-import { useLanguageHooksRedux } from '../../../bus/client/languageFields';
-import { useInfoFieldHooksRedux } from '../../../bus/client/infoFields';
-import { useEducationHooksRedux } from '../../../bus/client/educationFields';
+import { useLanguageFields } from '../../../bus/client/languageFields';
+import { useInfoFields } from '../../../bus/client/infoFields';
+import { useEducationField } from '../../../bus/client/educationFields';
 
 // Types
 import { languagesItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
+import { uniqueId } from 'lodash';
 
 export const useCustomHooks = () => {
     const {
-        infoFieldsRedux, debounceChangeImg,
+        infoFields, debounceChangeImg,
         debounceChangeName, debounceChangeOverview,
         debounceChangePosition,
-    } = useInfoFieldHooksRedux();
+    } = useInfoFields();
 
     const {
         experienceFieldRedux, debounceChangeExperienceFieldAction,
@@ -25,15 +26,14 @@ export const useCustomHooks = () => {
     } = useExperienceHooksRedux();
 
     const {
-        languageFieldRedux, debounceChangeLanguageField,
+        languageFields, debounceChangeLanguageField,
         debounceCreateLanguageField, debounceRemoveLanguageField,
-    } = useLanguageHooksRedux();
+    } = useLanguageFields();
 
     const {
-        educationFieldRedux, debounceChangeDateField,
-        debounceChangeDegreeField, debounceChangeDescriptionField,
-        debounceRemoveEducationField, debounceAddEducationField,
-    } = useEducationHooksRedux();
+        educationFields, debounceAddEducationField,
+        debounceChangeEducationField, debounceRemoveEducationField,
+    } = useEducationField();
 
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
@@ -108,14 +108,14 @@ export const useCustomHooks = () => {
     };
 
     const handleChangeEducationDateField = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeDateField(event.target.value);
+        debounceChangeEducationField({ id: '2', text: event.target.value });
     };
 
     const handleChangeEducationDegreeField = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeDegreeField(event.target.value);
+        debounceChangeEducationField({ id: '3', text: event.target.value });
     };
     const handleChangeEducationDescriptionField = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        debounceChangeDescriptionField(event.target.value);
+        debounceChangeEducationField({ id: '4', text: event.target.value });
     };
 
     const handleCreateLanguageField = (id: string) => {
@@ -142,7 +142,7 @@ export const useCustomHooks = () => {
     };
 
     const handleAddEducationField = () => {
-        debounceAddEducationField();
+        debounceAddEducationField(uniqueId());
     };
 
     return {
@@ -173,9 +173,9 @@ export const useCustomHooks = () => {
         handleChangeEducationDescriptionField,
         handleRemoveEducationDateField,
         handleAddEducationField,
-        infoFieldsRedux,
+        infoFields,
         experienceFieldRedux,
-        languageFieldRedux,
-        educationFieldRedux,
+        languageFields,
+        educationFields,
     };
 };
