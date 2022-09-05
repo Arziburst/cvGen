@@ -1,5 +1,5 @@
 // Core
-import { debounce } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 
 // Tools
 import { useDispatch, useSelector } from '../../../tools/hooks';
@@ -17,21 +17,31 @@ export const useEducationField = () => {
     const dispatch = useDispatch();
     const educationFields = useSelector(({ educationFields }) => educationFields);
 
-    const debounceChangeEducationField = debounce((date: OptionsValue) => {
-        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'date', value: date }));
+    const debounceChangeEducationDateField = debounce((data: OptionsValue) => {
+        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'date', value: data }));
+    }, WAIT_TIME);
+
+    const debounceChangeEducationDegreeField = debounce((data: OptionsValue) => {
+        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'degree', value: data }));
+    }, WAIT_TIME);
+
+    const debounceChangeEducationDescriptionField = debounce((data: OptionsValue) => {
+        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'description', value: data }));
     }, WAIT_TIME);
 
     const debounceRemoveEducationField = debounce((id: string) => {
         dispatch(educationFieldsActions.removeEducationField(id));
     }, WAIT_TIME);
 
-    const debounceAddEducationField = debounce((id: string) => {
-        dispatch(educationFieldsActions.addEducationField(id));
+    const debounceAddEducationField = debounce(() => {
+        dispatch(educationFieldsActions.addEducationField(uniqueId()));
     }, WAIT_TIME);
 
     return {
         educationFields,
-        debounceChangeEducationField,
+        debounceChangeEducationDateField,
+        debounceChangeEducationDegreeField,
+        debounceChangeEducationDescriptionField,
         debounceRemoveEducationField,
         debounceAddEducationField,
     };

@@ -9,7 +9,6 @@ import { useEducationField } from '../../../bus/client/educationFields';
 
 // Types
 import { languagesItem, experienceItem, descriptionList, project } from '../../../bus/client/types';
-import { uniqueId } from 'lodash';
 
 export const useCustomHooks = () => {
     const {
@@ -27,12 +26,11 @@ export const useCustomHooks = () => {
 
     const {
         languageFields, debounceChangeLanguageField,
-        debounceCreateLanguageField, debounceRemoveLanguageField,
+        debounceRemoveLanguageField,
     } = useLanguageFields();
 
     const {
         educationFields, debounceAddEducationField,
-        debounceChangeEducationField, debounceRemoveEducationField,
     } = useEducationField();
 
     const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
@@ -107,21 +105,6 @@ export const useCustomHooks = () => {
         debounceRemoveLanguageField(id);
     };
 
-    const handleChangeEducationDateField = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeEducationField({ id: '2', text: event.target.value });
-    };
-
-    const handleChangeEducationDegreeField = (event: ChangeEvent<HTMLInputElement>) => {
-        debounceChangeEducationField({ id: '3', text: event.target.value });
-    };
-    const handleChangeEducationDescriptionField = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        debounceChangeEducationField({ id: '4', text: event.target.value });
-    };
-
-    const handleCreateLanguageField = (id: string) => {
-        debounceCreateLanguageField(id);
-    };
-
     const handleRemoveExperienceField = (id: string) => {
         debounceRemoveExperienceDescrField(id);
     };
@@ -133,16 +116,13 @@ export const useCustomHooks = () => {
     const handleRemoveExperienceProjectField = (id: string) => {
         debounceRemoveExperienceProjectField(id);
     };
-    const handleRemoveEducationDateField = (id: string) => {
-        debounceRemoveEducationField(id);
-    };
 
     const handleAddExperienceProjectField = () => {
         debounceAddExperienceProjectField();
     };
 
     const handleAddEducationField = () => {
-        debounceAddEducationField(uniqueId());
+        debounceAddEducationField();
     };
 
     return {
@@ -152,7 +132,6 @@ export const useCustomHooks = () => {
         handleChangeOverview,
         handleChangeLanguageField,
         handleRemoveLanguageField,
-        handleCreateLanguageField,
         handleChangeExperienceDate,
         handleChangeExperiencePosition,
         handleChangeExperienceLocation,
@@ -168,10 +147,6 @@ export const useCustomHooks = () => {
         handleChangeProjectsStack,
         handleRemoveExperienceProjectField,
         handleAddExperienceProjectField,
-        handleChangeEducationDateField,
-        handleChangeEducationDegreeField,
-        handleChangeEducationDescriptionField,
-        handleRemoveEducationDateField,
         handleAddEducationField,
         infoFields,
         experienceFieldRedux,

@@ -1,16 +1,20 @@
 // Types
 import * as types from './types';
 
-export const educationFieldCreatorAction: types.BaseContact
-= (state, action) => state.map((education) => {
-    return {
-        ...education,
-        [ action.type ]: action.payload.value.text,
-    };
-});
+export const educationFieldCreatorAction: types.BaseContact = (state, action) => state.map(
+    (education) => {
+        if (education.id === action.payload.value.id) {
+            return {
+                ...education,
+                [ action.payload.type ]: action.payload.value.text,
+            };
+        }
 
-export const removeEducationField: types.BaseContact<string>
-= (state, action) => state.filter(
+        return education;
+    },
+);
+
+export const removeEducationField: types.BaseContact<string> = (state, action) => state.filter(
     (education) => education.id !== action.payload,
 );
 

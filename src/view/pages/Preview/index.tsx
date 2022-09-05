@@ -20,8 +20,7 @@ const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
     const {
-        handleCreateLanguageField, handleRemoveLanguageField, handleChangeLanguageField,
-        handleChangeExperienceDate, handleRemoveEducationDateField,
+        handleChangeExperienceDate,
         handleChangeExperienceLocation, handleChangeExperiencePosition,
         handleChangeDescriptionList, handleRemoveExperienceField,
         handleAddExperienceField, handleChangeProjectsCustomer,
@@ -29,10 +28,7 @@ const Root: FC = () => {
         handleChangeProjectsResponsibilities, handleChangeProjectsRole,
         handleChangeProjectsStack, handleChangeProjectsTeamSize,
         handleRemoveExperienceProjectField, handleAddExperienceProjectField,
-        handleChangeEducationDateField, handleChangeEducationDegreeField,
-        handleChangeEducationDescriptionField, handleAddEducationField,
-        experienceFieldRedux, languageFields, educationFields,
-    } = useCustomHooks();
+        experienceFieldRedux } = useCustomHooks();
 
     return (
         <S.Container>
@@ -47,22 +43,10 @@ const Root: FC = () => {
             <S.Wrapper>
                 <S.SecondColumn>
                     <PreviewContacts />
-                    <PreviewLanguages
-                        handleChangeLanguage = { handleChangeLanguageField }
-                        handleCreateLanguageField = { handleCreateLanguageField }
-                        handleRemoveLanguageField = { handleRemoveLanguageField }
-                        languages = { languageFields }
-                    />
+                    <PreviewLanguages />
                 </S.SecondColumn>
                 <S.SecondColumn>
-                    <PreviewEducation
-                        educations = { educationFields }
-                        handleAddDescriptionField = { handleAddEducationField }
-                        handleChangeDateField = { handleChangeEducationDateField }
-                        handleChangeDegreeField = { handleChangeEducationDegreeField }
-                        handleChangeDescriptionField = { handleChangeEducationDescriptionField }
-                        handleRemoveDescriptionField = { handleRemoveEducationDateField }
-                    />
+                    <PreviewEducation />
                     <PreviewExperience
                         experience = { experienceFieldRedux }
                         handleAddDescField = { handleAddExperienceField }

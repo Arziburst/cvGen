@@ -1,5 +1,5 @@
 // Core
-import { debounce } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 
 // Tools
 import { useSelector, useDispatch } from '../../../tools/hooks'; /* Typed selector */
@@ -17,15 +17,15 @@ export const useLanguageFields = () => {
     const languageFields = useSelector(({ languageFields }) => languageFields);
 
     const debounceChangeLanguageField = debounce((language: Language) => {
-        dispatch(languageFieldsActions.setLanguageFields(language));
+        dispatch(languageFieldsActions.setLanguageFields({ type: 'language', value: language }));
     }, WAIT_TIME);
 
     const debounceRemoveLanguageField = debounce((id: string) => {
         dispatch(languageFieldsActions.removeLanguageFields(id));
     }, WAIT_TIME);
 
-    const debounceCreateLanguageField = debounce((id: string) => {
-        dispatch(languageFieldsActions.addLanguageFields(id));
+    const debounceCreateLanguageField = debounce(() => {
+        dispatch(languageFieldsActions.addLanguageFields(uniqueId()));
     }, WAIT_TIME);
 
     return {
