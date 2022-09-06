@@ -1,230 +1,105 @@
 // Core
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { debounce, uniqueId } from 'lodash';
-import { useDispatch } from '../../../tools/hooks';
 
-// Bus
-import { descriptionList, experienceItem, project } from '../types';
-
-// Tools
-import { useSelector } from '../../../tools/hooks';
-
-const initialState = [
-    {
-        id:              uniqueId(),
-        position:        '',
-        location:        '',
-        date:            '',
-        descriptionList: [
-            {
-                id:          uniqueId(),
-                description: '',
-            },
-        ],
-        projects: [
-            {
-                id:               uniqueId(),
-                name:             'Ukrainian news site',
-                customer:         'Ukraine',
-                duration:         '7 (January 2020 - Jule 2020)',
-                role:             'Front-end developer',
-                responsibilities: 'Create responsive and adaptive SEO frendly website. It great project wherein i use new adaptive approaches and custom grid container Also use optimization modern format images, fonts, icons.',
-                teamSize:         '5',
-                stack:            'html, css3, sass, jquery, js, gulp, bem methodology',
-            },
-        ],
-    },
-];
-
-// Types
-type experienceFieldKeys = keyof typeof initialState[0];
-type Options = { type: experienceFieldKeys, value: experienceItem };
-type OptionsSecond = { type: experienceFieldKeys, value: string };
-type OptionsProjectsSecond = { type: experienceFieldKeys, value: project };
-type OptionsExperienceField = { type: experienceFieldKeys, value: descriptionList };
+// Action
+import { experienceFieldsActions } from './slice';
 
 // Slice
-export const experienceFieldSlice = createSlice({
-    name:     'experienceField',
-    initialState,
-    reducers: {
-        experienceFieldCreatorAction: (state, action: PayloadAction<Options>) => state.map((experience) => {
-            if (experience.id === action.payload.value.id) {
-                return {
-                    ...experience,
-                    [ action.payload.type ]: action.payload.value[ action.payload.type ],
-                };
-            }
+import { initialState } from './slice';
 
-            return experience;
-        }),
-        removeExperienceField: (state, action: PayloadAction<OptionsSecond>) => [ // TODO and same situations
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    descriptionList: experience.descriptionList.filter(
-                        (descItem) => descItem.id !== action.payload.value,
-                    ),
-                };
-            }),
-        ],
-        removeExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => [
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    projects: experience.projects.filter((project) => project.id !== action.payload.value),
-                };
-            }),
-        ],
-        addExperienceField: (state, action: PayloadAction<OptionsSecond>) => [
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    descriptionList: [
-                        ...experience.descriptionList,
-                        {
-                            id:          action.payload.value,
-                            description: '',
-                        },
-                    ],
-                };
-            }),
-        ],
-        addExperienceProjectField: (state, action: PayloadAction<OptionsSecond>) => state.map((experience) => {
-            return {
-                ...experience,
-                projects: [
-                    ...experience.projects,
-                    {
-                        id:               action.payload.value,
-                        customer:         '',
-                        duration:         '',
-                        name:             '',
-                        responsibilities: '',
-                        role:             '',
-                        stack:            '',
-                        teamSize:         '',
-                    },
-                ],
-            };
-        }),
-        setExperienceDescrField: (state, action: PayloadAction<OptionsExperienceField>) => state.map((experience) => {
-            return {
-                ...experience,
-                descriptionList: experience.descriptionList.map((descr) => {
-                    if (descr.id === action.payload.value.id) {
-                        return {
-                            ...descr,
-                            description: action.payload.value.description,
-                        };
-                    }
+// Tools
+import { useDispatch, useSelector } from '../../../tools/hooks';
 
-                    return descr;
-                }),
-            };
-        }),
-        setExperienceProjectsField: (state, action: PayloadAction<OptionsProjectsSecond>) => [
-            ...state.map((experience) => {
-                return {
-                    ...experience,
-                    projects: experience.projects.map((project) => {
-                        if (project.id === action.payload.value.id) {
-                            return {
-                                ...project,
-                                ...action.payload.value,
-                            };
-                        }
+// Types
+import { ExperienceData } from './types';
 
-                        return project;
-                    }),
-                };
-            }),
-        ],
-        resetExperienceFieldToInitialAction: () => initialState,
-    },
-});
+// Constant
+import { WAIT_TIME } from '../../../init';
 
-// Interfaces
-const experienceFieldActions = experienceFieldSlice.actions;
-export default experienceFieldSlice.reducer;
-
-const useExperienceFieldRedux = () => {
+export const useExperienceFields = () => {
     const dispatch = useDispatch();
+    const experienceFields = useSelector(({ experienceFields }) => experienceFields);
+
+    const debounceSetExperiencePositionField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'position', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetExperienceDateField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'date', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetExperienceLocationField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'location', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetDescrField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsDescriptionCreatorAction({ type: 'description', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectNameField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'name', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectCustomerField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'customer', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectDurationField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'duration', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectRoleField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'role', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectResponsibilitiesField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'responsibilities', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectStackField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'stack', value: data }));
+    }, WAIT_TIME);
+
+    const debounceSetProjectTeamsizeField = debounce((data: ExperienceData) => {
+        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'teamSize', value: data }));
+    }, WAIT_TIME);
+
+    const removeExperienceDescriptionField = debounce((id: string) => {
+        dispatch(experienceFieldsActions.removeExperienceDescriptionField(id));
+    }, WAIT_TIME);
+
+    const addExperienceDescriptionField = debounce(() => {
+        dispatch(experienceFieldsActions.addExperienceDescriptionField(
+            { ...initialState[ 0 ].descriptionList[ 0 ], id: uniqueId() },
+        ));
+    }, WAIT_TIME);
+
+    const removeExperienceProjectField = debounce((id: string) => {
+        dispatch(experienceFieldsActions.removeExperienceProjectField(id));
+    }, WAIT_TIME);
+
+    const addExperienceProjectField = debounce(() => {
+        dispatch(experienceFieldsActions.addExperienceProjectField(
+            { ...initialState[ 0 ].projects[ 0 ], id: uniqueId() },
+        ));
+    }, WAIT_TIME);
 
     return {
-        experienceFieldRedux:     useSelector(({ experienceFields }) => experienceFields),
-        setExperienceFieldAction: (options: Options) => {
-            dispatch(experienceFieldActions.experienceFieldCreatorAction(options));
-        },
-        setExperienceDescrField: (options: OptionsExperienceField) => {
-            dispatch(experienceFieldActions.setExperienceDescrField(options));
-        },
-        setExperienceProjectField: (options: OptionsProjectsSecond) => {
-            dispatch(experienceFieldActions.setExperienceProjectsField(options));
-        },
-        removeExperienceDescrField: (options: OptionsSecond) => {
-            dispatch(experienceFieldActions.removeExperienceField(options));
-        },
-        removeExperienceProjectField: (options: OptionsSecond) => {
-            dispatch(experienceFieldActions.removeExperienceProjectField(options));
-        },
-        addExperienceDescrField: (options: OptionsSecond) => {
-            dispatch(experienceFieldActions.addExperienceField(options));
-        },
-        addExperienceProjectField: (options: OptionsSecond) => {
-            dispatch(experienceFieldActions.addExperienceProjectField(options));
-        },
-        // eslint-disable-next-line max-len
-        resetExperienceFieldToInitial: () => void dispatch(experienceFieldActions.resetExperienceFieldToInitialAction()),
+        experienceFields,
+        debounceSetExperiencePositionField,
+        debounceSetExperienceDateField,
+        debounceSetExperienceLocationField,
+        debounceSetDescrField,
+        debounceSetProjectNameField,
+        debounceSetProjectCustomerField,
+        debounceSetProjectDurationField,
+        debounceSetProjectRoleField,
+        debounceSetProjectResponsibilitiesField,
+        debounceSetProjectStackField,
+        debounceSetProjectTeamsizeField,
+        removeExperienceDescriptionField,
+        addExperienceDescriptionField,
+        removeExperienceProjectField,
+        addExperienceProjectField,
     };
 };
-
-export const useExperienceHooksRedux = () => {
-    const {
-        experienceFieldRedux, setExperienceDescrField,
-        setExperienceFieldAction, removeExperienceDescrField,
-        addExperienceDescrField, setExperienceProjectField,
-        removeExperienceProjectField, addExperienceProjectField,
-    } = useExperienceFieldRedux();
-
-    const debounceChangeExperienceFieldAction = debounce((experience: experienceItem, type: Options['type']) => {
-        setExperienceFieldAction({ type, value: experience });
-    }, 300);
-
-    const debounceChangeProjectsFieldAction = debounce((experience: project) => {
-        setExperienceProjectField({ type: 'projects', value: experience });
-    }, 300);
-
-    const debounceChangeExperienceDescrField = debounce((description: descriptionList) => {
-        setExperienceDescrField({ type: 'descriptionList', value: description });
-    }, 300);
-
-    const debounceRemoveExperienceDescrField = debounce((id: string) => {
-        removeExperienceDescrField({ type: 'descriptionList', value: id });
-    }, 100);
-
-    const debounceRemoveExperienceProjectField = debounce((id: string) => {
-        removeExperienceProjectField({ type: 'projects', value: id });
-    }, 100);
-
-    const debounceAddExperienceDescrField = debounce(() => {
-        addExperienceDescrField({ type: 'descriptionList', value: uniqueId() });
-    }, 100);
-
-    const debounceAddExperienceProjectField = debounce(() => {
-        addExperienceProjectField({ type: 'projects', value: uniqueId() });
-    }, 100);
-
-    return {
-        experienceFieldRedux,
-        debounceChangeExperienceFieldAction,
-        debounceChangeExperienceDescrField,
-        debounceRemoveExperienceDescrField,
-        debounceAddExperienceDescrField,
-        debounceChangeProjectsFieldAction,
-        debounceRemoveExperienceProjectField,
-        debounceAddExperienceProjectField,
-    };
-};
-
-export const experienceFieldCreatorAction = experienceFieldActions.experienceFieldCreatorAction;

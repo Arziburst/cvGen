@@ -3,36 +3,35 @@ import styled from 'styled-components';
 
 // Styled
 const AddButton = styled.button`
-  display: block;
-  font-family: 'NotoSans500';
-  width: 60px;
-  height: 35px;
-  font-weight: 500;
   position: relative;
+  display: block;
+  width: 23px;
+  height: 23px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding-left: 20px;
-  border: 1px solid #4c576b;
+  background-color: #4c576b;
+  border-radius: 50%;
 
-  &:hover {
-    background-color: #4c576b;
-    color: #e8e5e4;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: #e8e5e4;
   }
 
   &::before {
-    content: '+';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    position: absolute;
-    background-color: #4c576b;
-    color: #e8e5e4;
-    height: 100%;
-    width: 15px;
-    left: 0;
-    top: 0;
+    width: 10px;
+    height: 2px;
+    left: 7px;
+    top: 10px;
+  }
+
+  &::after {
+    height: 10px;
+    left: 11px;
+    width: 2px;
+    top: 6px;
   }
 `;
 
@@ -42,8 +41,6 @@ type propsType = {
 
 export const AddBtn: FC<propsType> = ({ handleAddFunc }) => {
     return (
-        <AddButton onClick = { handleAddFunc }>
-            Add
-        </AddButton>
+        <AddButton onClick = { handleAddFunc } />
     );
 };

@@ -14,6 +14,17 @@ export const Wrapper = styled.div`
   flex: 1 1 auto;
 `;
 
+export const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+`;
+
+
 export const Title = styled.h3`
   position: relative;
   font-family: 'NotoSans800',sans-serif;

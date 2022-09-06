@@ -5,12 +5,12 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './slice';
 
 // State
-export type descriptionList = {
+export type DescriptionList = {
     id: string;
     description: string;
 }
 
-export type project = {
+export type Project = {
     id: string;
     name: string;
     customer: string;
@@ -26,8 +26,8 @@ export type Experience = {
     position: string;
     location: string;
     date: string;
-    descriptionList: Array<descriptionList>;
-    projects: Array<project>;
+    descriptionList: Array<DescriptionList>;
+    projects: Array<Project>;
 }
 
 export type ExperienceFieldsState = Array<Experience>
@@ -43,15 +43,15 @@ export type ExperienceOptions = {
 }
 
 export type ExperienceDescriptionOptions = {
-    type: keyof typeof initialState[0]['descriptionList'];
+    type: keyof typeof initialState[0]['descriptionList'][0];
     value: ExperienceData;
 }
 
 
 export type ExperienceProjectsOptions = {
-    type: keyof typeof initialState[0]['projects'];
+    type: keyof typeof initialState[0]['projects'][0];
     value: ExperienceData;
 }
 
 // Contracts
-export type BaseContact<T = any> = CaseReducer<ExperienceFieldsState, PayloadAction<T>>
+export type BaseContact<T = ExperienceData> = CaseReducer<ExperienceFieldsState, PayloadAction<T>>

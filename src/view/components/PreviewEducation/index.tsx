@@ -18,7 +18,10 @@ export const PreviewEducation: FC = () => {
 
     return (
         <S.Container>
-            <Title text = 'Education'/>
+            <S.Box>
+                <Title text = 'Education' />
+                <AddBtn handleAddFunc = { debounceAddEducationField } />
+            </S.Box>
             <S.List>
                 {educationFields.map((education) => {
                     const {
@@ -62,7 +65,6 @@ export const PreviewEducation: FC = () => {
                     );
                 })}
             </S.List>
-            <AddBtn handleAddFunc = { debounceAddEducationField }/>
         </S.Container>
     );
 };

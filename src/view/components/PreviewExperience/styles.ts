@@ -65,3 +65,19 @@ export const Item = styled.li`
 export const Box = styled.div`
   margin-bottom: 10px;
 `;
+
+export const TitleBox = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    
+  h3 {
+    margin-bottom: 0;
+    font-size: 19px;
+    margin-right: 5px;
+    &::before {
+      display: none;
+    }
+  }
+`;

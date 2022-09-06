@@ -35,3 +35,13 @@ export const LanguageInput = styled.input`
   }
 `;
 
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+`;
+

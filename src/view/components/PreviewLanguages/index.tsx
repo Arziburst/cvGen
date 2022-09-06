@@ -20,7 +20,10 @@ export const PreviewLanguages: FC = () => {
 
     return (
         <S.Container>
-            <Title text = 'Languages'/>
+            <S.Box>
+                <Title text = 'Languages' />
+                <AddBtn handleAddFunc = { () => debounceCreateLanguageField() } />
+            </S.Box>
             <ul>
                 {
                     languageFields.map((language) => (
@@ -38,7 +41,6 @@ export const PreviewLanguages: FC = () => {
                     ))
                 }
             </ul>
-            <AddBtn handleAddFunc = { () => debounceCreateLanguageField() } />
         </S.Container>
     );
 };

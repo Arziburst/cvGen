@@ -2,8 +2,7 @@
 import React, { FC } from 'react';
 
 // Bus
-import { inputProjectVoidFunc, textareaProjectVoidFunc } from '../../../bus/client/types';
-import { project } from '../../../bus/client/types';
+import { useExperienceFields } from '../../../bus/client/experienceFields';
 
 // Styles
 import * as S from './styles';
@@ -11,45 +10,28 @@ import * as S from './styles';
 // Elements
 import { AddBtn, AppInput, AppTextarea, RemoveBtn } from '../../elements';
 
-// Types
-type PropTypes = {
-    projects: Array<project>;
-    handleChangeProjectsName: inputProjectVoidFunc;
-    handleChangeProjectsCustomer: inputProjectVoidFunc;
-    handleChangeProjectsDuration: inputProjectVoidFunc;
-    handleChangeProjectsRole: inputProjectVoidFunc;
-    handleChangeProjectsResponsibilities: textareaProjectVoidFunc;
-    handleChangeProjectsTeamSize: inputProjectVoidFunc;
-    handleChangeProjectsStack: inputProjectVoidFunc;
-    handleRemoveProject: (id: string) => void;
-    handleAddProject: () => void;
-}
-
-export const PreviewProjects: FC<PropTypes> = (props) => {
+export const PreviewProjects: FC = () => {
     const {
-        projects,
-        handleChangeProjectsName,
-        handleChangeProjectsCustomer,
-        handleChangeProjectsRole,
-        handleChangeProjectsDuration,
-        handleChangeProjectsResponsibilities,
-        handleChangeProjectsTeamSize,
-        handleChangeProjectsStack,
-        handleRemoveProject,
-        handleAddProject,
-    } = props;
+        debounceSetProjectCustomerField, experienceFields,
+        debounceSetProjectDurationField, debounceSetProjectNameField,
+        debounceSetProjectResponsibilitiesField, debounceSetProjectRoleField,
+        debounceSetProjectStackField, debounceSetProjectTeamsizeField,
+        addExperienceProjectField, removeExperienceProjectField,
+    } = useExperienceFields();
 
     return (
         <S.Container>
-            <S.Title>
-                Projects
-            </S.Title>
+            <S.TitleBox>
+                <S.Title>
+                    Projects
+                </S.Title>
+                <AddBtn handleAddFunc = { () => addExperienceProjectField() } />
+            </S.TitleBox>
             <S.List>
-                {projects.map((project) => {
+                {experienceFields.map((experience) => experience.projects.map((project) => {
                     const {
-                        name, customer, duration,
-                        responsibilities, role,
-                        stack, teamSize, id,
+                        customer, duration, name, id,
+                        responsibilities, role, stack, teamSize,
                     } = project;
 
                     return (
@@ -59,7 +41,7 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                     <AppInput
                                         defaultValue = { name }
                                         handleChangeFunc = { (event) => {
-                                            handleChangeProjectsName(event, project);
+                                            debounceSetProjectNameField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Name'
                                     />
@@ -68,7 +50,7 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                     <AppInput
                                         defaultValue = { customer }
                                         handleChangeFunc = { (event) => {
-                                            handleChangeProjectsCustomer(event, project);
+                                            debounceSetProjectCustomerField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Customer'
                                     />
@@ -78,7 +60,7 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                         <AppInput
                                             defaultValue = { role }
                                             handleChangeFunc = { (event) => {
-                                                handleChangeProjectsRole(event, project);
+                                                debounceSetProjectRoleField({ id, text: event.target.value });
                                             } }
                                             placeholder = 'Role'
                                         />
@@ -87,7 +69,9 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                         <AppInput
                                             defaultValue = { duration }
                                             handleChangeFunc = { (event) => {
-                                                handleChangeProjectsDuration(event, project);
+                                                debounceSetProjectDurationField(
+                                                    { id, text: event.target.value },
+                                                );
                                             } }
                                             placeholder = 'Duration'
                                         />
@@ -97,7 +81,9 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                     <AppTextarea
                                         defaultValue = { responsibilities }
                                         handleChangeFunc = { (event) => {
-                                            handleChangeProjectsResponsibilities(event, project);
+                                            debounceSetProjectResponsibilitiesField(
+                                                { id, text: event.target.value },
+                                            );
                                         } }
                                         placeholder = 'Responsibilities'
                                     />
@@ -106,7 +92,7 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                     <AppInput
                                         defaultValue = { teamSize }
                                         handleChangeFunc = { (event) => {
-                                            handleChangeProjectsTeamSize(event, project);
+                                            debounceSetProjectTeamsizeField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Teamsize'
                                     />
@@ -115,18 +101,18 @@ export const PreviewProjects: FC<PropTypes> = (props) => {
                                     <AppInput
                                         defaultValue = { stack }
                                         handleChangeFunc = { (event) => {
-                                            handleChangeProjectsStack(event, project);
+                                            debounceSetProjectStackField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Stack'
                                     />
                                 </S.Stack>
                             </S.Wrapper>
-                            <RemoveBtn handleRemoveFunc = { () => handleRemoveProject(id) }/>
+                            <RemoveBtn handleRemoveFunc = { () => removeExperienceProjectField(id) } />
                         </S.Item>
                     );
-                })}
+                }))
+                }
             </S.List>
-            <AddBtn handleAddFunc = { handleAddProject } />
         </S.Container>
     );
 };

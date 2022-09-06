@@ -41,3 +41,13 @@ export const Description = styled(Date)`
     height: 80px
   }
 `;
+
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+`;

@@ -6,7 +6,7 @@ import toggles from '../../bus/client/toggles';
 import infoFields from '../../bus/client/infoFields/slice';
 import contactFields from '../../bus/client/contactFields/slice';
 import languageFields from '../../bus/client/languageFields/slice';
-import experienceFields from '../../bus/client/experienceFields';
+import experienceFields from '../../bus/client/experienceFields/slice';
 import educationFields from '../../bus/client/educationFields/slice';
 
 // Middleware
