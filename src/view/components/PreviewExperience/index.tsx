@@ -73,9 +73,9 @@ export const PreviewExperience: FC = () => {
                                 </S.Item>
                             ))}
                         </S.List>
+                        <PreviewProjects />
                     </S.Box>
                 ))}
-                <PreviewProjects />
             </S.Inner>
         </S.Container>
     );

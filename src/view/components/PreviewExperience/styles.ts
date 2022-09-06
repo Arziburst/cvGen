@@ -71,7 +71,7 @@ export const TitleBox = styled.div`
     align-items: center;
     margin-bottom: 5px;
     padding-left: 10px;
-    
+
   h3 {
     margin-bottom: 0;
     font-size: 19px;

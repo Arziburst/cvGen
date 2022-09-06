@@ -12,6 +12,7 @@ import * as S from './styles';
 import { PreviewLanguages } from '../../components/PreviewLanguages';
 import { PreviewExperience } from '../../components/PreviewExperience';
 import { PreviewEducation } from '../../components/PreviewEducation';
+import { PriviewAward } from '../../components/PreviewAward';
 
 const Root: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -30,6 +31,7 @@ const Root: FC = () => {
                 <S.SecondColumn>
                     <PreviewContacts />
                     <PreviewLanguages />
+                    <PriviewAward />
                 </S.SecondColumn>
                 <S.SecondColumn>
                     <PreviewEducation />

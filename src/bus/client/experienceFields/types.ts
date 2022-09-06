@@ -47,7 +47,6 @@ export type ExperienceDescriptionOptions = {
     value: ExperienceData;
 }
 
-
 export type ExperienceProjectsOptions = {
     type: keyof typeof initialState[0]['projects'][0];
     value: ExperienceData;

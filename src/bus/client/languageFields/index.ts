@@ -1,9 +1,11 @@
 // Core
 import { debounce, uniqueId } from 'lodash';
 
-// Tools
-import { useSelector, useDispatch } from '../../../tools/hooks'; /* Typed selector */
+// Actions
 import { languageFieldsActions } from './slice';
+
+// Tools
+import { useSelector, useDispatch } from '../../../tools/hooks';
 
 // Types
 import { Language } from './types';

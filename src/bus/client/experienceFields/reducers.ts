@@ -71,7 +71,6 @@ export const removeExperienceDescriptionField: types.BaseContact<string>
     },
 );
 
-
 export const addExperienceDescriptionField: types.BaseContact<types.DescriptionList>
     = (state, action) => state.map(
         (experience) => {
