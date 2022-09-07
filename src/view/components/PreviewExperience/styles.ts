@@ -7,6 +7,16 @@ export const Container = styled.section`
 export const Inner = styled.div`
 `;
 
+export const TextBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+`;
+
 export const Info = styled.div`
   display: flex;
   justify-content: space-between;

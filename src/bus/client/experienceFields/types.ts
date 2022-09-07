@@ -21,6 +21,16 @@ export type Project = {
     stack: string;
 }
 
+export type ProjectData = {
+    experienceId: string
+    project: Project
+}
+
+export type DescriptionListData = {
+    experienceId: string
+    description: DescriptionList
+}
+
 export type Experience = {
     id: string;
     position: string;

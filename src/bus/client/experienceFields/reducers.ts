@@ -1,4 +1,5 @@
 // Slice
+import { uniqueId } from 'lodash';
 import { initialState } from './slice';
 // Types
 import * as types from './types';
@@ -71,23 +72,52 @@ export const removeExperienceDescriptionField: types.BaseContact<string>
     },
 );
 
-export const addExperienceDescriptionField: types.BaseContact<types.DescriptionList>
+export const addExperienceDescriptionField: types.BaseContact<types.DescriptionListData>
     = (state, action) => state.map(
         (experience) => {
-            return {
-                ...experience,
-                descriptionList: [ ...experience.descriptionList, action.payload ],
-            };
+            if (experience.id === action.payload.experienceId) {
+                return {
+                    ...experience,
+                    descriptionList: [ ...experience.descriptionList, action.payload.description ],
+                };
+            }
+
+            return experience;
         },
     );
 
-export const addExperienceProjectField: types.BaseContact<types.Project>
+export const addExperienceField: types.BaseContact<types.Experience>
+    = (state, action) => [
+        ...state,
+        {
+            ...action.payload,
+            id:              uniqueId(),
+            descriptionList: action.payload.descriptionList.map((descr) => {
+                return {
+                    ...descr,
+                    id: uniqueId(),
+                };
+            }),
+            projects: action.payload.projects.map((project) => {
+                return {
+                    ...project,
+                    id: uniqueId(),
+                };
+            }),
+        },
+    ];
+
+export const addExperienceProjectField: types.BaseContact<types.ProjectData>
     = (state, action) => state.map(
         (experience) => {
-            return {
-                ...experience,
-                projects: [ ...experience.projects, action.payload ],
-            };
+            if (action.payload.experienceId === experience.id) {
+                return {
+                    ...experience,
+                    projects: [ ...experience.projects, action.payload.project ],
+                };
+            }
+
+            return experience;
         },
     );
 

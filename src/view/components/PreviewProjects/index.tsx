@@ -10,9 +10,16 @@ import * as S from './styles';
 // Elements
 import { AddBtn, AppInput, AppTextarea, RemoveBtn } from '../../elements';
 
-export const PreviewProjects: FC = () => {
+//Types
+import { Project } from '../../../bus/client/experienceFields/types';
+type propTypes = {
+    projects: Array<Project>
+    experienceId: string;
+}
+
+export const PreviewProjects: FC<propTypes> = ({ projects, experienceId }) => {
     const {
-        debounceSetProjectCustomerField, experienceFields,
+        debounceSetProjectCustomerField,
         debounceSetProjectDurationField, debounceSetProjectNameField,
         debounceSetProjectResponsibilitiesField, debounceSetProjectRoleField,
         debounceSetProjectStackField, debounceSetProjectTeamsizeField,
@@ -25,10 +32,10 @@ export const PreviewProjects: FC = () => {
                 <S.Title>
                     Projects
                 </S.Title>
-                <AddBtn handleAddFunc = { () => addExperienceProjectField() } />
+                <AddBtn handleAddFunc = { () => addExperienceProjectField(experienceId) } />
             </S.TitleBox>
             <S.List>
-                {experienceFields.map((experience) => experience.projects.map((project) => {
+                {projects.map((project) => {
                     const {
                         customer, duration, name, id,
                         responsibilities, role, stack, teamSize,
@@ -110,7 +117,7 @@ export const PreviewProjects: FC = () => {
                             <RemoveBtn handleRemoveFunc = { () => removeExperienceProjectField(id) } />
                         </S.Item>
                     );
-                }))
+                })
                 }
             </S.List>
         </S.Container>

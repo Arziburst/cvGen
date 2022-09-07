@@ -1,5 +1,5 @@
 // Core
-import { debounce, uniqueId } from 'lodash';
+import { debounce, uniqueId, cloneDeep } from 'lodash';
 
 // Action
 import { experienceFieldsActions } from './slice';
@@ -15,6 +15,7 @@ import { ExperienceData } from './types';
 
 // Constant
 import { WAIT_TIME } from '../../../init';
+
 
 export const useExperienceFields = () => {
     const dispatch = useDispatch();
@@ -68,9 +69,15 @@ export const useExperienceFields = () => {
         dispatch(experienceFieldsActions.removeExperienceDescriptionField(id));
     }, WAIT_TIME);
 
-    const addExperienceDescriptionField = debounce(() => {
+    const cloneArray = cloneDeep(initialState);
+
+    const addExperienceField = debounce(() => {
+        dispatch(experienceFieldsActions.addExperienceField(cloneArray[ 0 ]));
+    }, WAIT_TIME);
+
+    const addExperienceDescriptionField = debounce((id: string) => {
         dispatch(experienceFieldsActions.addExperienceDescriptionField(
-            { ...initialState[ 0 ].descriptionList[ 0 ], id: uniqueId() },
+            { description: { ...initialState[ 0 ].descriptionList[ 0 ], id: uniqueId() }, experienceId: id },
         ));
     }, WAIT_TIME);
 
@@ -78,9 +85,9 @@ export const useExperienceFields = () => {
         dispatch(experienceFieldsActions.removeExperienceProjectField(id));
     }, WAIT_TIME);
 
-    const addExperienceProjectField = debounce(() => {
+    const addExperienceProjectField = debounce((id: string) => {
         dispatch(experienceFieldsActions.addExperienceProjectField(
-            { ...initialState[ 0 ].projects[ 0 ], id: uniqueId() },
+            { project: { ...initialState[ 0 ].projects[ 0 ], id: uniqueId() }, experienceId: id },
         ));
     }, WAIT_TIME);
 
@@ -101,5 +108,6 @@ export const useExperienceFields = () => {
         addExperienceDescriptionField,
         removeExperienceProjectField,
         addExperienceProjectField,
+        addExperienceField,
     };
 };

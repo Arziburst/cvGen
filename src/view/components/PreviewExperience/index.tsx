@@ -18,12 +18,15 @@ export const PreviewExperience: FC = () => {
         experienceFields, debounceSetExperiencePositionField,
         debounceSetExperienceDateField, debounceSetExperienceLocationField,
         debounceSetDescrField, removeExperienceDescriptionField,
-        addExperienceDescriptionField,
+        addExperienceDescriptionField, addExperienceField,
     } = useExperienceFields();
 
     return (
         <S.Container>
-            <Title text = 'Experience' />
+            <S.TextBox>
+                <Title text = 'Experience' />
+                <AddBtn handleAddFunc = { () => addExperienceField() } />
+            </S.TextBox>
             <S.Inner>
                 {experienceFields.map((experience) => (
                     <S.Box key = { experience.id }>
@@ -55,7 +58,7 @@ export const PreviewExperience: FC = () => {
                         <S.List>
                             <S.TitleBox>
                                 <Title text = 'Description' />
-                                <AddBtn handleAddFunc = { () => addExperienceDescriptionField() } />
+                                <AddBtn handleAddFunc = { () => addExperienceDescriptionField(experience.id) } />
                             </S.TitleBox>
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
@@ -73,7 +76,10 @@ export const PreviewExperience: FC = () => {
                                 </S.Item>
                             ))}
                         </S.List>
-                        <PreviewProjects />
+                        <PreviewProjects
+                            experienceId = { experience.id }
+                            projects = { experience.projects }
+                        />
                     </S.Box>
                 ))}
             </S.Inner>
