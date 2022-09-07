@@ -3,11 +3,10 @@ import React from 'react';
 import { View, StyleSheet, Text, Image, Link } from '@react-pdf/renderer';
 
 // Assets
-import phoneIcon from '../../../../assets/images/phone-icon.png';
-import homeIcon from '../../../../assets/images/home-icon.png';
-import mailIcon from '../../../../assets/images/mail-icon.png';
-import linkedinIcon from '../../../../assets/images/linkedin-icon.png';
-import githubIcon from '../../../../assets/images/github-icon.png';
+import {
+    pngPhoneIcon, pngHomeIcon, pngMailIcon,
+    pngLinkedinIcon, pngGithubIcon,
+} from '../../../../assets/images';
 
 // Styles
 const styles = StyleSheet.create({
@@ -44,29 +43,31 @@ type PropTypes = {
 }
 
 export const PreviewContacts = ({ contacts }: PropTypes) => {
+    const getIconSrc = (type: string): string => {
+        let iconUrl = '';
+
+        if (type === 'mail') {
+            iconUrl = pngMailIcon;
+        } else if (type === 'phone') {
+            iconUrl = pngPhoneIcon;
+        } else if (type === 'adress') {
+            iconUrl = pngHomeIcon;
+        } else if (type === 'Linkedin') {
+            iconUrl = pngLinkedinIcon;
+        } else if (type === 'Github') {
+            iconUrl = pngGithubIcon;
+        }
+
+        return iconUrl;
+    };
+
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Contacts'/>
             <ul>
                 {
                     contacts?.map(({ id, url }) => {
-                        let iconUrl = '';
-
-                        if (id === 'mail') {
-                            iconUrl = mailIcon;
-                        } else if (id === 'phone') {
-                            iconUrl = phoneIcon;
-                        } else if (id === 'adress') {
-                            iconUrl = homeIcon;
-                        } else if (id === 'Linkedin') {
-                            iconUrl = linkedinIcon;
-                        } else if (id === 'Github') {
-                            iconUrl = githubIcon;
-                        }
-
-                        if (url.length === 0) {
-                            return null;
-                        }
+                        const iconSrc = getIconSrc(url);
 
                         return (
                             <li key = { id }>
@@ -75,7 +76,7 @@ export const PreviewContacts = ({ contacts }: PropTypes) => {
                                     src = { url }
                                     style = { styles.link }>
                                     <Image
-                                        src = { iconUrl }
+                                        src = { iconSrc }
                                         style = { styles.linkImg }
                                     />
                                     <Text

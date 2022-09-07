@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Image, StyleSheet } from '@react-pdf/renderer';
 
 // Assets
-import userIcon from '../../../../assets/images/user-icon.png';
+import { pngUserIcon } from '../../../../assets/images';
 
 // Styles
 const styles = StyleSheet.create({
@@ -39,7 +39,7 @@ export const PreviewAvatar = ({ avatar }: PropTypes) => {
                 avatar.length === 0
                     ? (
                         <Image
-                            src = { userIcon }
+                            src = { pngUserIcon }
                             style = { styles.icon }
                         />
                     ) : (

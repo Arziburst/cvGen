@@ -1,0 +1,13 @@
+export { default as svgHomeIcon } from './home-icon.svg';
+export { default as pngHomeIcon } from './home-icon.png';
+export { default as svgGithubIcon } from './github-icon.svg';
+export { default as pngGithubIcon } from './github-icon.png';
+export { default as svgLinkedinIcon } from './linkedin-icon.svg';
+export { default as pngLinkedinIcon } from './linkedin-icon.png';
+export { default as svgMailIcon } from './mail-icon.svg';
+export { default as pngMailIcon } from './mail-icon.png';
+export { default as svgPhoneIcon } from './phone-icon.svg';
+export { default as pngPhoneIcon } from './phone-icon.png';
+export { default as svgDeleteIcon } from './delete-icon.svg';
+export { default as svgAddUserIcon } from './add-user-icon.svg';
+export { default as pngUserIcon } from './user-icon.png';

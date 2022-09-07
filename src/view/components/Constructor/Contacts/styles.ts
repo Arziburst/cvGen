@@ -2,11 +2,11 @@
 import styled from 'styled-components';
 
 // Assets
-import mailIcon from '../../../../assets/images/mail-icon.svg';
-import phoneIcon from '../../../../assets/images/phone-icon.svg';
-import homeIcon from '../../../../assets/images/home-icon.svg';
-import linkedinicon from '../../../../assets/images/linkedin-icon.svg';
-import githubIcon from '../../../../assets/images/github-icon.svg';
+import {
+    svgMailIcon, svgPhoneIcon, svgHomeIcon,
+    svgLinkedinIcon, svgGithubIcon,
+} from '../../../../assets/images';
+
 export const Container = styled.section`
   padding-bottom: 30px;
 `;
@@ -32,31 +32,31 @@ export const Item = styled.li`
 
   &:nth-child(1) {
     &::before {
-      background-image: url(${mailIcon});
+      background-image: url(${svgMailIcon});
     }
   }
 
    &:nth-child(2) {
     &::before {
-      background-image: url(${phoneIcon});
+      background-image: url(${svgPhoneIcon});
     }
   }
 
   &:nth-child(3) {
     &::before {
-      background-image: url(${homeIcon});
+      background-image: url(${svgHomeIcon});
     }
   }
 
   &:nth-child(4) {
     &::before {
-      background-image: url(${linkedinicon});
+      background-image: url(${svgLinkedinIcon});
     }
   }
 
    &:nth-child(5) {
     &::before {
-      background-image: url(${githubIcon});
+      background-image: url(${svgGithubIcon});
     }
   }
 `;

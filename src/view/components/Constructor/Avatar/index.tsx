@@ -5,7 +5,7 @@ import React, { ChangeEvent, FC } from 'react';
 import { useInfoFields } from '../../../../bus/client/infoFields';
 
 // Assets
-import addUserIcon from '../../../../assets/images/add-user-icon.svg';
+import { svgAddUserIcon } from '../../../../assets/images';
 
 // Styles
 import * as S from './styles';
@@ -29,7 +29,7 @@ export const ConstructorAvatar: FC = () => {
                 <S.UserAvatar
                     alt = 'user avatar'
                     isAvatar = { !!avatar }
-                    src = { avatar ? avatar : addUserIcon }
+                    src = { avatar ? avatar : svgAddUserIcon }
                 />
                 <S.InputFile
                     type = 'file'

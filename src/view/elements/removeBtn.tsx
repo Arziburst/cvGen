@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 // Assets
-import deleteIcon from '../../assets/images/delete-icon.svg';
+import { svgDeleteIcon } from '../../assets/images';
 
 // Styled
 const RemoveButton = styled.button`
@@ -34,7 +34,7 @@ export const RemoveBtn: FC<propsType> = ({ handleRemoveFunc  }) => {
     return (
         <RemoveButton onClick = { handleRemoveFunc }>
             <img
-                src = { deleteIcon }
+                src = { svgDeleteIcon }
             />
         </RemoveButton>
     );
