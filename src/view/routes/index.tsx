@@ -2,21 +2,21 @@
 import React, { FC, Suspense } from 'react';
 
 // Routes
-import { Cv } from './CV';
 import { Preview } from './Preview';
+import { Constructor } from './Constructor';
 
 // Bus
 import { useTogglesRedux } from '../../bus/client/toggles';
 
 export const Routes: FC = () => {
-    const { togglesRedux: { isReadyCV }} = useTogglesRedux();
+    const { togglesRedux: { isReadyPreview }} = useTogglesRedux();
 
     return (
         <Suspense fallback = { <div>Spinner</div> }>
             {
-                isReadyCV
-                    ? <Cv />
-                    : <Preview />
+                isReadyPreview
+                    ? <Preview />
+                    : <Constructor />
             }
         </Suspense>
     );

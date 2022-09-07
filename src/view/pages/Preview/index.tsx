@@ -4,46 +4,27 @@ import React, { FC } from 'react';
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
 
+// Containers
+import { PdfViewer } from '../../containers/PdfViewer';
+
 // Components
-import { ErrorBoundary, PreviewAvatar, PreviewInfo, PreviewContacts } from '../../components';
+import { ErrorBoundary } from '../../components';
 
-// Styles
+// Style
 import * as S from './styles';
-import { PreviewLanguages } from '../../components/PreviewLanguages';
-import { PreviewExperience } from '../../components/PreviewExperience';
-import { PreviewEducation } from '../../components/PreviewEducation';
-import { PriviewAward } from '../../components/PreviewAward';
 
-const Root: FC = () => {
+const Preview: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
     return (
         <S.Container>
-            <S.Wrapper>
-                <S.Column>
-                    <PreviewAvatar />
-                </S.Column>
-                <S.Column>
-                    <PreviewInfo />
-                </S.Column>
-            </S.Wrapper>
-            <S.Wrapper>
-                <S.SecondColumn>
-                    <PreviewContacts />
-                    <PreviewLanguages />
-                    <PriviewAward />
-                </S.SecondColumn>
-                <S.SecondColumn>
-                    <PreviewEducation />
-                    <PreviewExperience />
-                </S.SecondColumn>
-            </S.Wrapper>
+            <PdfViewer />
             <button
-                style = {{ position: 'absolute', left: '15px', right: '15px', width: '80px', height: '100px' }}
+                style = {{ position: 'fixed', left: '15px', top: '15px', width: '100px', height: '100px' }}
                 onClick = { () => {
-                    setToggleAction({ type: 'isReadyCV', value: true });
+                    setToggleAction({ type: 'isReadyPreview', value: false });
                 } }>
-                Gen cv
+                Back
             </button>
         </S.Container>
     );
@@ -51,6 +32,7 @@ const Root: FC = () => {
 
 export default () => (
     <ErrorBoundary>
-        <Root />
+        <Preview />
     </ErrorBoundary>
 );
+

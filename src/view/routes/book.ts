@@ -1,2 +1,2 @@
-export const PREVIEW = '/';
-export const CV = '/cv';
+export const CONSTRUCTOR = '/';
+export const PREVIEW = '/preview';
