@@ -1,5 +1,5 @@
 // Core
-import { debounce } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 
 // Slice
 import { awardFieldsActions, initialState } from './slice';
@@ -34,7 +34,7 @@ export const useAwardFields = () => {
     }, WAIT_TIME);
 
     const debounceCreateAwardField = debounce(() => {
-        dispatch(awardFieldsActions.addAwardFields(initialState[ 0 ]));
+        dispatch(awardFieldsActions.addAwardFields({ ...initialState[ 0 ], id: uniqueId() }));
     }, WAIT_TIME);
 
     return {
