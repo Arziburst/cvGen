@@ -8,12 +8,13 @@ import { useContactField } from '../../../bus/client/contactFields';
 import { useLanguageFields } from '../../../bus/client/languageFields';
 
 // Components
-import { PreviewAvatar, PreviewContacts, PreviewInfo, PreviewLanguage } from '../../components';
+import { PreviewAvatar, PreviewAwards, PreviewContacts, PreviewInfo, PreviewLanguage } from '../../components';
 
 // Assets
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
+import { useAwardFields } from '../../../bus/client/awardFields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -61,6 +62,7 @@ export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
     const { contactFields } = useContactField();
     const { languageFields } = useLanguageFields();
+    const { awardFields } = useAwardFields();
 
     return (
         <PDFViewer
@@ -85,6 +87,7 @@ export const PdfViewer = () => {
                         <View style = { styles.firstColumn }>
                             <PreviewContacts contacts = { contactFields }/>
                             <PreviewLanguage languages = { languageFields }/>
+                            <PreviewAwards awards = { awardFields } />
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             {/* // Content */}
