@@ -2,6 +2,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  padding-bottom: 25px;
+
 `;
 
 export const Inner = styled.div`
@@ -54,16 +56,7 @@ export const Item = styled.li`
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 10px;
   margin-bottom: 5px;
-
-  &::before {
-    content: '-';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    color: #4c576b;
-  }
 
   textarea {
     font-size: 14px;
@@ -73,14 +66,13 @@ export const Item = styled.li`
 `;
 
 export const Box = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `;
 
 export const TitleBox = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    padding-left: 10px;
 
   h3 {
     margin-bottom: 0;

@@ -1,4 +1,7 @@
 // Core
+import { uniqueId } from 'lodash';
+
+// Slice
 import { createSlice } from '@reduxjs/toolkit';
 
 // Types
@@ -9,16 +12,28 @@ import * as reducers from './reducers';
 
 export const initialState = [
     {
-        id:    '',
+        id:    uniqueId(),
         skill: 'HTML',
     },
     {
-        id:    '',
+        id:    uniqueId(),
         skill: 'CSS',
     },
     {
-        id:    '',
+        id:    uniqueId(),
         skill: 'JS',
+    },
+    {
+        id:    uniqueId(),
+        skill: 'React',
+    },
+    {
+        id:    uniqueId(),
+        skill: 'Redux',
+    },
+    {
+        id:    uniqueId(),
+        skill: 'TypeScript',
     },
 ];
 

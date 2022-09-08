@@ -1,23 +1,24 @@
-// Slice
-import { initialState } from './slice';
-
 // Types
 import * as types from './types';
 
 export const skillActionCreator: types.BaseContact = (state, action) => state.map(
     (skill) => {
-        return {
-            ...skill,
-            skill: action.payload.data.skill,
-        };
+        if (skill.id === action.payload.data.id) {
+            return {
+                ...skill,
+                skill: action.payload.data.skill,
+            };
+        }
+
+        return skill;
     },
 );
 
 export const addSkill: types.BaseContact<string> = (state, action) => [
     ...state,
     {
-        ...initialState[ 0 ],
-        id: action.payload,
+        skill: '',
+        id:    action.payload,
     },
 ];
 

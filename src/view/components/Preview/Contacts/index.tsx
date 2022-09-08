@@ -67,7 +67,7 @@ export const PreviewContacts = ({ contacts }: PropTypes) => {
             <ul>
                 {
                     contacts?.map(({ id, url }) => {
-                        const iconSrc = getIconSrc(url);
+                        const iconSrc = getIconSrc(id);
 
                         return (
                             <li key = { id }>

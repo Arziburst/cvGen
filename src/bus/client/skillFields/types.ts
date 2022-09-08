@@ -10,7 +10,7 @@ export type Skill = {
 export type SkillsState = Array<Skill>
 
 type SkillOption = {
-    type: keyof typeof initialState
+    type: keyof typeof initialState[0]
     data: Skill
 }
 // Contracts

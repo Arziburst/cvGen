@@ -14,6 +14,7 @@ import {
     ConstructorAward,
     ConstructorEducation,
     ConstructorExperience,
+    ConstructorSkills,
 } from '../../components';
 
 // Styles
@@ -40,6 +41,7 @@ const Constructor: FC = () => {
                 </S.SecondColumn>
                 <S.SecondColumn>
                     <ConstructorEducation />
+                    <ConstructorSkills />
                     <ConstructorExperience />
                 </S.SecondColumn>
             </S.Wrapper>
