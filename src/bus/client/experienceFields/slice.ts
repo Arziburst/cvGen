@@ -13,25 +13,25 @@ import * as reducers from './reducers';
 export const initialState = [
     {
         id:              uniqueId(),
-        position:        '',
-        location:        '',
-        date:            '',
+        position:        'Front-end',
+        location:        'Ukraine',
+        date:            '2022-2023',
         descriptionList: [
             {
                 id:          uniqueId(),
-                description: '',
+                description: 'qwdwqdqw dwq dwq wq dqw dqwd qw dqw dqw dwq',
             },
         ],
         projects: [
             {
                 id:               uniqueId(),
-                name:             '',
-                customer:         '',
-                duration:         '',
-                role:             '',
-                responsibilities: '',
-                teamSize:         '',
-                stack:            '',
+                name:             'qwdwqdwqd',
+                customer:         'qwdqwd',
+                duration:         'qwdqwd',
+                role:             'qwdqwdqwd',
+                responsibilities: 'ergre',
+                teamSize:         'xz ',
+                stack:            'zx xz zx zx xz xz xz',
             },
         ],
     },
