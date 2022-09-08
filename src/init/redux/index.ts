@@ -8,7 +8,8 @@ import contactFields from '../../bus/client/contactFields/slice';
 import languageFields from '../../bus/client/languageFields/slice';
 import experienceFields from '../../bus/client/experienceFields/slice';
 import educationFields from '../../bus/client/educationFields/slice';
-import awardFields from '../../bus/client/awardFields//slice';
+import awardFields from '../../bus/client/awardFields/slice';
+import skillFields from '../../bus/client/skillFields/slice';
 
 // Middleware
 import {
@@ -24,6 +25,7 @@ export const store = configureStore({
         experienceFields,
         educationFields,
         awardFields,
+        skillFields,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
