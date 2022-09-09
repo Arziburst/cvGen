@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 
 // Bus
-import { useSkills } from '../../../../bus/client/skillFields';
+import { useSkillFields } from '../../../../bus/client/skillFields';
 import { AddBtn, AppInput, RemoveBtn, Title } from '../../../elements';
 
 // Styles
@@ -10,9 +10,9 @@ import * as S from './styles';
 
 export const ConstructorSkills: FC = () => {
     const {
-        skills, addSkillField,
+        skillFields, addSkillField,
         debounceChangeSkillField, removeSkillField,
-    } = useSkills();
+    } = useSkillFields();
 
     return (
         <S.Container>
@@ -21,7 +21,7 @@ export const ConstructorSkills: FC = () => {
                 <AddBtn handleAddFunc = { () => addSkillField() }/>
             </S.Box>
             <S.List>
-                {skills.map(({ id, skill }) => (
+                {skillFields.map(({ id, skill }) => (
                     <S.Item key = { id } >
                         <AppInput
                             defaultValue = { skill }

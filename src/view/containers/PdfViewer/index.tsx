@@ -18,6 +18,8 @@ import { useAwardFields } from '../../../bus/client/awardFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
+import { PreviewSlills } from '../../components/Preview/Skills';
+import { useSkillFields } from '../../../bus/client/skillFields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -68,6 +70,7 @@ export const PdfViewer = () => {
     const { awardFields } = useAwardFields();
     const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
+    const { skillFields } = useSkillFields();
 
     return (
         <PDFViewer
@@ -97,6 +100,7 @@ export const PdfViewer = () => {
                         <View style = { styles.contentSecondColumn }>
                             <PreviewExperience experience = { experienceFields } />
                             <PreviewEducation education = { educationFields } />
+                            <PreviewSlills skills = { skillFields } />
                         </View>
                     </View>
                 </Page>

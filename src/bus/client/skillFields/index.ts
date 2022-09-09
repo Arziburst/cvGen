@@ -6,8 +6,8 @@ import { useDebounce, useSelector, useDispatch } from '../../../tools/hooks';
 import { Skill } from './types';
 import { uniqueId } from 'lodash';
 
-export const useSkills = () => {
-    const skills = useSelector(({ skillFields }) => skillFields);
+export const useSkillFields = () => {
+    const skillFields = useSelector(({ skillFields }) => skillFields);
     const debounce = useDebounce();
     const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ export const useSkills = () => {
     };
 
     return {
-        skills,
+        skillFields,
         debounceChangeSkillField,
         removeSkillField,
         addSkillField,
