@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from '@react-pdf/renderer';
 // Styles
 const styles = StyleSheet.create({
     section: {
-        padding: '20px 30px',
+        padding: '10px 20px',
     },
     name: {
         fontWeight:   800,

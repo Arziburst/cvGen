@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     firstColumn: {
         backgroundColor: '#decabf',
         width:           '30%',
-        padding:         '20px 30px',
+        padding:         '15px 20px',
     },
     wrapperSecondColumn: {
         width:           '70%',
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
     contentSecondColumn: {
         width:           '70%',
-        padding:         '20px 30px',
+        padding:         '15px 20px',
         backgroundColor: '#f5f5f5',
     },
 });
@@ -93,13 +93,13 @@ export const PdfViewer = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            <PreviewContacts contacts = { contactFields }/>
-                            <PreviewLanguage languages = { languageFields }/>
+                            <PreviewContacts contacts = { contactFields } />
+                            <PreviewLanguage languages = { languageFields } />
                             <PreviewAwards awards = { awardFields } />
                         </View>
                         <View style = { styles.contentSecondColumn }>
-                            <PreviewExperience experience = { experienceFields } />
                             <PreviewEducation education = { educationFields } />
+                            <PreviewExperience experience = { experienceFields } />
                             <PreviewSlills skills = { skillFields } />
                         </View>
                     </View>

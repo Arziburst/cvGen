@@ -28,7 +28,7 @@ export const ConstructorLanguages: FC = () => {
                         <S.Item key = { language.id }>
                             <S.LanguageInput
                                 defaultValue = { language.language }
-                                placeholder = { '1' }
+                                placeholder = { 'Language...' }
                                 type = 'text'
                                 onChange = { (event) => {
                                     debounceChangeLanguageField({ id: language.id, language: event.target.value });

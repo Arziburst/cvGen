@@ -17,8 +17,9 @@ export const Box = styled.div`
 `;
 
 export const List = styled.ul`
- display: inline-flex;
+  display: inline-flex;
   align-items: flex-start;
+  padding-top: 5px;
   min-height: 100px;
   flex-wrap: wrap;
   font-size: 14px;
@@ -32,14 +33,15 @@ export const Item = styled.li`
   display: inline-flex;
   align-items: center;
   padding: 5px;
+  width: 30.333%;
   border-radius: 11px;
   overflow: hidden;
+  margin-right: 10px;
 
   input {
     background-color: #dbdbdb;
     padding: 5px 10px;
     padding-right: 25px;
-    width: 125px;
     max-width: fit-content;
     font-size: 15px;
     overflow: hidden;
@@ -54,9 +56,5 @@ export const Item = styled.li`
       border-radius: 0;
       height: 32px;
     }
-  }
-
-  &:not(:last-child) {
-    margin-right: 10px;
   }
 `;

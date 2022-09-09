@@ -11,10 +11,10 @@ const styles = StyleSheet.create({
     },
     decoreElem: {
         position:        'absolute',
-        left:            -30,
-        top:             6,
+        left:            -20,
+        top:             7,
         height:          13,
-        width:           20,
+        width:           13,
         backgroundColor: '#4c576b',
     },
     title: {

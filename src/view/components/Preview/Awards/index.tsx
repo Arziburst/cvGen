@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
     },
 
     date: {
-        fontSize:     8,
+        fontSize:     9,
         color:        '#4c576b',
         marginBottom: 2,
     },
 
     location: {
-        fontSize: 8,
+        fontSize: 9,
         color:    '#4c576b',
     },
 });

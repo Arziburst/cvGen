@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     linkText: {
         fontWeight: 500,
-        fontSize:   8,
+        fontSize:   9,
         color:      '#4c576b',
         marginLeft: 4,
     },

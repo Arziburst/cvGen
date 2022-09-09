@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     },
     skillsList: {
         flexDirection: 'row',
+        flexWrap:      'wrap',
     },
 });
 

@@ -8,7 +8,8 @@ import { pngUserIcon } from '../../../../assets/images';
 // Styles
 const styles = StyleSheet.create({
     box: {
-        height:          '120px',
+        height:          '140px',
+        width:           '100%',
         borderRadius:    '50%',
         backgroundColor: '#f0efed',
         display:         'flex',
