@@ -44,16 +44,38 @@ const styles = StyleSheet.create({
         marginBottom: 3,
     },
     descriptionList: {
+        marginBottom: 3,
+    },
+    descriptionDecor: {
+        width:           7,
+        height:          1,
+        backgroundColor: '#4c576b',
+        marginRight:     3,
     },
     descriptionItem: {
+        flexDirection: 'row',
+        alignItems:    'center',
+        marginBottom:  3,
+        fontSize:      12,
     },
     descriptionText: {
     },
     projectItem: {
+        marginBottom: 5,
+        fontSize:     12,
+    },
+    projectBox: {
+        flexDirection:  'row',
+        justifyContent: 'space-between',
+        marginBottom:   2,
     },
     name: {
     },
+    projectText: {
+        marginBottom: 2,
+    },
 });
+
 
 // Elements
 import { PdfGenTitle } from '../../../elements/pdfGenTitle';
@@ -97,6 +119,7 @@ export const PreviewExperience = ({ experience }: PropTypes) => {
                                         <li
                                             key = { id }
                                             style = { styles.descriptionItem }>
+                                            <View style = { styles.descriptionDecor }></View>
                                             <Text style = { styles.descriptionText }>
                                                 {description}
                                             </Text>
@@ -116,13 +139,13 @@ export const PreviewExperience = ({ experience }: PropTypes) => {
                                         <li
                                             key = { id }
                                             style = { styles.projectItem }>
-                                            <Text style = { styles.name }>
+                                            <Text style = { styles.projectText }>
                                                 {name}
                                             </Text>
-                                            <Text >
+                                            <Text style = { styles.projectText }>
                                                 {customer}
                                             </Text>
-                                            <View>
+                                            <View style = { styles.projectBox }>
                                                 <Text>
                                                     {role}
                                                 </Text>
@@ -130,13 +153,13 @@ export const PreviewExperience = ({ experience }: PropTypes) => {
                                                     {duration}
                                                 </Text>
                                             </View>
-                                            <Text>
+                                            <Text style = { styles.projectText }>
                                                 {responsibilities}
                                             </Text>
-                                            <Text>
+                                            <Text style = { styles.projectText }>
                                                 {teamSize}
                                             </Text>
-                                            <Text>
+                                            <Text style = { styles.projectText }>
                                                 {stack}
                                             </Text>
                                         </li>
