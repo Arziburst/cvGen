@@ -16,6 +16,8 @@ import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
 import { useAwardFields } from '../../../bus/client/awardFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
+import { PreviewEducation } from '../../components/Preview/Education';
+import { useEducationField } from '../../../bus/client/educationFields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -65,6 +67,7 @@ export const PdfViewer = () => {
     const { languageFields } = useLanguageFields();
     const { awardFields } = useAwardFields();
     const { experienceFields } = useExperienceFields();
+    const { educationFields } = useEducationField();
 
     return (
         <PDFViewer
@@ -92,7 +95,8 @@ export const PdfViewer = () => {
                             <PreviewAwards awards = { awardFields } />
                         </View>
                         <View style = { styles.contentSecondColumn }>
-                            <PreviewExperience experience = { experienceFields }/>
+                            <PreviewExperience experience = { experienceFields } />
+                            <PreviewEducation education = { educationFields } />
                         </View>
                     </View>
                 </Page>
