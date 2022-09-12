@@ -27,21 +27,21 @@ export const useEducationField = () => {
         dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'description', value: data }));
     });
 
-    const debounceRemoveEducationField = debounce((id: string) => {
+    const removeEducationField = (id: string) => {
         dispatch(educationFieldsActions.removeEducationField(id));
-    });
+    };
 
-    const debounceAddEducationField = debounce(() => {
+    const addEducationField = () => {
         dispatch(educationFieldsActions.addEducationField(uniqueId()));
-    });
+    };
 
     return {
         educationFields,
         debounceChangeEducationDateField,
         debounceChangeEducationDegreeField,
         debounceChangeEducationDescriptionField,
-        debounceRemoveEducationField,
-        debounceAddEducationField,
+        removeEducationField,
+        addEducationField,
     };
 };
 

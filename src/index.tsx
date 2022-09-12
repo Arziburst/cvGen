@@ -20,7 +20,6 @@ const Root = () => (
                 <App />
             </BrowserRouter>
         </PersistGate>
-
     </Provider>
 );
 

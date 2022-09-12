@@ -13,14 +13,14 @@ import { Title, RemoveBtn, AddBtn } from '../../../elements';
 export const ConstructorLanguages: FC = () => {
     const {
         languageFields, debounceChangeLanguageField,
-        debounceCreateLanguageField, debounceRemoveLanguageField,
+        addLanguageField, removeLanguageField,
     } = useLanguageFields();
 
     return (
         <S.Container>
             <S.Box>
                 <Title text = 'Languages' />
-                <AddBtn handleAddFunc = { () => debounceCreateLanguageField() } />
+                <AddBtn handleAddFunc = { () => addLanguageField() } />
             </S.Box>
             <ul>
                 {
@@ -34,7 +34,7 @@ export const ConstructorLanguages: FC = () => {
                                     debounceChangeLanguageField({ id: language.id, language: event.target.value });
                                 }  }
                             />
-                            <RemoveBtn handleRemoveFunc = { () => debounceRemoveLanguageField(language.id) }/>
+                            <RemoveBtn handleRemoveFunc = { () => removeLanguageField(language.id) }/>
                         </S.Item>
                     ))
                 }

@@ -63,31 +63,31 @@ export const useExperienceFields = () => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'teamSize', value: data }));
     });
 
-    const removeExperienceDescriptionField = debounce((id: string) => {
+    const removeExperienceDescriptionField = (id: string) => {
         dispatch(experienceFieldsActions.removeExperienceDescriptionField(id));
-    });
+    };
 
     const cloneArray = cloneDeep(initialState);
 
-    const addExperienceField = debounce(() => {
+    const addExperienceField = () => {
         dispatch(experienceFieldsActions.addExperienceField(cloneArray[ 0 ]));
-    });
+    };
 
-    const addExperienceDescriptionField = debounce((id: string) => {
+    const addExperienceDescriptionField = (id: string) => {
         dispatch(experienceFieldsActions.addExperienceDescriptionField(
             { description: { ...initialState[ 0 ].descriptionList[ 0 ], id: uniqueId() }, experienceId: id },
         ));
-    });
+    };
 
-    const removeExperienceProjectField = debounce((id: string) => {
+    const removeExperienceProjectField = (id: string) => {
         dispatch(experienceFieldsActions.removeExperienceProjectField(id));
-    });
+    };
 
-    const addExperienceProjectField = debounce((id: string) => {
+    const addExperienceProjectField = (id: string) => {
         dispatch(experienceFieldsActions.addExperienceProjectField(
             { project: { ...initialState[ 0 ].projects[ 0 ], id: uniqueId() }, experienceId: id },
         ));
-    });
+    };
 
     return {
         experienceFields,

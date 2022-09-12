@@ -12,16 +12,16 @@ import * as S from './styles';
 
 export const ConstructorEducation: FC = () => {
     const {
-        educationFields, debounceAddEducationField,
+        educationFields, addEducationField,
         debounceChangeEducationDateField, debounceChangeEducationDegreeField,
-        debounceChangeEducationDescriptionField, debounceRemoveEducationField,
+        debounceChangeEducationDescriptionField, removeEducationField,
     } = useEducationField();
 
     return (
         <S.Container>
             <S.Box>
                 <Title text = 'Education' />
-                <AddBtn handleAddFunc = { debounceAddEducationField } />
+                <AddBtn handleAddFunc = { addEducationField } />
             </S.Box>
             <S.List>
                 {educationFields.map((education) => {
@@ -61,7 +61,7 @@ export const ConstructorEducation: FC = () => {
                                     />
                                 </S.Description>
                             </S.Wrapper>
-                            <RemoveBtn handleRemoveFunc = { () => debounceRemoveEducationField(id) }/>
+                            <RemoveBtn handleRemoveFunc = { () => removeEducationField(id) }/>
                         </S.Item>
                     );
                 })}

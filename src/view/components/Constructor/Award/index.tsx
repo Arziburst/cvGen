@@ -14,14 +14,14 @@ export const ConstructorAward: FC = () => {
     const {
         awardFields, debounceChangeAwardDateField,
         debounceChangeAwardLocationField, debounceChangeAwardReceivedField,
-        debounceCreateAwardField, debounceRemoveAwardField,
+        createAwardField, removeAwardField,
     } = useAwardFields();
 
     return (
         <S.Container>
             <S.Box>
                 <Title text = 'Awards'/>
-                <AddBtn handleAddFunc = { debounceCreateAwardField }/>
+                <AddBtn handleAddFunc = { createAwardField }/>
             </S.Box>
             <S.List>
                 {awardFields.map((award) => (
@@ -55,7 +55,7 @@ export const ConstructorAward: FC = () => {
                                 />
                             </S.LocationText>
                         </S.Wrapper>
-                        <RemoveBtn handleRemoveFunc = { () => debounceRemoveAwardField(award.id) } />
+                        <RemoveBtn handleRemoveFunc = { () => removeAwardField(award.id) } />
                     </S.Item>
                 ))}
             </S.List>

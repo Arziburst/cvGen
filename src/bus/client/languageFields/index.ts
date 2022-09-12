@@ -20,18 +20,18 @@ export const useLanguageFields = () => {
         dispatch(languageFieldsActions.setLanguageFields({ type: 'language', value: language }));
     });
 
-    const debounceRemoveLanguageField = debounce((id: string) => {
+    const removeLanguageField = (id: string) => {
         dispatch(languageFieldsActions.removeLanguageFields(id));
-    });
+    };
 
-    const debounceCreateLanguageField = debounce(() => {
+    const addLanguageField = () => {
         dispatch(languageFieldsActions.addLanguageFields(uniqueId()));
-    });
+    };
 
     return {
         languageFields,
         debounceChangeLanguageField,
-        debounceRemoveLanguageField,
-        debounceCreateLanguageField,
+        removeLanguageField,
+        addLanguageField,
     };
 };

@@ -38,7 +38,7 @@ export const initialState = [
 ];
 
 export const skillsSlice = createSlice<types.SkillsState, typeof reducers>({
-    name: 'skills',
+    name: 'skillFields',
     initialState,
     reducers,
 });

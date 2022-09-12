@@ -18,8 +18,11 @@ import {
     middleware,
 } from './middleware';
 
+// Constant
+import { PERSIST_KEY } from '../constants';
+
 const persistConfig = {
-    key: 'root',
+    key: PERSIST_KEY,
     storage,
 };
 

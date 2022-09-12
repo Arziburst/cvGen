@@ -27,20 +27,20 @@ export const useAwardFields = () => {
         dispatch(awardFieldsActions.setAwardFields({ type: 'location', value: data }));
     });
 
-    const debounceRemoveAwardField = debounce((id: string) => {
+    const removeAwardField = (id: string) => {
         dispatch(awardFieldsActions.removeAwardFields(id));
-    });
+    };
 
-    const debounceCreateAwardField = debounce(() => {
+    const createAwardField = () => {
         dispatch(awardFieldsActions.addAwardFields({ ...initialState[ 0 ], id: uniqueId() }));
-    });
+    };
 
     return {
         awardFields,
         debounceChangeAwardReceivedField,
         debounceChangeAwardDateField,
         debounceChangeAwardLocationField,
-        debounceRemoveAwardField,
-        debounceCreateAwardField,
+        removeAwardField,
+        createAwardField,
     };
 };

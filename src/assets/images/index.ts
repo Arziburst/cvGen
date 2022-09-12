@@ -11,3 +11,5 @@ export { default as pngPhoneIcon } from './phone-icon.png';
 export { default as svgDeleteIcon } from './delete-icon.svg';
 export { default as svgAddUserIcon } from './add-user-icon.svg';
 export { default as pngUserIcon } from './user-icon.png';
+export { default as svgPdfIcon } from './pdf-icon.svg';
+export { default as svgResetIcon } from './reset-icon.svg';
