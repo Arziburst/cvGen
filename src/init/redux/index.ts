@@ -1,5 +1,7 @@
 // Core
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // Reducers
 import toggles from '../../bus/client/toggles';
@@ -16,20 +18,31 @@ import {
     middleware,
 } from './middleware';
 
+const persistConfig = {
+    key: 'root',
+    storage,
+};
+
+const combinedReducers = combineReducers({
+    skillFields,
+    toggles,
+    infoFields,
+    contactFields,
+    languageFields,
+    experienceFields,
+    educationFields,
+    awardFields,
+});
+
+const persistedReducer = persistReducer(persistConfig, combinedReducers);
+
 export const store = configureStore({
-    reducer: {
-        toggles,
-        infoFields,
-        contactFields,
-        languageFields,
-        experienceFields,
-        educationFields,
-        awardFields,
-        skillFields,
-    },
+    reducer:  persistedReducer,
     middleware,
     devTools: process.env.NODE_ENV !== 'production',
 });
+
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>

@@ -52,7 +52,7 @@ export const ConstructorExperience: FC = () => {
                                 handleChangeFunc = { (event) => {
                                     debounceSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }
-                                placeholder = 'Your location'
+                                placeholder = 'Company & location'
                             />
                         </S.Location>
                         <S.List>
