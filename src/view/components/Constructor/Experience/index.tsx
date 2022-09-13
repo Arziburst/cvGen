@@ -32,27 +32,27 @@ export const ConstructorExperience: FC = () => {
                     <S.Box key = { experience.id }>
                         <S.Info>
                             <AppInput
-                                defaultValue = { experience.position }
                                 handleChangeFunc = { (event) => {
                                     debounceSetExperiencePositionField({ id: experience.id, text: event.target.value });
                                 } }
                                 placeholder = 'Your position'
+                                value = { experience.position }
                             />
                             <AppInput
-                                defaultValue = { experience.date }
                                 handleChangeFunc = { (event) => {
                                     debounceSetExperienceDateField({ id: experience.id, text: event.target.value });
                                 }  }
                                 placeholder = 'Sept. 2016 - Present'
+                                value = { experience.date }
                             />
                         </S.Info>
                         <S.Location>
                             <AppInput
-                                defaultValue = { experience.location }
                                 handleChangeFunc = { (event) => {
                                     debounceSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }
                                 placeholder = 'Company & location'
+                                value = { experience.location }
                             />
                         </S.Location>
                         <S.List>
@@ -63,11 +63,11 @@ export const ConstructorExperience: FC = () => {
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
                                     <AppTextarea
-                                        defaultValue = { description.description }
                                         handleChangeFunc = { (event: ChangeEvent<HTMLTextAreaElement>) => {
                                             debounceSetDescrField({ id: description.id, text: event.target.value });
                                         } }
                                         placeholder = 'Your descr'
+                                        value = { description.description }
                                     />
                                     <RemoveBtn handleRemoveFunc = { () => {
                                         removeExperienceDescriptionField(description.id);

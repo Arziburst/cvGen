@@ -35,29 +35,29 @@ export const ConstructorEducation: FC = () => {
                             <S.Wrapper>
                                 <S.Date>
                                     <AppInput
-                                        defaultValue = { date }
                                         handleChangeFunc = { (event) => {
                                             debounceChangeEducationDateField({ id, text: event.target.value });
                                         }  }
                                         placeholder = '2007 - 2013'
+                                        value = { date }
                                     />
                                 </S.Date>
                                 <S.Degree>
                                     <AppInput
-                                        defaultValue = { degree }
                                         handleChangeFunc = { (event) => {
                                             debounceChangeEducationDegreeField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Degree name / University Location'
+                                        value = { degree }
                                     />
                                 </S.Degree>
                                 <S.Description>
                                     <AppTextarea
-                                        defaultValue = { description }
                                         handleChangeFunc = { (event) => {
                                             debounceChangeEducationDescriptionField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Tell about your degree'
+                                        value = { description }
                                     />
                                 </S.Description>
                             </S.Wrapper>

@@ -17,3 +17,11 @@ export const contactFieldCreatorAction: types.BaseContact = (state, action) => s
 export const removeContactField: types.BaseContact<string> = (state, action) => state.filter(
     (contact) => contact.id !== action.payload,
 );
+
+// eslint-disable-next-line max-len
+export const resetContactFields: types.BaseContact<types.ContactsState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = [ ...action.payload ];
+
+    return action.payload;
+};

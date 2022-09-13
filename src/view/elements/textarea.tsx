@@ -26,14 +26,14 @@ export const Textarea = styled.textarea`
 type propsType = {
     handleChangeFunc: (event: ChangeEvent<HTMLTextAreaElement>) => void;
     placeholder: string;
-    defaultValue: string;
+    value: string;
 }
 
-export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, defaultValue }) => {
+export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
     return (
         <Textarea
-            defaultValue = { defaultValue }
             placeholder = { placeholder }
+            value = { value }
             onChange = { handleChangeFunc }
         />
     );

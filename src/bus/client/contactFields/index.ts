@@ -1,5 +1,9 @@
 // Tools
+import { cloneDeep } from 'lodash';
 import { useDispatch, useSelector, useDebounce } from '../../../tools/hooks';
+
+// Slice
+import { initialState } from './slice';
 
 // Actions
 import { contactFieldsActions } from './slice';
@@ -12,6 +16,8 @@ export const useContactField = () => {
     const debounce = useDebounce();
     const contactFields = useSelector(({ contactFields }) => contactFields);
 
+    const cloneArray = cloneDeep(initialState);
+
     const debounceChangeContactField = debounce((contact: Contact) => {
         dispatch(contactFieldsActions.contactFieldCreatorAction({ type: 'url', value: contact }));
     });
@@ -20,10 +26,15 @@ export const useContactField = () => {
         dispatch(contactFieldsActions.removeContactField(id));
     };
 
+    const resetContactFields = () => {
+        dispatch(contactFieldsActions.resetContactFields(cloneArray));
+    };
+
     return {
         contactFields,
         debounceChangeContactField,
         removeContactField,
+        resetContactFields,
     };
 };
 

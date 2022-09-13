@@ -61,8 +61,10 @@ const styles = StyleSheet.create({
     descriptionText: {
     },
     projectItem: {
-        marginBottom: 5,
-        fontSize:     12,
+        marginBottom:  5,
+        fontSize:      12,
+        paddingBottom: 2,
+        borderBottom:  '1px solid #4c576b',
     },
     projectBox: {
         flexDirection:  'row',

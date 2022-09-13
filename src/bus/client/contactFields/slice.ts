@@ -10,23 +10,23 @@ import * as reducers from './reducers';
 export const initialState = [
     {
         id:  'mail',
-        url: 'dimaponomarenko@gmail.com',
+        url: '',
     },
     {
         id:  'phone',
-        url: '+380993523741',
+        url: '',
     },
     {
         id:  'adress',
-        url: 'Ukraine, Zaporizhia. Charivna street',
+        url: '',
     },
     {
         id:  'Linkedin',
-        url: 'https://www.linkedin.com/in/dimaponomart683/',
+        url: '',
     },
     {
         id:  'Github',
-        url: 'https://github.com/SeniorDmitriy',
+        url: '',
     },
 ];
 

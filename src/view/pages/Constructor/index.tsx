@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
+import { useContactField } from '../../../bus/client/contactFields';
 
 // Components
 import {
@@ -25,10 +26,11 @@ import { PERSIST_KEY } from '../../../init';
 
 // Styles
 import * as S from './styles';
-import { resetToInitialstate } from '../../../bus/client/experienceFields/reducers';
+import storage from 'redux-persist/lib/storage';
 
 const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();
+    const { resetContactFields } = useContactField();
 
     return (
         <>
@@ -37,13 +39,14 @@ const Constructor: FC = () => {
                     <button
                         onClick = { () => {
                             setToggleAction({ type: 'isReadyPreview', value: true });
+                            storage.removeItem(`persist:${PERSIST_KEY}`);
                         } }>
                         <img src = { svgPdfIcon } />
                         <span>Preview</span>
                     </button>
                     <button onClick = { () => {
-                        localStorage.removeItem('persist:' + PERSIST_KEY);
-                        resetToInitialstate();
+                        // localStorage.removeItem('persist:' + PERSIST_KEY);
+                        resetContactFields();
                     } }>
                         <img src = { svgResetIcon } />
                         <span>Reset</span>

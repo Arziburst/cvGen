@@ -46,71 +46,71 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                             <S.Wrapper>
                                 <S.Name>
                                     <AppInput
-                                        defaultValue = { name }
                                         handleChangeFunc = { (event) => {
                                             debounceSetProjectNameField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Name'
+                                        value = { name }
                                     />
                                 </S.Name>
                                 <S.Customer>
                                     <AppInput
-                                        defaultValue = { customer }
                                         handleChangeFunc = { (event) => {
                                             debounceSetProjectCustomerField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Customer'
+                                        value = { customer }
                                     />
                                 </S.Customer>
                                 <S.Box>
                                     <S.Role>
                                         <AppInput
-                                            defaultValue = { role }
                                             handleChangeFunc = { (event) => {
                                                 debounceSetProjectRoleField({ id, text: event.target.value });
                                             } }
                                             placeholder = 'Role'
+                                            value = { role }
                                         />
                                     </S.Role>
                                     <S.Duration>
                                         <AppInput
-                                            defaultValue = { duration }
                                             handleChangeFunc = { (event) => {
                                                 debounceSetProjectDurationField(
                                                     { id, text: event.target.value },
                                                 );
                                             } }
                                             placeholder = 'Duration'
+                                            value = { duration }
                                         />
                                     </S.Duration>
                                 </S.Box>
                                 <S.Responsibilities>
                                     <AppTextarea
-                                        defaultValue = { responsibilities }
                                         handleChangeFunc = { (event) => {
                                             debounceSetProjectResponsibilitiesField(
                                                 { id, text: event.target.value },
                                             );
                                         } }
                                         placeholder = 'Responsibilities'
+                                        value = { responsibilities }
                                     />
                                 </S.Responsibilities>
                                 <S.TeamSize>
                                     <AppInput
-                                        defaultValue = { teamSize }
                                         handleChangeFunc = { (event) => {
                                             debounceSetProjectTeamsizeField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Teamsize'
+                                        value = { teamSize }
                                     />
                                 </S.TeamSize>
                                 <S.Stack>
                                     <AppInput
-                                        defaultValue = { stack }
                                         handleChangeFunc = { (event) => {
                                             debounceSetProjectStackField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Stack'
+                                        value = { stack }
                                     />
                                 </S.Stack>
                             </S.Wrapper>

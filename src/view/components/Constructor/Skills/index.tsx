@@ -24,11 +24,11 @@ export const ConstructorSkills: FC = () => {
                 {skillFields.map(({ id, skill }) => (
                     <S.Item key = { id } >
                         <AppInput
-                            defaultValue = { skill }
                             handleChangeFunc = { (event) => {
                                 debounceChangeSkillField({ id, skill: event.target.value });
                             } }
                             placeholder = 'Your skill'
+                            value = { skill }
                         />
                         <RemoveBtn handleRemoveFunc = { () => removeSkillField(id) }/>
                     </S.Item>

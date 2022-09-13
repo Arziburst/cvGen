@@ -1,6 +1,5 @@
 // Slice
 import { uniqueId } from 'lodash';
-import { initialState } from './slice';
 // Types
 import * as types from './types';
 
@@ -133,5 +132,3 @@ export const removeExperienceProjectField: types.BaseContact<string>
             };
         },
     );
-
-export const resetToInitialstate = () => initialState;

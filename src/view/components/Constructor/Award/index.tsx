@@ -29,29 +29,29 @@ export const ConstructorAward: FC = () => {
                         <S.Wrapper>
                             <S.ReceivedText>
                                 <AppInput
-                                    defaultValue = { award.received }
                                     handleChangeFunc = { (event) => {
                                         debounceChangeAwardReceivedField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'Awards Received'
+                                    value = { award.received }
                                 />
                             </S.ReceivedText>
                             <S.DateText>
                                 <AppInput
-                                    defaultValue = { award.date }
                                     handleChangeFunc = { (event) => {
                                         debounceChangeAwardDateField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'April 2015'
+                                    value = { award.date }
                                 />
                             </S.DateText>
                             <S.LocationText>
                                 <AppInput
-                                    defaultValue = { award.location }
                                     handleChangeFunc = { (event) => {
                                         debounceChangeAwardLocationField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'Place, Location'
+                                    value = { award.location }
                                 />
                             </S.LocationText>
                         </S.Wrapper>

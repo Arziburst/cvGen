@@ -55,7 +55,7 @@ export const BtnActionBox = styled.div`
    z-index: 2;
    display: flex;
    align-items: center;
-   background-color: #6c7991;
+   background-color: #262b34;
    height: 64px;
    padding: 8px 0;
    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;

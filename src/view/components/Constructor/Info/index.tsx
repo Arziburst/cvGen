@@ -21,29 +21,29 @@ export const ConstructorInfo: FC = () => {
         <S.Container>
             <S.InputNameBox>
                 <AppInput
-                    defaultValue = { name }
                     handleChangeFunc = { (event) => {
                         debounceChangeName(event.target.value);
                     } }
                     placeholder = 'Name'
+                    value = { name }
                 />
             </S.InputNameBox>
             <S.InputPositionBox>
                 <AppInput
-                    defaultValue = { position }
                     handleChangeFunc = { (event) => {
                         debounceChangePosition(event.target.value);
                     } }
                     placeholder = 'Position'
+                    value = { position }
                 />
             </S.InputPositionBox>
             <S.InputOverviewBox>
                 <AppTextarea
-                    defaultValue = { overview }
                     handleChangeFunc = { (event) => {
                         debounceChangeOverview(event.target.value);
                     } }
                     placeholder = 'Overview'
+                    value = { overview }
                 />
             </S.InputOverviewBox>
         </S.Container>

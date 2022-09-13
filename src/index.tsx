@@ -8,7 +8,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 // Init
 import { persistor, store } from './init';
 
-
 import { App } from './view';
 
 const Root = () => (

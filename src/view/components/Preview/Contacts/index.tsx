@@ -8,6 +8,7 @@ import {
     pngLinkedinIcon, pngGithubIcon,
 } from '../../../../assets/images';
 
+
 // Styles
 const styles = StyleSheet.create({
     box: {
