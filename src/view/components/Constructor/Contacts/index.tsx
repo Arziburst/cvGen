@@ -9,15 +9,15 @@ import * as S from './styles';
 
 // Elements
 import { Title, RemoveBtn } from '../../../elements';
-import { ContactsState } from '../../../../bus/client/contactFields/types';
+import { Contact, ContactsState } from '../../../../bus/client/contactFields/types';
 
 // Types
 // import { ContactsState } from '../../../../bus/client/contactFields/types';
 
 export const ConstructorContacts: FC = () => {
     const {
-        contactFields,
         debounceChangeContactField, removeContactField,
+        contactFields,
     } = useContactField();
 
     const [ value, setInputValue ] = useState<null | ContactsState>(null);
@@ -28,16 +28,26 @@ export const ConstructorContacts: FC = () => {
         setInputValue(contactFields);
     }, []);
 
-    const handleSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSetInputValue = (event: React.ChangeEvent<HTMLInputElement>, elem: Contact) => {
         const key = event.target.dataset.customid;
+        const text = event.target.value;
 
         setInputValue((prevState) => {
+            console.log('sad', prevState, key);
+            let newState: ContactsState = [];
             if (prevState && key) {
-                prevState.forEach((el) => {
+                newState = prevState.map((el) => {
                     if (el.id === key) {
-                        el.url = event.target.value;
+                        el.url = text;
                     }
+
+                    return el;
                 });
+                console.log('prevstate', prevState);
+
+                debounceChangeContactField({ ...elem, url: event.target.value });
+
+                return newState;
             }
 
             return prevState;
@@ -48,19 +58,18 @@ export const ConstructorContacts: FC = () => {
         <S.Container>
             <Title text = 'Contacts'/>
             <ul>
-                {contactFields.map((elem) => (
+                {value?.map((elem) => (
                     <S.Item
                         key = { elem.id }>
                         <S.SocialInput
-                            // data-customid = { elem.id }
+                            data-customid = { elem.id }
                             placeholder = { elem.id }
                             type = 'text'
                             value = { elem.url }
                             onChange = { (event) => {
                                 // handleChangeFunc(event);
                                 // handleSetInputValue(event);
-                                handleSetInputValue(event);
-                                debounceChangeContactField({ ...elem, url: event.target.value });
+                                handleSetInputValue(event, elem);
                             }  }
                         />
                         <RemoveBtn handleRemoveFunc = { () => removeContactField(elem.id) }/>
