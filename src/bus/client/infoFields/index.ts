@@ -1,5 +1,5 @@
 // Actions
-import { infoFieldsActions } from './slice';
+import { infoFieldsActions, initialState } from './slice';
 
 // Tools
 import { useSelector, useDispatch, useDebounce } from '../../../tools/hooks'; /* Typed selector */
@@ -25,11 +25,16 @@ export const useInfoFields = () => {
         dispatch(infoFieldsActions.infoFieldsCreatorAction({ type: 'overview', value: overview }));
     });
 
+    const resetInfoFieldsToInithial = () => {
+        dispatch(infoFieldsActions.resetInfoFields(initialState));
+    };
+
     return {
         infoFields,
         debounceChangeName,
         debounceChangeImg,
         debounceChangePosition,
         debounceChangeOverview,
+        resetInfoFieldsToInithial,
     };
 };

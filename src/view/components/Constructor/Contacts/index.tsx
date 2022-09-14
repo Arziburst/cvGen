@@ -1,5 +1,5 @@
 // Core
-import React, { FC, useRef } from 'react';
+import React, { FC } from 'react';
 
 // Bus
 import { useContactField } from '../../../../bus/client/contactFields';
@@ -16,38 +16,17 @@ export const ConstructorContacts: FC = () => {
         contactFields,
     } = useContactField();
 
-    const ref = useRef<Array<HTMLInputElement>>([]);
-
-    const resetBtn = document.getElementById('resetBtn');
-    console.log(ref);
-
-    resetBtn?.addEventListener('click', () => {
-        const inputArray = ref.current;
-
-        for (let index = 0; index < inputArray.length; index++) {
-            const element = inputArray[ index ];
-            if (element) {
-                element.value = '';
-            }
-        }
-    });
-
     return (
         <S.Container>
             <Title text = 'Contacts'/>
             <ul>
-                {contactFields.map((elem, index) => (
+                {contactFields.map((elem) => (
                     <S.Item
                         key = { elem.id }>
                         <S.SocialInput
-                            defaultValue = { elem.url }
                             placeholder = { elem.id }
-                            ref = { (element) => {
-                                if (element && ref.current) {
-                                    ref.current[ index ] = element;
-                                }
-                            } }
                             type = 'text'
+                            value = { elem.url }
                             onChange = { (event) => {
                                 debounceChangeContactField({ ...elem, url: event.target.value });
                             }  }

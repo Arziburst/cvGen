@@ -30,9 +30,9 @@ type propsType = {
 export const AppInput: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
     return (
         <Input
-            defaultValue = { value }
             placeholder = { placeholder }
             type = 'text'
+            value = { value }
             onChange = { handleChangeFunc }
         />
     );

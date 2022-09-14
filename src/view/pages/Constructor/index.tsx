@@ -27,10 +27,12 @@ import { PERSIST_KEY } from '../../../init';
 // Styles
 import * as S from './styles';
 import storage from 'redux-persist/lib/storage';
+import { useInfoFields } from '../../../bus/client/infoFields';
 
 const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();
-    const { resetContactFields } = useContactField();
+    const { resetContactFieldsToInithialState } = useContactField();
+    const { resetInfoFieldsToInithial } = useInfoFields();
 
     return (
         <>
@@ -47,8 +49,8 @@ const Constructor: FC = () => {
                     <button
                         id = 'resetBtn'
                         onClick = { () => {
-                        // localStorage.removeItem('persist:' + PERSIST_KEY);
-                            resetContactFields();
+                            resetContactFieldsToInithialState();
+                            resetInfoFieldsToInithial();
                         } }>
                         <img src = { svgResetIcon } />
                         <span>Reset</span>

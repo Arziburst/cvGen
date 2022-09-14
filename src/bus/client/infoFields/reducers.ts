@@ -8,3 +8,11 @@ export const infoFieldsCreatorAction: types.BaseContact
             [ action.payload.type ]: action.payload.value,
         };
     };
+
+
+export const resetInfoFields: types.BaseContact<types.InfoFieldsState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = { ...action.payload };
+
+    return state;
+};

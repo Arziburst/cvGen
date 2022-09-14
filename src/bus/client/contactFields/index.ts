@@ -26,7 +26,7 @@ export const useContactField = () => {
         dispatch(contactFieldsActions.removeContactField(id));
     };
 
-    const resetContactFields = () => {
+    const resetContactFieldsToInithialState = () => {
         dispatch(contactFieldsActions.resetContactFields(cloneArray));
     };
 
@@ -34,7 +34,7 @@ export const useContactField = () => {
         contactFields,
         debounceChangeContactField,
         removeContactField,
-        resetContactFields,
+        resetContactFieldsToInithialState,
     };
 };
 
