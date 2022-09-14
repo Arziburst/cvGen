@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
     max-width: 833px;
+    padding: 0 15px;
     position: relative;
     margin: 0 auto;
     height: 100%;
@@ -16,6 +17,14 @@ export const Wrapper = styled.div`
 
      &:nth-child(2) {
           flex: 1 1 auto;
+     }
+
+     @media (max-width: 992px) {
+          grid-template-columns: repeat(2, 1fr);
+     }
+
+     @media (max-width: 630px) {
+         display: block;
      }
 `;
 

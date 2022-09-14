@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
   padding: 20px 30px;
   background-color: #4c576b;
+
+  @media (max-width: 992px) {
+      padding: 10px;
+  }
 `;
 
 export const InputNameBox = styled.div`

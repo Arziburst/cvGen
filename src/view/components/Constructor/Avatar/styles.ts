@@ -8,6 +8,10 @@ type propsType = {
 
 export const Container = styled.section`
   padding: 20px 30px;
+
+  @media (max-width: 992px) {
+      padding: 10px;
+  }
 `;
 
 export const Wrapper = styled.section`
@@ -20,6 +24,10 @@ export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+
+   @media (max-width: 992px) {
+      margin: 0 auto;
+   }
 `;
 
 export const UserAvatar = styled.img<propsType>`

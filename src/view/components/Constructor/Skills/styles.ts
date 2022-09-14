@@ -38,6 +38,11 @@ export const Item = styled.li`
   overflow: hidden;
   margin-right: 10px;
 
+  
+  @media (max-width: 992px) {
+      width: 45%;
+  }
+
   input {
     background-color: #dbdbdb;
     padding: 5px 10px;

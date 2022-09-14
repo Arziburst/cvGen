@@ -5,6 +5,7 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.div`
+  width: 100%;
 `;
 
 export const Box = styled.div`
