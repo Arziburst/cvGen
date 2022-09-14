@@ -1,5 +1,5 @@
 // Core
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useRef } from 'react';
 
 // Bus
 import { useContactField } from '../../../../bus/client/contactFields';
@@ -9,10 +9,6 @@ import * as S from './styles';
 
 // Elements
 import { Title, RemoveBtn } from '../../../elements';
-import { Contact, ContactsState } from '../../../../bus/client/contactFields/types';
-
-// Types
-// import { ContactsState } from '../../../../bus/client/contactFields/types';
 
 export const ConstructorContacts: FC = () => {
     const {
@@ -20,56 +16,40 @@ export const ConstructorContacts: FC = () => {
         contactFields,
     } = useContactField();
 
-    const [ value, setInputValue ] = useState<null | ContactsState>(null);
-    console.log('1');
-    console.log(value);
+    const ref = useRef<Array<HTMLInputElement>>([]);
 
-    useEffect(() => {
-        setInputValue(contactFields);
-    }, []);
+    const resetBtn = document.getElementById('resetBtn');
+    console.log(ref);
 
-    const handleSetInputValue = (event: React.ChangeEvent<HTMLInputElement>, elem: Contact) => {
-        const key = event.target.dataset.customid;
-        const text = event.target.value;
+    resetBtn?.addEventListener('click', () => {
+        const inputArray = ref.current;
 
-        setInputValue((prevState) => {
-            console.log('sad', prevState, key);
-            let newState: ContactsState = [];
-            if (prevState && key) {
-                newState = prevState.map((el) => {
-                    if (el.id === key) {
-                        el.url = text;
-                    }
-
-                    return el;
-                });
-                console.log('prevstate', prevState);
-
-                debounceChangeContactField({ ...elem, url: event.target.value });
-
-                return newState;
+        for (let index = 0; index < inputArray.length; index++) {
+            const element = inputArray[ index ];
+            if (element) {
+                element.value = '';
             }
-
-            return prevState;
-        });
-    };
+        }
+    });
 
     return (
         <S.Container>
             <Title text = 'Contacts'/>
             <ul>
-                {value?.map((elem) => (
+                {contactFields.map((elem, index) => (
                     <S.Item
                         key = { elem.id }>
                         <S.SocialInput
-                            data-customid = { elem.id }
+                            defaultValue = { elem.url }
                             placeholder = { elem.id }
+                            ref = { (element) => {
+                                if (element && ref.current) {
+                                    ref.current[ index ] = element;
+                                }
+                            } }
                             type = 'text'
-                            value = { elem.url }
                             onChange = { (event) => {
-                                // handleChangeFunc(event);
-                                // handleSetInputValue(event);
-                                handleSetInputValue(event, elem);
+                                debounceChangeContactField({ ...elem, url: event.target.value });
                             }  }
                         />
                         <RemoveBtn handleRemoveFunc = { () => removeContactField(elem.id) }/>

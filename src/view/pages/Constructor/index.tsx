@@ -44,10 +44,12 @@ const Constructor: FC = () => {
                         <img src = { svgPdfIcon } />
                         <span>Preview</span>
                     </button>
-                    <button onClick = { () => {
+                    <button
+                        id = 'resetBtn'
+                        onClick = { () => {
                         // localStorage.removeItem('persist:' + PERSIST_KEY);
-                        resetContactFields();
-                    } }>
+                            resetContactFields();
+                        } }>
                         <img src = { svgResetIcon } />
                         <span>Reset</span>
                     </button>
