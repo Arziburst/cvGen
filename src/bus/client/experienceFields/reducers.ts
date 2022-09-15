@@ -38,6 +38,11 @@ export const experienceFieldsDescriptionCreatorAction: types.BaseContact<types.E
     },
 );
 
+export const removeExperienceField: types.BaseContact<string>
+    = (state, action) => state.filter(
+        (experience) => experience.id !== action.payload,
+    );
+
 export const experienceFieldsProjectsCreatorAction: types.BaseContact<types.ExperienceProjectsOptions>
     = (state, action) => state.map(
         (experience) => {

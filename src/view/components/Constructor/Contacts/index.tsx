@@ -8,17 +8,23 @@ import { useContactField } from '../../../../bus/client/contactFields';
 import * as S from './styles';
 
 // Elements
-import { Title, RemoveBtn, AppInput } from '../../../elements';
+import { Title, RemoveBtn, AppInput, AddBtn } from '../../../elements';
 
 export const ConstructorContacts: FC = () => {
     const {
         debounceChangeContactField, removeContactField,
-        contactFields,
+        contactFields, addContactFields,
     } = useContactField();
 
     return (
         <S.Container>
-            <Title text = 'Contacts'/>
+            <S.Box>
+                <Title text = 'Contacts' />
+                <AddBtn
+                    disabled = { contactFields.length === 5 }
+                    handleAddFunc = { () => addContactFields() }
+                />
+            </S.Box>
             <ul>
                 {contactFields.map((elem) => (
                     <S.Item

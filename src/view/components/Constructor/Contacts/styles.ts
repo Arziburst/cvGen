@@ -11,6 +11,16 @@ export const Container = styled.section`
   padding-bottom: 30px;
 `;
 
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+`;
+
 export const Item = styled.li`
   position: relative;
   display: flex;

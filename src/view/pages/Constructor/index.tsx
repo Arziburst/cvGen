@@ -10,6 +10,7 @@ import { useAwardFields } from '../../../bus/client/awardFields';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { useLanguageFields } from '../../../bus/client/languageFields';
 import { useSkillFields } from '../../../bus/client/skillFields';
+import { useExperienceFields } from '../../../bus/client/experienceFields';
 
 // Components
 import {
@@ -32,7 +33,6 @@ import { PERSIST_KEY } from '../../../init';
 
 // Styles
 import * as S from './styles';
-import { useExperienceFields } from '../../../bus/client/experienceFields';
 
 const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();

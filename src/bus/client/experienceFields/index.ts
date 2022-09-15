@@ -63,6 +63,10 @@ export const useExperienceFields = () => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'teamSize', value: data }));
     });
 
+    const removeExperienceField = (id: string) => {
+        dispatch(experienceFieldsActions.removeExperienceField(id));
+    };
+
     const removeExperienceDescriptionField = (id: string) => {
         dispatch(experienceFieldsActions.removeExperienceDescriptionField(id));
     };
@@ -112,5 +116,6 @@ export const useExperienceFields = () => {
         addExperienceProjectField,
         addExperienceField,
         resetExperienceFieldsToInithialState,
+        removeExperienceField,
     };
 };

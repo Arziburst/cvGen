@@ -33,14 +33,23 @@ const AddButton = styled.button`
     width: 2px;
     top: 6px;
   }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
 `;
 
 type propsType = {
-    handleAddFunc: React.MouseEventHandler<HTMLButtonElement>
+    handleAddFunc: React.MouseEventHandler<HTMLButtonElement>;
+    disabled?: boolean;
 }
 
-export const AddBtn: FC<propsType> = ({ handleAddFunc }) => {
+export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false }) => {
     return (
-        <AddButton onClick = { handleAddFunc } />
+        <AddButton
+            disabled = { disabled }
+            onClick = { handleAddFunc }
+        />
     );
 };

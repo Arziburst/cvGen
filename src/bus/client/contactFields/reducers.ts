@@ -14,6 +14,19 @@ export const contactFieldCreatorAction: types.BaseContact = (state, action) => s
     },
 );
 
+export const addContactField: types.BaseContact<types.ContactsState> = (state, action) => action.payload.map(
+    (contact, index) => {
+        if (state.indexOf(contact) === -1) {
+            return {
+                ...contact,
+                url: state[ index ] ? state[ index ].url : contact.url,
+            };
+        }
+
+        return contact;
+    },
+);
+
 export const removeContactField: types.BaseContact<string> = (state, action) => state.filter(
     (contact) => contact.id !== action.payload,
 );

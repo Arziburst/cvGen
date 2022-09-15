@@ -19,6 +19,7 @@ export const ConstructorExperience: FC = () => {
         debounceSetExperienceDateField, debounceSetExperienceLocationField,
         debounceSetDescrField, removeExperienceDescriptionField,
         addExperienceDescriptionField, addExperienceField,
+        removeExperienceField,
     } = useExperienceFields();
 
     return (
@@ -80,6 +81,7 @@ export const ConstructorExperience: FC = () => {
                             experienceId = { experience.id }
                             projects = { experience.projects }
                         />
+                        <S.RemoveBtn onClick = { () => removeExperienceField(experience.id) }></S.RemoveBtn>
                     </S.Box>
                 ))}
             </S.Inner>

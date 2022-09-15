@@ -32,6 +32,7 @@ export const ConstructorAvatar: FC = () => {
                     src = { avatar ? avatar : svgAddUserIcon }
                 />
                 <S.InputFile
+                    accept = 'image/*'
                     type = 'file'
                     onChange = { handleChangeImg }
                 />
