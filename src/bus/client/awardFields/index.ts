@@ -35,6 +35,10 @@ export const useAwardFields = () => {
         dispatch(awardFieldsActions.addAwardFields({ ...initialState[ 0 ], id: uniqueId() }));
     };
 
+    const resetAwardFieldsToInithialState = () => {
+        dispatch(awardFieldsActions.resetAwardFields(initialState));
+    };
+
     return {
         awardFields,
         debounceChangeAwardReceivedField,
@@ -42,5 +46,6 @@ export const useAwardFields = () => {
         debounceChangeAwardLocationField,
         removeAwardField,
         createAwardField,
+        resetAwardFieldsToInithialState,
     };
 };

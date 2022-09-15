@@ -8,7 +8,7 @@ import { useLanguageFields } from '../../../../bus/client/languageFields';
 import * as S from './styles';
 
 // Elements
-import { Title, RemoveBtn, AddBtn } from '../../../elements';
+import { Title, RemoveBtn, AddBtn, AppInput } from '../../../elements';
 
 export const ConstructorLanguages: FC = () => {
     const {
@@ -26,13 +26,12 @@ export const ConstructorLanguages: FC = () => {
                 {
                     languageFields.map((language) => (
                         <S.Item key = { language.id }>
-                            <S.LanguageInput
-                                defaultValue = { language.language }
-                                placeholder = { 'Language...' }
-                                type = 'text'
-                                onChange = { (event) => {
+                            <AppInput
+                                handleChangeFunc = { (event) => {
                                     debounceChangeLanguageField({ id: language.id, language: event.target.value });
                                 }  }
+                                placeholder = 'Language...'
+                                value = { language.language }
                             />
                             <RemoveBtn handleRemoveFunc = { () => removeLanguageField(language.id) }/>
                         </S.Item>

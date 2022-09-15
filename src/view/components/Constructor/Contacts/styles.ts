@@ -17,6 +17,15 @@ export const Item = styled.li`
   justify-content: space-between;
   padding-left: 20px;
   margin-bottom: 3px;
+  align-items: center;
+
+  input {
+    font-family: 'NotoSans500';
+    font-weight: 500;
+    font-size: 14px;
+    color: #4c576b;
+    background-color: #cbb8ad;
+  }
 
   &::before {
     content: '';
@@ -59,28 +68,11 @@ export const Item = styled.li`
       background-image: url(${svgGithubIcon});
     }
   }
-`;
 
-export const SocialInput = styled.input`
-  border: 1px solid transparent;
-  background-color: transparent;
-  padding-right: 10px;
-  display: block;
-  width: 100%;
-  font-size: 13px;
-  font-family: 'NotoSans500';
-  font-weight: 500;
-  color: #4c576b;
-  background-color: #cbb8ad;
-
-  &:focus,
-  &:hover {
-    border-color: #e8e5e4;
-    outline-color: #e8e5e4;
-  }
-
-   &::placeholder {
-    font-size: inherit;
-    color: inherit;
-  }
+  
+  @media (max-width: 360px) {
+    &::before {
+        top: 14px;
+    }
+  } 
 `;

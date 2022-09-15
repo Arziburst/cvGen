@@ -11,9 +11,9 @@ import { uniqueId } from 'lodash';
 export const initialState = [
     {
         id:       uniqueId(),
-        received: 'Award Received',
-        date:     'April, 2015',
-        location: 'Place, Location',
+        received: '',
+        date:     '',
+        location: '',
     },
 ];
 

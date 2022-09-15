@@ -25,3 +25,10 @@ export const addSkill: types.BaseContact<string> = (state, action) => [
 export const removeSkill: types.BaseContact<string> = (state, action) => state.filter(
     (skill) => skill.id !== action.payload,
 );
+
+export const resetSkillFields: types.BaseContact<types.SkillsState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = [ ...action.payload ];
+
+    return action.payload;
+};

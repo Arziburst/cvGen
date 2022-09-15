@@ -1,5 +1,5 @@
 //Slice
-import { skillsActions } from './slice';
+import { initialState, skillsActions } from './slice';
 
 // Tools
 import { useDebounce, useSelector, useDispatch } from '../../../tools/hooks';
@@ -23,10 +23,16 @@ export const useSkillFields = () => {
         dispatch(skillsActions.addSkill(uniqueId()));
     };
 
+
+    const resetSkillFieldsToInithialState = () => {
+        dispatch(skillsActions.resetSkillFields(initialState));
+    };
+
     return {
         skillFields,
         debounceChangeSkillField,
         removeSkillField,
         addSkillField,
+        resetSkillFieldsToInithialState,
     };
 };

@@ -26,6 +26,10 @@ export const List = styled.ul`
   color: #4c576b;
   background-color: #e7e7e7;
   width: 100%;
+
+  @media (max-width: 360px) {
+    display: block;
+  }
 `;
 
 export const Item = styled.li`
@@ -60,6 +64,15 @@ export const Item = styled.li`
     &:hover {
       border-radius: 0;
       height: 32px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    width: 100%;
+    margin-right: 0;
+
+    input {
+      max-width: 100%;
     }
   }
 `;

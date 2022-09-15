@@ -2,7 +2,7 @@
 import { uniqueId } from 'lodash';
 
 // Actions
-import { languageFieldsActions } from './slice';
+import { initialState, languageFieldsActions } from './slice';
 
 // Tools
 import { useSelector, useDispatch, useDebounce } from '../../../tools/hooks';
@@ -28,10 +28,15 @@ export const useLanguageFields = () => {
         dispatch(languageFieldsActions.addLanguageFields(uniqueId()));
     };
 
+    const resetLanguageFieldsToInithialState = () => {
+        dispatch(languageFieldsActions.resetLanguageFields(initialState));
+    };
+
     return {
         languageFields,
         debounceChangeLanguageField,
         removeLanguageField,
         addLanguageField,
+        resetLanguageFieldsToInithialState,
     };
 };

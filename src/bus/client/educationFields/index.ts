@@ -5,7 +5,7 @@ import { uniqueId } from 'lodash';
 import { useDebounce, useDispatch, useSelector } from '../../../tools/hooks';
 
 // Actions
-import { educationFieldsActions } from './slice';
+import { educationFieldsActions, initialState } from './slice';
 
 // Types
 import { OptionsValue } from './types';
@@ -35,6 +35,11 @@ export const useEducationField = () => {
         dispatch(educationFieldsActions.addEducationField(uniqueId()));
     };
 
+    const resetEducationFieldsToInithialState = () => {
+        dispatch(educationFieldsActions.resetEducationFields(initialState));
+    };
+
+
     return {
         educationFields,
         debounceChangeEducationDateField,
@@ -42,6 +47,7 @@ export const useEducationField = () => {
         debounceChangeEducationDescriptionField,
         removeEducationField,
         addEducationField,
+        resetEducationFieldsToInithialState,
     };
 };
 

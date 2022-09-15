@@ -31,10 +31,19 @@ export const Info = styled.div`
     width: 45%;
     background-color: #e7e7e7;
   }
+
+  @media (max-width: 360px) {
+    display: block;
+
+    input {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
 `;
 
 export const Location = styled.div`
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   input {
       font-family: 'NotoSans800';
       font-weight: 800;
@@ -43,6 +52,12 @@ export const Location = styled.div`
       width: 45%;
       background-color: #e7e7e7;
     }
+
+  @media (max-width: 360px) {
+    input {
+      width: 100%;
+    }
+  }
 `;
 
 export const List = styled.ul`
@@ -56,7 +71,7 @@ export const Item = styled.li`
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 
   textarea {
     font-size: 14px;

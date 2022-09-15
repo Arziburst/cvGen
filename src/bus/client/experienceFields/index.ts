@@ -89,6 +89,10 @@ export const useExperienceFields = () => {
         ));
     };
 
+    const resetExperienceFieldsToInithialState = () => {
+        dispatch(experienceFieldsActions.resetExperienceFields(initialState));
+    };
+
     return {
         experienceFields,
         debounceSetExperiencePositionField,
@@ -107,5 +111,6 @@ export const useExperienceFields = () => {
         removeExperienceProjectField,
         addExperienceProjectField,
         addExperienceField,
+        resetExperienceFieldsToInithialState,
     };
 };

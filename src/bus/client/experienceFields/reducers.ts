@@ -132,3 +132,11 @@ export const removeExperienceProjectField: types.BaseContact<string>
             };
         },
     );
+
+export const resetExperienceFields: types.BaseContact<types.ExperienceFieldsState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = [ ...action.payload ];
+
+    return action.payload;
+};
+

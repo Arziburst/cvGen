@@ -22,3 +22,10 @@ export const addAwardFields: types.BaseContact<types.Award> = (state, action) =>
     ...state,
     action.payload,
 ];
+
+export const resetAwardFields: types.BaseContact<types.AwardFieldsState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = [ ...action.payload ];
+
+    return action.payload;
+};

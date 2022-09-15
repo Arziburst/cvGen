@@ -42,7 +42,7 @@ export const Item = styled.li`
   align-items: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #4c576b;
+  border-bottom: 2px solid #4c576b;
 `;
 
 export const Box = styled.div`

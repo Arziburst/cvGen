@@ -47,6 +47,10 @@ export const SecondColumn = styled.div`
    &:nth-child(2) {
         background-color: #f5f5f5;
    }
+
+   @media (max-width: 360px) {
+       padding: 10px;
+   }
 `;
 export const ActionBoxContainer = styled.div`
     max-width: 833px;

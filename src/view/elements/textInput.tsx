@@ -19,6 +19,10 @@ export const Input = styled.input`
     font-size: inherit;
     color: inherit;
   }
+
+  @media (max-width: 360px) {
+    height: 40px;
+  }
 `;
 
 type propsType = {

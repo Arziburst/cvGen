@@ -19,6 +19,15 @@ export const BlockTitle = styled.h3`
    top: 2px;
    background-color: #4c576b;
   }
+
+   @media (max-width: 360px) {
+       &::before {
+          left: -10px;
+          height: 16px;
+          top: 4px;
+          width: 8px;
+       }
+   }
 `;
 
 // Types

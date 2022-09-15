@@ -28,3 +28,11 @@ export const addEducationField: types.BaseContact<string>
         description: '',
     },
 ];
+
+
+export const resetEducationFields: types.BaseContact<types.EducationState> = (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state = [ ...action.payload ];
+
+    return action.payload;
+};
