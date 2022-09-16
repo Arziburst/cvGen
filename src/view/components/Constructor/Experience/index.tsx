@@ -11,7 +11,7 @@ import * as S from './styles';
 import { ConstructorProjects } from '../Projects';
 
 // Elements
-import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../../elements';
+import { AddBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn, Title } from '../../../elements';
 
 export const ConstructorExperience: FC = () => {
     const {
@@ -32,14 +32,14 @@ export const ConstructorExperience: FC = () => {
                 {experienceFields.map((experience) => (
                     <S.Box key = { experience.id }>
                         <S.Info>
-                            <AppInput
+                            <AppDebounceInput
                                 handleChangeFunc = { (event) => {
                                     handleSetExperiencePositionField({ id: experience.id, text: event.target.value });
                                 } }
                                 placeholder = 'Your position'
                                 value = { experience.position }
                             />
-                            <AppInput
+                            <AppDebounceInput
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceDateField({ id: experience.id, text: event.target.value });
                                 }  }
@@ -48,7 +48,7 @@ export const ConstructorExperience: FC = () => {
                             />
                         </S.Info>
                         <S.Location>
-                            <AppInput
+                            <AppDebounceInput
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }
@@ -63,7 +63,7 @@ export const ConstructorExperience: FC = () => {
                             </S.TitleBox>
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
-                                    <AppTextarea
+                                    <AppDebounceTextarea
                                         handleChangeFunc = { (event) => {
                                             handleSetDescrField({ id: description.id, text: event.target.value });
                                         } }

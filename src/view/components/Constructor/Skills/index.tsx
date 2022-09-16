@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useSkillFields } from '../../../../bus/client/skillFields';
-import { AddBtn, AppInput, RemoveBtn, Title } from '../../../elements';
+import { AddBtn, AppDebounceInput, RemoveBtn, Title } from '../../../elements';
 
 // Styles
 import * as S from './styles';
@@ -23,7 +23,7 @@ export const ConstructorSkills: FC = () => {
             <S.List>
                 {skillFields.map(({ id, skill }) => (
                     <S.Item key = { id } >
-                        <AppInput
+                        <AppDebounceInput
                             handleChangeFunc = { (event) => {
                                 handleChangeSkillField({ id, skill: event.target.value });
                             } }

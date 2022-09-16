@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { useEducationField } from '../../../../bus/client/educationFields';
 
 // Elements
-import { AppTextarea, AppInput, Title, AddBtn, RemoveBtn } from '../../../elements';
+import { AppDebounceInput, AppDebounceTextarea, Title, AddBtn, RemoveBtn } from '../../../elements';
 
 // Styles
 import * as S from './styles';
@@ -34,7 +34,7 @@ export const ConstructorEducation: FC = () => {
                         <S.Item key = { id }>
                             <S.Wrapper>
                                 <S.Date>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDateField({ id, text: event.target.value });
                                         }  }
@@ -43,7 +43,7 @@ export const ConstructorEducation: FC = () => {
                                     />
                                 </S.Date>
                                 <S.Degree>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDegreeField({ id, text: event.target.value });
                                         } }
@@ -52,7 +52,7 @@ export const ConstructorEducation: FC = () => {
                                     />
                                 </S.Degree>
                                 <S.Description>
-                                    <AppTextarea
+                                    <AppDebounceTextarea
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDescriptionField({ id, text: event.target.value });
                                         } }

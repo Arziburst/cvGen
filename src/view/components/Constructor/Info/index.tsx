@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { useInfoFields } from '../../../../bus/client/infoFields';
 
 // Elements
-import { AppInput, AppTextarea } from '../../../elements';
+import { AppDebounceInput, AppDebounceTextarea } from '../../../elements';
 
 // Styles
 import * as S from './styles';
@@ -20,7 +20,7 @@ export const ConstructorInfo: FC = () => {
     return (
         <S.Container>
             <S.InputNameBox>
-                <AppInput
+                <AppDebounceInput
                     handleChangeFunc = { (event) => {
                         handleChangeName(event.target.value);
                     } }
@@ -29,7 +29,7 @@ export const ConstructorInfo: FC = () => {
                 />
             </S.InputNameBox>
             <S.InputPositionBox>
-                <AppInput
+                <AppDebounceInput
                     handleChangeFunc = { (event) => {
                         handleChangePosition(event.target.value);
                     } }
@@ -38,7 +38,7 @@ export const ConstructorInfo: FC = () => {
                 />
             </S.InputPositionBox>
             <S.InputOverviewBox>
-                <AppTextarea
+                <AppDebounceTextarea
                     handleChangeFunc = { (event) => {
                         handleChangeOverview(event.target.value);
                     } }

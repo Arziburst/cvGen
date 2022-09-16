@@ -8,6 +8,7 @@ import { WAIT_TIME } from '../../init';
 
 // Styled
 export const InputBox = styled.div`
+  width: 100%;
   input {
     border: 1px solid transparent;
     background-color: transparent;
@@ -40,7 +41,7 @@ type propsType = {
     value: string;
 }
 
-export const AppInput: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
+export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
     return (
         <InputBox>
             <DebounceInput

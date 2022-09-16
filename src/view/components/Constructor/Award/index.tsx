@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { useAwardFields } from '../../../../bus/client/awardFields';
 
 // Elements
-import { AddBtn, RemoveBtn, Title, AppInput } from '../../../elements';
+import { AddBtn, RemoveBtn, Title, AppDebounceInput } from '../../../elements';
 
 // Styles
 import * as S from './styles';
@@ -29,7 +29,7 @@ export const ConstructorAward: FC = () => {
                     <S.Item key = { award.id }>
                         <S.Wrapper>
                             <S.ReceivedText>
-                                <AppInput
+                                <AppDebounceInput
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardReceivedField({ id: award.id, text: event.target.value });
                                     } }
@@ -38,7 +38,7 @@ export const ConstructorAward: FC = () => {
                                 />
                             </S.ReceivedText>
                             <S.DateText>
-                                <AppInput
+                                <AppDebounceInput
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardDateField({ id: award.id, text: event.target.value });
                                     } }
@@ -47,7 +47,7 @@ export const ConstructorAward: FC = () => {
                                 />
                             </S.DateText>
                             <S.LocationText>
-                                <AppInput
+                                <AppDebounceInput
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardLocationField({ id: award.id, text: event.target.value });
                                     } }

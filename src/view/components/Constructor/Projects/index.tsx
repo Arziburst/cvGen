@@ -8,7 +8,7 @@ import { useExperienceFields } from '../../../../bus/client/experienceFields';
 import * as S from './styles';
 
 // Elements
-import { AddBtn, AppInput, AppTextarea, RemoveBtn } from '../../../elements';
+import { AddBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn } from '../../../elements';
 
 //Types
 import { Project } from '../../../../bus/client/experienceFields/types';
@@ -45,7 +45,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                         <S.Item key = { id }>
                             <S.Wrapper>
                                 <S.Name>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectNameField({ id, text: event.target.value });
                                         } }
@@ -54,7 +54,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     />
                                 </S.Name>
                                 <S.Customer>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectCustomerField({ id, text: event.target.value });
                                         } }
@@ -64,7 +64,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.Customer>
                                 <S.Box>
                                     <S.Role>
-                                        <AppInput
+                                        <AppDebounceInput
                                             handleChangeFunc = { (event) => {
                                                 handleSetProjectRoleField({ id, text: event.target.value });
                                             } }
@@ -73,7 +73,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                         />
                                     </S.Role>
                                     <S.Duration>
-                                        <AppInput
+                                        <AppDebounceInput
                                             handleChangeFunc = { (event) => {
                                                 handleSetProjectDurationField(
                                                     { id, text: event.target.value },
@@ -85,7 +85,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     </S.Duration>
                                 </S.Box>
                                 <S.Responsibilities>
-                                    <AppTextarea
+                                    <AppDebounceTextarea
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectResponsibilitiesField(
                                                 { id, text: event.target.value },
@@ -96,7 +96,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     />
                                 </S.Responsibilities>
                                 <S.TeamSize>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectTeamsizeField({ id, text: event.target.value });
                                         } }
@@ -105,7 +105,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     />
                                 </S.TeamSize>
                                 <S.Stack>
-                                    <AppInput
+                                    <AppDebounceInput
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectStackField({ id, text: event.target.value });
                                         } }

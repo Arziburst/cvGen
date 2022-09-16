@@ -8,7 +8,7 @@ import { useContactField } from '../../../../bus/client/contactFields';
 import * as S from './styles';
 
 // Elements
-import { Title, RemoveBtn, AppInput, AddBtn } from '../../../elements';
+import { Title, RemoveBtn, AppDebounceInput, AddBtn } from '../../../elements';
 
 export const ConstructorContacts: FC = () => {
     const {
@@ -29,7 +29,7 @@ export const ConstructorContacts: FC = () => {
                 {contactFields.map((elem) => (
                     <S.Item
                         key = { elem.id }>
-                        <AppInput
+                        <AppDebounceInput
                             handleChangeFunc = { (event) => {
                                 handleChangeContactField({ ...elem, url: event.target.value });
                             }  }

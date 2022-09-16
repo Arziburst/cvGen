@@ -33,7 +33,7 @@ type propsType = {
     value: string;
 }
 
-export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
+export const AppDebounceTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
     return (
         <TextareaBox>
             <DebounceInput

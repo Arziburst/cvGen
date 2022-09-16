@@ -8,7 +8,7 @@ import { useLanguageFields } from '../../../../bus/client/languageFields';
 import * as S from './styles';
 
 // Elements
-import { Title, RemoveBtn, AddBtn, AppInput } from '../../../elements';
+import { Title, RemoveBtn, AddBtn, AppDebounceInput } from '../../../elements';
 
 export const ConstructorLanguages: FC = () => {
     const {
@@ -26,7 +26,7 @@ export const ConstructorLanguages: FC = () => {
                 {
                     languageFields.map((language) => (
                         <S.Item key = { language.id }>
-                            <AppInput
+                            <AppDebounceInput
                                 handleChangeFunc = { (event) => {
                                     handleChangeLanguageField({ id: language.id, language: event.target.value });
                                 }  }

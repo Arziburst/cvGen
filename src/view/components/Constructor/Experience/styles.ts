@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   padding-bottom: 25px;
-
 `;
 
 export const Inner = styled.div`
@@ -23,22 +22,27 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+  margin-right: 25px;
+
   input {
+    display: block;
     font-family: 'NotoSans800';
     font-weight: 800;
     font-size: 17px;
     color: #4c576b;
-    width: 45%;
+    width: 100%;
     background-color: #e7e7e7;
+  }
 
-    &:nth-child(2) {
+  div {
+    &:nth-child(1) {
       margin-right: 25px;
     }
   }
 
   @media (max-width: 360px) {
-    display: block;
     margin-right: 25px;
+    display: block;
     input {
       display: block;
       width: 100%;
@@ -56,7 +60,7 @@ export const Location = styled.div`
       font-weight: 800;
       font-size: 14px;
       color: #4c576b;
-      width: 45%;
+      width: 100%;
       background-color: #e7e7e7;
     }
 
@@ -86,6 +90,7 @@ export const RemoveBtn = styled.button`
   cursor: pointer;
   background-color: #4c576b;
   border-radius: 50%;
+
   &::before {
     content: '';
     position: absolute;
