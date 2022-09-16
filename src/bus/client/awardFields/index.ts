@@ -5,27 +5,26 @@ import { uniqueId } from 'lodash';
 import { awardFieldsActions, initialState } from './slice';
 
 // Tools
-import { useSelector, useDispatch, useDebounce } from '../../../tools/hooks';
+import { useSelector, useDispatch } from '../../../tools/hooks';
 
 // Types
 import { AwardData } from './types';
 
 export const useAwardFields = () => {
     const dispatch = useDispatch();
-    const debounce = useDebounce();
     const awardFields = useSelector(({ awardFields }) => awardFields);
 
-    const debounceChangeAwardReceivedField = debounce((data: AwardData) => {
+    const handleChangeAwardReceivedField = (data: AwardData) => {
         dispatch(awardFieldsActions.setAwardFields({ type: 'received', value: data }));
-    });
+    };
 
-    const debounceChangeAwardDateField = debounce((data: AwardData) => {
+    const handleChangeAwardDateField = (data: AwardData) => {
         dispatch(awardFieldsActions.setAwardFields({ type: 'date', value: data }));
-    });
+    };
 
-    const debounceChangeAwardLocationField = debounce((data: AwardData) => {
+    const handleChangeAwardLocationField = (data: AwardData) => {
         dispatch(awardFieldsActions.setAwardFields({ type: 'location', value: data }));
-    });
+    };
 
     const removeAwardField = (id: string) => {
         dispatch(awardFieldsActions.removeAwardFields(id));
@@ -41,9 +40,9 @@ export const useAwardFields = () => {
 
     return {
         awardFields,
-        debounceChangeAwardReceivedField,
-        debounceChangeAwardDateField,
-        debounceChangeAwardLocationField,
+        handleChangeAwardReceivedField,
+        handleChangeAwardDateField,
+        handleChangeAwardLocationField,
         removeAwardField,
         createAwardField,
         resetAwardFieldsToInithialState,

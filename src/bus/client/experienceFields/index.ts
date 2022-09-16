@@ -8,60 +8,59 @@ import { experienceFieldsActions } from './slice';
 import { initialState } from './slice';
 
 // Tools
-import { useDispatch, useSelector, useDebounce } from '../../../tools/hooks';
+import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Types
 import { ExperienceData } from './types';
 
 export const useExperienceFields = () => {
     const dispatch = useDispatch();
-    const debounce = useDebounce();
 
     const experienceFields = useSelector(({ experienceFields }) => experienceFields);
 
-    const debounceSetExperiencePositionField = debounce((data: ExperienceData) => {
+    const handleSetExperiencePositionField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'position', value: data }));
-    });
+    };
 
-    const debounceSetExperienceDateField = debounce((data: ExperienceData) => {
+    const handleSetExperienceDateField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'date', value: data }));
-    });
+    };
 
-    const debounceSetExperienceLocationField = debounce((data: ExperienceData) => {
+    const handleSetExperienceLocationField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'location', value: data }));
-    });
+    };
 
-    const debounceSetDescrField = debounce((data: ExperienceData) => {
+    const handleSetDescrField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsDescriptionCreatorAction({ type: 'description', value: data }));
-    });
+    };
 
-    const debounceSetProjectNameField = debounce((data: ExperienceData) => {
+    const handleSetProjectNameField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'name', value: data }));
-    });
+    };
 
-    const debounceSetProjectCustomerField = debounce((data: ExperienceData) => {
+    const handleSetProjectCustomerField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'customer', value: data }));
-    });
+    };
 
-    const debounceSetProjectDurationField = debounce((data: ExperienceData) => {
+    const handleSetProjectDurationField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'duration', value: data }));
-    });
+    };
 
-    const debounceSetProjectRoleField = debounce((data: ExperienceData) => {
+    const handleSetProjectRoleField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'role', value: data }));
-    });
+    };
 
-    const debounceSetProjectResponsibilitiesField = debounce((data: ExperienceData) => {
+    const handleSetProjectResponsibilitiesField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'responsibilities', value: data }));
-    });
+    };
 
-    const debounceSetProjectStackField = debounce((data: ExperienceData) => {
+    const handleSetProjectStackField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'stack', value: data }));
-    });
+    };
 
-    const debounceSetProjectTeamsizeField = debounce((data: ExperienceData) => {
+    const handleSetProjectTeamsizeField = (data: ExperienceData) => {
         dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'teamSize', value: data }));
-    });
+    };
 
     const removeExperienceField = (id: string) => {
         dispatch(experienceFieldsActions.removeExperienceField(id));
@@ -99,17 +98,17 @@ export const useExperienceFields = () => {
 
     return {
         experienceFields,
-        debounceSetExperiencePositionField,
-        debounceSetExperienceDateField,
-        debounceSetExperienceLocationField,
-        debounceSetDescrField,
-        debounceSetProjectNameField,
-        debounceSetProjectCustomerField,
-        debounceSetProjectDurationField,
-        debounceSetProjectRoleField,
-        debounceSetProjectResponsibilitiesField,
-        debounceSetProjectStackField,
-        debounceSetProjectTeamsizeField,
+        handleSetExperiencePositionField,
+        handleSetExperienceDateField,
+        handleSetExperienceLocationField,
+        handleSetDescrField,
+        handleSetProjectNameField,
+        handleSetProjectCustomerField,
+        handleSetProjectDurationField,
+        handleSetProjectRoleField,
+        handleSetProjectResponsibilitiesField,
+        handleSetProjectStackField,
+        handleSetProjectTeamsizeField,
         removeExperienceDescriptionField,
         addExperienceDescriptionField,
         removeExperienceProjectField,

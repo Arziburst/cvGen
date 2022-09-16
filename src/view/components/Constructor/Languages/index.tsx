@@ -12,7 +12,7 @@ import { Title, RemoveBtn, AddBtn, AppInput } from '../../../elements';
 
 export const ConstructorLanguages: FC = () => {
     const {
-        languageFields, debounceChangeLanguageField,
+        languageFields, handleChangeLanguageField,
         addLanguageField, removeLanguageField,
     } = useLanguageFields();
 
@@ -28,7 +28,7 @@ export const ConstructorLanguages: FC = () => {
                         <S.Item key = { language.id }>
                             <AppInput
                                 handleChangeFunc = { (event) => {
-                                    debounceChangeLanguageField({ id: language.id, language: event.target.value });
+                                    handleChangeLanguageField({ id: language.id, language: event.target.value });
                                 }  }
                                 placeholder = 'Language...'
                                 value = { language.language }

@@ -12,14 +12,14 @@ import * as S from './styles';
 
 export const ConstructorAvatar: FC = () => {
     const {
-        infoFields: { avatar }, debounceChangeImg,
+        infoFields: { avatar }, handleChangeImg,
     } = useInfoFields();
 
-    const handleChangeImg = (event: ChangeEvent<HTMLInputElement>) => {
+    const convertFileToImg = (event: ChangeEvent<HTMLInputElement>) => {
         const fileUrl = event.target.files?.item(0);
 
         if (fileUrl) {
-            debounceChangeImg(URL.createObjectURL(fileUrl));
+            handleChangeImg(URL.createObjectURL(fileUrl));
         }
     };
 
@@ -34,7 +34,7 @@ export const ConstructorAvatar: FC = () => {
                 <S.InputFile
                     accept = 'image/*'
                     type = 'file'
-                    onChange = { handleChangeImg }
+                    onChange = { convertFileToImg }
                 />
             </S.Wrapper>
         </S.Container>

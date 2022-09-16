@@ -51,7 +51,6 @@ export const Item = styled.li`
     background-color: #dbdbdb;
     padding: 5px 10px;
     padding-right: 25px;
-    max-width: fit-content;
     font-size: 15px;
     overflow: hidden;
     color: #4c576b;

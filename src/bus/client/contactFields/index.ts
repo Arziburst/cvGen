@@ -1,5 +1,5 @@
 // Tools
-import { useDispatch, useSelector, useDebounce } from '../../../tools/hooks';
+import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Slice
 import { initialState } from './slice';
@@ -12,12 +12,11 @@ import { Contact } from './types';
 
 export const useContactField = () => {
     const dispatch = useDispatch();
-    const debounce = useDebounce();
     const contactFields = useSelector(({ contactFields }) => contactFields);
 
-    const debounceChangeContactField = debounce((contact: Contact) => {
+    const handleChangeContactField = (contact: Contact) => {
         dispatch(contactFieldsActions.contactFieldCreatorAction({ type: 'url', value: contact }));
-    });
+    };
 
     const removeContactField = (id: string) => {
         dispatch(contactFieldsActions.removeContactField(id));
@@ -33,7 +32,7 @@ export const useContactField = () => {
 
     return {
         contactFields,
-        debounceChangeContactField,
+        handleChangeContactField,
         removeContactField,
         resetContactFieldsToInithialState,
         addContactFields,

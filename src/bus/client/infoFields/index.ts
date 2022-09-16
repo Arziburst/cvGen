@@ -2,28 +2,27 @@
 import { infoFieldsActions, initialState } from './slice';
 
 // Tools
-import { useSelector, useDispatch, useDebounce } from '../../../tools/hooks'; /* Typed selector */
+import { useSelector, useDispatch } from '../../../tools/hooks'; /* Typed selector */
 
 export const useInfoFields = () => {
     const dispatch = useDispatch();
-    const debounce = useDebounce();
     const infoFields = useSelector(({ infoFields }) => infoFields);
 
-    const debounceChangeName = debounce((text: string) => {
+    const handleChangeName = (text: string) => {
         dispatch(infoFieldsActions.infoFieldsCreatorAction({ type: 'name', value: text }));
-    });
+    };
 
-    const debounceChangeImg = debounce((img: string) => {
+    const handleChangeImg = (img: string) => {
         dispatch(infoFieldsActions.infoFieldsCreatorAction({ type: 'avatar', value: img }));
-    });
+    };
 
-    const debounceChangePosition = debounce((position: string) => {
+    const handleChangePosition = (position: string) => {
         dispatch(infoFieldsActions.infoFieldsCreatorAction({ type: 'position', value: position }));
-    });
+    };
 
-    const debounceChangeOverview = debounce((overview: string) => {
+    const handleChangeOverview = (overview: string) => {
         dispatch(infoFieldsActions.infoFieldsCreatorAction({ type: 'overview', value: overview }));
-    });
+    };
 
     const resetInfoFieldsToInithial = () => {
         dispatch(infoFieldsActions.resetInfoFields(initialState));
@@ -31,10 +30,10 @@ export const useInfoFields = () => {
 
     return {
         infoFields,
-        debounceChangeName,
-        debounceChangeImg,
-        debounceChangePosition,
-        debounceChangeOverview,
+        handleChangeName,
+        handleChangeImg,
+        handleChangePosition,
+        handleChangeOverview,
         resetInfoFieldsToInithial,
     };
 };

@@ -75,7 +75,7 @@ export const Duration = styled.time`
 export const Role = styled.h6`
 `;
 
-export const Responsibilities = styled.p`
+export const Responsibilities = styled.div`
   margin-bottom: 5px;
   textarea {
     color: #4c576b;

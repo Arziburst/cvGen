@@ -11,7 +11,7 @@ import * as S from './styles';
 export const ConstructorSkills: FC = () => {
     const {
         skillFields, addSkillField,
-        debounceChangeSkillField, removeSkillField,
+        handleChangeSkillField, removeSkillField,
     } = useSkillFields();
 
     return (
@@ -25,7 +25,7 @@ export const ConstructorSkills: FC = () => {
                     <S.Item key = { id } >
                         <AppInput
                             handleChangeFunc = { (event) => {
-                                debounceChangeSkillField({ id, skill: event.target.value });
+                                handleChangeSkillField({ id, skill: event.target.value });
                             } }
                             placeholder = 'Your skill'
                             value = { skill }

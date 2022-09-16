@@ -19,10 +19,10 @@ type propTypes = {
 
 export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) => {
     const {
-        debounceSetProjectCustomerField,
-        debounceSetProjectDurationField, debounceSetProjectNameField,
-        debounceSetProjectResponsibilitiesField, debounceSetProjectRoleField,
-        debounceSetProjectStackField, debounceSetProjectTeamsizeField,
+        handleSetProjectCustomerField,
+        handleSetProjectDurationField, handleSetProjectNameField,
+        handleSetProjectResponsibilitiesField, handleSetProjectRoleField,
+        handleSetProjectStackField, handleSetProjectTeamsizeField,
         addExperienceProjectField, removeExperienceProjectField,
     } = useExperienceFields();
 
@@ -47,7 +47,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.Name>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceSetProjectNameField({ id, text: event.target.value });
+                                            handleSetProjectNameField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Name'
                                         value = { name }
@@ -56,7 +56,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.Customer>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceSetProjectCustomerField({ id, text: event.target.value });
+                                            handleSetProjectCustomerField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Customer'
                                         value = { customer }
@@ -66,7 +66,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     <S.Role>
                                         <AppInput
                                             handleChangeFunc = { (event) => {
-                                                debounceSetProjectRoleField({ id, text: event.target.value });
+                                                handleSetProjectRoleField({ id, text: event.target.value });
                                             } }
                                             placeholder = 'Role'
                                             value = { role }
@@ -75,7 +75,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     <S.Duration>
                                         <AppInput
                                             handleChangeFunc = { (event) => {
-                                                debounceSetProjectDurationField(
+                                                handleSetProjectDurationField(
                                                     { id, text: event.target.value },
                                                 );
                                             } }
@@ -87,7 +87,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.Responsibilities>
                                     <AppTextarea
                                         handleChangeFunc = { (event) => {
-                                            debounceSetProjectResponsibilitiesField(
+                                            handleSetProjectResponsibilitiesField(
                                                 { id, text: event.target.value },
                                             );
                                         } }
@@ -98,7 +98,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.TeamSize>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceSetProjectTeamsizeField({ id, text: event.target.value });
+                                            handleSetProjectTeamsizeField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Teamsize'
                                         value = { teamSize }
@@ -107,7 +107,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.Stack>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceSetProjectStackField({ id, text: event.target.value });
+                                            handleSetProjectStackField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Stack'
                                         value = { stack }

@@ -2,7 +2,7 @@
 import { uniqueId } from 'lodash';
 
 // Tools
-import { useDebounce, useDispatch, useSelector } from '../../../tools/hooks';
+import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Actions
 import { educationFieldsActions, initialState } from './slice';
@@ -12,20 +12,19 @@ import { OptionsValue } from './types';
 
 export const useEducationField = () => {
     const dispatch = useDispatch();
-    const debounce = useDebounce();
     const educationFields = useSelector(({ educationFields }) => educationFields);
 
-    const debounceChangeEducationDateField = debounce((data: OptionsValue) => {
+    const handleChangeEducationDateField = (data: OptionsValue) => {
         dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'date', value: data }));
-    });
+    };
 
-    const debounceChangeEducationDegreeField = debounce((data: OptionsValue) => {
+    const handleChangeEducationDegreeField = (data: OptionsValue) => {
         dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'degree', value: data }));
-    });
+    };
 
-    const debounceChangeEducationDescriptionField = debounce((data: OptionsValue) => {
+    const handleChangeEducationDescriptionField = (data: OptionsValue) => {
         dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'description', value: data }));
-    });
+    };
 
     const removeEducationField = (id: string) => {
         dispatch(educationFieldsActions.removeEducationField(id));
@@ -42,9 +41,9 @@ export const useEducationField = () => {
 
     return {
         educationFields,
-        debounceChangeEducationDateField,
-        debounceChangeEducationDegreeField,
-        debounceChangeEducationDescriptionField,
+        handleChangeEducationDateField,
+        handleChangeEducationDegreeField,
+        handleChangeEducationDescriptionField,
         removeEducationField,
         addEducationField,
         resetEducationFieldsToInithialState,

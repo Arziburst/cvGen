@@ -12,7 +12,7 @@ import { Title, RemoveBtn, AppInput, AddBtn } from '../../../elements';
 
 export const ConstructorContacts: FC = () => {
     const {
-        debounceChangeContactField, removeContactField,
+        handleChangeContactField, removeContactField,
         contactFields, addContactFields,
     } = useContactField();
 
@@ -31,7 +31,7 @@ export const ConstructorContacts: FC = () => {
                         key = { elem.id }>
                         <AppInput
                             handleChangeFunc = { (event) => {
-                                debounceChangeContactField({ ...elem, url: event.target.value });
+                                handleChangeContactField({ ...elem, url: event.target.value });
                             }  }
                             placeholder = { elem.id }
                             value = { elem.url }

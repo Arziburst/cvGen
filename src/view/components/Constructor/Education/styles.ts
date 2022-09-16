@@ -19,7 +19,7 @@ export const Item = styled.li`
   margin-bottom: 10px;
 `;
 
-export const Date = styled.span`
+export const Date = styled.div`
   display: block;
   margin-bottom: 5px;
   input, textarea {

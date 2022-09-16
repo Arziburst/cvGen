@@ -13,8 +13,8 @@ import * as S from './styles';
 export const ConstructorEducation: FC = () => {
     const {
         educationFields, addEducationField,
-        debounceChangeEducationDateField, debounceChangeEducationDegreeField,
-        debounceChangeEducationDescriptionField, removeEducationField,
+        handleChangeEducationDateField, handleChangeEducationDegreeField,
+        handleChangeEducationDescriptionField, removeEducationField,
     } = useEducationField();
 
     return (
@@ -36,7 +36,7 @@ export const ConstructorEducation: FC = () => {
                                 <S.Date>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceChangeEducationDateField({ id, text: event.target.value });
+                                            handleChangeEducationDateField({ id, text: event.target.value });
                                         }  }
                                         placeholder = '2007 - 2013'
                                         value = { date }
@@ -45,7 +45,7 @@ export const ConstructorEducation: FC = () => {
                                 <S.Degree>
                                     <AppInput
                                         handleChangeFunc = { (event) => {
-                                            debounceChangeEducationDegreeField({ id, text: event.target.value });
+                                            handleChangeEducationDegreeField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Degree name / University Location'
                                         value = { degree }
@@ -54,7 +54,7 @@ export const ConstructorEducation: FC = () => {
                                 <S.Description>
                                     <AppTextarea
                                         handleChangeFunc = { (event) => {
-                                            debounceChangeEducationDescriptionField({ id, text: event.target.value });
+                                            handleChangeEducationDescriptionField({ id, text: event.target.value });
                                         } }
                                         placeholder = 'Tell about your degree'
                                         value = { description }

@@ -12,10 +12,11 @@ import * as S from './styles';
 
 export const ConstructorAward: FC = () => {
     const {
-        awardFields, debounceChangeAwardDateField,
-        debounceChangeAwardLocationField, debounceChangeAwardReceivedField,
+        awardFields, handleChangeAwardDateField,
+        handleChangeAwardLocationField, handleChangeAwardReceivedField,
         createAwardField, removeAwardField,
     } = useAwardFields();
+
 
     return (
         <S.Container>
@@ -30,7 +31,7 @@ export const ConstructorAward: FC = () => {
                             <S.ReceivedText>
                                 <AppInput
                                     handleChangeFunc = { (event) => {
-                                        debounceChangeAwardReceivedField({ id: award.id, text: event.target.value });
+                                        handleChangeAwardReceivedField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'Awards Received'
                                     value = { award.received }
@@ -39,7 +40,7 @@ export const ConstructorAward: FC = () => {
                             <S.DateText>
                                 <AppInput
                                     handleChangeFunc = { (event) => {
-                                        debounceChangeAwardDateField({ id: award.id, text: event.target.value });
+                                        handleChangeAwardDateField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'April 2015'
                                     value = { award.date }
@@ -48,7 +49,7 @@ export const ConstructorAward: FC = () => {
                             <S.LocationText>
                                 <AppInput
                                     handleChangeFunc = { (event) => {
-                                        debounceChangeAwardLocationField({ id: award.id, text: event.target.value });
+                                        handleChangeAwardLocationField({ id: award.id, text: event.target.value });
                                     } }
                                     placeholder = 'Place, Location'
                                     value = { award.location }

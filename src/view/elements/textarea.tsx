@@ -1,40 +1,48 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, FC } from 'react';
 import styled from 'styled-components';
+import { DebounceInput } from 'react-debounce-input';
+import { WAIT_TIME } from '../../init';
 
 // Styled
-export const Textarea = styled.textarea`
-  border: 1px solid transparent;
-  background-color: transparent;
-  padding-right: 10px;
-  display: block;
-  width: 100%;
-  resize: none;
-  color: #cad1dd;
+export const TextareaBox = styled.div`
+  textarea {
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding-right: 10px;
+    display: block;
+    width: 100%;
+    resize: none;
+    color: #cad1dd;
 
-  &:focus,
-  &:hover {
-    border-color: #e8e5e4;
-    outline-color: #e8e5e4;
-  }
+    &:focus,
+    &:hover {
+      border-color: #e8e5e4;
+      outline-color: #e8e5e4;
+    }
 
-  &::placeholder {
-    font-size: inherit;
-    color: inherit;
+    &::placeholder {
+      font-size: inherit;
+      color: inherit;
+    }
   }
 `;
 
 type propsType = {
-    handleChangeFunc: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+    handleChangeFunc: ((event: ChangeEvent<HTMLTextAreaElement>) => void) & ChangeEventHandler<HTMLInputElement>
     placeholder: string;
     value: string;
 }
 
 export const AppTextarea: FC<propsType> = ({ handleChangeFunc, placeholder, value }) => {
     return (
-        <Textarea
-            placeholder = { placeholder }
-            value = { value }
-            onChange = { handleChangeFunc }
-        />
+        <TextareaBox>
+            <DebounceInput
+                debounceTimeout = { WAIT_TIME }
+                element = 'textarea'
+                placeholder = { placeholder }
+                value = { value }
+                onChange = { handleChangeFunc }
+            />
+        </TextareaBox>
     );
 };

@@ -13,8 +13,8 @@ import * as S from './styles';
 export const ConstructorInfo: FC = () => {
     const {
         infoFields: { name, overview, position },
-        debounceChangeName, debounceChangePosition,
-        debounceChangeOverview,
+        handleChangeName, handleChangeOverview,
+        handleChangePosition,
     } = useInfoFields();
 
     return (
@@ -22,7 +22,7 @@ export const ConstructorInfo: FC = () => {
             <S.InputNameBox>
                 <AppInput
                     handleChangeFunc = { (event) => {
-                        debounceChangeName(event.target.value);
+                        handleChangeName(event.target.value);
                     } }
                     placeholder = 'Name'
                     value = { name }
@@ -31,7 +31,7 @@ export const ConstructorInfo: FC = () => {
             <S.InputPositionBox>
                 <AppInput
                     handleChangeFunc = { (event) => {
-                        debounceChangePosition(event.target.value);
+                        handleChangePosition(event.target.value);
                     } }
                     placeholder = 'Position'
                     value = { position }
@@ -40,7 +40,7 @@ export const ConstructorInfo: FC = () => {
             <S.InputOverviewBox>
                 <AppTextarea
                     handleChangeFunc = { (event) => {
-                        debounceChangeOverview(event.target.value);
+                        handleChangeOverview(event.target.value);
                     } }
                     placeholder = 'Overview'
                     value = { overview }

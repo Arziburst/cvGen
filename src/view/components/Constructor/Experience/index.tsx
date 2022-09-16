@@ -1,5 +1,5 @@
 // Core
-import React, { ChangeEvent, FC } from 'react';
+import React, { FC } from 'react';
 
 // Bus
 import { useExperienceFields } from '../../../../bus/client/experienceFields';
@@ -15,9 +15,9 @@ import { AddBtn, AppInput, AppTextarea, RemoveBtn, Title } from '../../../elemen
 
 export const ConstructorExperience: FC = () => {
     const {
-        experienceFields, debounceSetExperiencePositionField,
-        debounceSetExperienceDateField, debounceSetExperienceLocationField,
-        debounceSetDescrField, removeExperienceDescriptionField,
+        experienceFields, handleSetExperiencePositionField,
+        handleSetExperienceDateField, handleSetExperienceLocationField,
+        handleSetDescrField, removeExperienceDescriptionField,
         addExperienceDescriptionField, addExperienceField,
         removeExperienceField,
     } = useExperienceFields();
@@ -34,14 +34,14 @@ export const ConstructorExperience: FC = () => {
                         <S.Info>
                             <AppInput
                                 handleChangeFunc = { (event) => {
-                                    debounceSetExperiencePositionField({ id: experience.id, text: event.target.value });
+                                    handleSetExperiencePositionField({ id: experience.id, text: event.target.value });
                                 } }
                                 placeholder = 'Your position'
                                 value = { experience.position }
                             />
                             <AppInput
                                 handleChangeFunc = { (event) => {
-                                    debounceSetExperienceDateField({ id: experience.id, text: event.target.value });
+                                    handleSetExperienceDateField({ id: experience.id, text: event.target.value });
                                 }  }
                                 placeholder = 'Sept. 2016 - Present'
                                 value = { experience.date }
@@ -50,7 +50,7 @@ export const ConstructorExperience: FC = () => {
                         <S.Location>
                             <AppInput
                                 handleChangeFunc = { (event) => {
-                                    debounceSetExperienceLocationField({ id: experience.id, text: event.target.value });
+                                    handleSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }
                                 placeholder = 'Company & location'
                                 value = { experience.location }
@@ -64,8 +64,8 @@ export const ConstructorExperience: FC = () => {
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
                                     <AppTextarea
-                                        handleChangeFunc = { (event: ChangeEvent<HTMLTextAreaElement>) => {
-                                            debounceSetDescrField({ id: description.id, text: event.target.value });
+                                        handleChangeFunc = { (event) => {
+                                            handleSetDescrField({ id: description.id, text: event.target.value });
                                         } }
                                         placeholder = 'Your descr'
                                         value = { description.description }
