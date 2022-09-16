@@ -5,6 +5,8 @@ import { WAIT_TIME } from '../../init';
 
 // Styled
 export const TextareaBox = styled.div`
+  width: 100%;
+
   textarea {
     border: 1px solid transparent;
     background-color: transparent;
