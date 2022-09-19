@@ -4,3 +4,4 @@ export * from './debounceTextarea';
 export * from './title';
 export * from './removeBtn';
 export * from './addBtn';
+export * from './logo';

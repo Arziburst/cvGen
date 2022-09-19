@@ -1,13 +1,8 @@
 // Core
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { svgPdfIcon } from '../../../assets/images';
-
-// Bus
-// import {} from '../../../bus/'
 
 // Components
-import { ErrorBoundary } from '../../components';
+import { ErrorBoundary, Header } from '../../components';
 
 // Styles
 import * as S from './styles';
@@ -20,11 +15,7 @@ type PropTypes = {
 const Main: FC<PropTypes> = () => {
     return (
         <S.Container>
-            Page: Main
-            <Link to = '/constructor'>
-                <img src = { svgPdfIcon } />
-                <span>Create CV</span>
-            </Link>
+            <Header />
         </S.Container>
     );
 };
