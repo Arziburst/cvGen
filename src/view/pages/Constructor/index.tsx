@@ -11,6 +11,9 @@ import { useLanguageFields } from '../../../bus/client/languageFields';
 import { useSkillFields } from '../../../bus/client/skillFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 
+// Elements
+import { Logo } from '../../elements';
+
 // Components
 import {
     ErrorBoundary,
@@ -44,26 +47,29 @@ const Constructor: FC = () => {
         <>
             <S.BtnActionBox>
                 <S.ActionBoxContainer>
-                    <button
-                        onClick = { () => {
-                            setToggleAction({ type: 'isPreview', value: true });
-                        } }>
-                        <img src = { svgPdfIcon } />
-                        <span>Preview</span>
-                    </button>
-                    <button
-                        onClick = { () => {
-                            resetContactFieldsToInithialState();
-                            resetInfoFieldsToInithial();
-                            resetAwardFieldsToInithialState();
-                            resetEducationFieldsToInithialState();
-                            resetLanguageFieldsToInithialState();
-                            resetSkillFieldsToInithialState();
-                            resetExperienceFieldsToInithialState();
-                        } }>
-                        <img src = { svgResetIcon } />
-                        <span>Reset</span>
-                    </button>
+                    <Logo />
+                    <S.BtnBox>
+                        <button
+                            onClick = { () => {
+                                setToggleAction({ type: 'isPreview', value: true });
+                            } }>
+                            <img src = { svgPdfIcon } />
+                            <span>Preview</span>
+                        </button>
+                        <button
+                            onClick = { () => {
+                                resetContactFieldsToInithialState();
+                                resetInfoFieldsToInithial();
+                                resetAwardFieldsToInithialState();
+                                resetEducationFieldsToInithialState();
+                                resetLanguageFieldsToInithialState();
+                                resetSkillFieldsToInithialState();
+                                resetExperienceFieldsToInithialState();
+                            } }>
+                            <img src = { svgResetIcon } />
+                            <span>Reset</span>
+                        </button>
+                    </S.BtnBox>
                 </S.ActionBoxContainer>
             </S.BtnActionBox>
             <S.Container>

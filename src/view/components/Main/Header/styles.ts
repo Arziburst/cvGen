@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;

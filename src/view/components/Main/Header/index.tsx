@@ -1,11 +1,8 @@
 // Core
 import React, { FC } from 'react';
 
-// Routes
-import * as book from '../../../routes/book';
-
 // Elements
-import { Logo } from '../../../elements';
+import { Logo, NavLink } from '../../../elements';
 
 // Styles
 import * as S from './styles';
@@ -39,9 +36,7 @@ export const Header: FC<PropTypes> = () => {
                         </S.Item>
                     </S.List>
                 </S.Navigation>
-                <S.CreateResumeLink to = { book.CONSTRUCTOR }>
-                    Create Resume
-                </S.CreateResumeLink>
+                <NavLink />
             </S.Inner>
         </S.Container>
     );

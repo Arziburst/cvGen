@@ -58,7 +58,11 @@ export const ActionBoxContainer = styled.div`
     margin: 0 auto;
     flex: 1 1 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+`;
+
+export const BtnBox = styled.div`
+     
 `;
 
 export const BtnActionBox = styled.div`
