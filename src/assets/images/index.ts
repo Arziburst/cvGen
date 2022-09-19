@@ -14,3 +14,4 @@ export { default as pngUserIcon } from './user-icon.png';
 export { default as svgPdfIcon } from './pdf-icon.svg';
 export { default as svgResetIcon } from './reset-icon.svg';
 export { default as logo } from './logo.svg';
+export { default as template } from './template.png';

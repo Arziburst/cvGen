@@ -11,6 +11,7 @@ export const Container = styled.section`
   padding: 8px 0;
   background-color: #262b34;
   box-shadow: rgb(17 12 46 / 15%) 0px 48px 100px 0px;
+  z-index: 5;
 `;
 export const Inner = styled.div`
   display: flex;

@@ -2,7 +2,7 @@
 import React, { FC } from 'react';
 
 // Components
-import { ErrorBoundary, Info, Header } from '../../components';
+import { ErrorBoundary, Info, Header, Template } from '../../components';
 
 // Styles
 import * as S from './styles';
@@ -17,6 +17,7 @@ const Main: FC<PropTypes> = () => {
         <S.Container>
             <Header />
             <Info />
+            <Template />
         </S.Container>
     );
 };
