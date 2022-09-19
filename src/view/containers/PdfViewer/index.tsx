@@ -99,8 +99,8 @@ export const PdfViewer = () => {
                         </View>
                         <View style = { styles.contentSecondColumn }>
                             <PreviewEducation education = { educationFields } />
-                            <PreviewExperience experience = { experienceFields } />
                             <PreviewSlills skills = { skillFields } />
+                            <PreviewExperience experience = { experienceFields } />
                         </View>
                     </View>
                 </Page>

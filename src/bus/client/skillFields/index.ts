@@ -22,7 +22,6 @@ export const useSkillFields = () => {
         dispatch(skillsActions.addSkill(uniqueId()));
     };
 
-
     const resetSkillFieldsToInithialState = () => {
         dispatch(skillsActions.resetSkillFields(initialState));
     };

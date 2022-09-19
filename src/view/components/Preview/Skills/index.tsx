@@ -43,15 +43,19 @@ export const PreviewSlills = ({ skills }: PropTypes) => {
                     skills.map(({
                         id, skill,
                     }) => {
-                        return (
-                            <li
-                                key = { id }
-                                style = { styles.skillBox }>
-                                <Text style = { styles.text }>
-                                    {skill}
-                                </Text>
-                            </li>
-                        );
+                        if (skill.length > 0) {
+                            return (
+                                <li
+                                    key = { id }
+                                    style = { styles.skillBox }>
+                                    <Text style = { styles.text }>
+                                        {skill}
+                                    </Text>
+                                </li>
+                            );
+                        }
+
+                        return null;
                     })
                 }
             </ul>

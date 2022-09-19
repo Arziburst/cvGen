@@ -18,14 +18,15 @@ const Preview: FC = () => {
 
     return (
         <S.Container>
+            <S.BtnContainer>
+                <S.NavBtn
+                    onClick = { () => {
+                        setToggleAction({ type: 'isReadyPreview', value: false });
+                    } }>
+                    Back
+                </S.NavBtn>
+            </S.BtnContainer>
             <PdfViewer />
-            <button
-                style = {{ position: 'fixed', left: '15px', top: '15px', width: '100px', height: '100px' }}
-                onClick = { () => {
-                    setToggleAction({ type: 'isReadyPreview', value: false });
-                } }>
-                Back
-            </button>
         </S.Container>
     );
 };

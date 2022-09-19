@@ -34,14 +34,17 @@ const styles = StyleSheet.create({
     headerText: {
         flexDirection:  'row',
         justifyContent: 'space-between',
-        fontSize:       12,
+        fontSize:       15,
         fontWeight:     500,
         marginBottom:   2,
+    },
+    headerDateText: {
+        fontSize: 12,
     },
     location: {
         fontSize:     12,
         fontWeight:   500,
-        marginBottom: 3,
+        marginBottom: 6,
     },
     descriptionList: {
         marginBottom: 3,
@@ -76,6 +79,10 @@ const styles = StyleSheet.create({
     projectText: {
         marginBottom: 2,
     },
+
+    projectName: {
+        fontWeight: 500,
+    },
 });
 
 
@@ -106,7 +113,7 @@ export const PreviewExperience = ({ experience }: PropTypes) => {
                                     <Text>
                                         {position}
                                     </Text>
-                                    <Text>
+                                    <Text style = { styles.headerDateText }>
                                         {date}
                                     </Text>
                                 </View>
@@ -141,7 +148,7 @@ export const PreviewExperience = ({ experience }: PropTypes) => {
                                         <li
                                             key = { id }
                                             style = { styles.projectItem }>
-                                            <Text style = { styles.projectText }>
+                                            <Text style = { styles.projectName }>
                                                 {name}
                                             </Text>
                                             <Text style = { styles.projectText }>
