@@ -1,23 +1,33 @@
 // Core
 import React, { FC, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 // Routes
-import { Preview } from './Preview';
-import { Constructor } from './Constructor';
+import * as book from './book';
 
-// Bus
+// Pages
+import { Main, Constructor, Preview } from '../pages';
 import { useTogglesRedux } from '../../bus/client/toggles';
 
-export const Routes: FC = () => {
-    const { togglesRedux: { isReadyPreview }} = useTogglesRedux();
+export const AppRoutes: FC = () => {
+    const { togglesRedux: { isPreview }} = useTogglesRedux();
 
     return (
         <Suspense fallback = { <div>Spinner</div> }>
-            {
-                isReadyPreview
-                    ? <Preview />
-                    : <Constructor />
-            }
+            <Routes>
+                <Route
+                    element = { <Main /> }
+                    path = { book.MAIN }
+                />
+                <Route
+                    element = {
+                        isPreview
+                            ? <Preview />
+                            : <Constructor />
+                    }
+                    path = { book.CONSTRUCTOR }
+                />
+            </Routes>
         </Suspense>
     );
 };

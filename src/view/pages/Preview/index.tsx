@@ -1,6 +1,9 @@
 // Core
 import React, { FC } from 'react';
+// import { Link } from 'react-router-dom';
 
+// // Routes
+// import * as book from '../../routes/book';
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
 
@@ -21,7 +24,7 @@ const Preview: FC = () => {
             <S.BtnContainer>
                 <S.NavBtn
                     onClick = { () => {
-                        setToggleAction({ type: 'isReadyPreview', value: false });
+                        setToggleAction({ type: 'isPreview', value: false });
                     } }>
                     Back
                 </S.NavBtn>

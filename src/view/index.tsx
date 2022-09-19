@@ -1,7 +1,7 @@
 // Core
 import React, { FC } from 'react';
 import { defaultTheme, GlobalStyles } from '../assets';
-import { Routes } from './routes';
+import { AppRoutes } from './routes';
 import styled, { ThemeProvider } from 'styled-components';
 
 export const AppContainer = styled.div`
@@ -14,7 +14,7 @@ export const App: FC = () => (
     <ThemeProvider theme = { defaultTheme }>
         <GlobalStyles />
         <AppContainer>
-            <Routes />
+            <AppRoutes />
         </AppContainer>
     </ThemeProvider>
 );

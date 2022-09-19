@@ -1,6 +1,5 @@
 // Core
 import React, { FC } from 'react';
-import storage from 'redux-persist/lib/storage';
 
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
@@ -28,9 +27,6 @@ import {
 // Assets
 import { svgResetIcon, svgPdfIcon } from '../../../assets/images';
 
-// Constant
-import { PERSIST_KEY } from '../../../init';
-
 // Styles
 import * as S from './styles';
 
@@ -50,8 +46,7 @@ const Constructor: FC = () => {
                 <S.ActionBoxContainer>
                     <button
                         onClick = { () => {
-                            setToggleAction({ type: 'isReadyPreview', value: true });
-                            storage.removeItem(`persist:${PERSIST_KEY}`);
+                            setToggleAction({ type: 'isPreview', value: true });
                         } }>
                         <img src = { svgPdfIcon } />
                         <span>Preview</span>
