@@ -35,6 +35,12 @@ export const Item = styled.li`
 `;
 export const AnchorLink = styled.a`
   color: inherit;
+  @media (hover: hover) {
+    &:hover {
+      color: #FF9640;
+      transition: ease 0.2s color;
+    }
+  }
 `;
 export const CreateResumeLink = styled(Link)`
   display: flex;

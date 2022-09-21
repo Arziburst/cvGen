@@ -15,3 +15,4 @@ export { default as svgPdfIcon } from './pdf-icon.svg';
 export { default as svgResetIcon } from './reset-icon.svg';
 export { default as logo } from './logo.svg';
 export { default as template } from './template.png';
+export { default as svgSuccesIcon } from './succes-icon.svg';

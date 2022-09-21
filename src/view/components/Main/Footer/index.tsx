@@ -2,7 +2,7 @@
 import React, { FC, useRef } from 'react';
 
 // Assets
-import { svgLinkedinIcon, svgMailIcon, svgGithubIcon } from '../../../../assets/images';
+import { svgLinkedinIcon, svgMailIcon, svgGithubIcon, svgSuccesIcon } from '../../../../assets/images';
 
 // Styles
 import * as S from './styles';
@@ -18,16 +18,18 @@ export const Footer: FC<PropTypes> = () => {
     const alertText = () => {
         setTimeout(() => {
             if (ref.current) {
-                console.log('start');
-
-                ref.current.style.display = 'none';
+                ref.current.style.opacity = '0';
+                ref.current.style.visibility = 'hidden';
             }
-        }, 2000);
+        }, 1000);
     };
 
     return (
         <S.Container>
             <S.Inner>
+                <S.FooterTitle>
+                    Contacts:
+                </S.FooterTitle>
                 <S.List>
                     <S.Item>
                         <S.Link href = 'https://www.linkedin.com/in/dimaponomart683/'>
@@ -70,7 +72,8 @@ export const Footer: FC<PropTypes> = () => {
                                 event.preventDefault();
                                 navigator.clipboard.writeText('dimaponomarenko443@gmail.com');
                                 if (ref.current) {
-                                    ref.current.style.display = 'block   ';
+                                    ref.current.style.opacity = '1';
+                                    ref.current.style.visibility = 'visible';
                                 }
                                 alertText();
                             } }>
@@ -78,8 +81,10 @@ export const Footer: FC<PropTypes> = () => {
                                 alt = 'linkedIn icon'
                                 src = { svgMailIcon }
                             />
-                            <S.SuccesCopy ref = { ref }>
-                                Text succes copy
+                            <S.SuccesCopy
+                                ref = { ref }
+                                style = {{ backgroundImage: `url(${svgSuccesIcon})` }}>
+                                Gmail succes copy
                             </S.SuccesCopy>
                             <span>
                                 Gmail

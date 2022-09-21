@@ -24,6 +24,7 @@ export const Item = styled.li`
 `;
 
 export const Link = styled.a`
+  position: relative;
   display: flex;
   align-items: center;
   color: #262b34;
@@ -32,6 +33,13 @@ export const Link = styled.a`
     height: 24px;
     margin-right: 10px;
   }
+
+  @media (hover: hover) {
+    &:hover {
+      color: #FF9640;
+      transition: ease 0.2s color;
+    }
+  }
 `;
 
 export const Copyright = styled.p`
@@ -39,8 +47,32 @@ export const Copyright = styled.p`
   text-align: center;
 `;
 
-export const SuccesCopy = styled.span`
+export const FooterTitle = styled.h3`
   width: 100%;
-  display: none;
   text-align: center;
+  font-family: 'NotoSans800';
+  font-weight: 800;
+  font-size: 20px;
+  color: #4c576b;
+  margin-bottom: 10px;
+`;
+
+export const SuccesCopy = styled.span`
+  display: block;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;
+  padding: 6px 16px;
+  min-width: 221px;
+  text-align: center;
+  color: rgb(204, 232, 205);
+  background-color: rgb(12, 19, 13);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-size: 19px;
+  background-position: 8px center;
+  transition: ease 0.3s opacity;
+  visibility: hidden;
 `;

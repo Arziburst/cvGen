@@ -20,7 +20,7 @@ export const Inner = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
+    opacity: 0.3;
     background-color: #000;
      transition: ease 0.2s opacity;
   }
@@ -30,7 +30,7 @@ export const Inner = styled.div`
     transform: translateX(-50%);
     bottom: 15px;
     height: 64px;
-    opacity: 0;
+    opacity: 1;
     transition: ease 0.3s opacity;
   }
 
@@ -39,15 +39,24 @@ export const Inner = styled.div`
     margin: 0 auto;
     max-width: 100%;
   }
-
-  &:hover {
-    a {
-      opacity: 1;
-      transition: ease 0.3s opacity;
+  @media (hover: hover) {
+    & a {
+      opacity: 0;
     }
+
     &::before {
-      opacity: 0.2;
-      transition: ease 0.2s opacity;
+      opacity: 0;
+    }
+
+    &:hover {
+      a {
+        opacity: 1;
+        transition: ease 0.3s opacity;
+      }
+      &::before {
+        opacity: 0.2;
+        transition: ease 0.2s opacity;
+      }
     }
   }
 `;
