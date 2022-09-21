@@ -23,8 +23,8 @@ export const List = styled.ul`
   min-height: 100px;
   flex-wrap: wrap;
   font-size: 14px;
-  color: #4c576b;
-  background-color: #e7e7e7;
+  color: ${({ theme }) => theme.main.color};
+  background-color: ${({ theme }) => theme.accent.bgSecond};
   width: 100%;
 
   @media (max-width: 360px) {
@@ -48,12 +48,12 @@ export const Item = styled.li`
   }
 
   input {
-    background-color: #dbdbdb;
     padding: 5px 10px;
     padding-right: 25px;
     font-size: 15px;
     overflow: hidden;
-    color: #4c576b;
+    color: ${({ theme }) => theme.main.color};
+    background-color: ${({ theme }) => theme.accent.bg};
   }
 
   button {

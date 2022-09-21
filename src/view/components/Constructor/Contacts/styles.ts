@@ -33,8 +33,8 @@ export const Item = styled.li`
     font-family: 'NotoSans500';
     font-weight: 500;
     font-size: 14px;
-    color: #4c576b;
-    background-color: #cbb8ad;
+    color: ${({ theme }) => theme.main.color};
+    background-color: ${({ theme }) => theme.accent.bgPrimary};
   }
 
   &::before {
@@ -84,5 +84,5 @@ export const Item = styled.li`
     &::before {
         top: 14px;
     }
-  } 
+  }
 `;

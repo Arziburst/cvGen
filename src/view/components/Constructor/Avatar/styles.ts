@@ -20,7 +20,7 @@ export const Wrapper = styled.section`
   height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #f0efed;
+  background-color: ${({ theme }) => theme.accent.avatar};
   display: flex;
   justify-content: center;
   align-items: center;

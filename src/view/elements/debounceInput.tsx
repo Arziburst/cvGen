@@ -18,8 +18,8 @@ export const InputBox = styled.div`
 
     &:focus,
     &:hover {
-      border-color: #e8e5e4;
-      outline-color: #e8e5e4;
+      border-color: ${({ theme }) => theme.main.colorSecond};
+      outline-color: ${({ theme }) => theme.main.colorSecond};
     }
 
     &::placeholder {

@@ -17,7 +17,7 @@ const RemoveButton = styled.button`
   border: none;
   
   &:hover {
-    background-color: #a69b97;
+    background-color: ${({ theme }) => theme.hover.removeBtn};
   }
 
   img {

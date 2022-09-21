@@ -29,9 +29,9 @@ export const Info = styled.div`
     font-family: 'NotoSans800';
     font-weight: 800;
     font-size: 17px;
-    color: #4c576b;
+    color: ${({ theme }) => theme.main.color};
     width: 100%;
-    background-color: #e7e7e7;
+    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 
   div {
@@ -59,9 +59,9 @@ export const Location = styled.div`
       font-family: 'NotoSans800';
       font-weight: 800;
       font-size: 14px;
-      color: #4c576b;
+      color: ${({ theme }) => theme.main.color};
       width: 100%;
-      background-color: #e7e7e7;
+      background-color: ${({ theme }) => theme.accent.bgSecond};
     }
 
   @media (max-width: 360px) {
@@ -88,13 +88,13 @@ export const RemoveBtn = styled.button`
   right: 0;
   top: 0;
   cursor: pointer;
-  background-color: #4c576b;
+  background-color: ${({ theme }) => theme.main.bgSecond};
   border-radius: 50%;
 
   &::before {
     content: '';
     position: absolute;
-    background-color: #e8e5e4;
+    background-color: ${({ theme }) => theme.main.colorSecond};
     width: 10px;
     height: 2px;
     left: 7px;
@@ -110,8 +110,8 @@ export const Item = styled.li`
 
   textarea {
     font-size: 14px;
-    color: #4c576b;
-    background-color: #e7e7e7;
+    color: ${({ theme }) => theme.main.color};
+    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
 

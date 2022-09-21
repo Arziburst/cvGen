@@ -14,12 +14,12 @@ export const TextareaBox = styled.div`
     display: block;
     width: 100%;
     resize: none;
-    color: #cad1dd;
+    color: ${({ theme }) => theme.main.color};
 
     &:focus,
     &:hover {
-      border-color: #e8e5e4;
-      outline-color: #e8e5e4;
+      border-color:  ${({ theme }) => theme.main.colorSecond};
+      outline-color: ${({ theme }) => theme.main.colorSecond};
     }
 
     &::placeholder {

@@ -25,9 +25,9 @@ export const Date = styled.div`
   input, textarea {
     font-family: 'NotoSans500';
     font-weight: 500;
-    background-color: #e7e7e7;
     font-size: 15px;
-    color: #4c576b;
+    color: ${({ theme }) => theme.main.color};
+    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
 

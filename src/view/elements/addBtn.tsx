@@ -10,14 +10,14 @@ const AddButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  background-color: #4c576b;
+  background-color: ${({ theme }) => theme.main.bgSecond};
   border-radius: 50%;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
-    background-color: #e8e5e4;
+    background-color: ${({ theme }) => theme.main.colorSecond};
   }
 
   &::before {

@@ -33,24 +33,25 @@ export const ReceivedText = styled.div`
      font-family: 'NotoSans500';
      font-weight: 500;
      font-size: 14px;
-     color: #4c576b;
-     background-color: #cbb8ad;
+     color: ${({ theme }) => theme.main.color};
+     background-color: ${({ theme }) => theme.accent.bgPrimary};
+     
   }
 `;
 
 export const DateText = styled.div`
   margin-bottom: 3px;
   input {
-     color: #4c576b;
      font-size: 14px;
-     background-color: #cbb8ad;
+     color: ${({ theme }) => theme.main.color};
+     background-color: ${({ theme }) => theme.accent.bgPrimary};
   }
 `;
 
 export const LocationText = styled.div`
   input {
-     color: #4c576b;
      font-size: 14px;
-     background-color: #cbb8ad;
+     color: ${({ theme }) => theme.main.color};
+     background-color: ${({ theme }) => theme.accent.bgPrimary};
   }
 `;

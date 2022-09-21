@@ -7,7 +7,7 @@ export const BlockTitle = styled.h3`
   font-family: 'NotoSans800', sans-serif;
   font-weight: 800;
   font-size: 24px;
-  color: #4c576b;
+  color: ${({ theme }) => theme.main.color};
   margin-bottom: 10px;
 
   &::before {
@@ -17,7 +17,7 @@ export const BlockTitle = styled.h3`
    width: 20px;
    left: -30px;
    top: 2px;
-   background-color: #4c576b;
+   background-color: ${({ theme }) => theme.main.bgSecond};
   }
 
    @media (max-width: 360px) {

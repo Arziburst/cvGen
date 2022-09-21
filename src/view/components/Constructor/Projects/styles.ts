@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const Container = styled.section`
   input,
   textarea {
-    color: #4c576b;
     font-size: 15px;
-    background-color: #e7e7e7;
+    color: ${({ theme }) => theme.main.color};
+    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
 
@@ -30,7 +30,7 @@ export const Title = styled.h3`
   font-family: 'NotoSans800',sans-serif;
   font-weight: 800;
   font-size: 19px;
-  color: #4c576b;
+  color: ${({ theme }) => theme.main.color};
   margin-bottom: 10px;
 `;
 
@@ -42,7 +42,7 @@ export const Item = styled.li`
   align-items: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #4c576b;
+  border-bottom: 2px solid ${({ theme }) => theme.main.color};
 `;
 
 export const Box = styled.div`
@@ -78,7 +78,7 @@ export const Role = styled.h6`
 export const Responsibilities = styled.div`
   margin-bottom: 5px;
   textarea {
-    color: #4c576b;
+    color: ${({ theme }) => theme.main.color};
     font-size: 15px;
     min-height: 80px;
   }
