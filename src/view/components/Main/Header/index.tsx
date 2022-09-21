@@ -1,5 +1,6 @@
 // Core
 import React, { FC } from 'react';
+import { useTogglesRedux } from '../../../../bus/client/toggles';
 
 // Elements
 import { Logo, NavLink } from '../../../elements';
@@ -13,12 +14,19 @@ type PropTypes = {
 }
 
 export const Header: FC<PropTypes> = () => {
+    const { setToggleAction, togglesRedux: { isOpenMenu }} = useTogglesRedux();
+
     return (
         <S.Container>
             <S.Inner>
                 <Logo />
                 <S.Navigation>
-                    <S.List>
+                    <S.MenuBtn
+                        isOpen = { isOpenMenu }
+                        onClick = { () => setToggleAction({ type: 'isOpenMenu', value: !isOpenMenu }) }>
+                        <S.DecorLine />
+                    </S.MenuBtn>
+                    <S.List isOpen = { isOpenMenu }>
                         <S.Item>
                             <S.AnchorLink href = '#'>
                                 Templates

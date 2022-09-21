@@ -25,6 +25,10 @@ const HeaderLink = styled(Link)`
     width: 24px;
     height: 24px;
   }
+
+  @media (max-width: 530px) {
+    font-size: 13px;
+  }
 `;
 
 export const Logo: FC = () => {
