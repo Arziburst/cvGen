@@ -15,7 +15,24 @@ type PropTypes = {
 export const Footer: FC<PropTypes> = () => {
     return (
         <S.Container>
-            Component: Footer
+            <S.Inner>
+                {/* <S.List>
+                    <S.Item>
+                        <S.Link href = '#'>
+                            gmail
+                        </S.Link>
+                        <S.Link href = '#'>
+                            github
+                        </S.Link>
+                        <S.Link href = '#'>
+                            LinkedIn
+                        </S.Link>
+                    </S.Item>
+                </S.List> */}
+                <S.Copyright>
+                    © 2022 ResumeCreator
+                </S.Copyright>
+            </S.Inner>
         </S.Container>
     );
 };
