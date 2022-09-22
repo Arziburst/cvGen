@@ -6,7 +6,6 @@ import { View, StyleSheet, Text } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
     box: {
         paddingBottom: 20,
-        color:         '#4c576b',
     },
     text: {
         marginBottom: 3,
@@ -30,7 +29,7 @@ export const PreviewEducation = ({ education, theme }: PropTypes) => {
     console.log(theme);
 
     return (
-        <View style = { styles.box }>
+        <View style = { [ styles.box, { color: theme.main.color }] }>
             <PdfGenTitle text = 'Education'/>
             <ul>
                 {

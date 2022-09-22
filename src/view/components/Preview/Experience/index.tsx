@@ -6,7 +6,6 @@ import { View, StyleSheet, Text } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
     box: {
         paddingBottom: 20,
-        color:         '#4c576b',
     },
     link: {
         flexDirection:  'row',
@@ -17,7 +16,6 @@ const styles = StyleSheet.create({
     linkText: {
         fontWeight: 500,
         fontSize:   8,
-        color:      '#4c576b',
         marginLeft: 4,
     },
     linkImg: {
@@ -27,7 +25,6 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize:     14,
-        color:        '#4c576b',
         marginBottom: 4,
         fontWeight:   800,
     },
@@ -50,10 +47,9 @@ const styles = StyleSheet.create({
         marginBottom: 3,
     },
     descriptionDecor: {
-        width:           7,
-        height:          1,
-        backgroundColor: '#4c576b',
-        marginRight:     3,
+        width:       7,
+        height:      1,
+        marginRight: 3,
     },
     descriptionItem: {
         flexDirection: 'row',
@@ -67,7 +63,6 @@ const styles = StyleSheet.create({
         marginBottom:  5,
         fontSize:      12,
         paddingBottom: 2,
-        borderBottom:  '1px solid #4c576b',
     },
     projectBox: {
         flexDirection:  'row',
@@ -99,10 +94,8 @@ type PropTypes = {
 }
 
 export const PreviewExperience = ({ experience, theme }: PropTypes) => {
-    console.log(theme);
-
     return (
-        <View style = { styles.box }>
+        <View style = { [ styles.box, { color: theme.main.color }] }>
             <PdfGenTitle text = 'Experience'/>
             <ul>
                 {
@@ -113,7 +106,7 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                     }) => {
                         return (
                             <li key = { id }>
-                                <View style = { styles.headerText }>
+                                <View style = { [ styles.headerText, { color: theme.main.color }] }>
                                     <Text>
                                         {position}
                                     </Text>
@@ -124,7 +117,7 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                 <Text style = { styles.location }>
                                     {location}
                                 </Text>
-                                <Text style = { styles.subtitle } >
+                                <Text style = { [ styles.subtitle, { color: theme.main.color }] } >
                                     Description
                                 </Text>
                                 <ul style = { styles.descriptionList }>
@@ -132,7 +125,12 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                         <li
                                             key = { id }
                                             style = { styles.descriptionItem }>
-                                            <View style = { styles.descriptionDecor }></View>
+                                            <View style = { [
+                                                styles.descriptionDecor,
+                                                { backgroundColor: theme.main.color },
+                                            ]
+                                            }>
+                                            </View>
                                             <Text style = { styles.descriptionText }>
                                                 {description}
                                             </Text>
@@ -151,7 +149,10 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                     }) => (
                                         <li
                                             key = { id }
-                                            style = { styles.projectItem }>
+                                            style = {{
+                                                ...styles.projectItem,
+                                                borderBottom: `1px solid ${theme.main.color}`,
+                                            }}>
                                             <Text style = { styles.projectName }>
                                                 {name}
                                             </Text>

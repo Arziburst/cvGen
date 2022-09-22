@@ -16,12 +16,10 @@ const styles = StyleSheet.create({
     },
     position: {
         textTransform: 'uppercase',
-        color:         '#b0b1bb',
         marginBottom:  5,
     },
     overview: {
         fontSize: 10,
-        color:    '#c7c9d3',
     },
 });
 
@@ -34,22 +32,18 @@ type PropTypes = {
 }
 
 export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
-    console.log(theme);
-
-    // const theme = useTheme();
-
     return (
         <View style = { styles.section }>
             <Text style = { [
                 styles.name,
-                // { color: theme.main.colorSecond },
+                { color: theme.main.colorSecond },
             ] }>
                 {name}
             </Text>
-            <Text style = { styles.position }>
+            <Text style = { [ styles.position, { color: theme.main.colorSecond }] }>
                 {position}
             </Text>
-            <Text style = { styles.overview }>
+            <Text style = { [ styles.overview, { color: theme.main.colorSecond }] }>
                 {overview}
             </Text>
         </View>

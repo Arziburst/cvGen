@@ -22,19 +22,16 @@ const styles = StyleSheet.create({
     received: {
         fontWeight:   500,
         fontSize:     9,
-        color:        '#4c576b',
         marginBottom: 3,
     },
 
     date: {
         fontSize:     9,
-        color:        '#4c576b',
         marginBottom: 2,
     },
 
     location: {
         fontSize: 9,
-        color:    '#4c576b',
     },
 });
 
@@ -48,8 +45,6 @@ type PropTypes = {
 }
 
 export const PreviewAwards = ({ awards, theme }: PropTypes) => {
-    console.log(theme);
-
     return (
         <View style = { styles.section }>
             <PdfGenTitle text = 'Awards' />
@@ -63,19 +58,19 @@ export const PreviewAwards = ({ awards, theme }: PropTypes) => {
                                 <Text
                                     break
                                     wrap
-                                    style = { styles.received }>
+                                    style = { [ styles.received, { color: theme.main.color }] }>
                                     {award.received}
                                 </Text>
                                 <Text
                                     break
                                     wrap
-                                    style = { styles.date }>
+                                    style = { [ styles.date, { color: theme.main.color }] }>
                                     {award.date}
                                 </Text>
                                 <Text
                                     break
                                     wrap
-                                    style = { styles.location }>
+                                    style = { [ styles.date, { color: theme.main.color }] }>
                                     {award.location}
                                 </Text>
                             </li>

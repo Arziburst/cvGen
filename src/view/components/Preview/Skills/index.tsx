@@ -6,17 +6,15 @@ import { View, StyleSheet, Text } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
     box: {
         paddingBottom: 20,
-        color:         '#4c576b',
     },
     text: {
         fontSize: 12,
     },
     skillBox: {
-        marginRight:     3,
-        padding:         4,
-        marginBottom:    3,
-        fontSize:        12,
-        backgroundColor: '#dbdbdb',
+        marginRight:  3,
+        padding:      4,
+        marginBottom: 3,
+        fontSize:     12,
     },
     skillsList: {
         flexDirection: 'row',
@@ -40,7 +38,7 @@ export const PreviewSlills = ({ skills, theme }: PropTypes) => {
     console.log(theme);
 
     return (
-        <View style = { styles.box }>
+        <View style = { [ styles.box, { color: theme.main.color }] }>
             <PdfGenTitle text = 'Skills'/>
             <ul style = { styles.skillsList }>
                 {
@@ -51,7 +49,7 @@ export const PreviewSlills = ({ skills, theme }: PropTypes) => {
                             return (
                                 <li
                                     key = { id }
-                                    style = { styles.skillBox }>
+                                    style = {{ ...styles.skillBox, backgroundColor: theme.accent.bg }}>
                                     <Text style = { styles.text }>
                                         {skill}
                                     </Text>

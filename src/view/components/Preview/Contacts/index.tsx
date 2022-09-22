@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     linkText: {
         fontWeight: 500,
         fontSize:   9,
-        color:      '#4c576b',
         marginLeft: 4,
     },
     linkImg: {
@@ -86,7 +85,7 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                     <Text
                                         break
                                         wrap
-                                        style = { styles.linkText }>
+                                        style = { [ styles.linkText, { color: theme.main.color }] }>
                                         {id === 'Linkedin' ? id : url}
                                     </Text>
                                 </Link>

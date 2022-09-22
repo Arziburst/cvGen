@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     text: {
         fontWeight: 500,
         fontSize:   9,
-        color:      '#4c576b',
         marginLeft: 4,
     },
 });
@@ -37,8 +36,6 @@ type PropTypes = {
 }
 
 export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
-    console.log(theme);
-
     return (
         <View style = { styles.section }>
             <PdfGenTitle text = 'Languages' />
@@ -56,7 +53,7 @@ export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
                                 <Text
                                     break
                                     wrap
-                                    style = { styles.text }>
+                                    style = { [ styles.text, { color: theme.main.color }] }>
                                     {language}
                                 </Text>
                             </li>

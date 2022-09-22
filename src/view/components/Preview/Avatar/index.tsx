@@ -11,13 +11,12 @@ import { ThemeType } from '../../../../assets/themes/type';
 // Styles
 const styles = StyleSheet.create({
     box: {
-        height:          '140px',
-        width:           '100%',
-        borderRadius:    '50%',
-        backgroundColor: '#f0efed',
-        display:         'flex',
-        justifyContent:  'center',
-        alignItems:      'center',
+        height:         '140px',
+        width:          '100%',
+        borderRadius:   '50%',
+        display:        'flex',
+        justifyContent: 'center',
+        alignItems:     'center',
     },
     avatar: {
         borderRadius: '50%',
@@ -38,10 +37,8 @@ type PropTypes = {
 }
 
 export const PreviewAvatar = ({ avatar, theme }: PropTypes) => {
-    console.log(theme);
-
     return (
-        <View style = { styles.box }>
+        <View style = { [ styles.box, { backgroundColor: theme.accent.avatar }] }>
             {
                 avatar.length === 0
                     ? (
