@@ -40,12 +40,16 @@ const styles = StyleSheet.create({
 
 // Types
 import { Award } from '../../../../bus/client/awardFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
     awards: Array<Award>;
+    theme: ThemeType;
 }
 
-export const PreviewAwards = ({ awards }: PropTypes) => {
+export const PreviewAwards = ({ awards, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.section }>
             <PdfGenTitle text = 'Awards' />

@@ -15,9 +15,13 @@ import { ErrorBoundary } from '../../components';
 
 // Style
 import * as S from './styles';
+import { useTheme } from 'styled-components';
 
 const Preview: FC = () => {
     const { setToggleAction } = useTogglesRedux();
+    const rhemes = useTheme();
+
+    console.log(rhemes);
 
     return (
         <S.Container>

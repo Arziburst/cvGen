@@ -53,7 +53,7 @@ const Constructor: FC = () => {
                             onClick = { () => {
                                 setToggleAction({ type: 'isPreview', value: true });
                             } }>
-                            <img src = { svgPdfIcon } />
+                            <S.SvgIcon src = { svgPdfIcon } />
                             <span>Preview</span>
                         </button>
                         <button
@@ -66,7 +66,7 @@ const Constructor: FC = () => {
                                 resetSkillFieldsToInithialState();
                                 resetExperienceFieldsToInithialState();
                             } }>
-                            <img src = { svgResetIcon } />
+                            <S.SvgIcon src = { svgResetIcon }/>
                             <span>Reset</span>
                         </button>
                     </S.BtnBox>

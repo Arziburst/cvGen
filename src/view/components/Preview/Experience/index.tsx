@@ -91,12 +91,16 @@ import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
 // Types
 import { Experience } from '../../../../bus/client/experienceFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
-    experience: Array<Experience>
+    experience: Array<Experience>;
+    theme: ThemeType;
 }
 
-export const PreviewExperience = ({ experience }: PropTypes) => {
+export const PreviewExperience = ({ experience, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Experience'/>

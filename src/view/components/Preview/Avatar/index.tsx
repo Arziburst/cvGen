@@ -5,6 +5,9 @@ import { View, Image, StyleSheet } from '@react-pdf/renderer';
 // Assets
 import { pngUserIcon } from '../../../../assets/images';
 
+//Types
+import { ThemeType } from '../../../../assets/themes/type';
+
 // Styles
 const styles = StyleSheet.create({
     box: {
@@ -30,10 +33,13 @@ const styles = StyleSheet.create({
 
 // Types
 type PropTypes = {
-    avatar: string
+    avatar: string;
+    theme: ThemeType
 }
 
-export const PreviewAvatar = ({ avatar }: PropTypes) => {
+export const PreviewAvatar = ({ avatar, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.box }>
             {

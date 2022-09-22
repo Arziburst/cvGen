@@ -20,6 +20,7 @@ import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { PreviewSlills } from '../../components/Preview/Skills';
 import { useSkillFields } from '../../../bus/client/skillFields';
+import { useTheme } from 'styled-components';
 
 // Styles
 const styles = StyleSheet.create({
@@ -72,6 +73,8 @@ export const PdfViewer = () => {
     const { educationFields } = useEducationField();
     const { skillFields } = useSkillFields();
 
+    const theme = useTheme();
+
     return (
         <PDFViewer
             style = {{ width: '100vw', height: '100%' }}>
@@ -81,26 +84,48 @@ export const PdfViewer = () => {
                     style = { styles.page }>
                     <View style = { styles.wrapper }>
                         <View style = { styles.firstColumn }>
-                            <PreviewAvatar avatar = { infoFields.avatar } />
+                            <PreviewAvatar
+                                avatar = { infoFields.avatar }
+                                theme = { theme }
+                            />
                         </View>
                         <View style = { styles.wrapperSecondColumn }>
                             <PreviewInfo
                                 name = { infoFields.name }
                                 overview = { infoFields.overview }
                                 position = { infoFields.position }
+                                theme = { theme }
                             />
                         </View>
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { styles.firstColumn }>
-                            <PreviewContacts contacts = { contactFields } />
-                            <PreviewLanguage languages = { languageFields } />
-                            <PreviewAwards awards = { awardFields } />
+                            <PreviewContacts
+                                contacts = { contactFields }
+                                theme = { theme }
+                            />
+                            <PreviewLanguage
+                                languages = { languageFields }
+                                theme = { theme }
+                            />
+                            <PreviewAwards
+                                awards = { awardFields }
+                                theme = { theme }
+                            />
                         </View>
                         <View style = { styles.contentSecondColumn }>
-                            <PreviewEducation education = { educationFields } />
-                            <PreviewSlills skills = { skillFields } />
-                            <PreviewExperience experience = { experienceFields } />
+                            <PreviewEducation
+                                education = { educationFields }
+                                theme = { theme }
+                            />
+                            <PreviewSlills
+                                skills = { skillFields }
+                                theme = { theme }
+                            />
+                            <PreviewExperience
+                                experience = { experienceFields }
+                                theme = { theme }
+                            />
                         </View>
                     </View>
                 </Page>

@@ -38,12 +38,14 @@ import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
 // Types
 import { Contact } from '../../../../bus/client/contactFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
-    contacts: Array<Contact>
+    contacts: Array<Contact>;
+    theme: ThemeType;
 }
 
-export const PreviewContacts = ({ contacts }: PropTypes) => {
+export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
     const getIconSrc = (type: string): string => {
         let iconUrl = '';
 
@@ -61,6 +63,7 @@ export const PreviewContacts = ({ contacts }: PropTypes) => {
 
         return iconUrl;
     };
+    console.log(theme);
 
     return (
         <View style = { styles.box }>

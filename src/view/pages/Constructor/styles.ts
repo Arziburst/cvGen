@@ -1,4 +1,5 @@
 // Core
+import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
 
 export const Container = styled.section`
@@ -59,10 +60,22 @@ export const ActionBoxContainer = styled.div`
     flex: 1 1 auto;
     display: flex;
     justify-content: space-between;
+    svg {
+     fill: #fff;
+     width: 24px;
+     height: 24px;
+    }
 `;
 
 export const BtnBox = styled.div`
      
+`;
+
+export const SvgIcon = styled(ReactSVG)`
+     svg {
+          max-width: 30px;
+          fill: ${({ theme }) => theme.main.colorSecond};
+     }
 `;
 
 export const BtnActionBox = styled.div`
@@ -92,13 +105,14 @@ export const BtnActionBox = styled.div`
           color: #f5f5f5;
      }
 
-     img {
-          max-width: 30px;
-     }
-
      &:hover {
           background-color: #475060;
      }
    }
 `;
 
+export const BoxSvg = styled(ReactSVG)`
+     svg {
+          color: ${({ theme }) => theme.main.colorSecond};
+     }
+`;

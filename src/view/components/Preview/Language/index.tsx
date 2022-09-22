@@ -29,12 +29,16 @@ const styles = StyleSheet.create({
 
 // Types
 import { Language } from '../../../../bus/client/languageFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
     languages: Array<Language>;
+    theme: ThemeType;
 }
 
-export const PreviewLanguage = ({ languages }: PropTypes) => {
+export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.section }>
             <PdfGenTitle text = 'Languages' />

@@ -29,12 +29,16 @@ import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
 // Types
 import { Skill } from '../../../../bus/client/skillFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
-    skills: Array<Skill>
+    skills: Array<Skill>;
+    theme: ThemeType;
 }
 
-export const PreviewSlills = ({ skills }: PropTypes) => {
+export const PreviewSlills = ({ skills, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Skills'/>

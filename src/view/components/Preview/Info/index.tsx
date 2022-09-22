@@ -1,6 +1,8 @@
 // Core
 import React from 'react';
 import { View, Text, StyleSheet } from '@react-pdf/renderer';
+import { ThemeType } from '../../../../assets/themes/type';
+// import { useTheme } from 'styled-components';
 
 // Styles
 const styles = StyleSheet.create({
@@ -10,7 +12,6 @@ const styles = StyleSheet.create({
     name: {
         fontWeight:   800,
         fontSize:     30,
-        color:        '#e8e5e4',
         marginBottom: 3,
     },
     position: {
@@ -29,12 +30,20 @@ type PropTypes = {
     name: string;
     position: string;
     overview: string;
+    theme: ThemeType;
 }
 
-export const PreviewInfo = ({ name, position, overview }: PropTypes) => {
+export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
+    console.log(theme);
+
+    // const theme = useTheme();
+
     return (
         <View style = { styles.section }>
-            <Text style = { styles.name }>
+            <Text style = { [
+                styles.name,
+                // { color: theme.main.colorSecond },
+            ] }>
                 {name}
             </Text>
             <Text style = { styles.position }>

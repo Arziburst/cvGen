@@ -19,12 +19,16 @@ import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
 // Types
 import { Education } from '../../../../bus/client/educationFields/types';
+import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
-    education: Array<Education>
+    education: Array<Education>;
+    theme: ThemeType;
 }
 
-export const PreviewEducation = ({ education }: PropTypes) => {
+export const PreviewEducation = ({ education, theme }: PropTypes) => {
+    console.log(theme);
+
     return (
         <View style = { styles.box }>
             <PdfGenTitle text = 'Education'/>

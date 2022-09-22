@@ -13,7 +13,6 @@ export const defaultTheme = {
         bgPrimary: '#cbb8ad',
         avatar:    '#f0efed',
     },
-
     hover: {
         removeBtn: '#a69b97',
     },

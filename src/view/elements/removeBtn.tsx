@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
 
 // Assets
@@ -26,6 +27,14 @@ const RemoveButton = styled.button`
   }
 `;
 
+const RemoveIcon = styled(ReactSVG)`
+  svg {
+    color: ${({ theme }) => theme.main.bg};
+    width: 16px;
+    height: 16px;
+  }
+`;
+
 type propsType = {
     handleRemoveFunc: React.MouseEventHandler<HTMLButtonElement>
 }
@@ -33,9 +42,7 @@ type propsType = {
 export const RemoveBtn: FC<propsType> = ({ handleRemoveFunc  }) => {
     return (
         <RemoveButton onClick = { handleRemoveFunc }>
-            <img
-                src = { svgDeleteIcon }
-            />
+            <RemoveIcon src = { svgDeleteIcon }/>
         </RemoveButton>
     );
 };
