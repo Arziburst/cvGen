@@ -35,18 +35,18 @@ export const Column = styled.div`
    }
 
    &:nth-child(2) {
-        background-color: #f5f5f5;
+        background-color: ${({ theme }) => theme.accent.avatar};
    }
 `;
 
 export const SecondColumn = styled.div`
-   padding: 20px 30px;
+   padding: 20px 30px;  
    &:nth-child(1) {
         background-color: #decabf;
    }
 
    &:nth-child(2) {
-        background-color: #f5f5f5;
+     background-color: ${({ theme }) => theme.accent.avatar};
    }
 
    @media (max-width: 360px) {
@@ -60,21 +60,17 @@ export const ActionBoxContainer = styled.div`
     flex: 1 1 auto;
     display: flex;
     justify-content: space-between;
-    svg {
-     fill: #fff;
-     width: 24px;
-     height: 24px;
-    }
 `;
 
 export const BtnBox = styled.div`
-     
+     display: flex;
+     align-items: center;
 `;
 
 export const SvgIcon = styled(ReactSVG)`
      svg {
           max-width: 30px;
-          fill: ${({ theme }) => theme.main.colorSecond};
+          fill: #fff;
      }
 `;
 
@@ -89,8 +85,9 @@ export const BtnActionBox = styled.div`
    height: 64px;
    padding: 8px 0;
    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+`;
 
-   button {
+export const BtnBoxBtn = styled.button`
      background-color: transparent;
      border: none;
      padding: 0;
@@ -104,15 +101,8 @@ export const BtnActionBox = styled.div`
           display: block;
           color: #f5f5f5;
      }
-
      &:hover {
           background-color: #475060;
      }
-   }
 `;
 
-export const BoxSvg = styled(ReactSVG)`
-     svg {
-          color: ${({ theme }) => theme.main.colorSecond};
-     }
-`;

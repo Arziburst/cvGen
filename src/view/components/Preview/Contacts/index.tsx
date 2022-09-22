@@ -62,7 +62,6 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
 
         return iconUrl;
     };
-    console.log(theme);
 
     return (
         <View style = { styles.box }>

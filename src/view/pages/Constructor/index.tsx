@@ -25,6 +25,7 @@ import {
     ConstructorEducation,
     ConstructorExperience,
     ConstructorSkills,
+    Palette,
 } from '../../components';
 
 // Assets
@@ -49,14 +50,14 @@ const Constructor: FC = () => {
                 <S.ActionBoxContainer>
                     <Logo />
                     <S.BtnBox>
-                        <button
-                            onClick = { () => {
-                                setToggleAction({ type: 'isPreview', value: true });
-                            } }>
+                        <Palette />
+                        <S.BtnBoxBtn onClick = { () => {
+                            setToggleAction({ type: 'isPreview', value: true });
+                        } }>
                             <S.SvgIcon src = { svgPdfIcon } />
                             <span>Preview</span>
-                        </button>
-                        <button
+                        </S.BtnBoxBtn>
+                        <S.BtnBoxBtn
                             onClick = { () => {
                                 resetContactFieldsToInithialState();
                                 resetInfoFieldsToInithial();
@@ -66,9 +67,9 @@ const Constructor: FC = () => {
                                 resetSkillFieldsToInithialState();
                                 resetExperienceFieldsToInithialState();
                             } }>
-                            <S.SvgIcon src = { svgResetIcon }/>
+                            <S.SvgIcon src = { svgResetIcon } />
                             <span>Reset</span>
-                        </button>
+                        </S.BtnBoxBtn>
                     </S.BtnBox>
                 </S.ActionBoxContainer>
             </S.BtnActionBox>

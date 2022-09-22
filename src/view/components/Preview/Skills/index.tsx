@@ -35,8 +35,6 @@ type PropTypes = {
 }
 
 export const PreviewSlills = ({ skills, theme }: PropTypes) => {
-    console.log(theme);
-
     return (
         <View style = { [ styles.box, { color: theme.main.color }] }>
             <PdfGenTitle text = 'Skills'/>
