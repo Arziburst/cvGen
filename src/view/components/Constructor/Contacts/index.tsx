@@ -40,7 +40,7 @@ export const ConstructorContacts: FC = () => {
                             iconUrl = svgMailIcon;
                         } else if (type === 'phone') {
                             iconUrl = svgPhoneIcon;
-                        } else if (type === 'adress') {
+                        } else if (type === 'address') {
                             iconUrl = svgHomeIcon;
                         } else if (type === 'Linkedin') {
                             iconUrl = svgLinkedinIcon;

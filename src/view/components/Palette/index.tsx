@@ -18,13 +18,13 @@ export const Palette: FC<PropTypes> = () => {
                 <S.DecorItem />
                 <S.List>
                     <S.Item>
-                        <S.ThemeBtn />
+                        <S.ThemeBtn style = {{ backgroundColor: '#e8e5e4' }} />
                     </S.Item>
                     <S.Item>
-                        <S.ThemeBtn />
+                        <S.ThemeBtn style = {{ backgroundColor: '#8b6b61' }} />
                     </S.Item>
                     <S.Item>
-                        <S.ThemeBtn />
+                        <S.ThemeBtn style = {{ backgroundColor: '#343434' }} />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn />

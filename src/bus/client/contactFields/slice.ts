@@ -17,7 +17,7 @@ export const initialState = [
         url: '',
     },
     {
-        id:  'adress',
+        id:  'address',
         url: '',
     },
     {
