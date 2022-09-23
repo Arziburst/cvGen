@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
 
 export const Column = styled.div`
    &:nth-child(1) {
-        background-color: #decabf;
+        background-color: ${({ theme }) => theme.accent.bgSecond};
    }
 
    &:nth-child(2) {
@@ -42,7 +42,7 @@ export const Column = styled.div`
 export const SecondColumn = styled.div`
    padding: 20px 30px;  
    &:nth-child(1) {
-        background-color: #decabf;
+          background-color: ${({ theme }) => theme.accent.bgSecond};
    }
 
    &:nth-child(2) {
@@ -53,6 +53,7 @@ export const SecondColumn = styled.div`
        padding: 10px;
    }
 `;
+
 export const ActionBoxContainer = styled.div`
     max-width: 833px;
     padding: 0 15px;

@@ -26,11 +26,16 @@ export const ConstructorAvatar: FC = () => {
     return (
         <S.Container>
             <S.Wrapper>
-                <S.UserAvatar
-                    alt = 'user avatar'
-                    isAvatar = { !!avatar }
-                    src = { avatar ? avatar : svgAddUserIcon }
-                />
+                {
+                    avatar
+                        ? (
+                            <S.UserAvatar
+                                alt = 'user avatar'
+                                src = { avatar }
+                            />
+                        )
+                        : <S.UserIcon src = { svgAddUserIcon }/>
+                }
                 <S.InputFile
                     accept = 'image/*'
                     type = 'file'

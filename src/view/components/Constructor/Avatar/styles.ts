@@ -1,10 +1,6 @@
 // Core
+import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
-
-// Types
-type propsType = {
-    isAvatar: boolean
-}
 
 export const Container = styled.section`
   padding: 20px 30px;
@@ -30,16 +26,19 @@ export const Wrapper = styled.section`
    }
 `;
 
-export const UserAvatar = styled.img<propsType>`
-  ${({ isAvatar }) => isAvatar ? {
-        width:        '100%',
-        height:       '100%',
-        borderRadius: '50%',
-        objectFit:    'cover',
-    } : {
-        width:  '60%',
-        height: '60%',
-    }}
+export const UserAvatar = styled.img`
+  width:        100%;
+  height:       100%;
+  border-radius: 50%;
+  object-fit:    cover;
+`;
+
+export const UserIcon = styled(ReactSVG)`
+  width:  60%;
+  height: 60%;
+  svg {
+    fill: ${({ theme }) => theme.main.color}
+  }
 `;
 
 export const InputFile = styled.input`
