@@ -1,5 +1,5 @@
-export const primaryTheme = {
-    name: 'primaryTheme',
+export const wedgewoodTheme = {
+    name: 'wedgewoodTheme',
     main: {
         color:       '#ffffff',
         colorSecond: '#ffffff',

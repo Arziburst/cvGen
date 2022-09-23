@@ -1,5 +1,5 @@
-export const turquoiseBlue = {
-    name: 'turquoiseBlue',
+export const blueStoneTheme = {
+    name: 'blueStoneTheme',
     main: {
         color:       '#ffffff',
         colorSecond: '#ffffff',

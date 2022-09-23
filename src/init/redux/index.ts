@@ -12,6 +12,7 @@ import experienceFields from '../../bus/client/experienceFields/slice';
 import educationFields from '../../bus/client/educationFields/slice';
 import awardFields from '../../bus/client/awardFields/slice';
 import skillFields from '../../bus/client/skillFields/slice';
+import themes from '../../bus/client/themes/slice';
 
 // Middleware
 import {
@@ -35,6 +36,7 @@ const combinedReducers = combineReducers({
     experienceFields,
     educationFields,
     awardFields,
+    themes,
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
