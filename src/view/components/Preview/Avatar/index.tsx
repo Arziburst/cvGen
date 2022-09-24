@@ -2,8 +2,8 @@
 import React from 'react';
 import { View, Image, StyleSheet } from '@react-pdf/renderer';
 
-// Assets
-import { pngUserIcon } from '../../../../assets/images';
+//Elements
+import { UserIcon } from '../../../elements/pdfGenIcons';
 
 //Types
 import { ThemeType } from '../../../../assets/themes/type';
@@ -25,15 +25,15 @@ const styles = StyleSheet.create({
         objectFit:    'cover',
     },
     icon: {
-        width:  '60%',
-        height: '60%',
+        width:  '64px',
+        height: '64px',
     },
 });
 
 // Types
 type PropTypes = {
     avatar: string;
-    theme: ThemeType
+    theme: ThemeType;
 }
 
 export const PreviewAvatar = ({ avatar, theme }: PropTypes) => {
@@ -42,10 +42,7 @@ export const PreviewAvatar = ({ avatar, theme }: PropTypes) => {
             {
                 avatar.length === 0
                     ? (
-                        <Image
-                            src = { pngUserIcon }
-                            style = { styles.icon }
-                        />
+                        <UserIcon color = { theme.main.color }/>
                     ) : (
                         <Image
                             src = { avatar }

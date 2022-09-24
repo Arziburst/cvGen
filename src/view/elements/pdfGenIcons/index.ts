@@ -3,3 +3,4 @@ export * from './homeIcon';
 export * from './linkedinIcon';
 export * from './mailIcon';
 export * from './phoneIcon';
+export * from './userIcon';
