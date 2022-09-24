@@ -36,14 +36,24 @@ export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
         <View style = { styles.section }>
             <Text style = { [
                 styles.name,
-                { color: theme.main.colorSecond },
+                {
+                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                },
             ] }>
                 {name}
             </Text>
-            <Text style = { [ styles.position, { color: theme.main.colorSecond }] }>
+            <Text style = { [
+                styles.position, {
+                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                },
+            ] }>
                 {position}
             </Text>
-            <Text style = { [ styles.overview, { color: theme.main.colorSecond }] }>
+            <Text style = { [
+                styles.overview, {
+                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                },
+            ] }>
                 {overview}
             </Text>
         </View>

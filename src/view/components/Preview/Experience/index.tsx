@@ -96,7 +96,12 @@ type PropTypes = {
 export const PreviewExperience = ({ experience, theme }: PropTypes) => {
     return (
         <View style = { [ styles.box, { color: theme.main.color }] }>
-            <PdfGenTitle text = 'Experience'/>
+            <PdfGenTitle
+                deccorElemColor = { theme.main.bgSecond }
+                text = 'Experience'
+                titleColor = { theme.main.color }
+
+            />
             <ul>
                 {
                     experience.map(({

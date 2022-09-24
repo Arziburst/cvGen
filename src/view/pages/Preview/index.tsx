@@ -1,9 +1,6 @@
 // Core
 import React, { FC } from 'react';
-// import { Link } from 'react-router-dom';
 
-// // Routes
-// import * as book from '../../routes/book';
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
 
@@ -15,13 +12,10 @@ import { ErrorBoundary } from '../../components';
 
 // Style
 import * as S from './styles';
-import { useTheme } from 'styled-components';
 
 const Preview: FC = () => {
     const { setToggleAction } = useTogglesRedux();
-    const rhemes = useTheme();
 
-    console.log(rhemes);
 
     return (
         <S.Container>

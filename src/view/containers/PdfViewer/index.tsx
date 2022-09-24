@@ -20,7 +20,7 @@ import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { PreviewSlills } from '../../components/Preview/Skills';
 import { useSkillFields } from '../../../bus/client/skillFields';
-import { useTheme } from 'styled-components';
+import { useThemes } from '../../../bus/client/themes';
 
 // Styles
 const styles = StyleSheet.create({
@@ -41,13 +41,11 @@ const styles = StyleSheet.create({
         flex:          '1 1 auto',
     },
     firstColumn: {
-        backgroundColor: '#decabf',
-        width:           '30%',
-        padding:         '15px 20px',
+        width:   '30%',
+        padding: '15px 20px',
     },
     wrapperSecondColumn: {
-        width:           '70%',
-        backgroundColor: '#4c576b',
+        width: '70%',
     },
     contentSecondColumn: {
         width:           '70%',
@@ -73,7 +71,7 @@ export const PdfViewer = () => {
     const { educationFields } = useEducationField();
     const { skillFields } = useSkillFields();
 
-    const theme = useTheme();
+    const { themes } = useThemes();
 
     return (
         <PDFViewer
@@ -83,48 +81,48 @@ export const PdfViewer = () => {
                     size = { 'A4' }
                     style = { styles.page }>
                     <View style = { styles.wrapper }>
-                        <View style = { styles.firstColumn }>
+                        <View style = { [ styles.firstColumn, { backgroundColor: themes.accent.bgSecond }] }>
                             <PreviewAvatar
                                 avatar = { infoFields.avatar }
-                                theme = { theme }
+                                theme = { themes }
                             />
                         </View>
-                        <View style = { styles.wrapperSecondColumn }>
+                        <View style = { [ styles.wrapperSecondColumn, { backgroundColor: themes.main.bgSecond }] }>
                             <PreviewInfo
                                 name = { infoFields.name }
                                 overview = { infoFields.overview }
                                 position = { infoFields.position }
-                                theme = { theme }
+                                theme = { themes }
                             />
                         </View>
                     </View>
                     <View style = { styles.contentWrapper }>
-                        <View style = { styles.firstColumn }>
+                        <View style = { [ styles.firstColumn, { backgroundColor: themes.accent.bgSecond }] }>
                             <PreviewContacts
                                 contacts = { contactFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                             <PreviewLanguage
                                 languages = { languageFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                             <PreviewAwards
                                 awards = { awardFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                         </View>
-                        <View style = { styles.contentSecondColumn }>
+                        <View style = { [ styles.contentSecondColumn, { backgroundColor: themes.accent.avatar }] }>
                             <PreviewEducation
                                 education = { educationFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                             <PreviewSlills
                                 skills = { skillFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                             <PreviewExperience
                                 experience = { experienceFields }
-                                theme = { theme }
+                                theme = { themes }
                             />
                         </View>
                     </View>

@@ -30,7 +30,11 @@ export const PreviewEducation = ({ education, theme }: PropTypes) => {
 
     return (
         <View style = { [ styles.box, { color: theme.main.color }] }>
-            <PdfGenTitle text = 'Education'/>
+            <PdfGenTitle
+                deccorElemColor = { theme.main.bgSecond }
+                text = 'Education'
+                titleColor = { theme.main.color }
+            />
             <ul>
                 {
                     education.map(({

@@ -1,13 +1,7 @@
+/* eslint-disable no-nested-ternary */
 // Core
 import React from 'react';
-import { View, StyleSheet, Text, Image, Link } from '@react-pdf/renderer';
-
-// Assets
-import {
-    pngPhoneIcon, pngHomeIcon, pngMailIcon,
-    pngLinkedinIcon, pngGithubIcon,
-} from '../../../../assets/images';
-
+import { View, StyleSheet, Text, Link } from '@react-pdf/renderer';
 
 // Styles
 const styles = StyleSheet.create({
@@ -34,7 +28,7 @@ const styles = StyleSheet.create({
 
 // Elements
 import { PdfGenTitle } from '../../../elements/pdfGenTitle';
-
+import { GithubIcon, HomeIcon, LinkedinIcon, MailIcon, PhoneIcon  } from '../../../elements/pdfGenIcons';
 // Types
 import { Contact } from '../../../../bus/client/contactFields/types';
 import { ThemeType } from '../../../../assets/themes/type';
@@ -45,42 +39,46 @@ type PropTypes = {
 }
 
 export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
-    const getIconSrc = (type: string): string => {
-        let iconUrl = '';
-
-        if (type === 'mail') {
-            iconUrl = pngMailIcon;
-        } else if (type === 'phone') {
-            iconUrl = pngPhoneIcon;
-        } else if (type === 'adress') {
-            iconUrl = pngHomeIcon;
-        } else if (type === 'Linkedin') {
-            iconUrl = pngLinkedinIcon;
-        } else if (type === 'Github') {
-            iconUrl = pngGithubIcon;
-        }
-
-        return iconUrl;
-    };
+    // const getIcon = (type: string): JSXElementConstructor<any> => {
+    //     if (type === 'mail') {
+    //         return <MailIcon color = { theme.main.color }/>;
+    //     } else if (type === 'phone') {
+    //         iconUrl = pngPhoneIcon;
+    //     } else if (type === 'address') {
+    //         iconUrl = pngHomeIcon;
+    //     } else if (type === 'Linkedin') {
+    //         iconUrl = pngLinkedinIcon;
+    //     } else if (type === 'Github') {
+    //         iconUrl = pngGithubIcon;
+    //     }
+    // };
 
     return (
         <View style = { styles.box }>
-            <PdfGenTitle text = 'Contacts'/>
+            <PdfGenTitle
+                deccorElemColor = { theme.main.bgSecond }
+                text = 'Contacts'
+                titleColor = { theme.main.color }
+
+            />
             <ul>
                 {
                     contacts?.map(({ id, url }) => {
-                        const iconSrc = getIconSrc(id);
-
                         return (
                             <li key = { id }>
                                 <Link
                                     break
                                     src = { url }
                                     style = { styles.link }>
-                                    <Image
-                                        src = { iconSrc }
-                                        style = { styles.linkImg }
-                                    />
+                                    {
+                                        id === 'mail'
+                                            ? <MailIcon color = { theme.main.color } />
+                                            : id === 'phone' ? <PhoneIcon color = { theme.main.color } />
+                                                : id === 'address' ? <HomeIcon color = { theme.main.color } />
+                                                    : id === 'Linkedin' ? <LinkedinIcon color = { theme.main.color } />
+                                                        : id === 'Github' ? <GithubIcon color = { theme.main.color } />
+                                                            : null
+                                    }
                                     <Text
                                         break
                                         wrap

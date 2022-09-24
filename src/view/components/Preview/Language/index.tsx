@@ -38,7 +38,12 @@ type PropTypes = {
 export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
     return (
         <View style = { styles.section }>
-            <PdfGenTitle text = 'Languages' />
+            <PdfGenTitle
+                deccorElemColor = { theme.main.bgSecond }
+                text = 'Languages'
+                titleColor = { theme.main.color }
+
+            />
             <ul style = { styles.list }>
                 {
                     languages?.map(({ id, language }) => {

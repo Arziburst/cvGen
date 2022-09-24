@@ -47,7 +47,12 @@ type PropTypes = {
 export const PreviewAwards = ({ awards, theme }: PropTypes) => {
     return (
         <View style = { styles.section }>
-            <PdfGenTitle text = 'Awards' />
+            <PdfGenTitle
+                deccorElemColor = { theme.main.bgSecond }
+                text = 'Awards'
+                titleColor = { theme.main.color }
+
+            />
             <ul style = { styles.list }>
                 {
                     awards.map((award) => {
