@@ -1,6 +1,7 @@
 export const defaultTheme = {
-    name: 'defaultTheme',
-    main: {
+    name:    'defaultTheme',
+    current: true,
+    main:    {
         color:       '#4c576b',
         colorSecond: '#e8e5e4',
         bg:          '#384052',

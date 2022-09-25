@@ -1,6 +1,7 @@
 export const millbrookTheme = {
-    name: 'millbrookTheme',
-    main: {
+    name:    'millbrookTheme',
+    current: false,
+    main:    {
         color:       '#ffffff',
         colorSecond: '#ffffff',
         bg:          '#8b6b61',

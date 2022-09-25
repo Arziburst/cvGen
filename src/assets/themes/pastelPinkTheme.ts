@@ -1,5 +1,7 @@
 export const pastelPink = {
-    name: 'pastelPink',
+    name:    'pastelPink',
+    current: false,
+
     main: {
         color:       '#000000',
         colorSecond: '#000000',

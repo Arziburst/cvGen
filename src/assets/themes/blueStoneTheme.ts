@@ -1,6 +1,7 @@
 export const blueStoneTheme = {
-    name: 'blueStoneTheme',
-    main: {
+    name:    'blueStoneTheme',
+    current: false,
+    main:    {
         color:       '#ffffff',
         colorSecond: '#ffffff',
         bg:          '#42a5f5',

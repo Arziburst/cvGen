@@ -24,7 +24,7 @@ const Preview: FC = () => {
                     onClick = { () => {
                         setToggleAction({ type: 'isPreview', value: false });
                     } }>
-                    Back
+                    Back to constructor
                 </S.NavBtn>
             </S.BtnContainer>
             <PdfViewer />

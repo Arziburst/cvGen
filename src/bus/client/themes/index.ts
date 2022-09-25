@@ -13,10 +13,16 @@ export const useThemes = () => {
 
     const handleChangeTheme = (theme: Theme) => {
         dispatch(themesActions.setTheme(theme));
+        dispatch(themesActions.toggleTheme(!theme.current));
+    };
+
+    const handleToggleTheme = (current: boolean) => {
+        dispatch(themesActions.toggleTheme(current));
     };
 
     return {
         themes,
         handleChangeTheme,
+        handleToggleTheme,
     };
 };

@@ -1,6 +1,7 @@
 export const wedgewoodTheme = {
-    name: 'wedgewoodTheme',
-    main: {
+    name:    'wedgewoodTheme',
+    current: false,
+    main:    {
         color:       '#ffffff',
         colorSecond: '#ffffff',
         bg:          '#006064',

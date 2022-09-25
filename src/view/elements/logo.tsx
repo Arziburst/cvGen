@@ -19,6 +19,7 @@ const HeaderLink = styled(Link)`
   font-size: 16px;
   color: #fff;
   text-decoration: none;
+
   img {
     display: block;
     margin-right: 5px;

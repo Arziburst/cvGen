@@ -22,7 +22,7 @@ type PropTypes = {
 }
 
 export const Palette: FC<PropTypes> = () => {
-    const { handleChangeTheme } = useThemes();
+    const { handleChangeTheme, handleToggleTheme, themes } = useThemes();
 
     return (
         <S.Container>
@@ -32,81 +32,151 @@ export const Palette: FC<PropTypes> = () => {
                 <S.List>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#e8e5e4' }}
+                            style = {
+                                themes.name === 'defaultTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#e8e5e4', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#e8e5e4' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(defaultTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#343434' }}
+                            style = {
+                                themes.name === 'darkTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#343434', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#343434' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(darkTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#42a5f5' }}
+                            style = {
+                                themes.name === 'blueStoneTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#42a5f5', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#42a5f5' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(blueStoneTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#321911' }}
+                            style = {
+                                themes.name === 'millbrookTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#321911', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#321911' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(millbrookTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#ffd54f' }}
+                            style = {
+                                themes.name === 'mustardTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#ffd54f', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#ffd54f' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(mustardTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#bf5f82' }}
+                            style = {
+                                themes.name === 'pastelPink' && themes.current
+                                    ? {
+                                        backgroundColor: '#bf5f82', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#bf5f82' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(pastelPink);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#001970' }}
+                            style = {
+                                themes.name === 'sapphireTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#001970', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#001970' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(sapphireTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#c96f53' }}
+                            style = {
+                                themes.name === 'vividTangerine' && themes.current
+                                    ? {
+                                        backgroundColor: '#c96f53', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#c96f53' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(vividTangerine);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#428e92' }}
+                            style = {
+                                themes.name === 'wedgewoodTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#428e92', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#428e92' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(wedgewoodTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>
                     <S.Item>
                         <S.ThemeBtn
-                            style = {{ backgroundColor: '#29434e' }}
+                            style = {
+                                themes.name === 'cuttySarkTheme' && themes.current
+                                    ? {
+                                        backgroundColor: '#29434e', pointerEvents: 'none', border: '2px solid #000', cursor: 'default',
+                                    }
+                                    : { backgroundColor: '#29434e' }
+                            }
                             onClick = { () => {
                                 handleChangeTheme(cuttySarkTheme);
+                                handleToggleTheme(true);
                             } }
                         />
                     </S.Item>

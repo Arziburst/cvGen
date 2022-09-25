@@ -1,6 +1,7 @@
 export const vividTangerine = {
-    name: 'vividTangerine',
-    main: {
+    name:    'vividTangerine',
+    current: false,
+    main:    {
         color:       '#000000',
         colorSecond: '#000000',
         bg:          '#ff9e80',

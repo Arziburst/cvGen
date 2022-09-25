@@ -1,6 +1,7 @@
 export const sapphireTheme = {
-    name: 'sapphireTheme',
-    main: {
+    name:    'sapphireTheme',
+    current: false,
+    main:    {
         color:       '#000',
         colorSecond: '#fff',
         bg:          '#001970',

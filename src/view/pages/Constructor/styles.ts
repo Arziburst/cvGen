@@ -61,6 +61,14 @@ export const ActionBoxContainer = styled.div`
     flex: 1 1 auto;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 420px) {
+     align-items: center;
+     a {
+          flex-direction: column;
+          font-size: 10px;
+     }
+    }
 `;
 
 export const BtnBox = styled.div`

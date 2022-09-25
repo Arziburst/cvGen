@@ -1,6 +1,7 @@
 export const cuttySarkTheme = {
-    name: 'cuttySarkTheme',
-    main: {
+    name:    'cuttySarkTheme',
+    current: false,
+    main:    {
         color:       '#ffffff',
         colorSecond: '#ffffff',
         bg:          '#29434e',

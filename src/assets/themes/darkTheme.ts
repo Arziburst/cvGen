@@ -1,5 +1,7 @@
 export const darkTheme = {
-    name: 'darkTheme',
+    name:    'darkTheme',
+    current: false,
+
     main: {
         color:       '#fff',
         colorSecond: '#000',

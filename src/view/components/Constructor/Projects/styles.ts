@@ -73,6 +73,7 @@ export const Duration = styled.time`
 `;
 
 export const Role = styled.h6`
+  margin-right: 10px;
 `;
 
 export const Responsibilities = styled.div`

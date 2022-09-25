@@ -1,6 +1,7 @@
 export const mustardTheme = {
-    name: 'mustardTheme',
-    main: {
+    name:    'mustardTheme',
+    current: false,
+    main:    {
         color:       '#000000',
         colorSecond: '#000000',
         bg:          '#c8a415',
