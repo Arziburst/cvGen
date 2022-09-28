@@ -16,7 +16,6 @@ import * as S from './styles';
 const Preview: FC = () => {
     const { setToggleAction } = useTogglesRedux();
 
-
     return (
         <S.Container>
             <S.BtnContainer>

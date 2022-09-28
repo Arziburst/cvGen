@@ -12,9 +12,10 @@ export const InputBox = styled.div`
   input {
     border: 1px solid transparent;
     background-color: transparent;
-    padding-right: 10px;
     display: block;
     width: 100%;
+    padding-right: 10px;
+    height: 30px;
 
     &:focus,
     &:hover {
@@ -25,6 +26,7 @@ export const InputBox = styled.div`
     &::placeholder {
       font-size: inherit;
       color: inherit;
+      opacity: 0.8;
     }
   }
 

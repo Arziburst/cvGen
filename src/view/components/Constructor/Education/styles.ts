@@ -38,7 +38,6 @@ export const Description = styled(Date)`
   textarea {
     font-family: 'NotoSans400';
     font-weight: 400;
-    height: 80px
   }
 `;
 

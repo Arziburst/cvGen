@@ -17,6 +17,8 @@ export const BlockTitle = styled.h3`
    width: 20px;
    left: -30px;
    top: 2px;
+   border-bottom-right-radius: 5px;
+   border-top-right-radius: 5px;
    background-color: ${({ theme }) => theme.main.bgSecond};
   }
 

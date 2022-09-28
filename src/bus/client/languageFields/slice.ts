@@ -11,15 +11,7 @@ import * as reducers from './reducers';
 export const initialState = [
     {
         id:       uniqueId(),
-        language: '',
-    },
-    {
-        id:       uniqueId(),
-        language: '',
-    },
-    {
-        id:       uniqueId(),
-        language: '',
+        language: 'English',
     },
 ];
 

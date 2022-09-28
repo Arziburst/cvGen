@@ -10,11 +10,13 @@ const styles = StyleSheet.create({
         position:      'relative',
     },
     decoreElem: {
-        position: 'absolute',
-        left:     -20,
-        top:      7,
-        height:   13,
-        width:    13,
+        position:                'absolute',
+        left:                    -20,
+        top:                     6,
+        height:                  15,
+        width:                   15,
+        borderBottomRightRadius: 3,
+        borderTopRightRadius:    3,
     },
     title: {
         fontSize:     19,

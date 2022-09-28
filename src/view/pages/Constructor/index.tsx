@@ -21,7 +21,7 @@ import {
     ConstructorInfo,
     ConstructorContacts,
     ConstructorLanguages,
-    ConstructorAward,
+    // ConstructorAward,
     ConstructorEducation,
     ConstructorExperience,
     ConstructorSkills,
@@ -86,11 +86,11 @@ const Constructor: FC = () => {
                     <S.SecondColumn>
                         <ConstructorContacts />
                         <ConstructorLanguages />
-                        <ConstructorAward />
+                        {/* <ConstructorAward /> */}
                     </S.SecondColumn>
                     <S.SecondColumn>
-                        <ConstructorEducation />
                         <ConstructorSkills />
+                        <ConstructorEducation />
                         <ConstructorExperience />
                     </S.SecondColumn>
                 </S.Wrapper>

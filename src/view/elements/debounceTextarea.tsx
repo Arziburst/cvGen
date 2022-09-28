@@ -4,7 +4,7 @@ import { DebounceInput } from 'react-debounce-input';
 import { WAIT_TIME } from '../../init';
 
 // Styled
-export const TextareaBox = styled.div`
+export const TextareaBox = styled.label`
   width: 100%;
 
   textarea {
@@ -15,6 +15,7 @@ export const TextareaBox = styled.div`
     width: 100%;
     resize: none;
     color: ${({ theme }) => theme.main.color};
+    height: 100px;
 
     &:focus,
     &:hover {
@@ -25,6 +26,7 @@ export const TextareaBox = styled.div`
     &::placeholder {
       font-size: inherit;
       color: inherit;
+      opacity: 0.8;
     }
   }
 `;

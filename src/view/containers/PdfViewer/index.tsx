@@ -8,13 +8,20 @@ import { useContactField } from '../../../bus/client/contactFields';
 import { useLanguageFields } from '../../../bus/client/languageFields';
 
 // Components
-import { PreviewAvatar, PreviewAwards, PreviewContacts, PreviewInfo, PreviewLanguage, PreviewExperience } from '../../components';
+import {
+    PreviewAvatar,
+    // PreviewAwards,
+    PreviewContacts,
+    PreviewInfo,
+    PreviewLanguage,
+    PreviewExperience,
+} from '../../components';
 
 // Assets
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
-import { useAwardFields } from '../../../bus/client/awardFields';
+// import { useAwardFields } from '../../../bus/client/awardFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
@@ -66,7 +73,7 @@ export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
     const { contactFields } = useContactField();
     const { languageFields } = useLanguageFields();
-    const { awardFields } = useAwardFields();
+    // const { awardFields } = useAwardFields();
     const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
     const { skillFields } = useSkillFields();
@@ -106,18 +113,18 @@ export const PdfViewer = () => {
                                 languages = { languageFields }
                                 theme = { themes }
                             />
-                            <PreviewAwards
+                            {/* <PreviewAwards
                                 awards = { awardFields }
                                 theme = { themes }
-                            />
+                            /> */}
                         </View>
                         <View style = { [ styles.contentSecondColumn, { backgroundColor: themes.accent.avatar }] }>
-                            <PreviewEducation
-                                education = { educationFields }
-                                theme = { themes }
-                            />
                             <PreviewSlills
                                 skills = { skillFields }
+                                theme = { themes }
+                            />
+                            <PreviewEducation
+                                education = { educationFields }
                                 theme = { themes }
                             />
                             <PreviewExperience

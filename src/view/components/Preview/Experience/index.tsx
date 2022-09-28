@@ -24,9 +24,8 @@ const styles = StyleSheet.create({
         objectFit: 'contain',
     },
     subtitle: {
-        fontSize:     14,
-        marginBottom: 4,
-        fontWeight:   800,
+        fontSize:   14,
+        fontWeight: 800,
     },
     headerText: {
         flexDirection:  'row',
@@ -78,6 +77,17 @@ const styles = StyleSheet.create({
     projectName: {
         fontWeight: 500,
     },
+    descrBox: {
+        flexDirection: 'row',
+        alignItems:    'center',
+        marginBottom:  4,
+    },
+    descriptionDecorElem: {
+        width:        9,
+        height:       9,
+        borderRadius: '50%',
+        marginRight:  4,
+    },
 });
 
 
@@ -122,9 +132,16 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                 <Text style = { styles.location }>
                                     {location}
                                 </Text>
-                                <Text style = { [ styles.subtitle, { color: theme.main.color }] } >
-                                    Description
-                                </Text>
+                                <View style = { styles.descrBox }>
+                                    <View style = { [
+                                        styles.descriptionDecorElem,
+                                        { backgroundColor: theme.main.bgSecond },
+                                    ] }
+                                    />
+                                    <Text style = { [ styles.subtitle, { color: theme.main.color }] } >
+                                        Description
+                                    </Text>
+                                </View>
                                 <ul style = { styles.descriptionList }>
                                     {descriptionList.map(({ description, id }) => (
                                         <li
@@ -142,9 +159,16 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                         </li>
                                     ))}
                                 </ul>
-                                <Text style = { styles.subtitle }>
-                                    Projects
-                                </Text>
+                                <View style = { styles.descrBox }>
+                                    <View style = { [
+                                        styles.descriptionDecorElem,
+                                        { backgroundColor: theme.main.bgSecond },
+                                    ] }
+                                    />
+                                    <Text style = { [ styles.subtitle, { color: theme.main.color }] } >
+                                        Projects
+                                    </Text>
+                                </View>
                                 <ul>
                                     {projects.map(({
                                         customer,  duration, id,

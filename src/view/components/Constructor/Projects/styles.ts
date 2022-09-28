@@ -18,9 +18,23 @@ export const TitleBox = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+
+
   h3 {
+    padding-left: 17px;
     margin-bottom: 0;
     margin-right: 5px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: ${({ theme }) => theme.main.bgSecond};
+    }
   }
 `;
 
