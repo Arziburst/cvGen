@@ -9,12 +9,15 @@ import * as S from './styles';
 
 // Elements
 import { Title, RemoveBtn, AddBtn, AppDebounceInput } from '../../../elements';
+import { useThemes } from '../../../../bus/client/themes';
 
 export const ConstructorLanguages: FC = () => {
     const {
         languageFields, handleChangeLanguageField,
         addLanguageField, removeLanguageField,
     } = useLanguageFields();
+
+    const { themes } = useThemes();
 
     return (
         <S.Container>
@@ -27,6 +30,7 @@ export const ConstructorLanguages: FC = () => {
                     languageFields.map((language) => (
                         <S.Item key = { language.id }>
                             <AppDebounceInput
+                                decorElemColor = { themes.accent.bgPrimary }
                                 handleChangeFunc = { (event) => {
                                     handleChangeLanguageField({ id: language.id, language: event.target.value });
                                 }  }

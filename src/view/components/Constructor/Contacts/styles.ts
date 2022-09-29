@@ -23,7 +23,7 @@ export const InputIcon = styled(ReactSVG)`
     height: 15px;
     margin-right: 5px;
     path {
-      fill: ${({ theme }) => theme.main.bg};
+      fill:  ${({ theme }) => theme.main.bg};
       color: ${({ theme }) => theme.main.bg};
     }
   }
@@ -37,10 +37,13 @@ export const Item = styled.li`
   align-items: center;
 
   input {
+    background-color: ${({ theme }) => theme.accent.bgPrimary};
+  }
+
+  p, input {
     font-family: 'NotoSans500';
     font-weight: 500;
     font-size: 14px;
     color: ${({ theme }) => theme.main.color};
-    background-color: ${({ theme }) => theme.accent.bgPrimary};
   }
 `;

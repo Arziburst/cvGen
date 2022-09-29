@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useEducationField } from '../../../../bus/client/educationFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Elements
 import { AppDebounceInput, AppDebounceTextarea, Title, AddBtn, RemoveBtn } from '../../../elements';
@@ -16,6 +17,8 @@ export const ConstructorEducation: FC = () => {
         handleChangeEducationDateField, handleChangeEducationDegreeField,
         handleChangeEducationDescriptionField, removeEducationField,
     } = useEducationField();
+
+    const { themes } = useThemes();
 
     return (
         <S.Container>
@@ -35,6 +38,7 @@ export const ConstructorEducation: FC = () => {
                             <S.Wrapper>
                                 <S.Date>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDateField({ id, text: event.target.value });
                                         }  }
@@ -44,6 +48,7 @@ export const ConstructorEducation: FC = () => {
                                 </S.Date>
                                 <S.Degree>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDegreeField({ id, text: event.target.value });
                                         } }

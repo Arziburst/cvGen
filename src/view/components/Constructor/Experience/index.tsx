@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useExperienceFields } from '../../../../bus/client/experienceFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Styles
 import * as S from './styles';
@@ -22,6 +23,8 @@ export const ConstructorExperience: FC = () => {
         removeExperienceField,
     } = useExperienceFields();
 
+    const { themes } = useThemes();
+
     return (
         <S.Container>
             <S.TextBox>
@@ -33,6 +36,7 @@ export const ConstructorExperience: FC = () => {
                     <S.Box key = { experience.id }>
                         <S.Info>
                             <AppDebounceInput
+                                decorElemColor = { themes.accent.bg }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperiencePositionField({ id: experience.id, text: event.target.value });
                                 } }
@@ -40,6 +44,7 @@ export const ConstructorExperience: FC = () => {
                                 value = { experience.position }
                             />
                             <AppDebounceInput
+                                decorElemColor = { themes.accent.bg }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceDateField({ id: experience.id, text: event.target.value });
                                 }  }
@@ -49,6 +54,7 @@ export const ConstructorExperience: FC = () => {
                         </S.Info>
                         <S.Location>
                             <AppDebounceInput
+                                decorElemColor = { themes.accent.bg }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }

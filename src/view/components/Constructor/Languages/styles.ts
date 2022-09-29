@@ -12,11 +12,14 @@ export const Item = styled.li`
   margin-bottom: 3px;
 
   input {
+    background-color: ${({ theme }) => theme.accent.bgPrimary};
+  }
+
+  p, input {
     font-family: 'NotoSans500';
     font-weight: 500;
     font-size: 14px;
     color: ${({ theme }) => theme.main.color};
-    background-color: ${({ theme }) => theme.accent.bgPrimary};
   }
 `;
 

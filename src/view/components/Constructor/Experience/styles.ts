@@ -25,13 +25,16 @@ export const Info = styled.div`
   margin-right: 25px;
 
   input {
+    width: 100%;
+    background-color: ${({ theme }) => theme.accent.bgSecond};
+  }
+
+  input,p {
     display: block;
     font-family: 'NotoSans800';
     font-weight: 800;
     font-size: 17px;
     color: ${({ theme }) => theme.main.color};
-    width: 100%;
-    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 
   div {
@@ -43,7 +46,7 @@ export const Info = styled.div`
   @media (max-width: 360px) {
     margin-right: 25px;
     display: block;
-    input {
+    label {
       display: block;
       width: 100%;
       margin-bottom: 5px;
@@ -56,18 +59,15 @@ export const Location = styled.div`
   margin-right: 25px;
 
   input {
-      font-family: 'NotoSans800';
-      font-weight: 800;
-      font-size: 14px;
-      color: ${({ theme }) => theme.main.color};
-      width: 100%;
-      background-color: ${({ theme }) => theme.accent.bgSecond};
-    }
+    width: 100%;
+    background-color: ${({ theme }) => theme.accent.bgSecond};
+  }
 
-  @media (max-width: 360px) {
-    input {
-      width: 100%;
-    }
+  input,p {
+    font-family: 'NotoSans800';
+    font-weight: 800;
+    font-size: 14px;
+    color: ${({ theme }) => theme.main.color};
   }
 `;
 
@@ -109,9 +109,12 @@ export const Item = styled.li`
   margin-bottom: 15px;
 
   textarea {
+    background-color: ${({ theme }) => theme.accent.bgSecond};
+  }
+
+  textarea, p {
     font-size: 14px;
     color: ${({ theme }) => theme.main.color};
-    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
 

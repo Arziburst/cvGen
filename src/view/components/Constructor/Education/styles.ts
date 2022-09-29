@@ -23,11 +23,14 @@ export const Date = styled.div`
   display: block;
   margin-bottom: 5px;
   input, textarea {
+    background-color: ${({ theme }) => theme.accent.bgSecond};
+  }
+
+  input, textarea, p {
     font-family: 'NotoSans500';
     font-weight: 500;
     font-size: 15px;
     color: ${({ theme }) => theme.main.color};
-    background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
 
@@ -35,7 +38,7 @@ export const Degree = styled(Date)`
 `;
 
 export const Description = styled(Date)`
-  textarea {
+  textarea, p {
     font-family: 'NotoSans400';
     font-weight: 400;
   }

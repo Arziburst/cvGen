@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useInfoFields } from '../../../../bus/client/infoFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Elements
 import { AppDebounceInput, AppDebounceTextarea } from '../../../elements';
@@ -17,10 +18,13 @@ export const ConstructorInfo: FC = () => {
         handleChangePosition,
     } = useInfoFields();
 
+    const { themes } = useThemes();
+
     return (
         <S.Container>
             <S.InputNameBox>
                 <AppDebounceInput
+                    decorElemColor = { themes.main.bg }
                     handleChangeFunc = { (event) => {
                         handleChangeName(event.target.value);
                     } }
@@ -30,6 +34,7 @@ export const ConstructorInfo: FC = () => {
             </S.InputNameBox>
             <S.InputPositionBox>
                 <AppDebounceInput
+                    decorElemColor = { themes.main.bg }
                     handleChangeFunc = { (event) => {
                         handleChangePosition(event.target.value);
                     } }

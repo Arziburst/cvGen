@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useExperienceFields } from '../../../../bus/client/experienceFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Styles
 import * as S from './styles';
@@ -26,6 +27,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
         addExperienceProjectField, removeExperienceProjectField,
     } = useExperienceFields();
 
+    const { themes } = useThemes();
+
     return (
         <S.Container>
             <S.TitleBox>
@@ -46,6 +49,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                             <S.Wrapper>
                                 <S.Name>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectNameField({ id, text: event.target.value });
                                         } }
@@ -55,6 +59,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.Name>
                                 <S.Customer>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectCustomerField({ id, text: event.target.value });
                                         } }
@@ -65,6 +70,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 <S.Box>
                                     <S.Role>
                                         <AppDebounceInput
+                                            decorElemColor = { themes.accent.bg }
                                             handleChangeFunc = { (event) => {
                                                 handleSetProjectRoleField({ id, text: event.target.value });
                                             } }
@@ -74,6 +80,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                     </S.Role>
                                     <S.Duration>
                                         <AppDebounceInput
+                                            decorElemColor = { themes.accent.bg }
                                             handleChangeFunc = { (event) => {
                                                 handleSetProjectDurationField(
                                                     { id, text: event.target.value },
@@ -97,6 +104,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.Responsibilities>
                                 <S.TeamSize>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectTeamsizeField({ id, text: event.target.value });
                                         } }
@@ -106,6 +114,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.TeamSize>
                                 <S.Stack>
                                     <AppDebounceInput
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectStackField({ id, text: event.target.value });
                                         } }

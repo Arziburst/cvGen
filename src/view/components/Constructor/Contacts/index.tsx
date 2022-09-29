@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useContactField } from '../../../../bus/client/contactFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Assets
 import {
@@ -21,6 +22,8 @@ export const ConstructorContacts: FC = () => {
         handleChangeContactField, removeContactField,
         contactFields, addContactFields,
     } = useContactField();
+
+    const { themes } = useThemes();
 
     return (
         <S.Container>
@@ -56,6 +59,7 @@ export const ConstructorContacts: FC = () => {
                             key = { elem.id }>
                             <S.InputIcon src = { getIconSrc(elem.id) } />
                             <AppDebounceInput
+                                decorElemColor = { themes.accent.bgPrimary }
                                 handleChangeFunc = { (event) => {
                                     handleChangeContactField({ ...elem, url: event.target.value });
                                 } }

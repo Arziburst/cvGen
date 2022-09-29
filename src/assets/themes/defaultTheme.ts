@@ -6,7 +6,6 @@ export const defaultTheme = {
         colorSecond: '#e8e5e4',
         bg:          '#384052',
         bgSecond:    '#4c576b',
-
     },
     accent: {
         bg:        '#dbdbdb',

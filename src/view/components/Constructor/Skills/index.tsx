@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useSkillFields } from '../../../../bus/client/skillFields';
+import { useThemes } from '../../../../bus/client/themes';
 import { AddBtn, AppDebounceInput, RemoveBtn, Title } from '../../../elements';
 
 // Styles
@@ -14,6 +15,8 @@ export const ConstructorSkills: FC = () => {
         handleChangeSkillField, removeSkillField,
     } = useSkillFields();
 
+    const { themes } = useThemes();
+
     return (
         <S.Container>
             <S.Box>
@@ -24,6 +27,7 @@ export const ConstructorSkills: FC = () => {
                 {skillFields.map(({ id, skill }) => (
                     <S.Item key = { id } >
                         <AppDebounceInput
+                            decorElemColor = { themes.accent.bg }
                             handleChangeFunc = { (event) => {
                                 handleChangeSkillField({ id, skill: event.target.value });
                             } }

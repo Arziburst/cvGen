@@ -48,12 +48,15 @@ export const Item = styled.li`
   }
 
   input {
+    background-color: ${({ theme }) => theme.accent.bg};
     padding: 5px 10px;
     padding-right: 25px;
-    font-size: 15px;
     overflow: hidden;
+  }
+
+  input, p {
+    font-size: 15px;
     color: ${({ theme }) => theme.main.color};
-    background-color: ${({ theme }) => theme.accent.bg};
   }
 
   button {

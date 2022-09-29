@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 // Bus
 import { useAwardFields } from '../../../../bus/client/awardFields';
+import { useThemes } from '../../../../bus/client/themes';
 
 // Elements
 import { AddBtn, RemoveBtn, Title, AppDebounceInput } from '../../../elements';
@@ -17,6 +18,7 @@ export const ConstructorAward: FC = () => {
         createAwardField, removeAwardField,
     } = useAwardFields();
 
+    const { themes } = useThemes();
 
     return (
         <S.Container>
@@ -30,6 +32,7 @@ export const ConstructorAward: FC = () => {
                         <S.Wrapper>
                             <S.ReceivedText>
                                 <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgPrimary }
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardReceivedField({ id: award.id, text: event.target.value });
                                     } }
@@ -39,6 +42,7 @@ export const ConstructorAward: FC = () => {
                             </S.ReceivedText>
                             <S.DateText>
                                 <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgPrimary }
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardDateField({ id: award.id, text: event.target.value });
                                     } }
@@ -48,6 +52,7 @@ export const ConstructorAward: FC = () => {
                             </S.DateText>
                             <S.LocationText>
                                 <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgPrimary }
                                     handleChangeFunc = { (event) => {
                                         handleChangeAwardLocationField({ id: award.id, text: event.target.value });
                                     } }

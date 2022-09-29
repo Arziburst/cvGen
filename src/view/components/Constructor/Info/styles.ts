@@ -12,29 +12,32 @@ export const Container = styled.section`
 
 export const InputNameBox = styled.div`
   input {
+    background-color: ${({ theme }) => theme.main.bg};
+    height: 50px;
+  }
+  input, p {
     font-family: 'NotoSans800', sans-serif;
     font-size: 30px;
     color: ${({ theme }) => theme.main.colorSecond};
-    margin-bottom: 5px;
-    height: 50px;
-    background-color: ${({ theme }) => theme.main.bg};
   }
 `;
 
 export const InputPositionBox = styled.div`
   input {
+    background-color: ${({ theme }) => theme.main.bg};
+  } 
+  input, p {
     color: ${({ theme }) => theme.main.colorSecond};
     text-transform: uppercase;
-    margin-bottom: 10px;
-    background-color: ${({ theme }) => theme.main.bg};
   }
 `;
 
 export const InputOverviewBox = styled.div`
   textarea {
+    background-color: ${({ theme }) => theme.main.bg};
+  } 
+  textarea, p {
     font-size: 14px;
     color: ${({ theme }) => theme.main.colorSecond};
-    margin-bottom: 10px;
-    background-color: ${({ theme }) => theme.main.bg};
   }
 `;
