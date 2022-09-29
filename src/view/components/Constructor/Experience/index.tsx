@@ -70,6 +70,7 @@ export const ConstructorExperience: FC = () => {
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
                                     <AppDebounceTextarea
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetDescrField({ id: description.id, text: event.target.value });
                                         } }

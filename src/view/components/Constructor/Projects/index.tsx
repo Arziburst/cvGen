@@ -11,8 +11,9 @@ import * as S from './styles';
 // Elements
 import { AddBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn } from '../../../elements';
 
-//Types
+// Types
 import { Project } from '../../../../bus/client/experienceFields/types';
+
 type propTypes = {
     projects: Array<Project>
     experienceId: string;
@@ -93,6 +94,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.Box>
                                 <S.Responsibilities>
                                     <AppDebounceTextarea
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleSetProjectResponsibilitiesField(
                                                 { id, text: event.target.value },

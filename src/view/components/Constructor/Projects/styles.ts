@@ -3,9 +3,14 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   input,
-  textarea {
+  textarea,
+  p {
     font-size: 15px;
     color: ${({ theme }) => theme.main.color};
+  }
+
+  input,
+  textarea {
     background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 `;
@@ -65,7 +70,7 @@ export const Box = styled.div`
   justify-content: space-between;
   margin-bottom: 5px;
 
-  input {
+  input, p {
     font-family: 'NotoSans500';
     font-weight: 500;
   }
@@ -73,7 +78,7 @@ export const Box = styled.div`
 
 export const Name = styled.h4`
   margin-bottom: 3px;
-  input {
+  input, p {
     font-family: 'NotoSans500';
     font-weight: 500;
   }
@@ -104,7 +109,7 @@ export const TeamSize = styled.div`
 `;
 
 export const Stack = styled.span`
-  input {
+  input, p {
     font-family: 'NotoSans500';
     font-weight: 500;
   }

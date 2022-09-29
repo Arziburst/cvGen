@@ -58,6 +58,7 @@ export const ConstructorEducation: FC = () => {
                                 </S.Degree>
                                 <S.Description>
                                     <AppDebounceTextarea
+                                        decorElemColor = { themes.accent.bg }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDescriptionField({ id, text: event.target.value });
                                         } }

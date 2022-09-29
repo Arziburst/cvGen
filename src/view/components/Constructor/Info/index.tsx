@@ -44,6 +44,7 @@ export const ConstructorInfo: FC = () => {
             </S.InputPositionBox>
             <S.InputOverviewBox>
                 <AppDebounceTextarea
+                    decorElemColor = { themes.main.bg }
                     handleChangeFunc = { (event) => {
                         handleChangeOverview(event.target.value);
                     } }

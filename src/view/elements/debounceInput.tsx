@@ -5,6 +5,7 @@ import { DebounceInput } from 'react-debounce-input';
 
 // Constant
 import { WAIT_TIME } from '../../init';
+import { useThemes } from '../../bus/client/themes';
 
 // Types
 type propsType = {
@@ -29,11 +30,11 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
     padding-right: 10px;
     height: 30px;
     z-index: 2;
-    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.accent.avatar : ''};
+    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.accent.bg : ''};
 
     &:focus,
     &:hover {
-      border-color: ${({ theme }) => theme.main.colorSecond};
+      border-color: ${({ theme }) => theme.main.color};
       outline-color: transparent;
     }
   }
@@ -46,6 +47,7 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
       color: #fff;
       top: -6px;
       left: 6px;
+      opacity: 1;
       transform: translateY(0);
        transition: ease 0.3s left, ease 0.3s top, ease 0.3s transform;
     }
@@ -63,6 +65,7 @@ export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}
   top: 50%;
   transform: translateY(-50%);
   transition: ease 0.3s left, ease 0.3s top, ease 0.3s transform;
+  opacity: 0.8;
 
   span {
     position: relative;
@@ -85,6 +88,7 @@ export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}
 
 export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder, value, decorElemColor }) => {
     const [ isFocused, setIsFocused ] = useState(value.length > 0);
+    const { themes } = useThemes();
 
     return (
         <InputBox
@@ -98,6 +102,10 @@ export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder,
             </DecorText>
             <DebounceInput
                 debounceTimeout = { WAIT_TIME }
+                style = {{
+                    borderColor: isFocused ? themes.main.color : '',
+                    borderWidth: isFocused ? '2px' : '',
+                }}
                 type = 'text'
                 value = { value }
                 onBlur = { () => {
@@ -105,7 +113,6 @@ export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder,
                         setIsFocused(false);
                     }
                 } }
-
                 onChange = { (event) => {
                     handleChangeFunc(event);
 
