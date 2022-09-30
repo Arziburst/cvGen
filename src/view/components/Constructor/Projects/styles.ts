@@ -68,7 +68,7 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   input, p {
     font-family: 'NotoSans500';
@@ -77,7 +77,7 @@ export const Box = styled.div`
 `;
 
 export const Name = styled.h4`
-  margin-bottom: 3px;
+  margin-bottom: 10px;
   input, p {
     font-family: 'NotoSans500';
     font-weight: 500;
@@ -85,7 +85,7 @@ export const Name = styled.h4`
 `;
 
 export const Customer = styled.h5`
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 `;
 
 export const Duration = styled.time`
@@ -96,7 +96,7 @@ export const Role = styled.h6`
 `;
 
 export const Responsibilities = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   textarea {
     color: ${({ theme }) => theme.main.color};
     font-size: 15px;
@@ -105,7 +105,7 @@ export const Responsibilities = styled.div`
 `;
 
 export const TeamSize = styled.div`
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 `;
 
 export const Stack = styled.span`

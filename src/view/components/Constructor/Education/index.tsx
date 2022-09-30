@@ -38,7 +38,7 @@ export const ConstructorEducation: FC = () => {
                             <S.Wrapper>
                                 <S.Date>
                                     <AppDebounceInput
-                                        decorElemColor = { themes.accent.bg }
+                                        decorElemColor = { themes.accent.bgSecond }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDateField({ id, text: event.target.value });
                                         }  }
@@ -48,7 +48,7 @@ export const ConstructorEducation: FC = () => {
                                 </S.Date>
                                 <S.Degree>
                                     <AppDebounceInput
-                                        decorElemColor = { themes.accent.bg }
+                                        decorElemColor = { themes.accent.bgSecond }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDegreeField({ id, text: event.target.value });
                                         } }
@@ -58,7 +58,7 @@ export const ConstructorEducation: FC = () => {
                                 </S.Degree>
                                 <S.Description>
                                     <AppDebounceTextarea
-                                        decorElemColor = { themes.accent.bg }
+                                        decorElemColor = { themes.accent.bgSecond }
                                         handleChangeFunc = { (event) => {
                                             handleChangeEducationDescriptionField({ id, text: event.target.value });
                                         } }

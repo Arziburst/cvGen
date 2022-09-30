@@ -36,7 +36,7 @@ export const ConstructorExperience: FC = () => {
                     <S.Box key = { experience.id }>
                         <S.Info>
                             <AppDebounceInput
-                                decorElemColor = { themes.accent.bg }
+                                decorElemColor = { themes.accent.bgSecond }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperiencePositionField({ id: experience.id, text: event.target.value });
                                 } }
@@ -44,7 +44,7 @@ export const ConstructorExperience: FC = () => {
                                 value = { experience.position }
                             />
                             <AppDebounceInput
-                                decorElemColor = { themes.accent.bg }
+                                decorElemColor = { themes.accent.bgSecond }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceDateField({ id: experience.id, text: event.target.value });
                                 }  }
@@ -54,7 +54,7 @@ export const ConstructorExperience: FC = () => {
                         </S.Info>
                         <S.Location>
                             <AppDebounceInput
-                                decorElemColor = { themes.accent.bg }
+                                decorElemColor = { themes.accent.bgSecond }
                                 handleChangeFunc = { (event) => {
                                     handleSetExperienceLocationField({ id: experience.id, text: event.target.value });
                                 } }
@@ -70,7 +70,7 @@ export const ConstructorExperience: FC = () => {
                             {experience.descriptionList.map((description) => (
                                 <S.Item key = { description.id }>
                                     <AppDebounceTextarea
-                                        decorElemColor = { themes.accent.bg }
+                                        decorElemColor = { themes.accent.bgSecond }
                                         handleChangeFunc = { (event) => {
                                             handleSetDescrField({ id: description.id, text: event.target.value });
                                         } }

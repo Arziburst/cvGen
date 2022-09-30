@@ -7,12 +7,21 @@ export const Container = styled.section`
 
 export const Item = styled.li`
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 
   input {
+    padding-right: 25px;
     background-color: ${({ theme }) => theme.accent.bgPrimary};
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    border-radius: 0;
+    height: 100%;
   }
 
   p, input {

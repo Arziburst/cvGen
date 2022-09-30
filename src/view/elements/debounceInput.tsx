@@ -60,6 +60,7 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
 `;
 export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}>`
   position: absolute;
+  pointer-events: none;
   left: 3px;
   top: 50%;
   transform: translateY(-50%);
@@ -77,7 +78,7 @@ export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}
     position: absolute;
     z-index: 3;
     left: 0;
-    top: 5px;
+    top: 6px;
     width: 100%;
     height: 3px;
     background-color: ${({ decorElemColor }) => decorElemColor};

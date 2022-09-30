@@ -21,7 +21,7 @@ export const Item = styled.li`
 
 export const Date = styled.div`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   input, textarea {
     background-color: ${({ theme }) => theme.accent.bgSecond};
   }

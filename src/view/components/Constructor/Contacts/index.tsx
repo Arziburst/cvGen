@@ -66,7 +66,11 @@ export const ConstructorContacts: FC = () => {
                                 placeholder = { elem.id }
                                 value = { elem.url }
                             />
-                            <RemoveBtn handleRemoveFunc = { () => removeContactField(elem.id) } />
+                            {
+                                elem.id === 'mail' || elem.id === 'address'
+                                    ? null
+                                    : <RemoveBtn handleRemoveFunc = { () => removeContactField(elem.id) } />
+                            }
                         </S.Item>
                     );
                 })

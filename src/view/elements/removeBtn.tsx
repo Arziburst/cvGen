@@ -32,6 +32,7 @@ const RemoveIcon = styled(ReactSVG)`
     color: ${({ theme }) => theme.main.bg};
     width: 16px;
     height: 16px;
+    opacity: 0.9;
   }
 `;
 

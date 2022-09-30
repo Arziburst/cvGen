@@ -35,9 +35,15 @@ export const Item = styled.li`
   justify-content: space-between;
   margin-bottom: 10px;
   align-items: center;
-
+  button {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    border-radius: 0;
+  }
   input {
     background-color: ${({ theme }) => theme.accent.bgPrimary};
+    padding-right: 25px;
   }
 
   p, input {
