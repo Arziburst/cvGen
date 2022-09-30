@@ -20,7 +20,6 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
   width: 100%;
   position: relative;
   display: block;
-  margin-bottom: 10px;
 
   input {
     border: 2px solid transparent;

@@ -11,6 +11,7 @@ export const Container = styled.section`
 `;
 
 export const InputNameBox = styled.div`
+  margin-bottom: 10px;
   input {
     background-color: ${({ theme }) => theme.main.bg};
     height: 50px;
@@ -23,6 +24,7 @@ export const InputNameBox = styled.div`
 `;
 
 export const InputPositionBox = styled.div`
+  margin-bottom: 10px;
   input {
     background-color: ${({ theme }) => theme.main.bg};
   } 
@@ -33,6 +35,7 @@ export const InputPositionBox = styled.div`
 `;
 
 export const InputOverviewBox = styled.div`
+  margin-bottom: 10px;
   textarea {
     background-color: ${({ theme }) => theme.main.bg};
   } 

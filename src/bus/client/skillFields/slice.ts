@@ -13,27 +13,15 @@ import * as reducers from './reducers';
 export const initialState = [
     {
         id:    uniqueId(),
-        skill: 'HTML',
+        skill: '',
     },
     {
         id:    uniqueId(),
-        skill: 'CSS',
+        skill: '',
     },
     {
         id:    uniqueId(),
-        skill: 'JS',
-    },
-    {
-        id:    uniqueId(),
-        skill: 'React',
-    },
-    {
-        id:    uniqueId(),
-        skill: 'Redux',
-    },
-    {
-        id:    uniqueId(),
-        skill: 'TypeScript',
+        skill: '',
     },
 ];
 

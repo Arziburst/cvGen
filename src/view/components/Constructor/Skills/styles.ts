@@ -16,7 +16,7 @@ export const Box = styled.div`
   }
 `;
 
-export const List = styled.ul`
+export const List = styled.ul<{ listLength: number }>`
   display: inline-flex;
   align-items: flex-start;
   padding-top: 5px;
@@ -24,7 +24,7 @@ export const List = styled.ul`
   flex-wrap: wrap;
   font-size: 14px;
   color: ${({ theme }) => theme.main.color};
-  background-color: ${({ theme }) => theme.accent.bgSecond};
+  background-color: ${({ theme, listLength }) => listLength > 0 ? theme.accent.bgSecond : theme.accent.avatar};
   width: 100%;
 
   @media (max-width: 360px) {
@@ -61,11 +61,11 @@ export const Item = styled.li`
 
   button {
     position: absolute;
-    right: 5px;
-    height: 100%;
+    height: 26px;
+    top: 7px;
+    right: 7px;
     &:hover {
       border-radius: 0;
-      height: 32px;
     }
   }
 

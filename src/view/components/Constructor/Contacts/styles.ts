@@ -33,7 +33,7 @@ export const Item = styled.li`
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
   align-items: center;
 
   input {

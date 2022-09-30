@@ -23,7 +23,7 @@ export const ConstructorSkills: FC = () => {
                 <Title text = 'Skills' />
                 <AddBtn handleAddFunc = { () => addSkillField() }/>
             </S.Box>
-            <S.List>
+            <S.List listLength = { skillFields.length }>
                 {skillFields.map(({ id, skill }) => (
                     <S.Item key = { id } >
                         <AppDebounceInput

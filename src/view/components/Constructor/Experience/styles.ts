@@ -37,7 +37,7 @@ export const Info = styled.div`
     color: ${({ theme }) => theme.main.color};
   }
 
-  div {
+  label {
     &:nth-child(1) {
       margin-right: 25px;
     }
