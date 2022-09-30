@@ -41,7 +41,7 @@ export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
                 styles.name,
                 {
                     color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
-                    backgroundColor: theme.main.bg,
+                    backgroundColor: name.length > 0 ? theme.main.bg : '',
                 },
             ] }>
                 {name}
@@ -49,7 +49,7 @@ export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
             <Text style = { [
                 styles.position, {
                     color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
-                    backgroundColor: theme.main.bg,
+                    backgroundColor: position.length > 0 ? theme.main.bg : '',
                 },
             ] }>
                 {position}
@@ -57,7 +57,7 @@ export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
             <Text style = { [
                 styles.overview, {
                     color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
-                    backgroundColor: theme.main.bg,
+                    backgroundColor: overview.length > 0 ? theme.main.bg : '',
                 },
             ] }>
                 {overview}

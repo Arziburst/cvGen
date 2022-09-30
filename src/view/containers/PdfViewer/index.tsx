@@ -113,24 +113,35 @@ export const PdfViewer = () => {
                                 languages = { languageFields }
                                 theme = { themes }
                             />
-                            {/* <PreviewAwards
-                                awards = { awardFields }
-                                theme = { themes }
-                            /> */}
                         </View>
                         <View style = { [ styles.contentSecondColumn, { backgroundColor: themes.accent.avatar }] }>
-                            <PreviewSlills
-                                skills = { skillFields }
-                                theme = { themes }
-                            />
-                            <PreviewEducation
-                                education = { educationFields }
-                                theme = { themes }
-                            />
-                            <PreviewExperience
-                                experience = { experienceFields }
-                                theme = { themes }
-                            />
+                            {
+                                skillFields.length > 0
+                                    ? (
+                                        <PreviewSlills
+                                            skills = { skillFields }
+                                            theme = { themes }
+                                        />
+                                    ) : null
+                            }
+                            {
+                                educationFields.length > 0
+                                    ? (
+                                        <PreviewEducation
+                                            education = { educationFields }
+                                            theme = { themes }
+                                        />
+                                    ) : null
+                            }
+                            {
+                                experienceFields.length > 0
+                                    ? (
+                                        <PreviewExperience
+                                            experience = { experienceFields }
+                                            theme = { themes }
+                                        />
+                                    ) : null
+                            }
                         </View>
                     </View>
                 </Page>
