@@ -58,7 +58,13 @@ export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
                                 <Text
                                     break
                                     wrap
-                                    style = { [ styles.text, { color: theme.main.color }] }>
+                                    style = { [
+                                        styles.text, {
+                                            color:           theme.main.color,
+                                            backgroundColor: theme.accent.bgPrimary,
+                                            padding:         '5px 3px',
+                                        },
+                                    ] }>
                                     {language}
                                 </Text>
                             </li>

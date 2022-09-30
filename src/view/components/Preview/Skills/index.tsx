@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     },
     skillsList: {
         flexDirection: 'row',
+        padding:       '8px 5px',
         flexWrap:      'wrap',
     },
 });
@@ -43,7 +44,9 @@ export const PreviewSlills = ({ skills, theme }: PropTypes) => {
                 titleColor = { theme.main.color }
 
             />
-            <ul style = { styles.skillsList }>
+            <ul style = {{
+                ...styles.skillsList, backgroundColor: theme.accent.bgSecond,
+            }}>
                 {
                     skills.map(({
                         id, skill,

@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     },
     headerDateText: {
         fontSize: 12,
+        width:    '100%',
     },
     location: {
         fontSize:     12,
@@ -121,15 +122,36 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                     }) => {
                         return (
                             <li key = { id }>
+                                <Text style = {{ marginBottom: 2 }}>
+                                    Position / Date:
+                                </Text>
                                 <View style = { [ styles.headerText, { color: theme.main.color }] }>
-                                    <Text>
+                                    <Text style = {{
+                                        backgroundColor: theme.accent.bgSecond,
+                                        padding:         '5px 3px',
+                                        width:           '100%',
+                                        marginRight:     3,
+                                    }}>
                                         {position}
                                     </Text>
-                                    <Text style = { styles.headerDateText }>
+                                    <Text style = { [
+                                        styles.headerDateText, {
+                                            backgroundColor: theme.accent.bgSecond,
+                                            padding:         '5px 3px',
+                                        },
+                                    ] }>
                                         {date}
                                     </Text>
                                 </View>
-                                <Text style = { styles.location }>
+                                <Text style = {{ marginBottom: 2 }}>
+                                    Company & Location:
+                                </Text>
+                                <Text style = { [
+                                    styles.location, {
+                                        backgroundColor: theme.accent.bgSecond,
+                                        padding:         '5px 3px',
+                                    },
+                                ] }>
                                     {location}
                                 </Text>
                                 <View style = { styles.descrBox }>
@@ -146,7 +168,11 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                     {descriptionList.map(({ description, id }) => (
                                         <li
                                             key = { id }
-                                            style = { styles.descriptionItem }>
+                                            style = {{
+                                                ...styles.descriptionItem,
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            }}>
                                             <View style = { [
                                                 styles.descriptionDecor,
                                                 { backgroundColor: theme.main.color },
@@ -182,27 +208,76 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                                 ...styles.projectItem,
                                                 borderBottom: `1px solid ${theme.main.color}`,
                                             }}>
-                                            <Text style = { styles.projectName }>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                Name:
+                                            </Text>
+                                            <Text style = { [
+                                                styles.projectName, {
+                                                    backgroundColor: theme.accent.bgSecond,
+                                                    padding:         '5px 3px',
+                                                },
+                                            ] }>
                                                 {name}
                                             </Text>
-                                            <Text style = { styles.projectText }>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                Customer:
+                                            </Text>
+                                            <Text style = { [
+                                                styles.projectText, {
+                                                    backgroundColor: theme.accent.bgSecond,
+                                                    padding:         '5px 3px',
+                                                },
+                                            ] }>
                                                 {customer}
                                             </Text>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                Role / Duration:
+                                            </Text>
                                             <View style = { styles.projectBox }>
-                                                <Text>
+                                                <Text style = {{
+                                                    backgroundColor: theme.accent.bgSecond,
+                                                    padding:         '5px 3px',
+                                                    marginRight:     3,
+                                                    width:           '100%',
+                                                }}>
                                                     {role}
                                                 </Text>
-                                                <Text>
+                                                <Text style = {{
+                                                    backgroundColor: theme.accent.bgSecond,
+                                                    padding:         '5px 3px',
+                                                    width:           '100%',
+                                                }}>
                                                     {duration}
                                                 </Text>
                                             </View>
-                                            <Text style = { styles.projectText }>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                Responsibilities:
+                                            </Text>
+                                            <Text style = {{
+                                                ...styles.projectText,
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            }}>
                                                 {responsibilities}
                                             </Text>
-                                            <Text style = { styles.projectText }>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                TeamSize:
+                                            </Text>
+                                            <Text style = {{
+                                                ...styles.projectText,
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            }}>
                                                 {teamSize}
                                             </Text>
-                                            <Text style = { styles.projectText }>
+                                            <Text style = {{ marginBottom: 2 }}>
+                                                Stack:
+                                            </Text>
+                                            <Text style = {{
+                                                ...styles.projectText,
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            }}>
                                                 {stack}
                                             </Text>
                                         </li>

@@ -39,20 +39,6 @@ type PropTypes = {
 }
 
 export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
-    // const getIcon = (type: string): JSXElementConstructor<any> => {
-    //     if (type === 'mail') {
-    //         return <MailIcon color = { theme.main.color }/>;
-    //     } else if (type === 'phone') {
-    //         iconUrl = pngPhoneIcon;
-    //     } else if (type === 'address') {
-    //         iconUrl = pngHomeIcon;
-    //     } else if (type === 'Linkedin') {
-    //         iconUrl = pngLinkedinIcon;
-    //     } else if (type === 'Github') {
-    //         iconUrl = pngGithubIcon;
-    //     }
-    // };
-
     return (
         <View style = { styles.box }>
             <PdfGenTitle
@@ -69,7 +55,12 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                 <Link
                                     break
                                     src = { url }
-                                    style = { styles.link }>
+                                    style = { [
+                                        styles.link, {
+                                            backgroundColor: theme.accent.bgPrimary,
+                                            padding:         '5px 3px',
+                                        },
+                                    ] }>
                                     {
                                         id === 'mail'
                                             ? <MailIcon color = { theme.main.color } />

@@ -13,13 +13,16 @@ const styles = StyleSheet.create({
         fontWeight:   800,
         fontSize:     30,
         marginBottom: 3,
+        padding:      '5px 3px',
     },
     position: {
         textTransform: 'uppercase',
         marginBottom:  5,
+        padding:       '5px 3px',
     },
     overview: {
         fontSize: 10,
+        padding:  '5px 3px',
     },
 });
 
@@ -37,21 +40,24 @@ export const PreviewInfo = ({ name, position, overview, theme }: PropTypes) => {
             <Text style = { [
                 styles.name,
                 {
-                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    backgroundColor: theme.main.bg,
                 },
             ] }>
                 {name}
             </Text>
             <Text style = { [
                 styles.position, {
-                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    backgroundColor: theme.main.bg,
                 },
             ] }>
                 {position}
             </Text>
             <Text style = { [
                 styles.overview, {
-                    color: theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    color:           theme.name === 'defaultTheme' ? theme.main.colorSecond : theme.main.color,
+                    backgroundColor: theme.main.bg,
                 },
             ] }>
                 {overview}
