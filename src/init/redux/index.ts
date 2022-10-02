@@ -13,7 +13,7 @@ import educationFields from '../../bus/client/educationFields/slice';
 import awardFields from '../../bus/client/awardFields/slice';
 import skillFields from '../../bus/client/skillFields/slice';
 import themes from '../../bus/client/themes/slice';
-
+import fields from '../../bus/client/fields/slice';
 // Middleware
 import {
     middleware,
@@ -37,6 +37,7 @@ const combinedReducers = combineReducers({
     educationFields,
     awardFields,
     themes,
+    fields,
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);

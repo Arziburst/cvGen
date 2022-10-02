@@ -1,5 +1,5 @@
 // Core
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
@@ -33,6 +33,7 @@ import { svgResetIcon, svgPdfIcon } from '../../../assets/images';
 
 // Styles
 import * as S from './styles';
+import { useFields } from '../../../bus/client/fields';
 
 const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -43,6 +44,12 @@ const Constructor: FC = () => {
     const { resetLanguageFieldsToInithialState } = useLanguageFields();
     const { resetSkillFieldsToInithialState } = useSkillFields();
     const { resetExperienceFieldsToInithialState } = useExperienceFields();
+
+    const { testFieldFunc } = useFields();
+
+    useEffect(() => {
+        testFieldFunc('languages');
+    }, []);
 
     return (
         <>

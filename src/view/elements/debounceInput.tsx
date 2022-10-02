@@ -3,9 +3,11 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import styled from 'styled-components';
 import { DebounceInput } from 'react-debounce-input';
 
+// Bus
+import { useThemes } from '../../bus/client/themes';
+
 // Constant
 import { WAIT_TIME } from '../../init';
-import { useThemes } from '../../bus/client/themes';
 
 // Types
 type propsType = {
@@ -58,6 +60,7 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
     }
   }
 `;
+
 export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}>`
   position: absolute;
   pointer-events: none;
