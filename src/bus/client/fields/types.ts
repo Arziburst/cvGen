@@ -45,6 +45,7 @@ export type FieldAddOptions = {
 export type FieldsState = {
     languages: FieldBlockState
     skills: FieldBlockState
+    educations: FieldBlockState
 }
 
 // Contracts
