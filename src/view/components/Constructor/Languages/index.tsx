@@ -2,46 +2,66 @@
 import React, { FC } from 'react';
 
 // Bus
-import { useLanguageFields } from '../../../../bus/client/languageFields';
+import { useFields } from '../../../../bus/client/fields';
+import { useThemes } from '../../../../bus/client/themes';
+
+// Slice
+import { languageInithialState } from '../../../../bus/client/fields/data';
+
+// Elements
+import { Title, RemoveBtn, AppDebounceInput, AddFieldBlockBtn, AddBtn } from '../../../elements';
 
 // Styles
 import * as S from './styles';
 
-// Elements
-import { Title, RemoveBtn, AddBtn, AppDebounceInput } from '../../../elements';
-import { useThemes } from '../../../../bus/client/themes';
-
 export const ConstructorLanguages: FC = () => {
     const {
-        languageFields, handleChangeLanguageField,
-        addLanguageField, removeLanguageField,
-    } = useLanguageFields();
+        fields: { languages },
+        addFieldBlock,
+        changeFieldTextInBlock,
+        removeFieldBlock,
+        removeFieldInBlock,
+        addFieldInBlock,
+    } = useFields();
 
     const { themes } = useThemes();
 
+    if (languages) {
+        return (
+            <S.Container>
+                <S.Box>
+                    <Title text = { languages.title } />
+                    <RemoveBtn handleRemoveFunc = { () => removeFieldBlock('languages')  }  />
+                </S.Box>
+                <ul>
+                    {
+                        languages.items.map((language) => (
+                            <S.Item key = { language.id }>
+                                <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgPrimary }
+                                    handleChangeFunc = { (event) => {
+                                        changeFieldTextInBlock({ id: language.id, data: event.target.value, type: 'languages' });
+                                    } }
+                                    placeholder = { languages.title }
+                                    value = { language.text }
+                                />
+                                <RemoveBtn handleRemoveFunc = { () => removeFieldInBlock({ type: 'languages', id: language.id }) } />
+                            </S.Item>
+                        ))
+                    }
+                </ul>
+                <AddBtn
+                    handleAddFunc = { () => addFieldInBlock({ type: 'languages', data: languageInithialState.items[ 0 ] }) }
+                    text = 'language'
+                />
+            </S.Container>
+        );
+    }
+
     return (
-        <S.Container>
-            <S.Box>
-                <Title text = 'Languages' />
-                <AddBtn handleAddFunc = { () => addLanguageField() } />
-            </S.Box>
-            <ul>
-                {
-                    languageFields.map((language) => (
-                        <S.Item key = { language.id }>
-                            <AppDebounceInput
-                                decorElemColor = { themes.accent.bgPrimary }
-                                handleChangeFunc = { (event) => {
-                                    handleChangeLanguageField({ id: language.id, language: event.target.value });
-                                }  }
-                                placeholder = 'Language...'
-                                value = { language.language }
-                            />
-                            <RemoveBtn handleRemoveFunc = { () => removeLanguageField(language.id) }/>
-                        </S.Item>
-                    ))
-                }
-            </ul>
-        </S.Container>
+        <AddFieldBlockBtn
+            fieldName = 'languages'
+            handleAddFunc = { () => addFieldBlock({ type: 'languages', data: languageInithialState }) }
+        />
     );
 };

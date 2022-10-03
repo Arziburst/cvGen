@@ -5,7 +5,6 @@ import { Document, Page, StyleSheet, PDFViewer, View, Font } from '@react-pdf/re
 // Bus
 import { useInfoFields } from '../../../bus/client/infoFields';
 import { useContactField } from '../../../bus/client/contactFields';
-import { useLanguageFields } from '../../../bus/client/languageFields';
 
 // Components
 import {
@@ -26,8 +25,8 @@ import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { PreviewSlills } from '../../components/Preview/Skills';
-import { useSkillFields } from '../../../bus/client/skillFields';
 import { useThemes } from '../../../bus/client/themes';
+import { useFields } from '../../../bus/client/fields';
 
 // Styles
 const styles = StyleSheet.create({
@@ -72,12 +71,12 @@ Font.register(
 export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
     const { contactFields } = useContactField();
-    const { languageFields } = useLanguageFields();
     // const { awardFields } = useAwardFields();
     const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
-    const { skillFields } = useSkillFields();
-
+    const {
+        fields: { languages, skills },
+    } = useFields();
     const { themes } = useThemes();
 
     return (
@@ -110,20 +109,15 @@ export const PdfViewer = () => {
                                 theme = { themes }
                             />
                             <PreviewLanguage
-                                languages = { languageFields }
+                                languages = { languages }
                                 theme = { themes }
                             />
                         </View>
                         <View style = { [ styles.contentSecondColumn, { backgroundColor: themes.accent.avatar }] }>
-                            {
-                                skillFields.length > 0
-                                    ? (
-                                        <PreviewSlills
-                                            skills = { skillFields }
-                                            theme = { themes }
-                                        />
-                                    ) : null
-                            }
+                            <PreviewSlills
+                                skills = { skills }
+                                theme = { themes }
+                            />
                             {
                                 educationFields.length > 0
                                     ? (

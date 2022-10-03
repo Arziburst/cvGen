@@ -27,46 +27,46 @@ const styles = StyleSheet.create({
 import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
 // Types
-import { Skill } from '../../../../bus/client/skillFields/types';
 import { ThemeType } from '../../../../assets/themes/type';
+import { FieldBlockState } from '../../../../bus/client/fields/types';
 
 type PropTypes = {
-    skills: Array<Skill>;
+    skills: FieldBlockState;
     theme: ThemeType;
 }
 
 export const PreviewSlills = ({ skills, theme }: PropTypes) => {
-    return (
-        <View style = { [ styles.box, { color: theme.main.color }] }>
-            <PdfGenTitle
-                deccorElemColor = { theme.main.bgSecond }
-                text = 'Skills'
-                titleColor = { theme.main.color }
+    if (skills) {
+        return (
+            <View style = { [ styles.box, { color: theme.main.color }] }>
+                <PdfGenTitle
+                    deccorElemColor = { theme.main.bgSecond }
+                    text = 'Skills'
+                    titleColor = { theme.main.color }
 
-            />
-            <ul style = {{
-                ...styles.skillsList, backgroundColor: theme.accent.bgSecond,
-            }}>
-                {
-                    skills.map(({
-                        id, skill,
-                    }) => {
-                        if (skill.length > 0) {
+                />
+                <ul style = {{
+                    ...styles.skillsList, backgroundColor: theme.accent.bgSecond,
+                }}>
+                    {
+                        skills.items.map(({
+                            id, text,
+                        }) => {
                             return (
                                 <li
                                     key = { id }
                                     style = {{ ...styles.skillBox, backgroundColor: theme.accent.bg }}>
                                     <Text style = { styles.text }>
-                                        {skill}
+                                        {text}
                                     </Text>
                                 </li>
                             );
-                        }
+                        })
+                    }
+                </ul>
+            </View>
+        );
+    }
 
-                        return null;
-                    })
-                }
-            </ul>
-        </View>
-    );
+    return null;
 };

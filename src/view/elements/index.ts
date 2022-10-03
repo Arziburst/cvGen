@@ -6,3 +6,4 @@ export * from './removeBtn';
 export * from './addBtn';
 export * from './logo';
 export * from './navLink';
+export * from './addFieldBlockBtn';

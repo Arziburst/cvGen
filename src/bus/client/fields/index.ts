@@ -1,23 +1,45 @@
 // Slice
 import { fieldsActions, initialState } from './slice';
 
+// Types
+import * as types from './types';
+
 // Tools
 import { useSelector, useDispatch } from '../../../tools/hooks';
 
 // Data
-import { languageData } from './data';
+import { uniqueId } from 'lodash';
 
 export const useFields = () => {
     const fields = useSelector(({ fields }) => fields);
     const dispatch = useDispatch();
-    console.log(languageData);
 
-    const testFieldFunc = (fieldName: keyof typeof initialState) => {
-        dispatch(fieldsActions.addField({ type: fieldName, data: languageData }));
+    const addFieldBlock = ({ type, data }: types.FieldOptions) => {
+        dispatch(fieldsActions.addFieldBlock({ type, data }));
+    };
+
+    const removeFieldBlock = (fieldName: keyof typeof initialState) => {
+        dispatch(fieldsActions.removeFieldBlock(fieldName));
+    };
+
+    const changeFieldTextInBlock = ({ type, data, id }: types.FieldData) => {
+        dispatch(fieldsActions.changeFieldText({ type, data, id }));
+    };
+
+    const removeFieldInBlock = ({ type, id }: types.FieldRemoveOptions) => {
+        dispatch(fieldsActions.removeFieldInBlock({ type, id }));
+    };
+
+    const addFieldInBlock = ({ type, data }: types.FieldAddOptions) => {
+        dispatch(fieldsActions.addFieldInBlock({ data: { ...data, id: uniqueId() }, type }));
     };
 
     return {
         fields,
-        testFieldFunc,
+        addFieldBlock,
+        removeFieldBlock,
+        changeFieldTextInBlock,
+        removeFieldInBlock,
+        addFieldInBlock,
     };
 };

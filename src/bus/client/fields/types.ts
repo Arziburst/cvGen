@@ -1,23 +1,50 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
+// Slice
+import { initialState } from './slice';
+
 // Types
-type Language = {
+export type Field = {
     id: string
-    language: string
+    text: string
 }
 
-export type LanguageBlock = {
+export type FieldsBlock = {
     title: string
     id: string
-    items: Array<Language>
+    items: Array<Field>
 }
 
-type LanguagesState = null | LanguageBlock;
+export type FieldBlockState = null | FieldsBlock
+
+export type FieldData = {
+    type: FieldsType
+    id: string
+    data: string
+}
+
+export type FieldsType = keyof typeof initialState;
+
+export type FieldOptions = {
+    type: FieldsType
+    data: FieldsBlock
+}
+
+export type FieldRemoveOptions = {
+    type: FieldsType
+    id: string
+}
+
+export type FieldAddOptions = {
+    type: FieldsType
+    data: Field
+}
 
 // State
 export type FieldsState = {
-    languages: LanguagesState
+    languages: FieldBlockState
+    skills: FieldBlockState
 }
 
 // Contracts

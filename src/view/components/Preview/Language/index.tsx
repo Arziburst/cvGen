@@ -27,51 +27,51 @@ const styles = StyleSheet.create({
 });
 
 // Types
-import { Language } from '../../../../bus/client/languageFields/types';
 import { ThemeType } from '../../../../assets/themes/type';
+import { FieldBlockState  } from '../../../../bus/client/fields/types';
 
 type PropTypes = {
-    languages: Array<Language>;
+    languages: FieldBlockState;
     theme: ThemeType;
 }
 
 export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
-    return (
-        <View style = { styles.section }>
-            <PdfGenTitle
-                deccorElemColor = { theme.main.bgSecond }
-                text = 'Languages'
-                titleColor = { theme.main.color }
+    if (languages) {
+        return (
+            <View style = { styles.section }>
+                <PdfGenTitle
+                    deccorElemColor = { theme.main.bgSecond }
+                    text = 'Languages'
+                    titleColor = { theme.main.color }
 
-            />
-            <ul style = { styles.list }>
-                {
-                    languages?.map(({ id, language }) => {
-                        if (language.length === 0) {
-                            return null;
-                        }
+                />
+                <ul style = { styles.list }>
+                    {
+                        languages.items.map(({ id, text }) => {
+                            return (
+                                <li
+                                    key = { id }
+                                    style = { styles.item }>
+                                    <Text
+                                        break
+                                        wrap
+                                        style = { [
+                                            styles.text, {
+                                                color:           theme.main.color,
+                                                backgroundColor: theme.accent.bgPrimary,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                        {text}
+                                    </Text>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </View>
+        );
+    }
 
-                        return (
-                            <li
-                                key = { id }
-                                style = { styles.item }>
-                                <Text
-                                    break
-                                    wrap
-                                    style = { [
-                                        styles.text, {
-                                            color:           theme.main.color,
-                                            backgroundColor: theme.accent.bgPrimary,
-                                            padding:         '5px 3px',
-                                        },
-                                    ] }>
-                                    {language}
-                                </Text>
-                            </li>
-                        );
-                    })
-                }
-            </ul>
-        </View>
-    );
+    return null;
 };

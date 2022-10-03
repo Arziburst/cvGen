@@ -1,5 +1,5 @@
 // Core
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 // Bus
 import { useTogglesRedux } from '../../../bus/client/toggles';
@@ -7,8 +7,6 @@ import { useContactField } from '../../../bus/client/contactFields';
 import { useInfoFields } from '../../../bus/client/infoFields';
 import { useAwardFields } from '../../../bus/client/awardFields';
 import { useEducationField } from '../../../bus/client/educationFields';
-import { useLanguageFields } from '../../../bus/client/languageFields';
-import { useSkillFields } from '../../../bus/client/skillFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 
 // Elements
@@ -21,7 +19,6 @@ import {
     ConstructorInfo,
     ConstructorContacts,
     ConstructorLanguages,
-    // ConstructorAward,
     ConstructorEducation,
     ConstructorExperience,
     ConstructorSkills,
@@ -33,7 +30,6 @@ import { svgResetIcon, svgPdfIcon } from '../../../assets/images';
 
 // Styles
 import * as S from './styles';
-import { useFields } from '../../../bus/client/fields';
 
 const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();
@@ -41,15 +37,7 @@ const Constructor: FC = () => {
     const { resetInfoFieldsToInithial } = useInfoFields();
     const { resetAwardFieldsToInithialState } = useAwardFields();
     const { resetEducationFieldsToInithialState } = useEducationField();
-    const { resetLanguageFieldsToInithialState } = useLanguageFields();
-    const { resetSkillFieldsToInithialState } = useSkillFields();
     const { resetExperienceFieldsToInithialState } = useExperienceFields();
-
-    const { testFieldFunc } = useFields();
-
-    useEffect(() => {
-        testFieldFunc('languages');
-    }, []);
 
     return (
         <>
@@ -70,8 +58,6 @@ const Constructor: FC = () => {
                                 resetInfoFieldsToInithial();
                                 resetAwardFieldsToInithialState();
                                 resetEducationFieldsToInithialState();
-                                resetLanguageFieldsToInithialState();
-                                resetSkillFieldsToInithialState();
                                 resetExperienceFieldsToInithialState();
                             } }>
                             <S.SvgIcon src = { svgResetIcon } />

@@ -7,11 +7,9 @@ import storage from 'redux-persist/lib/storage';
 import toggles from '../../bus/client/toggles';
 import infoFields from '../../bus/client/infoFields/slice';
 import contactFields from '../../bus/client/contactFields/slice';
-import languageFields from '../../bus/client/languageFields/slice';
 import experienceFields from '../../bus/client/experienceFields/slice';
 import educationFields from '../../bus/client/educationFields/slice';
 import awardFields from '../../bus/client/awardFields/slice';
-import skillFields from '../../bus/client/skillFields/slice';
 import themes from '../../bus/client/themes/slice';
 import fields from '../../bus/client/fields/slice';
 // Middleware
@@ -28,11 +26,9 @@ const persistConfig = {
 };
 
 const combinedReducers = combineReducers({
-    skillFields,
     toggles,
     infoFields,
     contactFields,
-    languageFields,
     experienceFields,
     educationFields,
     awardFields,

@@ -1,1 +1,2 @@
-export { default as languageData } from './language.json';
+export { languageInithialState } from './language';
+export { skillsInithialState } from './skills';

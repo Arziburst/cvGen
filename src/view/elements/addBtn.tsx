@@ -5,19 +5,24 @@ import styled from 'styled-components';
 const AddButton = styled.button`
   position: relative;
   display: block;
-  width: 23px;
-  height: 23px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.main.bgSecond};
-  border-radius: 50%;
+  font-family: 'NotoSans400';
+  font-weight: 400;
+  font-size: 13px;
+  color: ${({ theme }) => theme.main.bgSecond};
+  text-decoration: underline;
+  padding-left: 25px;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
-    background-color: ${({ theme }) => theme.main.colorSecond};
+    background-color: ${({ theme }) => theme.main.bgSecond};
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
   }
 
   &::before {
@@ -43,13 +48,15 @@ const AddButton = styled.button`
 type propsType = {
     handleAddFunc: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
+    text?: string
 }
 
-export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false }) => {
+export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false, text }) => {
     return (
         <AddButton
             disabled = { disabled }
-            onClick = { handleAddFunc }
-        />
+            onClick = { handleAddFunc }>
+            Added {text} field
+        </AddButton>
     );
 };
