@@ -26,12 +26,14 @@ const styles = StyleSheet.create({
 // Elements
 import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
+// Interface
+import { FieldsBlock } from '../../../../bus/client/fields/types';
+
 // Types
 import { ThemeType } from '../../../../assets/themes/type';
-import { FieldBlockState } from '../../../../bus/client/fields/types';
 
 type PropTypes = {
-    skills: FieldBlockState;
+    skills: FieldsBlock | null;
     theme: ThemeType;
 }
 

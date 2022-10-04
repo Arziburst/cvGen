@@ -3,6 +3,7 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
 // Slice
 import { initialState } from './slice';
+import { educationInithialState } from './data';
 
 // Types
 export type Field = {
@@ -10,25 +11,46 @@ export type Field = {
     text: string
 }
 
-export type FieldsBlock = {
-    title: string
+export type EducationField = {
     id: string
-    items: Array<Field>
+    date: {
+        id: string
+        text: string
+    },
+    degree: {
+        id: string
+        text: string
+    },
+    description: {
+        id: string
+        text: string
+    },
 }
 
-export type FieldBlockState = null | FieldsBlock
+interface infoField {
+    title: string
+    id: string
+}
+
+export interface FieldsBlock extends infoField {
+    items: Array<Field>
+}
+export interface EducationFieldsBlock extends infoField {
+    items: Array<EducationField>
+}
 
 export type FieldData = {
     type: FieldsType
     id: string
     data: string
+    fieldName?: keyof typeof educationInithialState.items[0]
 }
 
 export type FieldsType = keyof typeof initialState;
 
 export type FieldOptions = {
     type: FieldsType
-    data: FieldsBlock
+    data: FieldsBlock | EducationFieldsBlock
 }
 
 export type FieldRemoveOptions = {
@@ -38,14 +60,14 @@ export type FieldRemoveOptions = {
 
 export type FieldAddOptions = {
     type: FieldsType
-    data: Field
+    data: Field | EducationFieldsBlock
 }
 
 // State
 export type FieldsState = {
-    languages: FieldBlockState
-    skills: FieldBlockState
-    educations: FieldBlockState
+    languages: FieldsBlock | null
+    skills: FieldsBlock | null
+    educations: EducationFieldsBlock | null
 }
 
 // Contracts

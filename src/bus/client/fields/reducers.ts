@@ -1,4 +1,9 @@
+// Core
+// import { find } from 'lodash';
+
 // Types
+// import logger from 'redux-logger';
+import { uniqueId } from 'lodash';
 import * as types from './types';
 
 export const addFieldBlock: types.BaseContact<types.FieldOptions> = (state, action) => {
@@ -37,6 +42,16 @@ export const changeFieldText: types.BaseContact<types.FieldData> = (state, actio
                 ...field,
                 items: field.items.map((item) => {
                     if (item.id === action.payload.id) {
+                        if (action.payload.fieldName) {
+                            return {
+                                ...item,
+                                [ action.payload.fieldName ]: {
+                                    id:   uniqueId(),               //TODO Fix here. Replace lodash method in item id
+                                    text: action.payload.data,
+                                },
+                            };
+                        }
+
                         return {
                             ...item,
                             text: action.payload.data,

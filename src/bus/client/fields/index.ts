@@ -22,8 +22,8 @@ export const useFields = () => {
         dispatch(fieldsActions.removeFieldBlock(fieldName));
     };
 
-    const changeFieldTextInBlock = ({ type, data, id }: types.FieldData) => {
-        dispatch(fieldsActions.changeFieldText({ type, data, id }));
+    const changeFieldTextInBlock = ({ type, data, id, fieldName }: types.FieldData) => {
+        dispatch(fieldsActions.changeFieldText({ type, data, id, fieldName }));
     };
 
     const removeFieldInBlock = ({ type, id }: types.FieldRemoveOptions) => {
@@ -41,5 +41,6 @@ export const useFields = () => {
         changeFieldTextInBlock,
         removeFieldInBlock,
         addFieldInBlock,
+        // changeFieldEducationInBlock,
     };
 };
