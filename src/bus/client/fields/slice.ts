@@ -8,9 +8,8 @@ import * as types from './types';
 import * as reducers from './reducers';
 
 export const initialState = {
-    languages:  null,
-    skills:     null,
-    educations: null,
+    languages: null,
+    skills:    null,
 };
 
 export const fieldsSlice = createSlice<types.FieldsState, typeof reducers>({

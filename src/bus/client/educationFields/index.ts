@@ -1,51 +1,45 @@
-// Core
-import { uniqueId } from 'lodash';
+// Slice
+import { educationFieldsActions } from './slice';
 
 // Tools
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
-// Actions
-import { educationFieldsActions, initialState } from './slice';
-
 // Types
-import { OptionsValue } from './types';
+import { EducationFieldValue } from './types';
+import { educationInithialState } from './data';
+import { uniqueId } from 'lodash';
 
 export const useEducationField = () => {
     const dispatch = useDispatch();
     const educationFields = useSelector(({ educationFields }) => educationFields);
 
-    const handleChangeEducationDateField = (data: OptionsValue) => {
-        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'date', value: data }));
+    const handleChangeFieldInBlock = (data: EducationFieldValue) => {
+        dispatch(educationFieldsActions.educationFieldCreatorAction(data));
     };
 
-    const handleChangeEducationDegreeField = (data: OptionsValue) => {
-        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'degree', value: data }));
+    const removeEducationBlockField = (id: string) => {
+        dispatch(educationFieldsActions.removeEducationBlockField(id));
     };
 
-    const handleChangeEducationDescriptionField = (data: OptionsValue) => {
-        dispatch(educationFieldsActions.educationFieldCreatorAction({ type: 'description', value: data }));
+    const addEducation = () => {
+        dispatch(educationFieldsActions.addEducation(educationInithialState));
     };
 
-    const removeEducationField = (id: string) => {
-        dispatch(educationFieldsActions.removeEducationField(id));
-    };
-
-    const addEducationField = () => {
-        dispatch(educationFieldsActions.addEducationField(uniqueId()));
+    const addEducationBlock = () => {
+        dispatch(educationFieldsActions.addEducationBlock({ id: uniqueId(), data: educationInithialState[ 0 ] }));
     };
 
     const resetEducationFieldsToInithialState = () => {
-        dispatch(educationFieldsActions.resetEducationFields(initialState));
+        dispatch(educationFieldsActions.resetEducationFields());
     };
 
 
     return {
         educationFields,
-        handleChangeEducationDateField,
-        handleChangeEducationDegreeField,
-        handleChangeEducationDescriptionField,
-        removeEducationField,
-        addEducationField,
+        handleChangeFieldInBlock,
+        removeEducationBlockField,
+        addEducation,
+        addEducationBlock,
         resetEducationFieldsToInithialState,
     };
 };

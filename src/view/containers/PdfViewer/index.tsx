@@ -118,15 +118,10 @@ export const PdfViewer = () => {
                                 skills = { skills }
                                 theme = { themes }
                             />
-                            {
-                                educationFields.length > 0
-                                    ? (
-                                        <PreviewEducation
-                                            education = { educationFields }
-                                            theme = { themes }
-                                        />
-                                    ) : null
-                            }
+                            <PreviewEducation
+                                education = { educationFields }
+                                theme = { themes }
+                            />
                             {
                                 experienceFields.length > 0
                                     ? (

@@ -28,74 +28,78 @@ import { Education } from '../../../../bus/client/educationFields/types';
 import { ThemeType } from '../../../../assets/themes/type';
 
 type PropTypes = {
-    education: Array<Education>;
+    education: Array<Education> | null;
     theme: ThemeType;
 }
 
 export const PreviewEducation = ({ education, theme }: PropTypes) => {
-    return (
-        <View style = { [ styles.box, { color: theme.main.color }] }>
-            <PdfGenTitle
-                deccorElemColor = { theme.main.bgSecond }
-                text = 'Education'
-                titleColor = { theme.main.color }
-            />
-            <ul>
-                {
-                    education.map(({
-                        date, degree,
-                        description, id,
-                    }) => {
-                        return (
-                            <li
-                                key = { id }
-                                style = {{
-                                    marginBottom: 4,
-                                }}>
-                                <View style = { styles.boxText }>
-                                    <Text style = { styles.AboutBoxText }>
-                                        Date:
-                                    </Text>
-                                    <Text style = { [
-                                        styles.text, {
-                                            backgroundColor: theme.accent.bgSecond,
-                                            padding:         '5px 3px',
-                                        },
-                                    ] }>
-                                        {date}
-                                    </Text>
-                                </View>
-                                <View style = { styles.boxText }>
-                                    <Text style = { styles.AboutBoxText }>
-                                        Degree / Location:
-                                    </Text>
-                                    <Text style = { [
-                                        styles.text, {
-                                            backgroundColor: theme.accent.bgSecond,
-                                            padding:         '5px 3px',
-                                        },
-                                    ] }>
-                                        {degree}
-                                    </Text>
-                                </View>
-                                <View style = { styles.boxText }>
-                                    <Text style = { styles.AboutBoxText }>
-                                        About Degree:
-                                    </Text>
-                                    <Text style = { [
-                                        styles.text, {
-                                            backgroundColor: theme.accent.bgSecond,
-                                            padding:         '5px 3px',
-                                        },
-                                    ] }>
-                                        {description}
-                                    </Text>
-                                </View>
-                            </li>
-                        );
-                    })
-                }
-            </ul>
-        </View>
-    );
+    if (education) {
+        return (
+            <View style = { [ styles.box, { color: theme.main.color }] }>
+                <PdfGenTitle
+                    deccorElemColor = { theme.main.bgSecond }
+                    text = 'Education'
+                    titleColor = { theme.main.color }
+                />
+                <ul>
+                    {
+                        education.map(({
+                            date, degree,
+                            description, id,
+                        }) => {
+                            return (
+                                <li
+                                    key = { id }
+                                    style = {{
+                                        marginBottom: 4,
+                                    }}>
+                                    <View style = { styles.boxText }>
+                                        <Text style = { styles.AboutBoxText }>
+                                            Date:
+                                        </Text>
+                                        <Text style = { [
+                                            styles.text, {
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                            {date.text}
+                                        </Text>
+                                    </View>
+                                    <View style = { styles.boxText }>
+                                        <Text style = { styles.AboutBoxText }>
+                                            Degree / Location:
+                                        </Text>
+                                        <Text style = { [
+                                            styles.text, {
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                            {degree.text}
+                                        </Text>
+                                    </View>
+                                    <View style = { styles.boxText }>
+                                        <Text style = { styles.AboutBoxText }>
+                                            About Degree:
+                                        </Text>
+                                        <Text style = { [
+                                            styles.text, {
+                                                backgroundColor: theme.accent.bgSecond,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                            {description.text}
+                                        </Text>
+                                    </View>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </View>
+        );
+    }
+
+    return null;
 };

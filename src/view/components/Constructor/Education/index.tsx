@@ -2,11 +2,8 @@
 import React, { FC } from 'react';
 
 // Bus
-import { useFields } from '../../../../bus/client/fields';
 import { useThemes } from '../../../../bus/client/themes';
-
-// Slice
-import { educationInithialState } from '../../../../bus/client/fields/data';
+import { useEducationField } from '../../../../bus/client/educationFields';
 
 // Elements
 import { AppDebounceInput, AppDebounceTextarea, Title, AddBtn, RemoveBtn, AddFieldBlockBtn } from '../../../elements';
@@ -16,24 +13,25 @@ import * as S from './styles';
 
 export const ConstructorEducation: FC = () => {
     const {
-        fields: { educations },
-        addFieldBlock,
-        changeFieldTextInBlock,
-        addFieldInBlock,
-        removeFieldBlock,
-    } = useFields();
+        educationFields,
+        addEducationBlock,
+        handleChangeFieldInBlock,
+        removeEducationBlockField,
+        addEducation,
+        resetEducationFieldsToInithialState,
+    } = useEducationField();
 
     const { themes } = useThemes();
 
-    if (educations) {
+    if (educationFields) {
         return (
             <S.Container>
                 <S.Box>
                     <Title text = 'Education' />
-                    <AddBtn handleAddFunc = { () => addFieldInBlock({ data: educationInithialState, type: 'educations' }) } />
+                    <RemoveBtn handleRemoveFunc = { () => resetEducationFieldsToInithialState() } />
                 </S.Box>
                 <S.List>
-                    {educations.items.map((education) => {
+                    {educationFields.map((education) => {
                         const {
                             date, degree,
                             description, id,
@@ -46,7 +44,11 @@ export const ConstructorEducation: FC = () => {
                                         <AppDebounceInput
                                             decorElemColor = { themes.accent.bgSecond }
                                             handleChangeFunc = { (event) => {
-                                                changeFieldTextInBlock({ id, data: event.target.value, type: 'educations', fieldName: 'date' });
+                                                handleChangeFieldInBlock({
+                                                    id, data:
+                                                    { id: date.id, text: event.target.value },
+                                                    type: 'date',
+                                                });
                                             } }
                                             placeholder = '2007 - 2013'
                                             value = { date.text }
@@ -56,7 +58,11 @@ export const ConstructorEducation: FC = () => {
                                         <AppDebounceInput
                                             decorElemColor = { themes.accent.bgSecond }
                                             handleChangeFunc = { (event) => {
-                                                changeFieldTextInBlock({ id, data: event.target.value, type: 'educations', fieldName: 'degree' });
+                                                handleChangeFieldInBlock({
+                                                    id,
+                                                    data: { id: date.id, text: event.target.value },
+                                                    type: 'degree',
+                                                });
                                             } }
                                             placeholder = 'Degree name / University Location'
                                             value = { degree.text }
@@ -66,17 +72,25 @@ export const ConstructorEducation: FC = () => {
                                         <AppDebounceTextarea
                                             decorElemColor = { themes.accent.bgSecond }
                                             handleChangeFunc = { (event) => {
-                                                changeFieldTextInBlock({ id, data: event.target.value, type: 'educations', fieldName: 'description' });
+                                                handleChangeFieldInBlock({
+                                                    id,
+                                                    data: { id: date.id, text: event.target.value },
+                                                    type: 'description',
+                                                });
                                             } }
                                             placeholder = 'Tell about your degree'
                                             value = { description.text }
                                         />
                                     </S.Description>
                                 </S.Wrapper>
-                                <RemoveBtn handleRemoveFunc = { () => removeFieldBlock('educations') } />
+                                <RemoveBtn handleRemoveFunc = { () => removeEducationBlockField(id) } />
                             </S.Item>
                         );
                     })}
+                    <AddBtn
+                        handleAddFunc = { () => addEducationBlock() }
+                        text = 'education'
+                    />
                 </S.List>
             </S.Container>
         );
@@ -85,7 +99,7 @@ export const ConstructorEducation: FC = () => {
     return (
         <AddFieldBlockBtn
             fieldName = 'educations'
-            handleAddFunc = { () => addFieldBlock({ type: 'educations', data: educationInithialState }) }
+            handleAddFunc = { () => addEducation() }
         />
     );
 };
