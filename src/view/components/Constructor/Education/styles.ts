@@ -7,6 +7,9 @@ export const Container = styled.section`
 
 export const Wrapper = styled.div`
   flex: 1 1 auto;
+  button:last-child {
+    margin: 0 auto;
+  }
 `;
 
 export const List = styled.ul`
@@ -14,12 +17,11 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  display: flex;
-  align-items: center;
   margin-bottom: 10px;
 `;
 
 export const Date = styled.div`
+  position: relative;
   display: block;
   margin-bottom: 10px;
   input, textarea {
@@ -31,6 +33,15 @@ export const Date = styled.div`
     font-weight: 500;
     font-size: 15px;
     color: ${({ theme }) => theme.main.color};
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    border-radius: 0;
   }
 `;
 

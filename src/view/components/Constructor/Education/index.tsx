@@ -119,8 +119,8 @@ export const ConstructorEducation: FC = () => {
                                                 </S.Description>
                                             ) : null
                                     }
+                                    <RemoveBtn handleRemoveFunc = { () => removeEducationBlockField(id) } />
                                 </S.Wrapper>
-                                <RemoveBtn handleRemoveFunc = { () => removeEducationBlockField(id) } />
                             </S.Item>
                         );
                     })}
