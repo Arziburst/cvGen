@@ -76,7 +76,7 @@ export const ConstructorEducation: FC = () => {
                                                         handleChangeFunc = { (event) => {
                                                             handleChangeFieldInBlock({
                                                                 id,
-                                                                data: { id: date.id, text: event.target.value },
+                                                                data: { id: degree.id, text: event.target.value },
                                                                 type: 'degree',
                                                             });
                                                         } }
@@ -102,7 +102,7 @@ export const ConstructorEducation: FC = () => {
                                                         handleChangeFunc = { (event) => {
                                                             handleChangeFieldInBlock({
                                                                 id,
-                                                                data: { id: date.id, text: event.target.value },
+                                                                data: { id: description.id, text: event.target.value },
                                                                 type: 'description',
                                                             });
                                                         } }
