@@ -5,7 +5,7 @@ import { educationFieldsActions } from './slice';
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Types
-import { EducationFieldValue } from './types';
+import { EducationFieldValue, OptionsRemoveFieldInBlock } from './types';
 import { educationInithialState } from './data';
 import { uniqueId } from 'lodash';
 
@@ -19,6 +19,10 @@ export const useEducationField = () => {
 
     const removeEducationBlockField = (id: string) => {
         dispatch(educationFieldsActions.removeEducationBlockField(id));
+    };
+
+    const removeEducationFieldInBlock = (data: OptionsRemoveFieldInBlock) => {
+        dispatch(educationFieldsActions.removeEducationFieldInBlock(data));
     };
 
     const addEducation = () => {
@@ -41,6 +45,7 @@ export const useEducationField = () => {
         addEducation,
         addEducationBlock,
         resetEducationFieldsToInithialState,
+        removeEducationFieldInBlock,
     };
 };
 

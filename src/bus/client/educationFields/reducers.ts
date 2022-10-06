@@ -29,6 +29,39 @@ export const removeEducationBlockField: types.BaseContact<string> = (state, acti
     return state;
 };
 
+export const removeEducationFieldInBlock: types.BaseContact<types.OptionsRemoveFieldInBlock> = (state, action) => {
+    if (state && state.length === 0) {
+        return null;
+    }
+
+    if (state !== null) {
+        const array = state
+            .map(
+                (education) => {
+                    if (education.id === action.payload.id) {
+                        return {
+                            ...education,
+                            [ action.payload.type ]: null,
+                        };
+                    }
+
+                    return education;
+                },
+            )
+            .filter(
+                ({ degree, date, description }) => {
+                    const isNullibleValues = degree === null && date === null && description === null;
+
+                    return !isNullibleValues;
+                },
+            );
+
+        return array.length === 0 ? null : array;
+    }
+
+    return state;
+};
+
 export const addEducation: types.BaseContact<Array<types.Education>>
 = (state, action) => {
     if (state === null) {

@@ -43,5 +43,10 @@ export type OptionsSecond = {
     id: string;
     data: Education
 }
+
+export type OptionsRemoveFieldInBlock = {
+    id: string;
+    type: keyof typeof educationInithialState[0];
+}
 // Contracts
 export type BaseContact<T = Options> = CaseReducer<EducationState, PayloadAction<T>>

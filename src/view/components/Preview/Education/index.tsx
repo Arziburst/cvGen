@@ -53,45 +53,60 @@ export const PreviewEducation = ({ education, theme }: PropTypes) => {
                                     style = {{
                                         marginBottom: 4,
                                     }}>
-                                    <View style = { styles.boxText }>
-                                        <Text style = { styles.AboutBoxText }>
-                                            Date:
-                                        </Text>
-                                        <Text style = { [
-                                            styles.text, {
-                                                backgroundColor: theme.accent.bgSecond,
-                                                padding:         '5px 3px',
-                                            },
-                                        ] }>
-                                            {date.text}
-                                        </Text>
-                                    </View>
-                                    <View style = { styles.boxText }>
-                                        <Text style = { styles.AboutBoxText }>
-                                            Degree / Location:
-                                        </Text>
-                                        <Text style = { [
-                                            styles.text, {
-                                                backgroundColor: theme.accent.bgSecond,
-                                                padding:         '5px 3px',
-                                            },
-                                        ] }>
-                                            {degree.text}
-                                        </Text>
-                                    </View>
-                                    <View style = { styles.boxText }>
-                                        <Text style = { styles.AboutBoxText }>
-                                            About Degree:
-                                        </Text>
-                                        <Text style = { [
-                                            styles.text, {
-                                                backgroundColor: theme.accent.bgSecond,
-                                                padding:         '5px 3px',
-                                            },
-                                        ] }>
-                                            {description.text}
-                                        </Text>
-                                    </View>
+                                    {
+                                        date
+                                            ? (
+                                                <View style = { styles.boxText }>
+                                                    <Text style = { styles.AboutBoxText }>
+                                                        Date:
+                                                    </Text>
+                                                    <Text style = { [
+                                                        styles.text, {
+                                                            backgroundColor: theme.accent.bgSecond,
+                                                            padding:         '5px 3px',
+                                                        },
+                                                    ] }>
+                                                        {date.text}
+                                                    </Text>
+                                                </View>
+                                            ) : null
+                                    }
+                                    {
+                                        degree
+                                            ? (
+                                                <View style = { styles.boxText }>
+                                                    <Text style = { styles.AboutBoxText }>
+                                                        Degree / Location:
+                                                    </Text>
+                                                    <Text style = { [
+                                                        styles.text, {
+                                                            backgroundColor: theme.accent.bgSecond,
+                                                            padding:         '5px 3px',
+                                                        },
+                                                    ] }>
+                                                        {degree.text}
+                                                    </Text>
+                                                </View>
+                                            ) : null
+                                    }
+                                    {
+                                        description
+                                            ? (
+                                                <View style = { styles.boxText }>
+                                                    <Text style = { styles.AboutBoxText }>
+                                                        About Degree:
+                                                    </Text>
+                                                    <Text style = { [
+                                                        styles.text, {
+                                                            backgroundColor: theme.accent.bgSecond,
+                                                            padding:         '5px 3px',
+                                                        },
+                                                    ] }>
+                                                        {description.text}
+                                                    </Text>
+                                                </View>
+                                            ) : null
+                                    }
                                 </li>
                             );
                         })

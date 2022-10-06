@@ -62,7 +62,7 @@ type propsType = {
 export const AddFieldBlockBtn: FC<propsType> = ({ handleAddFunc, fieldName }) => {
     return (
         <AddFieldButton onClick = { handleAddFunc }>
-            Added {fieldName} block
+            Added {fieldName}
         </AddFieldButton>
     );
 };

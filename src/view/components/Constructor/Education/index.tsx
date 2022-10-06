@@ -19,6 +19,7 @@ export const ConstructorEducation: FC = () => {
         removeEducationBlockField,
         addEducation,
         resetEducationFieldsToInithialState,
+        removeEducationFieldInBlock,
     } = useEducationField();
 
     const { themes } = useThemes();
@@ -40,48 +41,84 @@ export const ConstructorEducation: FC = () => {
                         return (
                             <S.Item key = { id }>
                                 <S.Wrapper>
-                                    <S.Date>
-                                        <AppDebounceInput
-                                            decorElemColor = { themes.accent.bgSecond }
-                                            handleChangeFunc = { (event) => {
-                                                handleChangeFieldInBlock({
-                                                    id, data:
-                                                    { id: date.id, text: event.target.value },
-                                                    type: 'date',
-                                                });
-                                            } }
-                                            placeholder = '2007 - 2013'
-                                            value = { date.text }
-                                        />
-                                    </S.Date>
-                                    <S.Degree>
-                                        <AppDebounceInput
-                                            decorElemColor = { themes.accent.bgSecond }
-                                            handleChangeFunc = { (event) => {
-                                                handleChangeFieldInBlock({
-                                                    id,
-                                                    data: { id: date.id, text: event.target.value },
-                                                    type: 'degree',
-                                                });
-                                            } }
-                                            placeholder = 'Degree name / University Location'
-                                            value = { degree.text }
-                                        />
-                                    </S.Degree>
-                                    <S.Description>
-                                        <AppDebounceTextarea
-                                            decorElemColor = { themes.accent.bgSecond }
-                                            handleChangeFunc = { (event) => {
-                                                handleChangeFieldInBlock({
-                                                    id,
-                                                    data: { id: date.id, text: event.target.value },
-                                                    type: 'description',
-                                                });
-                                            } }
-                                            placeholder = 'Tell about your degree'
-                                            value = { description.text }
-                                        />
-                                    </S.Description>
+                                    {
+                                        date
+                                            ? (
+                                                <S.Date>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInBlock({
+                                                                id, data:
+                                                                { id: date.id, text: event.target.value },
+                                                                type: 'date',
+                                                            });
+                                                        } }
+                                                        placeholder = '2007 - 2013'
+                                                        value = { date.text }
+                                                    />
+                                                    <RemoveBtn
+                                                        handleRemoveFunc = { () => removeEducationFieldInBlock({
+                                                            id,
+                                                            type: 'date',
+                                                        }) }
+                                                        key = { id }
+                                                    />
+                                                </S.Date>
+                                            ) : null
+                                    }
+                                    {
+                                        degree
+                                            ? (
+                                                <S.Degree>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInBlock({
+                                                                id,
+                                                                data: { id: date.id, text: event.target.value },
+                                                                type: 'degree',
+                                                            });
+                                                        } }
+                                                        placeholder = 'Degree name / University Location'
+                                                        value = { degree.text }
+                                                    />
+                                                    <RemoveBtn
+                                                        handleRemoveFunc = { () => removeEducationFieldInBlock({
+                                                            id,
+                                                            type: 'degree',
+                                                        }) }
+                                                        key = { id }
+                                                    />
+                                                </S.Degree>
+                                            ) : null
+                                    }
+                                    {
+                                        description
+                                            ? (
+                                                <S.Description>
+                                                    <AppDebounceTextarea
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInBlock({
+                                                                id,
+                                                                data: { id: date.id, text: event.target.value },
+                                                                type: 'description',
+                                                            });
+                                                        } }
+                                                        placeholder = 'Tell about your degree'
+                                                        value = { description.text }
+                                                    />
+                                                    <RemoveBtn
+                                                        handleRemoveFunc = { () => removeEducationFieldInBlock({
+                                                            id,
+                                                            type: 'description',
+                                                        }) }
+                                                        key = { id }
+                                                    />
+                                                </S.Description>
+                                            ) : null
+                                    }
                                 </S.Wrapper>
                                 <RemoveBtn handleRemoveFunc = { () => removeEducationBlockField(id) } />
                             </S.Item>
