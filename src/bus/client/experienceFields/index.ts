@@ -1,120 +1,65 @@
-// Core
-import { uniqueId, cloneDeep } from 'lodash';
-
 // Action
 import { experienceFieldsActions } from './slice';
 
 // Slice
-import { initialState } from './slice';
+import { experienceInithialState, descriptionInihialState } from './data';
 
 // Tools
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Types
-import { ExperienceData } from './types';
+import { ExperienceCreatorAction, ExperienceDescrCreatorAction } from './types';
+import { uniqueId } from 'lodash';
 
 export const useExperienceFields = () => {
     const dispatch = useDispatch();
-
     const experienceFields = useSelector(({ experienceFields }) => experienceFields);
 
-    const handleSetExperiencePositionField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'position', value: data }));
+    const handleChangeFieldInExperienceBlock = (data: ExperienceCreatorAction) => {
+        dispatch(experienceFieldsActions.experienceFieldCreatorAction(data));
     };
 
-    const handleSetExperienceDateField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'date', value: data }));
+    const handleChangeFieldInDescrBlock = (data: ExperienceDescrCreatorAction) => {
+        dispatch(experienceFieldsActions.changeDescrFieldText(data));
     };
 
-    const handleSetExperienceLocationField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsCreatorAction({ type: 'location', value: data }));
+    const addExpeience = () => {
+        dispatch(experienceFieldsActions.addExperience(experienceInithialState));
     };
 
-    const handleSetDescrField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsDescriptionCreatorAction({ type: 'description', value: data }));
+    const addExpeienceDescr = (id: string) => {
+        dispatch(experienceFieldsActions.addExperienceDescr({ data: descriptionInihialState, id }));
     };
 
-    const handleSetProjectNameField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'name', value: data }));
+
+    const addDescrFieldInBlock = (id: string) => {
+        dispatch(experienceFieldsActions.addDescrFieldInBlock({ data: {
+            ...descriptionInihialState,
+            id: uniqueId(),
+        }, id }));
     };
 
-    const handleSetProjectCustomerField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'customer', value: data }));
+    const removeDesc = (id: string) => {
+        dispatch(experienceFieldsActions.removeDescr(id));
     };
 
-    const handleSetProjectDurationField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'duration', value: data }));
+    const removeDescFieldInBlock = (data: ExperienceDescrCreatorAction) => {
+        dispatch(experienceFieldsActions.removeDescrFieldInBlock(data));
     };
 
-    const handleSetProjectRoleField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'role', value: data }));
-    };
-
-    const handleSetProjectResponsibilitiesField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'responsibilities', value: data }));
-    };
-
-    const handleSetProjectStackField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'stack', value: data }));
-    };
-
-    const handleSetProjectTeamsizeField = (data: ExperienceData) => {
-        dispatch(experienceFieldsActions.experienceFieldsProjectsCreatorAction({ type: 'teamSize', value: data }));
-    };
-
-    const removeExperienceField = (id: string) => {
-        dispatch(experienceFieldsActions.removeExperienceField(id));
-    };
-
-    const removeExperienceDescriptionField = (id: string) => {
-        dispatch(experienceFieldsActions.removeExperienceDescriptionField(id));
-    };
-
-    const cloneArray = cloneDeep(initialState);
-
-    const addExperienceField = () => {
-        dispatch(experienceFieldsActions.addExperienceField(cloneArray[ 0 ]));
-    };
-
-    const addExperienceDescriptionField = (id: string) => {
-        dispatch(experienceFieldsActions.addExperienceDescriptionField(
-            { description: { ...initialState[ 0 ].descriptionList[ 0 ], id: uniqueId() }, experienceId: id },
-        ));
-    };
-
-    const removeExperienceProjectField = (id: string) => {
-        dispatch(experienceFieldsActions.removeExperienceProjectField(id));
-    };
-
-    const addExperienceProjectField = (id: string) => {
-        dispatch(experienceFieldsActions.addExperienceProjectField(
-            { project: { ...initialState[ 0 ].projects[ 0 ], id: uniqueId() }, experienceId: id },
-        ));
-    };
-
-    const resetExperienceFieldsToInithialState = () => {
-        dispatch(experienceFieldsActions.resetExperienceFields(initialState));
+    const resetExperienceFields = () => {
+        dispatch(experienceFieldsActions.resetExperienceFields());
     };
 
     return {
         experienceFields,
-        handleSetExperiencePositionField,
-        handleSetExperienceDateField,
-        handleSetExperienceLocationField,
-        handleSetDescrField,
-        handleSetProjectNameField,
-        handleSetProjectCustomerField,
-        handleSetProjectDurationField,
-        handleSetProjectRoleField,
-        handleSetProjectResponsibilitiesField,
-        handleSetProjectStackField,
-        handleSetProjectTeamsizeField,
-        removeExperienceDescriptionField,
-        addExperienceDescriptionField,
-        removeExperienceProjectField,
-        addExperienceProjectField,
-        addExperienceField,
-        resetExperienceFieldsToInithialState,
-        removeExperienceField,
+        addExpeience,
+        resetExperienceFields,
+        handleChangeFieldInExperienceBlock,
+        addExpeienceDescr,
+        removeDesc,
+        removeDescFieldInBlock,
+        addDescrFieldInBlock,
+        handleChangeFieldInDescrBlock,
     };
 };

@@ -1,10 +1,11 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
-// Slice
-import { initialState } from './slice';
+export type ExperienceData = {
+    id: string;
+    text: string;
+}
 
-// State
 export type DescriptionList = {
     id: string;
     description: string;
@@ -12,55 +13,39 @@ export type DescriptionList = {
 
 export type Project = {
     id: string;
-    name: string;
-    customer: string;
-    duration: string;
-    role: string;
-    responsibilities: string;
-    teamSize: string;
-    stack: string;
+    name: ExperienceData;
+    customer: ExperienceData;
+    duration: ExperienceData;
+    role: ExperienceData;
+    responsibilities: ExperienceData;
+    teamSize: ExperienceData;
+    stack: ExperienceData;
 }
 
-export type ProjectData = {
-    experienceId: string
-    project: Project
+export type ExperienceFullData = {
+    id: string
+    position: ExperienceData
+    location: ExperienceData
+    date: ExperienceData
+    descriptionList: null | Array<DescriptionList>;
+    projects: null | Array<Project>;
 }
 
-export type DescriptionListData = {
-    experienceId: string
-    description: DescriptionList
+
+export type ExperienceCreatorAction = {
+    id: string
+    data: ExperienceData
+    type: 'position' | 'location' | 'date'
 }
 
-export type Experience = {
-    id: string;
-    position: string;
-    location: string;
-    date: string;
-    descriptionList: Array<DescriptionList>;
-    projects: Array<Project>;
+export type ExperienceDescrCreatorAction = {
+    id: string
+    data: DescriptionList
 }
 
-export type ExperienceFieldsState = Array<Experience>
+// State
+export type ExperienceFieldsState = Array<ExperienceFullData> | null
 
-export type ExperienceData = {
-    id: string;
-    text: string;
-}
-
-export type ExperienceOptions = {
-    type: keyof typeof initialState[0];
-    value: ExperienceData;
-}
-
-export type ExperienceDescriptionOptions = {
-    type: keyof typeof initialState[0]['descriptionList'][0];
-    value: ExperienceData;
-}
-
-export type ExperienceProjectsOptions = {
-    type: keyof typeof initialState[0]['projects'][0];
-    value: ExperienceData;
-}
 
 // Contracts
-export type BaseContact<T = ExperienceData> = CaseReducer<ExperienceFieldsState, PayloadAction<T>>
+export type BaseContact<T> = CaseReducer<ExperienceFieldsState, PayloadAction<T>>

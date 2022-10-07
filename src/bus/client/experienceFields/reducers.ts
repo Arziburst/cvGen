@@ -1,14 +1,15 @@
-// Slice
-import { uniqueId } from 'lodash';
 // Types
 import * as types from './types';
 
-export const experienceFieldsCreatorAction: types.BaseContact<types.ExperienceOptions> = (state, action) => state.map(
+export const experienceFieldCreatorAction: types.BaseContact<types.ExperienceCreatorAction>
+= (state, action) => state?.map(
     (experience) => {
-        if (experience.id === action.payload.value.id) {
+        if (experience.id === action.payload.id) {
             return {
                 ...experience,
-                [ action.payload.type ]: action.payload.value.text,
+                [ action.payload.type ]: {
+                    ...action.payload.data,
+                },
             };
         }
 
@@ -16,132 +17,95 @@ export const experienceFieldsCreatorAction: types.BaseContact<types.ExperienceOp
     },
 );
 
-export const experienceFieldsDescriptionCreatorAction: types.BaseContact<types.ExperienceDescriptionOptions>
-= (state, action) => state.map(
-    (experience) => {
-        return {
-            ...experience,
-            descriptionList: experience.descriptionList.map(
-                (description) => {
-                    if (description.id === action.payload.value.id) {
-                        return {
-                            ...description,
-                            [ action.payload.type ]: action.payload.value.text,
-                        };
-                    }
-
-                    return description;
-                },
-            ),
-
-        };
-    },
-);
-
-export const removeExperienceField: types.BaseContact<string>
-    = (state, action) => state.filter(
-        (experience) => experience.id !== action.payload,
-    );
-
-export const experienceFieldsProjectsCreatorAction: types.BaseContact<types.ExperienceProjectsOptions>
-    = (state, action) => state.map(
-        (experience) => {
+export const changeDescrFieldText: types.BaseContact<types.ExperienceDescrCreatorAction>
+    = (state, action) => state?.map((experience) => {
+        if (action.payload.id === experience.id) {
             return {
                 ...experience,
-                projects: experience.projects.map(
-                    (project) => {
-                        if (project.id === action.payload.value.id) {
+                descriptionList:
+                experience.descriptionList
+                    ? experience.descriptionList.map((descr) => {
+                        if (descr.id === action.payload.data.id) {
                             return {
-                                ...project,
-                                [ action.payload.type ]: action.payload.value.text,
+                                ...descr,
+                                description: action.payload.data.description,
                             };
                         }
 
-                        return project;
-                    },
-                ),
+                        return descr;
+                    }) : null,
             };
-        },
-    );
+        }
 
-export const removeExperienceDescriptionField: types.BaseContact<string>
-= (state, action) => state.map(
-    (experience) => {
-        return {
-            ...experience,
-            descriptionList: experience.descriptionList.filter(
-                (description) => description.id !== action.payload,
-            ),
-        };
-    },
-);
+        return experience;
+    });
 
-export const addExperienceDescriptionField: types.BaseContact<types.DescriptionListData>
-    = (state, action) => state.map(
-        (experience) => {
-            if (experience.id === action.payload.experienceId) {
-                return {
-                    ...experience,
-                    descriptionList: [ ...experience.descriptionList, action.payload.description ],
-                };
-            }
+export const addExperience: types.BaseContact<types.ExperienceFullData> = (state, action) => {
+    if (state === null) {
+        return [ action.payload ];
+    }
 
-            return experience;
-        },
-    );
-
-export const addExperienceField: types.BaseContact<types.Experience>
-    = (state, action) => [
-        ...state,
-        {
-            ...action.payload,
-            id:              uniqueId(),
-            descriptionList: action.payload.descriptionList.map((descr) => {
-                return {
-                    ...descr,
-                    id: uniqueId(),
-                };
-            }),
-            projects: action.payload.projects.map((project) => {
-                return {
-                    ...project,
-                    id: uniqueId(),
-                };
-            }),
-        },
-    ];
-
-export const addExperienceProjectField: types.BaseContact<types.ProjectData>
-    = (state, action) => state.map(
-        (experience) => {
-            if (action.payload.experienceId === experience.id) {
-                return {
-                    ...experience,
-                    projects: [ ...experience.projects, action.payload.project ],
-                };
-            }
-
-            return experience;
-        },
-    );
-
-
-export const removeExperienceProjectField: types.BaseContact<string>
-    = (state, action) => state.map(
-        (experience) => {
-            return {
-                ...experience,
-                projects: experience.projects.filter(
-                    (project) => project.id !== action.payload,
-                ),
-            };
-        },
-    );
-
-export const resetExperienceFields: types.BaseContact<types.ExperienceFieldsState> = (state, action) => {
-    // eslint-disable-next-line no-param-reassign
-    state = [ ...action.payload ];
-
-    return action.payload;
+    return state;
 };
 
+// eslint-disable-next-line max-len
+export const addExperienceDescr: types.BaseContact<types.ExperienceDescrCreatorAction> = (state, action) => state?.map((experience) => {
+    if (action.payload.id === experience.id) {
+        return {
+            ...experience,
+            descriptionList: [ action.payload.data ],
+        };
+    }
+
+    return experience;
+});
+
+// eslint-disable-next-line max-len
+export const addDescrFieldInBlock: types.BaseContact<types.ExperienceDescrCreatorAction> = (state, action) => state?.map((experience) => {
+    if (action.payload.id === experience.id) {
+        if (experience.descriptionList) {
+            return {
+                ...experience,
+                descriptionList: [ ...experience.descriptionList, action.payload.data ],
+            };
+        }
+
+        return experience;
+    }
+
+    return experience;
+});
+
+// eslint-disable-next-line max-len
+export const removeDescr: types.BaseContact<string> = (state, action) => state?.map((experience) => {
+    if (action.payload === experience.id) {
+        return {
+            ...experience,
+            descriptionList: null,
+        };
+    }
+
+    return experience;
+});
+
+// eslint-disable-next-line max-len
+export const removeDescrFieldInBlock: types.BaseContact<types.ExperienceDescrCreatorAction> = (state, action) => state?.map((experience) => {
+    if (action.payload.id === experience.id) {
+        if (experience.descriptionList) {
+            const filterArray = experience.descriptionList.filter(
+                (description) => description.id !== action.payload.data.id,
+            );
+
+            const descrListState = filterArray.length === 0 ? null : filterArray;
+
+            return {
+                ...experience,
+                descriptionList: descrListState,
+            };
+        }
+    }
+
+    return experience;
+});
+
+export const resetExperienceFields = () => null;

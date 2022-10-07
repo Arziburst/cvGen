@@ -8,90 +8,157 @@ import { useThemes } from '../../../../bus/client/themes';
 // Styles
 import * as S from './styles';
 
-// Components
-import { ConstructorProjects } from '../Projects';
+// // Components
+// import { ConstructorProjects } from '../Projects';
 
 // Elements
-import { AddBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn, Title } from '../../../elements';
+import { AddBtn, AddFieldBlockBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn, Title } from '../../../elements';
 
 export const ConstructorExperience: FC = () => {
     const {
-        experienceFields, handleSetExperiencePositionField,
-        handleSetExperienceDateField, handleSetExperienceLocationField,
-        handleSetDescrField, removeExperienceDescriptionField,
-        addExperienceDescriptionField, addExperienceField,
-        removeExperienceField,
+        experienceFields,
+        addExpeience,
+        resetExperienceFields,
+        handleChangeFieldInExperienceBlock,
+        addExpeienceDescr,
+        handleChangeFieldInDescrBlock,
+        removeDesc,
+        removeDescFieldInBlock,
+        addDescrFieldInBlock,
     } = useExperienceFields();
 
     const { themes } = useThemes();
+    if (experienceFields) {
+        return (
+            <S.Container>
+                <S.TextBox>
+                    <Title text = 'Experience' />
+                    <RemoveBtn handleRemoveFunc = { () => resetExperienceFields() } />
+                </S.TextBox>
+                <S.Inner>
+                    {experienceFields.map(({ date, location, position, id, descriptionList }) => (
+                        <S.Box key = { id }>
+                            <S.Info>
+                                <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgSecond }
+                                    handleChangeFunc = { (event) => {
+                                        handleChangeFieldInExperienceBlock({
+                                            data: {
+                                                ...position,
+                                                text: event.target.value,
+                                            },
+                                            id,
+                                            type: 'position',
+                                        });
+                                    } }
+                                    placeholder = 'Your position'
+                                    value = { position.text }
+                                />
+                                <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgSecond }
+                                    handleChangeFunc = { (event) => {
+                                        handleChangeFieldInExperienceBlock({
+                                            data: {
+                                                ...date,
+                                                text: event.target.value,
+                                            },
+                                            id,
+                                            type: 'date',
+                                        });
+                                    } }
+                                    placeholder = 'Sept. 2016 - Present'
+                                    value = { date.text }
+                                />
+                            </S.Info>
+                            <S.Location>
+                                <AppDebounceInput
+                                    decorElemColor = { themes.accent.bgSecond }
+                                    handleChangeFunc = { (event) => {
+                                        handleChangeFieldInExperienceBlock({
+                                            data: {
+                                                ...location,
+                                                text: event.target.value,
+                                            },
+                                            id,
+                                            type: 'location',
+                                        });
+                                    } }
+                                    placeholder = 'Company & location'
+                                    value = { location.text }
+                                />
+                            </S.Location>
+                            {
+                                console.log(descriptionList)
+
+                            }
+                            {
+                                descriptionList
+                                    ? (
+                                        <S.List>
+                                            <S.TitleBox>
+                                                <Title text = 'Description' />
+                                                <RemoveBtn handleRemoveFunc = { () => removeDesc(id) } />
+                                            </S.TitleBox>
+                                            {descriptionList.map((description) => (
+                                                <S.Item key = { description.id }>
+                                                    <AppDebounceTextarea
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInDescrBlock({
+                                                                data: {
+                                                                    id:          description.id,
+                                                                    description: event.target.value,
+                                                                },
+                                                                id,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Your descr'
+                                                        value = { description.description }
+                                                    />
+                                                    <RemoveBtn
+                                                        handleRemoveFunc = { () => removeDescFieldInBlock({
+                                                            data: {
+                                                                id:          description.id,
+                                                                description: description.description,
+                                                            },
+                                                            id,
+                                                        }) }
+                                                        key = { id }
+                                                    />
+                                                </S.Item>
+                                            ))}
+                                            <AddBtn
+                                                handleAddFunc = { () => addDescrFieldInBlock(id) }
+                                                text = 'description'
+                                            />
+                                        </S.List>
+                                    ) : (
+                                        <AddFieldBlockBtn
+                                            fieldName = 'description'
+                                            handleAddFunc = { () => addExpeienceDescr(id) }
+                                        />
+                                    )
+                            }
+
+                            {/* // <ConstructorProjects
+                            //     experienceId = { experience.id }
+                            //     projects = { experience.projects }
+                            // />
+                            // <S.RemoveBtn onClick = { () => removeExperienceField(experience.id) }></S.RemoveBtn>
+ */}
+
+
+                        </S.Box>
+                    ))}
+                </S.Inner>
+            </S.Container>
+        );
+    }
 
     return (
-        <S.Container>
-            <S.TextBox>
-                <Title text = 'Experience' />
-                <AddBtn handleAddFunc = { () => addExperienceField() } />
-            </S.TextBox>
-            <S.Inner>
-                {experienceFields.map((experience) => (
-                    <S.Box key = { experience.id }>
-                        <S.Info>
-                            <AppDebounceInput
-                                decorElemColor = { themes.accent.bgSecond }
-                                handleChangeFunc = { (event) => {
-                                    handleSetExperiencePositionField({ id: experience.id, text: event.target.value });
-                                } }
-                                placeholder = 'Your position'
-                                value = { experience.position }
-                            />
-                            <AppDebounceInput
-                                decorElemColor = { themes.accent.bgSecond }
-                                handleChangeFunc = { (event) => {
-                                    handleSetExperienceDateField({ id: experience.id, text: event.target.value });
-                                }  }
-                                placeholder = 'Sept. 2016 - Present'
-                                value = { experience.date }
-                            />
-                        </S.Info>
-                        <S.Location>
-                            <AppDebounceInput
-                                decorElemColor = { themes.accent.bgSecond }
-                                handleChangeFunc = { (event) => {
-                                    handleSetExperienceLocationField({ id: experience.id, text: event.target.value });
-                                } }
-                                placeholder = 'Company & location'
-                                value = { experience.location }
-                            />
-                        </S.Location>
-                        <S.List>
-                            <S.TitleBox>
-                                <Title text = 'Description' />
-                                <AddBtn handleAddFunc = { () => addExperienceDescriptionField(experience.id) } />
-                            </S.TitleBox>
-                            {experience.descriptionList.map((description) => (
-                                <S.Item key = { description.id }>
-                                    <AppDebounceTextarea
-                                        decorElemColor = { themes.accent.bgSecond }
-                                        handleChangeFunc = { (event) => {
-                                            handleSetDescrField({ id: description.id, text: event.target.value });
-                                        } }
-                                        placeholder = 'Your descr'
-                                        value = { description.description }
-                                    />
-                                    <RemoveBtn handleRemoveFunc = { () => {
-                                        removeExperienceDescriptionField(description.id);
-                                    } }
-                                    />
-                                </S.Item>
-                            ))}
-                        </S.List>
-                        <ConstructorProjects
-                            experienceId = { experience.id }
-                            projects = { experience.projects }
-                        />
-                        <S.RemoveBtn onClick = { () => removeExperienceField(experience.id) }></S.RemoveBtn>
-                    </S.Box>
-                ))}
-            </S.Inner>
-        </S.Container>
+        <AddFieldBlockBtn
+            fieldName = 'experiences'
+            handleAddFunc = { () => addExpeience() }
+        />
     );
 };

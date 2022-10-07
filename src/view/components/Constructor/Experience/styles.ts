@@ -103,12 +103,11 @@ export const RemoveBtn = styled.button`
 `;
 
 export const Item = styled.li`
-  display: flex;
-  align-items: center;
   position: relative;
   margin-bottom: 15px;
 
   textarea {
+    padding-right: 20px;
     background-color: ${({ theme }) => theme.accent.bgSecond};
   }
 
@@ -116,12 +115,19 @@ export const Item = styled.li`
     font-size: 14px;
     color: ${({ theme }) => theme.main.color};
   }
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
 export const Box = styled.div`
   margin-bottom: 15px;
   position: relative;
-
 `;
 
 export const TitleBox = styled.div`

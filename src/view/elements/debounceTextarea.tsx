@@ -18,7 +18,7 @@ export const TextareaBox = styled.label<{ isFocusElem: boolean }>`
     width: 100%;
     resize: none;
     color: ${({ theme }) => theme.main.color};
-    height: 100px;
+    height: 80px;
     border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.accent.bg : ''};
 
     &:focus,

@@ -13,7 +13,7 @@ import {
     PreviewContacts,
     PreviewInfo,
     PreviewLanguage,
-    PreviewExperience,
+    // PreviewExperience,
 } from '../../components';
 
 // Assets
@@ -21,7 +21,7 @@ import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
 // import { useAwardFields } from '../../../bus/client/awardFields';
-import { useExperienceFields } from '../../../bus/client/experienceFields';
+// import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { PreviewSlills } from '../../components/Preview/Skills';
@@ -72,7 +72,7 @@ export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
     const { contactFields } = useContactField();
     // const { awardFields } = useAwardFields();
-    const { experienceFields } = useExperienceFields();
+    // const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
     const {
         fields: { languages, skills },
@@ -122,7 +122,7 @@ export const PdfViewer = () => {
                                 education = { educationFields }
                                 theme = { themes }
                             />
-                            {
+                            {/* {
                                 experienceFields.length > 0
                                     ? (
                                         <PreviewExperience
@@ -130,7 +130,7 @@ export const PdfViewer = () => {
                                             theme = { themes }
                                         />
                                     ) : null
-                            }
+                            } */}
                         </View>
                     </View>
                 </Page>
