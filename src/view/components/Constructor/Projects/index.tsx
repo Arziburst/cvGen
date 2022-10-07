@@ -1,137 +1,289 @@
-export const eee = '1';
-// // Core
-// import React, { FC } from 'react';
+// Core
+import React, { FC } from 'react';
 
-// // Bus
-// import { useExperienceFields } from '../../../../bus/client/experienceFields';
-// import { useThemes } from '../../../../bus/client/themes';
+// Bus
+import { useExperienceFields } from '../../../../bus/client/experienceFields';
+import { useThemes } from '../../../../bus/client/themes';
 
-// // Styles
-// import * as S from './styles';
+// Styles
+import * as S from './styles';
 
-// // Elements
-// import { AddBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn } from '../../../elements';
+// Elements
+import { AddBtn, AddFieldBlockBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn } from '../../../elements';
 
-// // Types
-// import { Project } from '../../../../bus/client/experienceFields/types';
+// Types
+import { Project } from '../../../../bus/client/experienceFields/types';
 
-// type propTypes = {
-//     projects: Array<Project>
-//     experienceId: string;
-// }
+type propTypes = {
+    projects: Array<Project> | null
+    experienceId: string;
+}
 
-// export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) => {
-//     const {
-//         handleSetProjectCustomerField,
-//         handleSetProjectDurationField, handleSetProjectNameField,
-//         handleSetProjectResponsibilitiesField, handleSetProjectRoleField,
-//         handleSetProjectStackField, handleSetProjectTeamsizeField,
-//         addExperienceProjectField, removeExperienceProjectField,
-//     } = useExperienceFields();
+export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) => {
+    const {
+        addExpeienceProject,
+        removeProjectBlock,
+        removeProject,
+        handleChangeFieldInProjectBlock,
+        addExpeienceProjectBlock,
+        removeProjectFieldInBlock,
+    } = useExperienceFields();
 
-//     const { themes } = useThemes();
+    const { themes } = useThemes();
 
-//     return (
-//         <S.Container>
-//             <S.TitleBox>
-//                 <S.Title>
-//                     Projects
-//                 </S.Title>
-//                 <AddBtn handleAddFunc = { () => addExperienceProjectField(experienceId) } />
-//             </S.TitleBox>
-//             <S.List>
-//                 {projects.map((project) => {
-//                     const {
-//                         customer, duration, name, id,
-//                         responsibilities, role, stack, teamSize,
-//                     } = project;
+    if (projects) {
+        return (
+            <S.Container>
+                <S.TitleBox>
+                    <S.Title>
+                        Projects
+                    </S.Title>
+                    <RemoveBtn handleRemoveFunc = { () => removeProject(experienceId) } />
+                </S.TitleBox>
+                <S.List>
+                    {projects.map((project) => {
+                        const {
+                            customer, duration, name, id,
+                            responsibilities, role, stack, teamSize,
+                        } = project;
 
-//                     return (
-//                         <S.Item key = { id }>
-//                             <S.Wrapper>
-//                                 <S.Name>
-//                                     <AppDebounceInput
-//                                         decorElemColor = { themes.accent.bgSecond }
-//                                         handleChangeFunc = { (event) => {
-//                                             handleSetProjectNameField({ id, text: event.target.value });
-//                                         } }
-//                                         placeholder = 'Name'
-//                                         value = { name }
-//                                     />
-//                                 </S.Name>
-//                                 <S.Customer>
-//                                     <AppDebounceInput
-//                                         decorElemColor = { themes.accent.bgSecond }
-//                                         handleChangeFunc = { (event) => {
-//                                             handleSetProjectCustomerField({ id, text: event.target.value });
-//                                         } }
-//                                         placeholder = 'Customer'
-//                                         value = { customer }
-//                                     />
-//                                 </S.Customer>
-//                                 <S.Box>
-//                                     <S.Role>
-//                                         <AppDebounceInput
-//                                             decorElemColor = { themes.accent.bgSecond }
-//                                             handleChangeFunc = { (event) => {
-//                                                 handleSetProjectRoleField({ id, text: event.target.value });
-//                                             } }
-//                                             placeholder = 'Role'
-//                                             value = { role }
-//                                         />
-//                                     </S.Role>
-//                                     <S.Duration>
-//                                         <AppDebounceInput
-//                                             decorElemColor = { themes.accent.bgSecond }
-//                                             handleChangeFunc = { (event) => {
-//                                                 handleSetProjectDurationField(
-//                                                     { id, text: event.target.value },
-//                                                 );
-//                                             } }
-//                                             placeholder = 'Duration'
-//                                             value = { duration }
-//                                         />
-//                                     </S.Duration>
-//                                 </S.Box>
-//                                 <S.Responsibilities>
-//                                     <AppDebounceTextarea
-//                                         decorElemColor = { themes.accent.bgSecond }
-//                                         handleChangeFunc = { (event) => {
-//                                             handleSetProjectResponsibilitiesField(
-//                                                 { id, text: event.target.value },
-//                                             );
-//                                         } }
-//                                         placeholder = 'Responsibilities'
-//                                         value = { responsibilities }
-//                                     />
-//                                 </S.Responsibilities>
-//                                 <S.TeamSize>
-//                                     <AppDebounceInput
-//                                         decorElemColor = { themes.accent.bgSecond }
-//                                         handleChangeFunc = { (event) => {
-//                                             handleSetProjectTeamsizeField({ id, text: event.target.value });
-//                                         } }
-//                                         placeholder = 'Teamsize'
-//                                         value = { teamSize }
-//                                     />
-//                                 </S.TeamSize>
-//                                 <S.Stack>
-//                                     <AppDebounceInput
-//                                         decorElemColor = { themes.accent.bgSecond }
-//                                         handleChangeFunc = { (event) => {
-//                                             handleSetProjectStackField({ id, text: event.target.value });
-//                                         } }
-//                                         placeholder = 'Stack'
-//                                         value = { stack }
-//                                     />
-//                                 </S.Stack>
-//                             </S.Wrapper>
-//                             <RemoveBtn handleRemoveFunc = { () => removeExperienceProjectField(id) } />
-//                         </S.Item>
-//                     );
-//                 })
-//                 }
-//             </S.List>
-//         </S.Container>
-//     );
-// };
+                        return (
+                            <S.Item key = { id }>
+                                <S.Wrapper>
+                                    {
+                                        name
+                                            ? (
+                                                <S.Name>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInProjectBlock({
+                                                                type: 'name',
+                                                                data: {
+                                                                    id:   name.id,
+                                                                    text: event.target.value,
+                                                                },
+                                                                id: experienceId,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Name'
+                                                        value = { name.text }
+                                                    />
+                                                    <RemoveBtn handleRemoveFunc = { () => removeProjectFieldInBlock({
+                                                        experienceId,
+                                                        projectId: id,
+                                                        type:      'name',
+                                                    }) }
+                                                    />
+                                                </S.Name>
+                                            )
+                                            : null
+                                    }
+                                    {
+                                        customer
+                                            ? (
+                                                <S.Customer>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInProjectBlock({
+                                                                type: 'customer',
+                                                                data: {
+                                                                    id:   customer.id,
+                                                                    text: event.target.value,
+                                                                },
+                                                                id: experienceId,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Customer'
+                                                        value = { customer.text }
+                                                    />
+                                                    <RemoveBtn handleRemoveFunc = { () => removeProjectFieldInBlock({
+                                                        experienceId,
+                                                        projectId: id,
+                                                        type:      'customer',
+                                                    }) }
+                                                    />
+                                                </S.Customer>
+                                            )
+                                            : null
+                                    }
+
+                                    <S.Box>
+                                        {
+                                            role
+                                                ? (
+                                                    <S.Role>
+                                                        <AppDebounceInput
+                                                            decorElemColor = { themes.accent.bgSecond }
+                                                            handleChangeFunc = { (event) => {
+                                                                handleChangeFieldInProjectBlock({
+                                                                    type: 'role',
+                                                                    data: {
+                                                                        id:   role.id,
+                                                                        text: event.target.value,
+                                                                    },
+                                                                    id: experienceId,
+                                                                });
+                                                            } }
+                                                            placeholder = 'Role'
+                                                            value = { role.text }
+                                                        />
+                                                        <RemoveBtn handleRemoveFunc = {
+                                                            () => removeProjectFieldInBlock({
+                                                                experienceId,
+                                                                projectId: id,
+                                                                type:      'role',
+                                                            }) }
+                                                        />
+                                                    </S.Role>
+                                                )
+                                                : null
+                                        }
+                                        {
+                                            duration
+                                                ? (
+                                                    <S.Duration>
+                                                        <AppDebounceInput
+                                                            decorElemColor = { themes.accent.bgSecond }
+                                                            handleChangeFunc = { (event) => {
+                                                                handleChangeFieldInProjectBlock({
+                                                                    type: 'duration',
+                                                                    data: {
+                                                                        id:   duration.id,
+                                                                        text: event.target.value,
+                                                                    },
+                                                                    id: experienceId,
+                                                                });
+                                                            } }
+                                                            placeholder = 'Duration'
+                                                            value = { duration.text }
+                                                        />
+                                                        <RemoveBtn handleRemoveFunc = {
+                                                            () => removeProjectFieldInBlock({
+                                                                experienceId,
+                                                                projectId: id,
+                                                                type:      'duration',
+                                                            }) }
+                                                        />
+                                                    </S.Duration>
+                                                )
+                                                : null
+                                        }
+                                    </S.Box>
+                                    {
+                                        responsibilities
+                                            ? (
+                                                <S.Responsibilities>
+                                                    <AppDebounceTextarea
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInProjectBlock({
+                                                                type: 'responsibilities',
+                                                                data: {
+                                                                    id:   responsibilities.id,
+                                                                    text: event.target.value,
+                                                                },
+                                                                id: experienceId,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Responsibilities'
+                                                        value = { responsibilities.text }
+                                                    />
+                                                    <RemoveBtn handleRemoveFunc = { () => removeProjectFieldInBlock({
+                                                        experienceId,
+                                                        projectId: id,
+                                                        type:      'responsibilities',
+                                                    }) }
+                                                    />
+                                                </S.Responsibilities>
+                                            )
+                                            : null
+                                    }
+                                    {
+                                        teamSize
+                                            ? (
+                                                <S.TeamSize>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInProjectBlock({
+                                                                type: 'teamSize',
+                                                                data: {
+                                                                    id:   teamSize.id,
+                                                                    text: event.target.value,
+                                                                },
+                                                                id: experienceId,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Teamsize'
+                                                        value = { teamSize.text }
+                                                    />
+                                                    <RemoveBtn handleRemoveFunc = { () => removeProjectFieldInBlock({
+                                                        experienceId,
+                                                        projectId: id,
+                                                        type:      'teamSize',
+                                                    }) }
+                                                    />
+                                                </S.TeamSize>
+                                            )
+                                            : null
+                                    }
+                                    {
+                                        stack
+                                            ? (
+                                                <S.Stack>
+                                                    <AppDebounceInput
+                                                        decorElemColor = { themes.accent.bgSecond }
+                                                        handleChangeFunc = { (event) => {
+                                                            handleChangeFieldInProjectBlock({
+                                                                type: 'stack',
+                                                                data: {
+                                                                    id:   stack.id,
+                                                                    text: event.target.value,
+                                                                },
+                                                                id: experienceId,
+                                                            });
+                                                        } }
+                                                        placeholder = 'Stack'
+                                                        value = { stack.text }
+                                                    />
+                                                    <RemoveBtn handleRemoveFunc = { () => removeProjectFieldInBlock({
+                                                        experienceId,
+                                                        projectId: id,
+                                                        type:      'stack',
+                                                    }) }
+                                                    />
+                                                </S.Stack>
+                                            )
+                                            : null
+                                    }
+                                </S.Wrapper>
+                                <S.BtnBox>
+                                    <RemoveBtn
+                                        handleRemoveFunc = { () => removeProjectBlock({
+                                            data: project,
+                                            id:   experienceId,
+                                        }) }
+                                    />
+                                </S.BtnBox>
+                                <AddBtn
+                                    handleAddFunc = { () => addExpeienceProjectBlock(experienceId) }
+                                    text = 'project'
+                                />
+                            </S.Item>
+                        );
+                    })
+                    }
+                </S.List>
+            </S.Container>
+        );
+    }
+
+    return (
+        <AddFieldBlockBtn
+            fieldName = 'experience projects'
+            handleAddFunc = { () => addExpeienceProject(experienceId) }
+        />
+    );
+};

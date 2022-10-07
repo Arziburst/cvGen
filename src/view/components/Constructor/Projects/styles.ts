@@ -57,11 +57,15 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  display: flex;
-  align-items: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid ${({ theme }) => theme.main.color};
+`;
+
+export const BtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 `;
 
 export const Box = styled.div`

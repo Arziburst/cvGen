@@ -8,8 +8,8 @@ import { useThemes } from '../../../../bus/client/themes';
 // Styles
 import * as S from './styles';
 
-// // Components
-// import { ConstructorProjects } from '../Projects';
+// Components
+import { ConstructorProjects } from '../Projects';
 
 // Elements
 import { AddBtn, AddFieldBlockBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn, Title } from '../../../elements';
@@ -36,7 +36,7 @@ export const ConstructorExperience: FC = () => {
                     <RemoveBtn handleRemoveFunc = { () => resetExperienceFields() } />
                 </S.TextBox>
                 <S.Inner>
-                    {experienceFields.map(({ date, location, position, id, descriptionList }) => (
+                    {experienceFields.map(({ date, location, position, id, descriptionList, projects }) => (
                         <S.Box key = { id }>
                             <S.Info>
                                 <AppDebounceInput
@@ -134,20 +134,15 @@ export const ConstructorExperience: FC = () => {
                                         </S.List>
                                     ) : (
                                         <AddFieldBlockBtn
-                                            fieldName = 'description'
+                                            fieldName = 'experience description'
                                             handleAddFunc = { () => addExpeienceDescr(id) }
                                         />
                                     )
                             }
-
-                            {/* // <ConstructorProjects
-                            //     experienceId = { experience.id }
-                            //     projects = { experience.projects }
-                            // />
-                            // <S.RemoveBtn onClick = { () => removeExperienceField(experience.id) }></S.RemoveBtn>
- */}
-
-
+                            <ConstructorProjects
+                                experienceId = { id }
+                                projects = { projects }
+                            />
                         </S.Box>
                     ))}
                 </S.Inner>

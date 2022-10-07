@@ -43,6 +43,23 @@ export type ExperienceDescrCreatorAction = {
     data: DescriptionList
 }
 
+export type ExperienceProjectCreatorAction = {
+    id: string
+    data: Project
+}
+
+export type ExperienceProjectRemoveField = {
+    experienceId: string
+    projectId: string
+    type: 'name' | 'customer' | 'duration' | 'role' | 'responsibilities' | 'teamSize' | 'stack'
+}
+
+export type ExperienceProjectCreatorActionSecond = {
+    type: 'name' | 'customer' | 'duration' | 'role' | 'responsibilities' | 'teamSize' | 'stack'
+    id: string
+    data: ExperienceData
+}
+
 // State
 export type ExperienceFieldsState = Array<ExperienceFullData> | null
 
