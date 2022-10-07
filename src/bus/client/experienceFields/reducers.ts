@@ -20,16 +20,20 @@ export const experienceFieldCreatorAction: types.BaseContact<types.ExperienceCre
 export const projectFieldCreatorAction: types.BaseContact<types.ExperienceProjectCreatorActionSecond>
     = (state, action) => state?.map(
         (experience) => {
-            if (experience.id === action.payload.id && experience.projects !== null) {
+            if (experience.id === action.payload.experienceId && experience.projects !== null) {
                 return {
                     ...experience,
                     projects: experience.projects.map((project) => {
-                        return {
-                            ...project,
-                            [ action.payload.type ]: {
-                                ...action.payload.data,
-                            },
-                        };
+                        if (project.id === action.payload.projectId) {
+                            return {
+                                ...project,
+                                [ action.payload.type ]: {
+                                    ...action.payload.data,
+                                },
+                            };
+                        }
+
+                        return project;
                     }),
 
                 };

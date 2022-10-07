@@ -49,12 +49,14 @@ type propsType = {
     handleAddFunc: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     text?: string
+    style?: React.CSSProperties
 }
 
-export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false, text }) => {
+export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false, text, style }) => {
     return (
         <AddButton
             disabled = { disabled }
+            style =  { style }
             onClick = { handleAddFunc }>
             Added {text} field
         </AddButton>

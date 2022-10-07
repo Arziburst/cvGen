@@ -80,27 +80,69 @@ export const Box = styled.div`
   }
 `;
 
-export const Name = styled.h4`
+export const Name = styled.div`
   margin-bottom: 10px;
+  position: relative;
+
   input, p {
     font-family: 'NotoSans500';
     font-weight: 500;
   }
+  
+  button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
-export const Customer = styled.h5`
+export const Customer = styled.div`
   margin-bottom: 10px;
+    position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
-export const Duration = styled.time`
+export const Duration = styled.div`
+  position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
-export const Role = styled.h6`
+export const Role = styled.div`
   margin-right: 10px;
+  position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
 export const Responsibilities = styled.div`
   margin-bottom: 10px;
+    position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
   textarea {
     color: ${({ theme }) => theme.main.color};
     font-size: 15px;
@@ -110,9 +152,25 @@ export const Responsibilities = styled.div`
 
 export const TeamSize = styled.div`
   margin-bottom: 10px;
+    position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
 export const Stack = styled.span`
+  position: relative;
+ button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
   input, p {
     font-family: 'NotoSans500';
     font-weight: 500;

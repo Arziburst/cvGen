@@ -56,7 +56,8 @@ export type ExperienceProjectRemoveField = {
 
 export type ExperienceProjectCreatorActionSecond = {
     type: 'name' | 'customer' | 'duration' | 'role' | 'responsibilities' | 'teamSize' | 'stack'
-    id: string
+    experienceId: string
+    projectId: string
     data: ExperienceData
 }
 

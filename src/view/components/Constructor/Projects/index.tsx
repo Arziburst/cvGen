@@ -63,7 +63,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                     id:   name.id,
                                                                     text: event.target.value,
                                                                 },
-                                                                id: experienceId,
+                                                                experienceId,
+                                                                projectId: id,
                                                             });
                                                         } }
                                                         placeholder = 'Name'
@@ -92,7 +93,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                     id:   customer.id,
                                                                     text: event.target.value,
                                                                 },
-                                                                id: experienceId,
+                                                                experienceId,
+                                                                projectId: id,
                                                             });
                                                         } }
                                                         placeholder = 'Customer'
@@ -123,7 +125,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                         id:   role.id,
                                                                         text: event.target.value,
                                                                     },
-                                                                    id: experienceId,
+                                                                    experienceId,
+                                                                    projectId: id,
                                                                 });
                                                             } }
                                                             placeholder = 'Role'
@@ -153,7 +156,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                         id:   duration.id,
                                                                         text: event.target.value,
                                                                     },
-                                                                    id: experienceId,
+                                                                    experienceId,
+                                                                    projectId: id,
                                                                 });
                                                             } }
                                                             placeholder = 'Duration'
@@ -184,7 +188,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                     id:   responsibilities.id,
                                                                     text: event.target.value,
                                                                 },
-                                                                id: experienceId,
+                                                                experienceId,
+                                                                projectId: id,
                                                             });
                                                         } }
                                                         placeholder = 'Responsibilities'
@@ -213,7 +218,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                     id:   teamSize.id,
                                                                     text: event.target.value,
                                                                 },
-                                                                id: experienceId,
+                                                                experienceId,
+                                                                projectId: id,
                                                             });
                                                         } }
                                                         placeholder = 'Teamsize'
@@ -242,7 +248,8 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                                                     id:   stack.id,
                                                                     text: event.target.value,
                                                                 },
-                                                                id: experienceId,
+                                                                experienceId,
+                                                                projectId: id,
                                                             });
                                                         } }
                                                         placeholder = 'Stack'
@@ -269,6 +276,7 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                 </S.BtnBox>
                                 <AddBtn
                                     handleAddFunc = { () => addExpeienceProjectBlock(experienceId) }
+                                    style = {{ marginBottom: '5px' }}
                                     text = 'project'
                                 />
                             </S.Item>

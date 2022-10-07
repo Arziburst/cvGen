@@ -129,6 +129,7 @@ export const ConstructorExperience: FC = () => {
                                             ))}
                                             <AddBtn
                                                 handleAddFunc = { () => addDescrFieldInBlock(id) }
+                                                style = {{ marginBottom: '5px' }}
                                                 text = 'description'
                                             />
                                         </S.List>

@@ -116,7 +116,7 @@ export const Item = styled.li`
     color: ${({ theme }) => theme.main.color};
   }
 
-  button {
+   button {
     position: absolute;
     right: 0;
     top: 50%;
@@ -128,6 +128,7 @@ export const Item = styled.li`
 export const Box = styled.div`
   margin-bottom: 15px;
   position: relative;
+  
 `;
 
 export const TitleBox = styled.div`
