@@ -15,67 +15,199 @@ import {
 import * as S from './styles';
 
 // Elements
-import { Title, RemoveBtn, AppDebounceInput, AddBtn } from '../../../elements';
+import { Title, RemoveBtn, AppDebounceInput, AddBtn, AddFieldBlockBtn } from '../../../elements';
 
 export const ConstructorContacts: FC = () => {
     const {
-        handleChangeContactField, removeContactField,
-        contactFields, addContactFields,
+        contactFields,
+        addContactFields,
+        handleChangeContactField,
+        removeContactField,
+        addContact,
     } = useContactField();
 
     const { themes } = useThemes();
+    const getIconSrc = (type: string): string => {
+        let iconUrl = '';
+
+        if (type === 'mail') {
+            iconUrl = svgMailIcon;
+        } else if (type === 'phone') {
+            iconUrl = svgPhoneIcon;
+        } else if (type === 'address') {
+            iconUrl = svgHomeIcon;
+        } else if (type === 'linkedin') {
+            iconUrl = svgLinkedinIcon;
+        } else if (type === 'github') {
+            iconUrl = svgGithubIcon;
+        }
+
+        return iconUrl;
+    };
+
+    if (contactFields) {
+        const {
+            address, github,
+            linkedin,
+            mail,
+            phone,
+        } = contactFields;
+
+        return (
+            <S.Container>
+                <S.Box>
+                    <Title text = 'Contacts' />
+                </S.Box>
+                <ul>
+                    <S.Item
+                        key = { phone.id }>
+                        <S.InputIcon src = { getIconSrc('phone') } />
+                        <AppDebounceInput
+                            decorElemColor = { themes.accent.bgPrimary }
+                            handleChangeFunc = { (event) => {
+                                handleChangeContactField({
+                                    data: {
+                                        ...phone,
+                                        url: event.target.value,
+                                    },
+                                    type: 'phone',
+                                });
+                            } }
+                            placeholder = { 'phone' }
+                            value = { phone.url }
+                        />
+                    </S.Item>
+                    <S.Item
+                        key = { mail.id }>
+                        <S.InputIcon src = { getIconSrc('mail') } />
+                        <AppDebounceInput
+                            decorElemColor = { themes.accent.bgPrimary }
+                            handleChangeFunc = { (event) => {
+                                handleChangeContactField({
+                                    data: {
+                                        ...mail,
+                                        url: event.target.value,
+                                    },
+                                    type: 'mail',
+                                });
+                            } }
+                            placeholder = { 'mail' }
+                            value = { mail.url }
+                        />
+                    </S.Item>
+                    {
+                        linkedin
+                            ? (
+                                <S.Item
+                                    key = { linkedin.id }>
+                                    <S.InputIcon src = { getIconSrc('linkedin') } />
+                                    <AppDebounceInput
+                                        decorElemColor = { themes.accent.bgPrimary }
+                                        handleChangeFunc = { (event) => {
+                                            handleChangeContactField({
+                                                data: {
+                                                    ...linkedin,
+                                                    url: event.target.value,
+                                                },
+                                                type: 'linkedin',
+                                            });
+                                        } }
+                                        placeholder = { 'linkedin' }
+                                        value = { linkedin.url }
+                                    />
+                                    <RemoveBtn handleRemoveFunc = { () => removeContactField('linkedin') } />
+                                </S.Item>
+                            ) : null
+                    }
+                    {
+                        address
+                            ? (
+                                <S.Item
+                                    key = { address.id }>
+                                    <S.InputIcon src = { getIconSrc('address') } />
+                                    <AppDebounceInput
+                                        decorElemColor = { themes.accent.bgPrimary }
+                                        handleChangeFunc = { (event) => {
+                                            handleChangeContactField({
+                                                data: {
+                                                    ...address,
+                                                    url: event.target.value,
+                                                },
+                                                type: 'address',
+                                            });
+                                        } }
+                                        placeholder = { 'address' }
+                                        value = { address.url }
+                                    />
+                                    <RemoveBtn handleRemoveFunc = { () => removeContactField('address') } />
+                                </S.Item>
+                            )
+                            : null
+                    }
+                    {
+                        github
+                            ? (
+                                <S.Item
+                                    key = { github.id }>
+                                    <S.InputIcon src = { getIconSrc('github') } />
+                                    <AppDebounceInput
+                                        decorElemColor = { themes.accent.bgPrimary }
+                                        handleChangeFunc = { (event) => {
+                                            handleChangeContactField({
+                                                data: {
+                                                    ...github,
+                                                    url: event.target.value,
+                                                },
+                                                type: 'github',
+                                            });
+                                        } }
+                                        placeholder = { 'github' }
+                                        value = { github.url }
+                                    />
+                                    <RemoveBtn handleRemoveFunc = { () => removeContactField('github') } />
+                                </S.Item>
+                            )
+                            : null
+                    }
+                </ul>
+                {
+                    address === null
+                        ? (
+                            <AddBtn
+                                handleAddFunc = { () => addContactFields('address') }
+                                text = 'address'
+                            />
+                        )
+                        : null
+                }
+                {
+                    github === null
+                        ? (
+                            <AddBtn
+                                handleAddFunc = { () => addContactFields('github') }
+                                text = 'github'
+                            />
+                        )
+                        : null
+                }
+                {
+                    linkedin === null
+                        ? (
+                            <AddBtn
+                                handleAddFunc = { () => addContactFields('linkedin') }
+                                text = 'linkedin'
+                            />
+                        )
+                        : null
+                }
+            </S.Container>
+        );
+    }
 
     return (
-        <S.Container>
-            <S.Box>
-                <Title text = 'Contacts' />
-                <AddBtn
-                    disabled = { contactFields.length === 5 }
-                    handleAddFunc = { () => addContactFields() }
-                />
-            </S.Box>
-            <ul>
-                {contactFields.map((elem) => {
-                    const getIconSrc = (type: string): string => {
-                        let iconUrl = '';
-
-                        if (type === 'mail') {
-                            iconUrl = svgMailIcon;
-                        } else if (type === 'phone') {
-                            iconUrl = svgPhoneIcon;
-                        } else if (type === 'address') {
-                            iconUrl = svgHomeIcon;
-                        } else if (type === 'Linkedin') {
-                            iconUrl = svgLinkedinIcon;
-                        } else if (type === 'Github') {
-                            iconUrl = svgGithubIcon;
-                        }
-
-                        return iconUrl;
-                    };
-
-                    return (
-                        <S.Item
-                            key = { elem.id }>
-                            <S.InputIcon src = { getIconSrc(elem.id) } />
-                            <AppDebounceInput
-                                decorElemColor = { themes.accent.bgPrimary }
-                                handleChangeFunc = { (event) => {
-                                    handleChangeContactField({ ...elem, url: event.target.value });
-                                } }
-                                placeholder = { elem.id }
-                                value = { elem.url }
-                            />
-                            {
-                                elem.id === 'mail' || elem.id === 'address'
-                                    ? null
-                                    : <RemoveBtn handleRemoveFunc = { () => removeContactField(elem.id) } />
-                            }
-                        </S.Item>
-                    );
-                })
-                }
-            </ul>
-        </S.Container>
+        <AddFieldBlockBtn
+            fieldName = 'contacts'
+            handleAddFunc = { () => addContact() }
+        />
     );
 };

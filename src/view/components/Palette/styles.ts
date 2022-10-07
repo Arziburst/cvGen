@@ -55,7 +55,7 @@ export const Item = styled.li`
 export const DecorItem = styled.span`
   width: 30px;
   height: 30px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.main.bgSecond};
   border-radius: 5px;
   margin-left: 10px;
 `;

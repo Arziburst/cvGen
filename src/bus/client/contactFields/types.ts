@@ -1,19 +1,33 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { initialState } from './slice';
 
-// State
-export type Contact = {
-    id: string;
-    url: string;
+type ContactField = {
+    id: string
+    url: string
 }
 
-export type ContactsState = Array<Contact>;
+export type Contacts = {
+    phone: ContactField
+    mail: ContactField
+    address: ContactField | null
+    linkedin: ContactField | null
+    github: ContactField | null
+}
 
-type Options = {
-    type: keyof typeof initialState[0];
-    value: Contact;
+// State
+export type ContactsState = Contacts | null
+
+export type ContactsChangeType = 'phone' | 'mail' | 'address' | 'linkedin' | 'github'
+
+export type ContactChangeData = {
+    type: ContactsChangeType
+    url: string
+}
+
+export type ContactData = {
+    type: ContactsChangeType
+    data: ContactField
 }
 
 // Contracts
-export type BaseContact<T = Options> = CaseReducer<ContactsState, PayloadAction<T>>
+export type BaseContact<T> = CaseReducer<ContactsState, PayloadAction<T>>

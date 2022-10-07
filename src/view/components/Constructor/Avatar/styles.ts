@@ -20,10 +20,7 @@ export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-
-   @media (max-width: 992px) {
-      margin: 0 auto;
-   }
+  margin: 0 auto;
 `;
 
 export const UserAvatar = styled.img`

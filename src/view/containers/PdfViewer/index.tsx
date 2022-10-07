@@ -4,13 +4,13 @@ import { Document, Page, StyleSheet, PDFViewer, View, Font } from '@react-pdf/re
 
 // Bus
 import { useInfoFields } from '../../../bus/client/infoFields';
-import { useContactField } from '../../../bus/client/contactFields';
+// import { useContactField } from '../../../bus/client/contactFields';
 
 // Components
 import {
     PreviewAvatar,
     // PreviewAwards,
-    PreviewContacts,
+    // PreviewContacts,
     PreviewExperience,
     PreviewInfo,
     PreviewLanguage,
@@ -70,7 +70,7 @@ Font.register(
 
 export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
-    const { contactFields } = useContactField();
+    // const { contactFields } = useContactField();
     // const { awardFields } = useAwardFields();
     const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
@@ -104,10 +104,10 @@ export const PdfViewer = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { [ styles.firstColumn, { backgroundColor: themes.accent.bgSecond }] }>
-                            <PreviewContacts
+                            {/* <PreviewContacts
                                 contacts = { contactFields }
                                 theme = { themes }
-                            />
+                            /> */}
                             <PreviewLanguage
                                 languages = { languages }
                                 theme = { themes }

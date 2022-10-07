@@ -58,7 +58,7 @@ export const AddBtn: FC<propsType> = ({ handleAddFunc, disabled = false, text, s
             disabled = { disabled }
             style =  { style }
             onClick = { handleAddFunc }>
-            Added {text} field
+            Add {text} field
         </AddButton>
     );
 };

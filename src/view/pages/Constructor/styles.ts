@@ -14,7 +14,7 @@ export const Container = styled.section`
 
 export const Wrapper = styled.div`
      display: grid;
-     grid-template-columns: 0.3fr 1fr;
+     grid-template-columns: 0.5fr 1fr;
 
      &:nth-child(2) {
           flex: 1 1 auto;

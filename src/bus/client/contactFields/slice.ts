@@ -6,29 +6,7 @@ import * as types from './types';
 
 // Reducers
 import * as reducers from './reducers';
-
-export const initialState = [
-    {
-        id:  'mail',
-        url: '',
-    },
-    {
-        id:  'phone',
-        url: '',
-    },
-    {
-        id:  'address',
-        url: '',
-    },
-    {
-        id:  'Linkedin',
-        url: '',
-    },
-    {
-        id:  'Github',
-        url: '',
-    },
-];
+export const initialState = null;
 
 export const contactFieldsSlice = createSlice<types.ContactsState, typeof reducers>({
     name: 'contactFields',

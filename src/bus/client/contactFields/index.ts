@@ -1,33 +1,43 @@
 // Tools
+import { uniqueId } from 'lodash';
 import { useDispatch, useSelector } from '../../../tools/hooks';
-
-// Slice
-import { initialState } from './slice';
 
 // Actions
 import { contactFieldsActions } from './slice';
 
+// Data
+import { contactsInitialState } from './data';
 // Types
-import { Contact } from './types';
+import { ContactData, ContactsChangeType } from './types';
 
 export const useContactField = () => {
     const dispatch = useDispatch();
     const contactFields = useSelector(({ contactFields }) => contactFields);
 
-    const handleChangeContactField = (contact: Contact) => {
-        dispatch(contactFieldsActions.contactFieldCreatorAction({ type: 'url', value: contact }));
+    const addContact = () => {
+        dispatch(contactFieldsActions.addContact(contactsInitialState));
     };
 
-    const removeContactField = (id: string) => {
-        dispatch(contactFieldsActions.removeContactField(id));
+    const handleChangeContactField = (contact: ContactData) => {
+        dispatch(contactFieldsActions.contactFieldCreatorAction(contact));
+    };
+
+    const removeContactField = (type: ContactsChangeType) => {
+        dispatch(contactFieldsActions.removeContactField(type));
     };
 
     const resetContactFieldsToInithialState = () => {
-        dispatch(contactFieldsActions.resetContactFields(initialState));
+        dispatch(contactFieldsActions.resetContact());
     };
 
-    const addContactFields = () => {
-        dispatch(contactFieldsActions.addContactField(initialState));
+    const addContactFields = (type: ContactsChangeType) => {
+        dispatch(contactFieldsActions.addContactField({
+            data: {
+                id:  uniqueId(),
+                url: '',
+            },
+            type,
+        }));
     };
 
     return {
@@ -36,6 +46,7 @@ export const useContactField = () => {
         removeContactField,
         resetContactFieldsToInithialState,
         addContactFields,
+        addContact,
     };
 };
 
