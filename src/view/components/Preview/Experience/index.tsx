@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     headerText: {
         flexDirection:  'row',
         justifyContent: 'space-between',
-        fontSize:       15,
+        fontSize:       12,
         fontWeight:     500,
         marginBottom:   2,
     },
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     projectItem: {
         marginBottom:  5,
-        fontSize:      12,
+        fontSize:      10,
         paddingBottom: 2,
     },
     projectBox: {
