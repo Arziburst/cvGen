@@ -1,3 +1,4 @@
+import { initialState } from './slice';
 import * as types from './types';
 
 export const addFieldBlock: types.BaseContact<types.FieldOptions> = (state, action) => {
@@ -94,4 +95,6 @@ export const addFieldInBlock: types.BaseContact<types.FieldAddOptions> = (state,
 
     return state;
 };
+
+export const resetSkillsLangugagesFeilds = () => initialState;
 

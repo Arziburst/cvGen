@@ -9,8 +9,7 @@ import { useInfoFields } from '../../../bus/client/infoFields';
 // Components
 import {
     PreviewAvatar,
-    // PreviewAwards,
-    // PreviewContacts,
+    PreviewContacts,
     PreviewExperience,
     PreviewInfo,
     PreviewLanguage,
@@ -20,12 +19,12 @@ import {
 import NotoSans400 from '../../../assets/fonts/noto-sans-latin-400.ttf';
 import NotoSans500 from '../../../assets/fonts/noto-sans-latin-500.ttf';
 import NotoSans800 from '../../../assets/fonts/noto-sans-latin-800.ttf';
-// import { useAwardFields } from '../../../bus/client/awardFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { PreviewEducation } from '../../components/Preview/Education';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { PreviewSlills } from '../../components/Preview/Skills';
 import { useThemes } from '../../../bus/client/themes';
+import { useContactField } from '../../../bus/client/contactFields';
 import { useFields } from '../../../bus/client/fields';
 
 // Styles
@@ -70,8 +69,7 @@ Font.register(
 
 export const PdfViewer = () => {
     const { infoFields } = useInfoFields();
-    // const { contactFields } = useContactField();
-    // const { awardFields } = useAwardFields();
+    const { contactFields } = useContactField();
     const { experienceFields } = useExperienceFields();
     const { educationFields } = useEducationField();
     const {
@@ -104,10 +102,10 @@ export const PdfViewer = () => {
                     </View>
                     <View style = { styles.contentWrapper }>
                         <View style = { [ styles.firstColumn, { backgroundColor: themes.accent.bgSecond }] }>
-                            {/* <PreviewContacts
+                            <PreviewContacts
                                 contacts = { contactFields }
                                 theme = { themes }
-                            /> */}
+                            />
                             <PreviewLanguage
                                 languages = { languages }
                                 theme = { themes }

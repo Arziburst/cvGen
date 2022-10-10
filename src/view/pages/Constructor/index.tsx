@@ -5,9 +5,10 @@ import React, { FC } from 'react';
 import { useTogglesRedux } from '../../../bus/client/toggles';
 import { useContactField } from '../../../bus/client/contactFields';
 import { useInfoFields } from '../../../bus/client/infoFields';
-import { useAwardFields } from '../../../bus/client/awardFields';
+import { useFields } from '../../../bus/client/fields';
+// import { useAwardFields } from '../../../bus/client/awardFields';
+import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { useEducationField } from '../../../bus/client/educationFields';
-// import { useExperienceFields } from '../../../bus/client/experienceFields';
 
 // Elements
 import { Logo } from '../../elements';
@@ -35,9 +36,10 @@ const Constructor: FC = () => {
     const { setToggleAction } = useTogglesRedux();
     const { resetContactFieldsToInithialState } = useContactField();
     const { resetInfoFieldsToInithial } = useInfoFields();
-    const { resetAwardFieldsToInithialState } = useAwardFields();
+    // const { resetAwardFieldsToInithialState } = useAwardFields();
     const { resetEducationFieldsToInithialState } = useEducationField();
-    // const { resetExperienceFieldsToInithialState } = useExperienceFields();
+    const { resetExperienceFields } = useExperienceFields();
+    const { resetSkillsLanguages } = useFields();
 
     return (
         <>
@@ -56,9 +58,9 @@ const Constructor: FC = () => {
                             onClick = { () => {
                                 resetContactFieldsToInithialState();
                                 resetInfoFieldsToInithial();
-                                resetAwardFieldsToInithialState();
                                 resetEducationFieldsToInithialState();
-                                // resetExperienceFieldsToInithialState();
+                                resetExperienceFields();
+                                resetSkillsLanguages();
                             } }>
                             <S.SvgIcon src = { svgResetIcon } />
                             <span>Reset</span>

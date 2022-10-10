@@ -7,9 +7,9 @@ type ContactField = {
 }
 
 export type Contacts = {
-    phone: ContactField
     mail: ContactField
-    address: ContactField | null
+    address: ContactField
+    phone: ContactField | null
     linkedin: ContactField | null
     github: ContactField | null
 }

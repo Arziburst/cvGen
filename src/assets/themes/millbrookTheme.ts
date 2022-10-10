@@ -4,8 +4,8 @@ export const millbrookTheme = {
     main:    {
         color:       '#ffffff',
         colorSecond: '#ffffff',
-        bg:          '#8b6b61',
-        bgSecond:    '#321911',
+        bg:          '#A37B73',
+        bgSecond:    '#3F292B',
     },
     accent: {
         bg:        '#8b6b61',

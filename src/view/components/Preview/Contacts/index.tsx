@@ -1,87 +1,175 @@
-export const mark = '1';
-// /* eslint-disable no-nested-ternary */
-// // Core
-// import React from 'react';
-// import { View, StyleSheet, Text, Link } from '@react-pdf/renderer';
+// Core
+import React from 'react';
+import { View, StyleSheet, Text, Link } from '@react-pdf/renderer';
 
-// // Styles
-// const styles = StyleSheet.create({
-//     box: {
-//         paddingBottom: 20,
-//     },
-//     link: {
-//         flexDirection:  'row',
-//         alignItems:     'center',
-//         marginBottom:   5,
-//         textDecoration: 'none',
-//     },
-//     linkText: {
-//         fontWeight: 500,
-//         fontSize:   9,
-//         marginLeft: 4,
-//     },
-//     linkImg: {
-//         width:     13,
-//         height:    10,
-//         objectFit: 'contain',
-//     },
-// });
+// Styles
+const styles = StyleSheet.create({
+    box: {
+        paddingBottom: 20,
+    },
+    link: {
+        flexDirection:  'row',
+        alignItems:     'center',
+        marginBottom:   5,
+        textDecoration: 'none',
+    },
+    linkText: {
+        fontWeight: 500,
+        fontSize:   9,
+        marginLeft: 4,
+    },
+    linkImg: {
+        width:     13,
+        height:    10,
+        objectFit: 'contain',
+    },
+});
 
-// // Elements
-// import { PdfGenTitle } from '../../../elements/pdfGenTitle';
-// import { GithubIcon, HomeIcon, LinkedinIcon, MailIcon, PhoneIcon  } from '../../../elements/pdfGenIcons';
-// // Types
-// import { ThemeType } from '../../../../assets/themes/type';
+// Elements
+import { PdfGenTitle } from '../../../elements/pdfGenTitle';
+import { GithubIcon, HomeIcon, LinkedinIcon, MailIcon, PhoneIcon  } from '../../../elements/pdfGenIcons';
+// Types
+import { ThemeType } from '../../../../assets/themes/type';
+import { Contacts } from '../../../../bus/client/contactFields/types';
 
-// type PropTypes = {
-//     contacts: Array<Contact>;
-//     theme: ThemeType;
-// }
+type PropTypes = {
+    contacts: Contacts | null;
+    theme: ThemeType;
+}
 
-// export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
-//     return (
-//         <View style = { styles.box }>
-//             <PdfGenTitle
-//                 deccorElemColor = { theme.main.bgSecond }
-//                 text = 'Contacts'
-//                 titleColor = { theme.main.color }
+export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
+    if (contacts) {
+        return (
+            <View style = { styles.box }>
+                <PdfGenTitle
+                    deccorElemColor = { theme.main.bgSecond }
+                    text = 'Contacts'
+                    titleColor = { theme.main.color }
 
-//             />
-//             <ul>
-//                 {
-//                     contacts?.map(({ id, url }) => {
-//                         return (
-//                             <li key = { id }>
-//                                 <Link
-//                                     break
-//                                     src = { url }
-//                                     style = { [
-//                                         styles.link, {
-//                                             backgroundColor: theme.accent.bgPrimary,
-//                                             padding:         '5px 3px',
-//                                         },
-//                                     ] }>
-//                                     {
-//                                         id === 'mail'
-//                                             ? <MailIcon color = { theme.main.color } />
-//                                             : id === 'phone' ? <PhoneIcon color = { theme.main.color } />
-//                                                 : id === 'address' ? <HomeIcon color = { theme.main.color } />
-//                                                     : id === 'Linkedin' ? <LinkedinIcon color = { theme.main.color } />
-//                                                         : id === 'Github' ? <GithubIcon color = { theme.main.color } />
-//                                                             : null
-//                                     }
-//                                     <Text
-//                                         break
-//                                         wrap
-//                                         style = { [ styles.linkText, { color: theme.main.color }] }>
-//                                         {id === 'Linkedin' ? id : url}
-//                                     </Text>
-//                                 </Link>
-//                             </li>
-//                         );
-//                     })
-//                 }
-//             </ul>
-//         </View>
-//     );
-// };
+                />
+                <ul>
+                    <li>
+                        <Link
+                            break
+                            src = { contacts.address.url }
+                            style = { [
+                                styles.link, {
+                                    backgroundColor: theme.accent.bgPrimary,
+                                    padding:         '5px 3px',
+                                },
+                            ] }>
+                            <HomeIcon color = { theme.main.color } />
+                            <Text
+                                break
+                                wrap
+                                style = { [ styles.linkText, { color: theme.main.color }] }>
+                                {
+                                    contacts.address.url
+                                }
+                            </Text>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            break
+                            src = { contacts.mail.url }
+                            style = { [
+                                styles.link, {
+                                    backgroundColor: theme.accent.bgPrimary,
+                                    padding:         '5px 3px',
+                                },
+                            ] }>
+                            <MailIcon color = { theme.main.color } />
+                            <Text
+                                break
+                                wrap
+                                style = { [ styles.linkText, { color: theme.main.color }] }>
+                                {
+                                    contacts.mail.url
+                                }
+                            </Text>
+                        </Link>
+                    </li>
+                    {
+                        contacts.phone
+                            ? (
+                                <li key = { contacts.phone.id }>
+                                    <Link
+                                        break
+                                        src = { contacts.phone.url }
+                                        style = { [
+                                            styles.link, {
+                                                backgroundColor: theme.accent.bgPrimary,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                        <PhoneIcon color = { theme.main.color } />
+                                        <Text
+                                            break
+                                            wrap
+                                            style = { [ styles.linkText, { color: theme.main.color }] }>
+                                            {
+                                                contacts.phone.url
+                                            }
+                                        </Text>
+                                    </Link>
+                                </li>
+                            ) : null
+                    }
+                    {
+                        contacts.linkedin
+                            ? (
+                                <li>
+                                    <Link
+                                        break
+                                        src = { contacts.linkedin.url }
+                                        style = { [
+                                            styles.link, {
+                                                backgroundColor: theme.accent.bgPrimary,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                        <LinkedinIcon color = { theme.main.color } />
+                                        <Text
+                                            break
+                                            wrap
+                                            style = { [ styles.linkText, { color: theme.main.color }] }>
+                                            LinkedIn
+                                        </Text>
+                                    </Link>
+                                </li>
+                            ) : null
+                    }
+                    {
+                        contacts.github
+                            ? (
+                                <li>
+                                    <Link
+                                        break
+                                        src = { contacts.github.url }
+                                        style = { [
+                                            styles.link, {
+                                                backgroundColor: theme.accent.bgPrimary,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                        <GithubIcon color = { theme.main.color } />
+                                        <Text
+                                            break
+                                            wrap
+                                            style = { [ styles.linkText, { color: theme.main.color }] }>
+                                            {
+                                                contacts.github.url
+                                            }
+                                        </Text>
+                                    </Link>
+                                </li>
+                            ) : null
+                    }
+                </ul>
+            </View>
+        );
+    }
+
+    return null;
+};

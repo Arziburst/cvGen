@@ -34,6 +34,10 @@ export const useFields = () => {
         dispatch(fieldsActions.addFieldInBlock({ data: { ...data, id: uniqueId() }, type }));
     };
 
+    const resetSkillsLanguages = () => {
+        dispatch(fieldsActions.resetSkillsLangugagesFeilds());
+    };
+
     return {
         fields,
         addFieldBlock,
@@ -41,6 +45,7 @@ export const useFields = () => {
         changeFieldTextInBlock,
         removeFieldInBlock,
         addFieldInBlock,
+        resetSkillsLanguages,
         // changeFieldEducationInBlock,
     };
 };
