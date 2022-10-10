@@ -88,10 +88,6 @@ export const ConstructorExperience: FC = () => {
                                 />
                             </S.Location>
                             {
-                                console.log(descriptionList)
-
-                            }
-                            {
                                 descriptionList
                                     ? (
                                         <S.List>
