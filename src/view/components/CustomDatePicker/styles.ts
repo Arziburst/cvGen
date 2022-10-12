@@ -6,6 +6,12 @@ export const Container = styled.section`
     width: 100%;
     height: 30px;
     border: none;
+    padding-right: 25px;
+    &::placeholder {
+      color: inherit;
+      font-size: inherit;
+      opacity: 0.8;
+    }
   }
 
   & .react-datepicker__year-option {

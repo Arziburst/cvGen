@@ -8,6 +8,9 @@ import { useThemes } from '../../../../bus/client/themes';
 // Styles
 import * as S from './styles';
 
+//Components
+import { CustomDatePicker } from '../../CustomDatePicker';
+
 // Elements
 import { AddBtn, AddFieldBlockBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn } from '../../../elements';
 
@@ -147,21 +150,12 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                             duration
                                                 ? (
                                                     <S.Duration>
-                                                        <AppDebounceInput
-                                                            decorElemColor = { themes.accent.bgSecond }
-                                                            handleChangeFunc = { (event) => {
-                                                                handleChangeFieldInProjectBlock({
-                                                                    type: 'duration',
-                                                                    data: {
-                                                                        id:   duration.id,
-                                                                        text: event.target.value,
-                                                                    },
-                                                                    experienceId,
-                                                                    projectId: id,
-                                                                });
-                                                            } }
-                                                            placeholder = 'Duration'
-                                                            value = { duration.text }
+                                                        <CustomDatePicker
+                                                            dataEnd = { duration.dateEnd }
+                                                            dataStart = { duration.dateStart }
+                                                            dateId = { project.id }
+                                                            id = { experienceId }
+                                                            typeField = 'project'
                                                         />
                                                         <RemoveBtn handleRemoveFunc = {
                                                             () => removeProjectFieldInBlock({

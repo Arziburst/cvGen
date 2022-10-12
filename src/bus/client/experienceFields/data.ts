@@ -11,8 +11,9 @@ export const projectInithialState = {
         text: '',
     },
     duration: {
-        id:   uniqueId(),
-        text: '',
+        id:        uniqueId(),
+        dateStart: null,
+        dateEnd:   null,
     },
     role: {
         id:   uniqueId(),
@@ -48,8 +49,9 @@ export const experienceInithialState = {
         text: '',
     },
     date: {
-        id:   uniqueId(),
-        text: '',
+        id:        uniqueId(),
+        dateStart: null,
+        dateEnd:   null,
     },
     descriptionList: null,
     projects:        null,

@@ -54,6 +54,7 @@ export const ConstructorEducation: FC = () => {
                                                         dataStart = { date.dateStart }
                                                         dateId = { date.id }
                                                         id = { id }
+                                                        typeField = 'education'
                                                     />
                                                     <RemoveBtn
                                                         handleRemoveFunc = { () => removeEducationFieldInBlock({

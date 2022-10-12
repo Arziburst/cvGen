@@ -22,7 +22,6 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  margin-right: 25px;
 
   input {
     width: 100%;
@@ -40,6 +39,7 @@ export const Info = styled.div`
   label {
     &:nth-child(1) {
       margin-right: 25px;
+      width: 60%;
     }
   }
 
@@ -56,7 +56,6 @@ export const Info = styled.div`
 
 export const Location = styled.div`
   margin-bottom: 15px;
-  margin-right: 25px;
 
   input {
     width: 100%;

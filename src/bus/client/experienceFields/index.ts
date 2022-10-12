@@ -8,7 +8,7 @@ import { experienceInithialState, descriptionInihialState, projectInithialState 
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Types
-import { ExperienceCreatorAction, ExperienceDescrCreatorAction, ExperienceProjectCreatorAction, ExperienceProjectCreatorActionSecond, ExperienceProjectRemoveField } from './types';
+import { ExperienceCreatorAction, ExperienceDescrCreatorAction, ExperienceProjectCreatorAction, ExperienceProjectCreatorActionSecond, ExperienceProjectRemoveField, ExperienceDateCreatorAction } from './types';
 import { uniqueId } from 'lodash';
 
 export const useExperienceFields = () => {
@@ -17,6 +17,10 @@ export const useExperienceFields = () => {
 
     const handleChangeFieldInExperienceBlock = (data: ExperienceCreatorAction) => {
         dispatch(experienceFieldsActions.experienceFieldCreatorAction(data));
+    };
+
+    const handleChangeExperienceDateField = (data: ExperienceDateCreatorAction) => {
+        dispatch(experienceFieldsActions.experienceFieldDate(data));
     };
 
     const handleChangeFieldInDescrBlock = (data: ExperienceDescrCreatorAction) => {
@@ -94,5 +98,6 @@ export const useExperienceFields = () => {
         handleChangeFieldInProjectBlock,
         addExpeienceProjectBlock,
         removeProjectFieldInBlock,
+        handleChangeExperienceDateField,
     };
 };

@@ -2,6 +2,8 @@
 import React from 'react';
 import { View, StyleSheet, Text } from '@react-pdf/renderer';
 
+// Tools
+import { getMountYear } from '../../../../tools/utils/DateName';
 // Styles
 const styles = StyleSheet.create({
     box: {
@@ -145,7 +147,7 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                                                 padding:         '5px 3px',
                                                             },
                                                         ] }>
-                                                            {date.text}
+                                                            {`${getMountYear(date.dateStart)} - ${getMountYear(date.dateEnd)}`}
                                                         </Text>
                                                     </View>
                                                 </>
@@ -319,7 +321,7 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                                                                                     padding: '5px 3px',
                                                                                                     width:   '100%',
                                                                                                 }}>
-                                                                                                    {duration.text}
+                                                                                                    {`${getMountYear(duration.dateStart)} - ${getMountYear(duration.dateEnd)}`}
                                                                                                 </Text>
                                                                                             ) : null
                                                                                     }

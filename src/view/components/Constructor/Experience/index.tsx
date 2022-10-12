@@ -10,6 +10,7 @@ import * as S from './styles';
 
 // Components
 import { ConstructorProjects } from '../Projects';
+import { CustomDatePicker } from '../../CustomDatePicker';
 
 // Elements
 import { AddBtn, AddFieldBlockBtn, AppDebounceInput, AppDebounceTextarea, RemoveBtn, Title } from '../../../elements';
@@ -54,20 +55,12 @@ export const ConstructorExperience: FC = () => {
                                     placeholder = 'Your position'
                                     value = { position.text }
                                 />
-                                <AppDebounceInput
-                                    decorElemColor = { themes.accent.bgSecond }
-                                    handleChangeFunc = { (event) => {
-                                        handleChangeFieldInExperienceBlock({
-                                            data: {
-                                                ...date,
-                                                text: event.target.value,
-                                            },
-                                            id,
-                                            type: 'date',
-                                        });
-                                    } }
-                                    placeholder = 'Sept. 2016 - Present'
-                                    value = { date.text }
+                                <CustomDatePicker
+                                    dataEnd = { date.dateEnd }
+                                    dataStart = { date.dateStart }
+                                    dateId = { date.id }
+                                    id = { id }
+                                    typeField = 'experience'
                                 />
                             </S.Info>
                             <S.Location>

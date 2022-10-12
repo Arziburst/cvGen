@@ -15,7 +15,11 @@ export type Project = {
     id: string;
     name: ExperienceData;
     customer: ExperienceData;
-    duration: ExperienceData;
+    duration: {
+        id: string
+        dateStart: string | null
+        dateEnd: string | null
+    };
     role: ExperienceData;
     responsibilities: ExperienceData;
     teamSize: ExperienceData;
@@ -26,7 +30,11 @@ export type ExperienceFullData = {
     id: string
     position: ExperienceData
     location: ExperienceData
-    date: ExperienceData
+    date: {
+        id: string
+        dateStart: string | null
+        dateEnd: string | null
+    };
     descriptionList: null | Array<DescriptionList>;
     projects: null | Array<Project>;
 }
@@ -36,6 +44,16 @@ export type ExperienceCreatorAction = {
     id: string
     data: ExperienceData
     type: 'position' | 'location' | 'date'
+}
+
+export type ExperienceDateCreatorAction = {
+    id: string
+    data: {
+        id: string
+        dateStart: string | null
+        dateEnd: string | null
+    };
+    type: 'date'
 }
 
 export type ExperienceDescrCreatorAction = {
@@ -58,7 +76,11 @@ export type ExperienceProjectCreatorActionSecond = {
     type: 'name' | 'customer' | 'duration' | 'role' | 'responsibilities' | 'teamSize' | 'stack'
     experienceId: string
     projectId: string
-    data: ExperienceData
+    data: ExperienceData | {
+        id: string
+        dateStart: string | null
+        dateEnd: string | null
+    }
 }
 
 // State
