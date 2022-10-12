@@ -37,15 +37,9 @@ export const projectFieldCreatorAction: types.BaseContact<types.ExperienceProjec
     = (state, action) => state?.map(
         (experience) => {
             if (experience.id === action.payload.experienceId && experience.projects !== null) {
-                console.log(experience.id === action.payload.experienceId);
-
                 return {
                     ...experience,
                     projects: experience.projects.map((project) => {
-                        console.log('project.id === action.payload.projectId', project.id === action.payload.projectId);
-                        console.log('project.id', project.id);
-                        console.log('action.payload.projectId', action.payload.projectId);
-
                         if (project.id === action.payload.projectId) {
                             return {
                                 ...project,

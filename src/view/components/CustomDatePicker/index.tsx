@@ -1,10 +1,10 @@
 // Core
 import React, { FC, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import * as S from './styles';
 import { useEducationField } from '../../../bus/client/educationFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
+
 // Types
 type PropTypes = {
     dataStart: string | null
