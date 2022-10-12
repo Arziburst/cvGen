@@ -48,7 +48,7 @@ const AddFieldButton = styled.button`
   }
 
   &:hover {
-    background-color:  ${({ theme }) => theme.accent.bgPrimary};
+    background-color:  ${({ theme }) => theme.main.bg};
     transition: 0.2s ease background-color;
   }
 
