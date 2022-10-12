@@ -4,8 +4,9 @@ export const educationInithialState = [
     {
         id:   uniqueId(),
         date: {
-            id:   uniqueId(),
-            text: '',
+            id:        uniqueId(),
+            dateStart: null,
+            dateEnd:   null,
         },
         degree: {
             id:   uniqueId(),

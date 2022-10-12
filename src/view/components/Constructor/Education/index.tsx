@@ -5,6 +5,9 @@ import React, { FC } from 'react';
 import { useThemes } from '../../../../bus/client/themes';
 import { useEducationField } from '../../../../bus/client/educationFields';
 
+// Components
+import { CustomDatePicker } from '../../CustomDatePicker';
+
 // Elements
 import { AppDebounceInput, AppDebounceTextarea, Title, AddBtn, RemoveBtn, AddFieldBlockBtn } from '../../../elements';
 
@@ -40,22 +43,17 @@ export const ConstructorEducation: FC = () => {
 
                         return (
                             <S.Item key = { id }>
+
                                 <S.Wrapper>
                                     {
                                         date
                                             ? (
                                                 <S.Date>
-                                                    <AppDebounceInput
-                                                        decorElemColor = { themes.accent.bgSecond }
-                                                        handleChangeFunc = { (event) => {
-                                                            handleChangeFieldInBlock({
-                                                                id, data:
-                                                                { id: date.id, text: event.target.value },
-                                                                type: 'date',
-                                                            });
-                                                        } }
-                                                        placeholder = '2007 - 2013'
-                                                        value = { date.text }
+                                                    <CustomDatePicker
+                                                        dataEnd = { date.dateEnd }
+                                                        dataStart = { date.dateStart }
+                                                        dateId = { date.id }
+                                                        id = { id }
                                                     />
                                                     <RemoveBtn
                                                         handleRemoveFunc = { () => removeEducationFieldInBlock({

@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
 // Elements
 import { PdfGenTitle } from '../../../elements/pdfGenTitle';
 
+// Tools
+import { getMountYear } from '../../../../tools/utils/DateName';
+
 // Types
 import { Education } from '../../../../bus/client/educationFields/types';
 import { ThemeType } from '../../../../assets/themes/type';
@@ -66,7 +69,7 @@ export const PreviewEducation = ({ education, theme }: PropTypes) => {
                                                             padding:         '5px 3px',
                                                         },
                                                     ] }>
-                                                        {date.text}
+                                                        {`${getMountYear(date.dateStart)} - ${getMountYear(date.dateEnd)}`}
                                                     </Text>
                                                 </View>
                                             ) : null

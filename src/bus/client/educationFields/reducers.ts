@@ -2,9 +2,25 @@
 // Types
 import * as types from './types';
 
+// eslint-disable-next-line max-len
 export const educationFieldCreatorAction: types.BaseContact<types.EducationFieldValue> = (state, action) => state?.map(
     (education) => {
         if (education.id === action.payload.id) {
+            return {
+                ...education,
+                [ action.payload.type ]: {
+                    ...action.payload.data,
+                },
+            };
+        }
+
+        return education;
+    },
+);
+
+export const changeDateField: types.BaseContact<types.EducationFieldDate> = (state, action) => state?.map(
+    (education) => {
+        if (education.id === action.payload.educationId) {
             return {
                 ...education,
                 [ action.payload.type ]: {

@@ -9,7 +9,8 @@ export type Education = {
     id: string;
     date: {
         id: string;
-        text: string;
+        dateStart: null | string;
+        dateEnd: null | string;
     }
     degree: {
         id: string;
@@ -25,13 +26,25 @@ export type EducationState = Array<Education> | null;
 
 export type OptionsValue = {
     id: string;
-    text: string;
+    text: string
+}
+
+export type OptionsDateValue = {
+    id: string;
+    dateStart: string | null
+    dateEnd: string | null
 }
 
 export type EducationFieldValue = {
     id: string;
     type: string
     data: OptionsValue
+}
+
+export type EducationFieldDate = {
+    educationId: string;
+    type: string
+    data: OptionsDateValue
 }
 
 type Options = {
