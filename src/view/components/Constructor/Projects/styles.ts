@@ -78,6 +78,10 @@ export const Box = styled.div`
     font-family: 'NotoSans500';
     font-weight: 500;
   }
+
+  @media (max-width: 360px) {
+    display: block;
+  }
 `;
 
 export const Name = styled.div`
@@ -130,6 +134,11 @@ export const Role = styled.div`
     top: 50%;
     transform: translateY(-50%);
     border-radius: 0;
+  }
+
+  @media (max-width: 360px) {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 `;
 

@@ -44,12 +44,18 @@ export const Info = styled.div`
   }
 
   @media (max-width: 360px) {
-    margin-right: 25px;
+    margin-right: 0;
     display: block;
     label {
       display: block;
+      margin-right: 0;
       width: 100%;
       margin-bottom: 5px;
+      
+      &:nth-child(1) {
+        margin-right: 0;
+        width: 100%;
+      }
     }
   }
 `;
@@ -127,7 +133,7 @@ export const Item = styled.li`
 export const Box = styled.div`
   margin-bottom: 15px;
   position: relative;
-  
+
 `;
 
 export const TitleBox = styled.div`
