@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     },
     text: {
         width:        '100%',
-        fontSize:     12,
+        fontSize:     10,
         marginBottom: 3,
     },
     AboutBoxText: {

@@ -49,9 +49,8 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                 />
                 <ul>
                     <li>
-                        <Link
+                        <View
                             break
-                            src = { contacts.address.url }
                             style = { [
                                 styles.link, {
                                     backgroundColor: theme.accent.bgPrimary,
@@ -67,12 +66,11 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                     contacts.address.url
                                 }
                             </Text>
-                        </Link>
+                        </View>
                     </li>
                     <li>
-                        <Link
+                        <View
                             break
-                            src = { contacts.mail.url }
                             style = { [
                                 styles.link, {
                                     backgroundColor: theme.accent.bgPrimary,
@@ -88,15 +86,14 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                     contacts.mail.url
                                 }
                             </Text>
-                        </Link>
+                        </View>
                     </li>
                     {
                         contacts.phone
                             ? (
                                 <li key = { contacts.phone.id }>
-                                    <Link
+                                    <View
                                         break
-                                        src = { contacts.phone.url }
                                         style = { [
                                             styles.link, {
                                                 backgroundColor: theme.accent.bgPrimary,
@@ -112,7 +109,7 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                                 contacts.phone.url
                                             }
                                         </Text>
-                                    </Link>
+                                    </View>
                                 </li>
                             ) : null
                     }

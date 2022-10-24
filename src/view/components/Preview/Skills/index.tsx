@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     text: {
-        fontSize: 12,
+        fontSize: 10,
     },
     skillBox: {
         marginRight:  3,
         padding:      4,
         marginBottom: 3,
-        fontSize:     12,
+        fontSize:     10,
     },
     skillsList: {
         flexDirection: 'row',

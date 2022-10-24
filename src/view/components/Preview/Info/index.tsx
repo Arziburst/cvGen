@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight:   800,
-        fontSize:     30,
+        fontSize:     25,
         marginBottom: 3,
         padding:      '5px 3px',
     },

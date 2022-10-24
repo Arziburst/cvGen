@@ -62,19 +62,20 @@ const styles = StyleSheet.create({
     descriptionText: {
     },
     projectItem: {
-        marginBottom:  5,
-        fontSize:      10,
+        marginBottom:  9,
+        fontSize:      11,
         paddingBottom: 2,
     },
     projectBox: {
         flexDirection:  'row',
         justifyContent: 'space-between',
-        marginBottom:   4,
+        marginBottom:   6,
     },
     name: {
+        marginBottom: 2,
     },
     projectText: {
-        marginBottom: 2,
+        marginBottom: 4,
     },
 
     projectName: {
