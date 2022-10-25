@@ -77,6 +77,7 @@ export const Location = styled.div`
 `;
 
 export const List = styled.ul`
+  margin-bottom: 25px;
 `;
 
 export const BtnBox = styled.div`

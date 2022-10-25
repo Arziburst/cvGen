@@ -15,7 +15,7 @@ type PropTypes = {
 
 export const Template: FC<PropTypes> = () => {
     return (
-        <S.Container>
+        <S.Container id = 'template'>
             <S.Inner>
                 <img
                     alt = 'template'

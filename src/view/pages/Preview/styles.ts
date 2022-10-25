@@ -9,7 +9,7 @@ export const Container = styled.section`
 export const BtnContainer = styled.div`
   width: 1200px;
   margin: 0 auto;
-  top: 10px;
+  top: 70px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

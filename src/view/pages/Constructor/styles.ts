@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
      display: grid;
      grid-template-columns: 0.5fr 1fr;
 
-     &:nth-child(2) {
+     &:nth-child(3) {
           flex: 1 1 auto;
      }
 
@@ -124,3 +124,19 @@ export const BtnBoxBtn = styled.button`
      }
 `;
 
+export const PreviewBtn = styled(BtnBoxBtn)`
+     position: fixed;
+     right: auto;
+     margin-left: -80px;
+     top: 50%;
+     background-color: #262b34;
+
+     @media (max-width: 992px) {
+          right: 50%;
+          transform: translatex(50%);
+          margin-left: 0;
+          z-index: 10;
+          bottom: 10px;
+          top: auto;
+     }
+`;

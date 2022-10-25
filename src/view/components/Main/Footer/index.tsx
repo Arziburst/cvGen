@@ -25,7 +25,7 @@ export const Footer: FC<PropTypes> = () => {
     };
 
     return (
-        <S.Container>
+        <S.Container id = 'footer'>
             <S.Inner>
                 <S.FooterTitle>
                     Contacts:

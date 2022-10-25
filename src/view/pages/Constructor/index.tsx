@@ -48,12 +48,6 @@ const Constructor: FC = () => {
                     <Logo />
                     <S.BtnBox>
                         <Palette />
-                        <S.BtnBoxBtn onClick = { () => {
-                            setToggleAction({ type: 'isPreview', value: true });
-                        } }>
-                            <S.SvgIcon src = { svgPdfIcon } />
-                            <span>Preview</span>
-                        </S.BtnBoxBtn>
                         <S.BtnBoxBtn
                             onClick = { () => {
                                 // eslint-disable-next-line no-alert
@@ -74,6 +68,12 @@ const Constructor: FC = () => {
                 </S.ActionBoxContainer>
             </S.BtnActionBox>
             <S.Container>
+                <S.PreviewBtn onClick = { () => {
+                    setToggleAction({ type: 'isPreview', value: true });
+                } }>
+                    <S.SvgIcon src = { svgPdfIcon } />
+                    <span>Preview</span>
+                </S.PreviewBtn>
                 <S.Wrapper>
                     <S.Column>
                         <ConstructorAvatar />

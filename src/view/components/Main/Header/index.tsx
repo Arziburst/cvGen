@@ -28,17 +28,17 @@ export const Header: FC<PropTypes> = () => {
                     </S.MenuBtn>
                     <S.List isOpen = { isOpenMenu }>
                         <S.Item>
-                            <S.AnchorLink href = '#'>
+                            <S.AnchorLink href = '#template'>
                                 Templates
                             </S.AnchorLink>
                         </S.Item>
                         <S.Item>
-                            <S.AnchorLink href = '#'>
+                            <S.AnchorLink href = '#about'>
                                 About us
                             </S.AnchorLink>
                         </S.Item>
                         <S.Item>
-                            <S.AnchorLink href = '#'>
+                            <S.AnchorLink href = '#footer'>
                                 Contact us
                             </S.AnchorLink>
                         </S.Item>

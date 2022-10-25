@@ -14,7 +14,7 @@ type PropTypes = {
 
 export const About: FC<PropTypes> = () => {
     return (
-        <S.Container>
+        <S.Container id = 'about'>
             <S.Inner>
                 <S.AboutTitle>
                     About us
