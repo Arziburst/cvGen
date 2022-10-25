@@ -48,26 +48,31 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
 
                 />
                 <ul>
-                    <li>
-                        <View
-                            break
-                            style = { [
-                                styles.link, {
-                                    backgroundColor: theme.accent.bgPrimary,
-                                    padding:         '5px 3px',
-                                },
-                            ] }>
-                            <HomeIcon color = { theme.main.color } />
-                            <Text
-                                break
-                                wrap
-                                style = { [ styles.linkText, { color: theme.main.color }] }>
-                                {
-                                    contacts.address.url
-                                }
-                            </Text>
-                        </View>
-                    </li>
+                    {
+                        contacts.address
+                            ? (
+                                <li>
+                                    <View
+                                        break
+                                        style = { [
+                                            styles.link, {
+                                                backgroundColor: theme.accent.bgPrimary,
+                                                padding:         '5px 3px',
+                                            },
+                                        ] }>
+                                        <HomeIcon color = { theme.main.color } />
+                                        <Text
+                                            break
+                                            wrap
+                                            style = { [ styles.linkText, { color: theme.main.color }] }>
+                                            {
+                                                contacts.address.url
+                                            }
+                                        </Text>
+                                    </View>
+                                </li>
+                            ) : null
+                    }
                     <li>
                         <View
                             break

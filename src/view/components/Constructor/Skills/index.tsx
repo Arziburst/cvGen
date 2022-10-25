@@ -9,6 +9,8 @@ import { AddBtn, AddFieldBlockBtn, AppDebounceInput, RemoveBtn, Title } from '..
 // Slice
 import { skillsInithialState } from '../../../../bus/client/fields/data';
 
+// import { v4 as uuidv4 } from 'uuid';
+
 // Styles
 import * as S from './styles';
 
@@ -31,7 +33,9 @@ export const ConstructorSkills: FC = () => {
                     <Title text = 'Skills' />
                     <RemoveBtn handleRemoveFunc = { () => removeFieldBlock('skills') } />
                 </S.Box>
-                <S.List listLength = { skills.items.length }>
+                <S.List
+                    id = { skills.id }
+                    listLength = { skills.items.length }>
                     {skills.items.map(({ id, text }) => (
                         <S.Item key = { id } >
                             <AppDebounceInput

@@ -62,24 +62,6 @@ export const ConstructorContacts: FC = () => {
                 </S.Box>
                 <ul>
                     <S.Item
-                        key = { address.id }>
-                        <S.InputIcon src = { getIconSrc('address') } />
-                        <AppDebounceInput
-                            decorElemColor = { themes.accent.bgPrimary }
-                            handleChangeFunc = { (event) => {
-                                handleChangeContactField({
-                                    data: {
-                                        ...address,
-                                        url: event.target.value,
-                                    },
-                                    type: 'address',
-                                });
-                            } }
-                            placeholder = { 'address' }
-                            value = { address.url }
-                        />
-                    </S.Item>
-                    <S.Item
                         key = { mail.id }>
                         <S.InputIcon src = { getIconSrc('mail') } />
                         <AppDebounceInput
@@ -97,6 +79,30 @@ export const ConstructorContacts: FC = () => {
                             value = { mail.url }
                         />
                     </S.Item>
+                    {
+                        address
+                            ? (
+                                <S.Item
+                                    key = { address.id }>
+                                    <S.InputIcon src = { getIconSrc('address') } />
+                                    <AppDebounceInput
+                                        decorElemColor = { themes.accent.bgPrimary }
+                                        handleChangeFunc = { (event) => {
+                                            handleChangeContactField({
+                                                data: {
+                                                    ...address,
+                                                    url: event.target.value,
+                                                },
+                                                type: 'address',
+                                            });
+                                        } }
+                                        placeholder = { 'address' }
+                                        value = { address.url }
+                                    />
+                                    <RemoveBtn handleRemoveFunc = { () => removeContactField('address') } />
+                                </S.Item>
+                            ) : null
+                    }
                     {
                         phone
                             ? (
@@ -172,6 +178,16 @@ export const ConstructorContacts: FC = () => {
                             : null
                     }
                 </ul>
+                {
+                    address === null
+                        ? (
+                            <AddBtn
+                                handleAddFunc = { () => addContactFields('address') }
+                                text = 'address'
+                            />
+                        )
+                        : null
+                }
                 {
                     phone === null
                         ? (

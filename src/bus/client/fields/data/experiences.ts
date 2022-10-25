@@ -18,24 +18,6 @@ export const experienceInithialState = {
                 id:   uniqueId(),
                 text: '',
             },
-            // descriptionList: [
-            //     {
-            //         id:          uniqueId(),
-            //         description: '',
-            //     },
-            // ],
-            // projects: [
-            //     {
-            //         id:               uniqueId(),
-            //         name:             '',
-            //         customer:         '',
-            //         duration:         '',
-            //         role:             '',
-            //         responsibilities: '',
-            //         teamSize:         '',
-            //         stack:            '',
-            //     },
-            // ],         start here
         },
     ],
 };

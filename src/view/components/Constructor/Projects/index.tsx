@@ -268,16 +268,16 @@ export const ConstructorProjects: FC<propTypes> = ({ projects, experienceId }) =
                                         }) }
                                     />
                                 </S.BtnBox>
-                                <AddBtn
-                                    handleAddFunc = { () => addExpeienceProjectBlock(experienceId) }
-                                    style = {{ marginBottom: '5px' }}
-                                    text = 'project'
-                                />
                             </S.Item>
                         );
                     })
                     }
                 </S.List>
+                <AddBtn
+                    handleAddFunc = { () => addExpeienceProjectBlock(experienceId) }
+                    style = {{ marginBottom: '5px' }}
+                    text = 'project'
+                />
             </S.Container>
         );
     }

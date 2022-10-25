@@ -1,3 +1,6 @@
+// Core
+import { v4 as uuidv4 } from 'uuid';
+
 // Action
 import { experienceFieldsActions } from './slice';
 
@@ -8,8 +11,14 @@ import { experienceInithialState, descriptionInihialState, projectInithialState 
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Types
-import { ExperienceCreatorAction, ExperienceDescrCreatorAction, ExperienceProjectCreatorAction, ExperienceProjectCreatorActionSecond, ExperienceProjectRemoveField, ExperienceDateCreatorAction } from './types';
-import { uniqueId } from 'lodash';
+import {
+    ExperienceCreatorAction,
+    ExperienceDescrCreatorAction,
+    ExperienceProjectCreatorAction,
+    ExperienceProjectCreatorActionSecond,
+    ExperienceProjectRemoveField,
+    ExperienceDateCreatorAction,
+} from './types';
 
 export const useExperienceFields = () => {
     const dispatch = useDispatch();
@@ -46,14 +55,14 @@ export const useExperienceFields = () => {
     const addExpeienceProjectBlock = (id: string) => {
         dispatch(experienceFieldsActions.addProjectBlock({ data: {
             ...projectInithialState,
-            id: uniqueId(),
+            id: uuidv4(),
         }, id }));
     };
 
     const addDescrFieldInBlock = (id: string) => {
         dispatch(experienceFieldsActions.addDescrFieldInBlock({ data: {
             ...descriptionInihialState,
-            id: uniqueId(),
+            id: uuidv4(),
         }, id }));
     };
 

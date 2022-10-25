@@ -8,7 +8,8 @@ import * as types from './types';
 import { useSelector, useDispatch } from '../../../tools/hooks';
 
 // Data
-import { uniqueId } from 'lodash';
+// import { uniqueId } from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useFields = () => {
     const fields = useSelector(({ fields }) => fields);
@@ -31,7 +32,7 @@ export const useFields = () => {
     };
 
     const addFieldInBlock = ({ type, data }: types.FieldAddOptions) => {
-        dispatch(fieldsActions.addFieldInBlock({ data: { ...data, id: uniqueId() }, type }));
+        dispatch(fieldsActions.addFieldInBlock({ data: { ...data, id: uuidv4() }, type }));
     };
 
     const resetSkillsLanguages = () => {

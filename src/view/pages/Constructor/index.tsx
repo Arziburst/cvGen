@@ -56,11 +56,16 @@ const Constructor: FC = () => {
                         </S.BtnBoxBtn>
                         <S.BtnBoxBtn
                             onClick = { () => {
-                                resetContactFieldsToInithialState();
-                                resetInfoFieldsToInithial();
-                                resetEducationFieldsToInithialState();
-                                resetExperienceFields();
-                                resetSkillsLanguages();
+                                // eslint-disable-next-line no-alert
+                                const ifConfirtm = confirm('Are you sure you want to reset all fields to their default values?');
+
+                                if (ifConfirtm) {
+                                    resetContactFieldsToInithialState();
+                                    resetInfoFieldsToInithial();
+                                    resetEducationFieldsToInithialState();
+                                    resetExperienceFields();
+                                    resetSkillsLanguages();
+                                }
                             } }>
                             <S.SvgIcon src = { svgResetIcon } />
                             <span>Reset</span>

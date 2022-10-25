@@ -11,8 +11,11 @@ export const BtnBox = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 82px;
-  height: 56px;
-
+  height: 58px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  padding: 2px;
+  border-radius: 12px;
+  margin-right: 5px;
   &:hover {
     background-color: #475060;
 
@@ -27,8 +30,8 @@ export const Icon = styled(ReactSVG)`
   svg {
     fill: #fff;
     color: #fff;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 `;
 
@@ -53,8 +56,8 @@ export const Item = styled.li`
 `;
 
 export const DecorItem = styled.span`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-color: ${({ theme }) => theme.main.bgSecond};
   border-radius: 5px;
   margin-left: 10px;

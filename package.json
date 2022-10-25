@@ -36,7 +36,8 @@
         "react-svg": "^15.1.9",
         "redux-persist": "^6.0.0",
         "styled-components": "^5.3.5",
-        "styled-reset": "^4.4.2"
+        "styled-reset": "^4.4.2",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
         "@redux-saga/core": "^1.1.3",

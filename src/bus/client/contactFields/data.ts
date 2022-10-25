@@ -5,10 +5,7 @@ export const contactsInitialState = {
         id:  uniqueId(),
         url: '',
     },
-    address: {
-        id:  uniqueId(),
-        url: '',
-    },
+    address:  null,
     phone:    null,
     linkedin: null,
     github:   null,

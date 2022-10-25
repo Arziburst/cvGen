@@ -78,7 +78,7 @@ export const BtnBox = styled.div`
 
 export const SvgIcon = styled(ReactSVG)`
      svg {
-          max-width: 30px;
+          max-width: 25px;
           fill: #fff;
      }
 `;
@@ -91,7 +91,7 @@ export const BtnActionBox = styled.div`
    display: flex;
    align-items: center;
    background-color: #262b34;
-   height: 64px;
+   height: 72px;
    padding: 8px 0;
    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 `;
@@ -103,13 +103,22 @@ export const BtnBoxBtn = styled.button`
      cursor: pointer;
      text-align: center;
      width: 64px;
-     height: 56px;
+     height: 58px;
+     box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+     padding: 2px;
+     border-radius: 12px;
+
+     &:not(:last-child) {
+          margin-right: 5px;
+     }
+
      span {
           font-family: 'NotoSans400', sans-serif;
           font-weight: 400;
           display: block;
           color: #f5f5f5;
      }
+
      &:hover {
           background-color: #475060;
      }

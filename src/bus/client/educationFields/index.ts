@@ -1,3 +1,6 @@
+// Core
+import { v4 as uuidv4 } from 'uuid';
+
 // Slice
 import { educationFieldsActions } from './slice';
 
@@ -7,7 +10,6 @@ import { useDispatch, useSelector } from '../../../tools/hooks';
 // Types
 import { EducationFieldDate, EducationFieldValue, OptionsRemoveFieldInBlock } from './types';
 import { educationInithialState } from './data';
-import { uniqueId } from 'lodash';
 
 export const useEducationField = () => {
     const dispatch = useDispatch();
@@ -34,13 +36,12 @@ export const useEducationField = () => {
     };
 
     const addEducationBlock = () => {
-        dispatch(educationFieldsActions.addEducationBlock({ id: uniqueId(), data: educationInithialState[ 0 ] }));
+        dispatch(educationFieldsActions.addEducationBlock({ id: uuidv4(), data: educationInithialState[ 0 ] }));
     };
 
     const resetEducationFieldsToInithialState = () => {
         dispatch(educationFieldsActions.resetEducationFields());
     };
-
 
     return {
         educationFields,

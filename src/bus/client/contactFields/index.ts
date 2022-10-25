@@ -1,5 +1,6 @@
 // Tools
-import { uniqueId } from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
+// Core
 import { useDispatch, useSelector } from '../../../tools/hooks';
 
 // Actions
@@ -33,7 +34,7 @@ export const useContactField = () => {
     const addContactFields = (type: ContactsChangeType) => {
         dispatch(contactFieldsActions.addContactField({
             data: {
-                id:  uniqueId(),
+                id:  uuidv4(),
                 url: '',
             },
             type,
