@@ -26,7 +26,7 @@ export const Palette: FC<PropTypes> = () => {
 
     return (
         <S.Container>
-            <S.BtnBox>
+            <S.BtnBox tabIndex = { 0 }>
                 <S.Icon src = { svgPouringIcon } />
                 <S.DecorItem />
                 <S.List>

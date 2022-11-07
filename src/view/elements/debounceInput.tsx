@@ -31,12 +31,12 @@ export const InputBox = styled.label<{ isFocusElem: boolean }>`
     padding-right: 10px;
     height: 30px;
     z-index: 2;
-    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.accent.bg : ''};
+    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.main.color : ''};
 
     &:focus,
     &:hover {
       border-color: ${({ theme }) => theme.main.color};
-      outline-color: transparent;
+      outline: none;
     }
   }
   

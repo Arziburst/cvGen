@@ -10,7 +10,7 @@ export const Container = styled.section`
   }
 `;
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.div`
   position: relative;
   width: 180px;
   height: 180px;
@@ -21,6 +21,15 @@ export const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.main.color};
+  }
+
+  &:focus-within {
+    border-color: ${({ theme }) => theme.main.color};
+  }
 `;
 
 export const UserAvatar = styled.img`
@@ -33,6 +42,7 @@ export const UserAvatar = styled.img`
 export const UserIcon = styled(ReactSVG)`
   width:  60%;
   height: 60%;
+
   svg {
     fill: ${({ theme }) => theme.main.color}
   }

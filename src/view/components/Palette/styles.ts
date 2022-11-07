@@ -16,7 +16,8 @@ export const BtnBox = styled.div`
   padding: 2px;
   border-radius: 12px;
   margin-right: 5px;
-  &:hover {
+  &:hover,
+  &:focus-within {
     background-color: #475060;
 
     ul {

@@ -152,7 +152,6 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                                         </Text>
                                                     </View>
                                                 </>
-
                                             )
                                             : null
                                     }
@@ -194,7 +193,7 @@ export const PreviewExperience = ({ experience, theme }: PropTypes) => {
                                                         </Text>
                                                     </View>
                                                     <ul style = { styles.descriptionList }>
-                                                        {descriptionList.map(({ description, id }) => (
+                                                        {descriptionList.map(({ description, id }) => description && (
                                                             <li
                                                                 key = { id }
                                                                 style = {{

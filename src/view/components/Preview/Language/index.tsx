@@ -50,7 +50,7 @@ export const PreviewLanguage = ({ languages, theme }: PropTypes) => {
                 <ul style = { styles.list }>
                     {
                         languages.items.map(({ id, text }) => {
-                            return (
+                            return text && (
                                 <li
                                     key = { id }
                                     style = { styles.item }>

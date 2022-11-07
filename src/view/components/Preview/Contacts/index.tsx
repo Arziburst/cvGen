@@ -49,7 +49,7 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                 />
                 <ul>
                     {
-                        contacts.address
+                        contacts.address && contacts.address.url.length > 0
                             ? (
                                 <li>
                                     <View
@@ -73,28 +73,33 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                                 </li>
                             ) : null
                     }
-                    <li>
-                        <View
-                            break
-                            style = { [
-                                styles.link, {
-                                    backgroundColor: theme.accent.bgPrimary,
-                                    padding:         '5px 3px',
-                                },
-                            ] }>
-                            <MailIcon color = { theme.main.color } />
-                            <Text
-                                break
-                                wrap
-                                style = { [ styles.linkText, { color: theme.main.color }] }>
-                                {
-                                    contacts.mail.url
-                                }
-                            </Text>
-                        </View>
-                    </li>
                     {
-                        contacts.phone
+                        contacts.mail.url.length > 0 && (
+                            <li>
+                                <View
+                                    break
+                                    style = { [
+                                        styles.link, {
+                                            backgroundColor: theme.accent.bgPrimary,
+                                            padding:         '5px 3px',
+                                        },
+                                    ] }>
+                                    <MailIcon color = { theme.main.color } />
+                                    <Text
+                                        break
+                                        wrap
+                                        style = { [ styles.linkText, { color: theme.main.color }] }>
+                                        {
+                                            contacts.mail.url
+                                        }
+                                    </Text>
+                                </View>
+                            </li>
+                        )
+                    }
+
+                    {
+                        contacts.phone && contacts.phone.url.length > 0
                             ? (
                                 <li key = { contacts.phone.id }>
                                     <View
@@ -119,7 +124,7 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                             ) : null
                     }
                     {
-                        contacts.linkedin
+                        contacts.linkedin && contacts.linkedin.url.length > 0
                             ? (
                                 <li>
                                     <Link
@@ -143,7 +148,7 @@ export const PreviewContacts = ({ contacts, theme }: PropTypes) => {
                             ) : null
                     }
                     {
-                        contacts.github
+                        contacts.github && contacts.github.url.length > 0
                             ? (
                                 <li>
                                     <Link

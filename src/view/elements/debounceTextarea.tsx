@@ -19,12 +19,12 @@ export const TextareaBox = styled.label<{ isFocusElem: boolean }>`
     resize: none;
     color: ${({ theme }) => theme.main.color};
     height: 80px;
-    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.accent.bg : ''};
+    border-color: ${({ isFocusElem, theme }) => isFocusElem ? theme.main.color : ''};
 
     &:focus,
     &:hover {
       border-color: ${({ theme }) => theme.main.color};
-      outline-color: transparent;
+      outline: none;
     }
   }
 

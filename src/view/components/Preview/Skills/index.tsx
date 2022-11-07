@@ -54,7 +54,7 @@ export const PreviewSlills = ({ skills, theme }: PropTypes) => {
                         skills.items.map(({
                             id, text,
                         }) => {
-                            return (
+                            return text && (
                                 <li
                                     key = { id }
                                     style = {{ ...styles.skillBox, backgroundColor: theme.accent.bg }}>

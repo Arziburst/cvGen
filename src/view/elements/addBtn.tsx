@@ -14,6 +14,7 @@ const AddButton = styled.button`
   color: ${({ theme }) => theme.main.bgSecond};
   text-decoration: underline;
   padding-left: 25px;
+  transition: 0.3s ease opacity;
 
   &::before,
   &::after {
@@ -42,6 +43,11 @@ const AddButton = styled.button`
   &:disabled {
     opacity: 0.7;
     cursor: default;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    transition: 0.3s ease opacity;
   }
 `;
 
