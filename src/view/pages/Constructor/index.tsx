@@ -2,11 +2,9 @@
 import React, { FC } from 'react';
 
 // Bus
-import { useTogglesRedux } from '../../../bus/client/toggles';
 import { useContactField } from '../../../bus/client/contactFields';
 import { useInfoFields } from '../../../bus/client/infoFields';
 import { useFields } from '../../../bus/client/fields';
-// import { useAwardFields } from '../../../bus/client/awardFields';
 import { useExperienceFields } from '../../../bus/client/experienceFields';
 import { useEducationField } from '../../../bus/client/educationFields';
 
@@ -31,15 +29,17 @@ import { svgResetIcon, svgPdfIcon } from '../../../assets/images';
 
 // Styles
 import * as S from './styles';
+import { useNavigate } from 'react-router-dom';
+import { PREVIEW } from '../../routes/book';
 
 const Constructor: FC = () => {
-    const { setToggleAction } = useTogglesRedux();
     const { resetContactFieldsToInithialState } = useContactField();
     const { resetInfoFieldsToInithial } = useInfoFields();
-    // const { resetAwardFieldsToInithialState } = useAwardFields();
     const { resetEducationFieldsToInithialState } = useEducationField();
     const { resetExperienceFields } = useExperienceFields();
     const { resetSkillsLanguages } = useFields();
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -68,9 +68,7 @@ const Constructor: FC = () => {
                 </S.ActionBoxContainer>
             </S.BtnActionBox>
             <S.Container>
-                <S.PreviewBtn onClick = { () => {
-                    setToggleAction({ type: 'isPreview', value: true });
-                } }>
+                <S.PreviewBtn onClick = { () => navigate(PREVIEW) }>
                     <S.SvgIcon src = { svgPdfIcon } />
                     <span>Preview</span>
                 </S.PreviewBtn>
@@ -86,7 +84,6 @@ const Constructor: FC = () => {
                     <S.SecondColumn>
                         <ConstructorContacts />
                         <ConstructorLanguages />
-                        {/* <ConstructorAward /> */}
                     </S.SecondColumn>
                     <S.SecondColumn>
                         <ConstructorSkills />

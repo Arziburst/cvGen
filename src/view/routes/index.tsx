@@ -6,12 +6,9 @@ import { Route, Routes } from 'react-router-dom';
 import * as book from './book';
 
 // Pages
-import { Main, Constructor, Preview } from '../pages';
-import { useTogglesRedux } from '../../bus/client/toggles';
+import { Main, Preview, Constructor } from '../pages';
 
 export const AppRoutes: FC = () => {
-    const { togglesRedux: { isPreview }} = useTogglesRedux();
-
     return (
         <Suspense fallback = { <div>Spinner</div> }>
             <Routes>
@@ -20,12 +17,12 @@ export const AppRoutes: FC = () => {
                     path = { book.MAIN }
                 />
                 <Route
-                    element = {
-                        isPreview
-                            ? <Preview />
-                            : <Constructor />
-                    }
+                    element = { <Constructor /> }
                     path = { book.CONSTRUCTOR }
+                />
+                <Route
+                    element = { <Preview /> }
+                    path = { book.PREVIEW }
                 />
             </Routes>
         </Suspense>

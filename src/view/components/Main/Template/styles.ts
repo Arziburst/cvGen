@@ -24,7 +24,7 @@ export const Inner = styled.div`
     background-color: #000;
      transition: ease 0.2s opacity;
   }
-  a {
+  button {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -40,7 +40,7 @@ export const Inner = styled.div`
     max-width: 100%;
   }
   @media (hover: hover) {
-    & a {
+    & button {
       opacity: 0;
     }
 
@@ -49,7 +49,7 @@ export const Inner = styled.div`
     }
 
     &:hover {
-      a {
+      button {
         opacity: 1;
         transition: ease 0.3s opacity;
       }

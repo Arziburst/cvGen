@@ -30,7 +30,7 @@ export const Description = styled.p`
 export const firstScreenLink = styled.div`
   margin: 0 auto;
   height: 80px;
-  a {
+  button {
     margin: 0 auto;
     font-size: 18px;
   }

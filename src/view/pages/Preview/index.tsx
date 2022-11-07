@@ -1,8 +1,6 @@
 // Core
 import React, { FC } from 'react';
-
-// Bus
-import { useTogglesRedux } from '../../../bus/client/toggles';
+import { useNavigate } from 'react-router-dom';
 
 // Containers
 import { PdfViewer } from '../../containers/PdfViewer';
@@ -14,15 +12,13 @@ import { ErrorBoundary } from '../../components';
 import * as S from './styles';
 
 const Preview: FC = () => {
-    const { setToggleAction } = useTogglesRedux();
+    const navigate = useNavigate();
 
     return (
         <S.Container>
             <S.BtnContainer>
                 <S.NavBtn
-                    onClick = { () => {
-                        setToggleAction({ type: 'isPreview', value: false });
-                    } }>
+                    onClick = { () => navigate(-1) }>
                     Back to constructor
                 </S.NavBtn>
             </S.BtnContainer>
