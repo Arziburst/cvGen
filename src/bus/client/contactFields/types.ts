@@ -1,7 +1,7 @@
 // Core
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
-type ContactField = {
+export type ContactField = {
     id: string
     url: string
 }

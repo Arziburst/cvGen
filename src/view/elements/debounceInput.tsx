@@ -3,9 +3,6 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import styled from 'styled-components';
 import { DebounceInput } from 'react-debounce-input';
 
-// Bus
-import { useThemes } from '../../bus/client/themes';
-
 // Constant
 import { WAIT_TIME } from '../../init';
 
@@ -91,7 +88,6 @@ export const DecorText = styled.p<{decorElemColor: string, isFocusElem: boolean}
 
 export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder, value, decorElemColor }) => {
     const [ isFocused, setIsFocused ] = useState(value.length > 0);
-    const { themes } = useThemes();
 
     return (
         <InputBox
@@ -105,10 +101,6 @@ export const AppDebounceInput: FC<propsType> = ({ handleChangeFunc, placeholder,
             </DecorText>
             <DebounceInput
                 debounceTimeout = { WAIT_TIME }
-                style = {{
-                    borderColor: isFocused ? themes.main.color : '',
-                    borderWidth: isFocused ? '2px' : '',
-                }}
                 type = 'text'
                 value = { value }
                 onBlur = { () => {

@@ -4,16 +4,14 @@ import React, { ChangeEvent, FC } from 'react';
 // Bus
 import { useInfoFields } from '../../../../bus/client/infoFields';
 
-// Assets
-import { svgAddUserIcon } from '../../../../assets/images';
+// Elements
+import { UserAvatar } from './UserAvatar';
 
 // Styles
 import * as S from './styles';
 
 export const ConstructorAvatar: FC = () => {
-    const {
-        infoFields: { avatar }, handleChangeImg,
-    } = useInfoFields();
+    const { handleChangeImg } = useInfoFields();
 
     const convertFileToImg = (event: ChangeEvent<HTMLInputElement>) => {
         const fileUrl = event.target.files?.item(0);
@@ -26,16 +24,7 @@ export const ConstructorAvatar: FC = () => {
     return (
         <S.Container>
             <S.Wrapper>
-                {
-                    avatar
-                        ? (
-                            <S.UserAvatar
-                                alt = 'user avatar'
-                                src = { avatar }
-                            />
-                        )
-                        : <S.UserIcon src = { svgAddUserIcon }/>
-                }
+                <UserAvatar />
                 <S.InputFile
                     accept = 'image/*'
                     type = 'file'
